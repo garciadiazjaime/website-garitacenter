@@ -6,9 +6,51 @@
 }
 .navbarNav {
   float: right!important;
-  margin-right: 80px!important;
+
+  a {
+    color: $white!important;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 25px 0 0!important;
+    background-color: initial!important;
+
+    @media #{$isPhone} {
+      padding: 10px 15px!important;
+    }
+  }
 }
-.navbarBrand {
-  @extend .icon-sprites;
-  @include sprite($sprites-button_logo_black);
+
+.logo {
+  padding-top: 7px;
+
+  i {
+    float: left;
+    @extend .icon-sprites;
+    @include sprite($sprites-button_logo_black);
+  }
+
+  span {
+    color: $white;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: .03em;
+    display: inline-block;
+    margin: 14px 0 0 5px;
+
+    @media #{$isPhone} {
+      font-size: 25px;
+    }
+  }
+}
+
+.navbarCollapse {
+  border-color: initial!important;
+}
+
+.navbarHeader {
+
+  button {
+    background-color: $darkBlue!important;
+  }
 }

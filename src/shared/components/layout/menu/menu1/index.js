@@ -12,8 +12,9 @@ export default class MainMenu extends React.Component {
       const elementID = url.replace('/', '');
       const className = style.navbarNavAnchor;
       const { onClick } = this.props;
+      const wrapperClassName = index === 0 ? 'active' : null;
       return (
-        <li key={index}>
+        <li key={index} className={wrapperClassName}>
           <Link to={url} className={className} id={elementID} onClick={onClick}>{title}</Link>
         </li>
       );
@@ -40,13 +41,19 @@ export default class MainMenu extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link className={style.navbarBrand + ' navbar-brand'} to="/" />
+                <Link className={'navbar-brand ' + style.logo} to="/" title="Garita Center | Reporte de Garitas">
+                  <i></i>
+                  <span>GaritaCenter</span>
+                </Link>
               </div>
 
               <div className={style.navbarCollapse + ' collapse navbar-collapse'} id='mainmenu'>
-                <ul className={style.socialNetwork}>
-                  {this.getIcons(this.props.icons)}
-                </ul>
+                {
+                  this.props.icons && this.props.icons.length ?
+                  <ul className={style.socialNetwork}>
+                    {this.getIcons(this.props.icons)}
+                  </ul> : null
+                }
                 <ul className={style.navbarNav + ' nav navbar-nav'}>
                   {this.getItems(this.props.items)}
                 </ul>

@@ -8,14 +8,11 @@ export default {
     component: AppHandler,
     default: HomeSection,
     children: [{
-      title: 'Tijuana/San Diego',
-      url: '/inicio',
+      title: 'Tijuana / San Diego',
+      url: '/',
       component: HomeSection,
     }],
   },
-  icons: [{
-    title: 'facebook',
-    url: 'https://www.facebook.com/',
-  }],
+  icons: [],
   addresses: [],
 };

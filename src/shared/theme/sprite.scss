@@ -1,4 +1,4 @@
-$sprites-button_logo_black: -0px -0px 225px 41px;
+$sprites-button_logo_black: -0px -0px 41px 41px;
 @mixin sprite-width($sprite) {
   width: nth($sprite, 3);
 }
