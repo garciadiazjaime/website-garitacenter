@@ -1,0 +1,14 @@
+@import '../../../../theme/constants';
+
+.navbarDefault {
+  background-color: $darkBlue!important;
+  border-bottom: 3px solid $blue;
+}
+.navbarNav {
+  float: right!important;
+  margin-right: 80px!important;
+}
+.navbarBrand {
+  @extend .icon-sprites;
+  @include sprite($sprites-button_logo_black);
+}

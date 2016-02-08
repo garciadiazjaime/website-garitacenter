@@ -1,7 +1,7 @@
-Kolbe Website
+Garita Center Website
 ----
 
-[![Build Status](https://travis-ci.org/garciadiazjaime/website-lasermedica.svg)](https://travis-ci.org/garciadiazjaime/website-lasermedica)
+[![Build Status](https://travis-ci.org/garciadiazjaime/website-garitacenter.svg)](https://travis-ci.org/garciadiazjaime/website-garitacenter)
 
 Run project:
 ----

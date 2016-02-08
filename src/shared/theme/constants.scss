@@ -1,0 +1,24 @@
+@import './sprite';
+
+$darkBlue: #343740;
+$blue: #1ebfdb;
+
+$blueGray: #839DAA;
+$lightBlue: #E6FFFE;
+$red: #EC645D;
+$orange: #F8B413;
+$green: #CADD17;
+$lightGray: #C0C2C4;
+$gray: #58595B;
+$black: #000;
+$white: #fff;
+
+$fontA: 'noto-sans-regular';
+$fontABold: 'noto-sans-bold';
+
+
+$isTablet: "only screen and (max-width: 1023px)";
+$isPhone: "only screen and (max-width: 767px)";
+
+$headerAdjuster: "only screen and (max-width: 969px) and (min-width: 767px)";
+$layout-phone_icon: -30px -35px 25px 16px;
