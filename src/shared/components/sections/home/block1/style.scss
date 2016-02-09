@@ -1,1 +1,16 @@
 @import '../../../../theme/constants.scss';
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+  color: $darkBlue;
+}
+
+.lastUpdate {
+  font-size: 12px;
+
+  span:first-of-type {
+    color: $blue;
+  }
+}
