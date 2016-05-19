@@ -9,9 +9,17 @@ import menuUtil from '../utils/menu';
 
 export default class AppHandler extends React.Component {
 
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      data: context.data ? context.data : {},
+    };
+  }
+
   componentDidMount() {
-    // this.scrollHandler(true);
-    // window.addEventListener('scroll', this.onScroll, false);
+    this.scrollHandler(true);
+    window.addEventListener('scroll', this.onScroll, false);
+    // this.googleAnalytics();
   }
 
   componentDidUpdate() {
@@ -29,6 +37,17 @@ export default class AppHandler extends React.Component {
     } else {
       $('#menu_wrapper').removeClass('navbar-fixed-top');
     }
+  }
+
+  googleAnalytics() {
+    /*eslint-disable */
+    // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    // ga('create', 'UA--', 'auto');
+    // ga('send', 'pageview');
+    /*eslint-enable */
   }
 
   scrollHandler(isFirstTime) {
@@ -50,7 +69,7 @@ export default class AppHandler extends React.Component {
     return (<div>
       <MainMenu items={sitemap.items.children} icons={sitemap.icons} onClick={this.clickHandler} />
       {this.props.children}
-      <Footer items={sitemap.items.children} addresses={sitemap.addresses}/>
+      <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
     </div>);
   }
 }
@@ -58,4 +77,10 @@ export default class AppHandler extends React.Component {
 AppHandler.propTypes = {
   children: React.PropTypes.object.isRequired,
   location: React.PropTypes.any,
+  context: React.PropTypes.any,
+  data: React.PropTypes.any,
+};
+
+AppHandler.contextTypes = {
+  data: React.PropTypes.object,
 };

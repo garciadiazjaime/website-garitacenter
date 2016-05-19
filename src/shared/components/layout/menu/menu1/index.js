@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const style = process.env.TIER === 'FE' ? require('./style.scss') : {};
+import SVG from '../../../svg';
+
+const style = require('./style.scss');
 
 
 export default class MainMenu extends React.Component {
@@ -12,9 +14,8 @@ export default class MainMenu extends React.Component {
       const elementID = url.replace('/', '');
       const className = style.navbarNavAnchor;
       const { onClick } = this.props;
-      const wrapperClassName = index === 0 ? 'active' : null;
       return (
-        <li key={index} className={wrapperClassName}>
+        <li key={index}>
           <Link to={url} className={className} id={elementID} onClick={onClick}>{title}</Link>
         </li>
       );
@@ -24,42 +25,28 @@ export default class MainMenu extends React.Component {
   getIcons(data) {
     return data.map((item, index) => {
       return (<li key={index}>
-          <a href={item.url} className={style[item.title]} id={item.url} target="_blank" />
-        </li>
-      );
+          <Link to={item.url} className={style.sm_icon} id={item.url} target="_blank">
+            <SVG network={item.title} className={style[item.title]}/>
+          </Link>
+        </li>);
     });
   }
 
   render() {
     /*eslint-disable */
-    return (<nav className={style.navbarDefault + ' navbar navbar-default'} id="menu_wrapper">
-            <div className="container-fluid">
-              <div className={style.navbarHeader + ' navbar-header'}>
-                <button type="button" className="navbar-toggle collapsed menu_trigger" data-toggle="collapse" data-target="#mainmenu" aria-expanded="false">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                </button>
-                <Link className={'navbar-brand ' + style.logo} to="/" title="Garita Center | Reporte de Garitas">
-                  <i></i>
-                  <span>GaritaCenter</span>
-                </Link>
-              </div>
-
-              <div className={style.navbarCollapse + ' collapse navbar-collapse'} id='mainmenu'>
-                {
-                  this.props.icons && this.props.icons.length ?
-                  <ul className={style.socialNetwork}>
-                    {this.getIcons(this.props.icons)}
-                  </ul> : null
-                }
-                <ul className={style.navbarNav + ' nav navbar-nav'}>
-                  {this.getItems(this.props.items)}
-                </ul>
-              </div>
+    return (<div className={style.navbarWrapper}>
+      <nav className={style.navbarDefault + ' navbar navbar navbar-fixed-top'} id="menu_wrapper">
+        <div className="container-fluid">
+          <div className="row">
+            <div className={style.navbarHeader + ' navbar-header'}>
+              <Link className={style.navbarBrand + ' navbar-brand'} to="/inicio" />
+              <h1>Reporte de Garitas</h1>
+              <h2>Tijuana y San Diego (San Ysidro y Otay)</h2>
             </div>
-        </nav>);
+          </div>
+        </div>
+      </nav>
+    </div>);
     /*eslint-enable */
   }
 }

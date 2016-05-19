@@ -1,0 +1,25 @@
+@import '../../../../theme/constants.scss';
+@import '../../../../theme/wrappers/wrappers.scss';
+@import '../../../../theme/buttons/buttons.scss';
+@import '../../../../theme/titles/titles.scss';
+// procedure block (bottom)
+
+.item1 {
+  @extend .icon-sprites;
+  // @include sprite($sprites-imagen-tratamiento-depilacion-laser);
+}
+
+.item2 {
+  @extend .icon-sprites;
+  // @include sprite($sprites-imagen-tratamiento-360);
+}
+
+.item3 {
+  @extend .icon-sprites;
+  // @include sprite($sprites-imagen-tratamiento-acne);
+}
+
+.item4 {
+  @extend .icon-sprites;
+  // @include sprite($sprites-imagen-tratamiento-melasma);
+}

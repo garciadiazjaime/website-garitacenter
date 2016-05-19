@@ -1,59 +1,55 @@
+/* eslint max-len: [2, 500, 4] */
 import React from 'react';
 import _ from 'lodash';
 
-export default class Carousel1 extends React.Component {
+export default class Carousel extends React.Component {
 
-  renderIndicators(data, sliderID) {
-    if (_.isArray(data) && data.length) {
-      const bullets = data.map((slide, index) => {
-        const c = !index ? 'active' : null;
-        return (
-          <li data-target={'#' + sliderID} data-slide-to={index} key={index} className={c}></li>
-        );
-      }, this);
-      return (<ol className="carousel-indicators">
-        { bullets }
-      </ol>);
+  getIndicators(data, flag) {
+    // todo: implement based on bootsrap syntax
+    if (flag !== false && _.isArray(data) && data.length) {
+      return data.map((item, index) => {
+        return (<div key={index}>
+          {item}
+        </div>);
+      });
     }
     return null;
   }
 
-  renderControls(data, sliderID) {
-    return (<div>
-      <a className="left carousel-control" href={'#' + sliderID} role="button" data-slide="prev">
-        <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span className="sr-only">Previous</span>
-      </a>
-      <a className="right carousel-control" href={'#' + sliderID} role="button" data-slide="next">
-        <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span className="sr-only">Next</span>
-      </a>
-    </div>);
+  getControls(flag, id, classes) {
+    const { base, prev, next } = classes;
+    if (flag !== false) {
+      return (<div>
+          <a className={'left carousel-control ' + (base || '') + ' ' + (prev || '')} href={'#' + id} role="button" data-slide="prev">
+          <span className="sr-only">Previous</span>
+        </a>
+        <a className={'right carousel-control ' + (base || '') + ' ' + (next || '')} href={'#' + id} role="button" data-slide="next">
+          <span className="sr-only">Next</span>
+        </a>
+      </div>);
+    }
+    return null;
   }
 
   render() {
-    const { sliderID, interval, showIndicators, showControls } = this.props.data;
-    const slides = this.props.children.props.data;
+    const { id, interval, children, indicators, controls, classes } = this.props;
+    return (<div id={id} className="carousel slide" data-ride="carousel" data-interval={interval || 5000}>
+      <div className={'carousel-inner ' + (classes.inner || '')} role="listbox">
+        { this.getIndicators(children, indicators) }
 
-    return (
-      <div id={sliderID} className="carousel slide" data-ride="carousel" data-interval={interval}>
+        {children}
 
-        { showIndicators ? this.renderIndicators(slides, sliderID) : null }
-
-        { this.props.children }
-
-        { showControls ? this.renderControls(slides, sliderID) : null }
+        { this.getControls(controls, id, classes.controls) }
       </div>
-    );
+    </div>);
   }
 }
 
-Carousel1.propTypes = {
-  data: React.PropTypes.shape({
-    sliderID: React.PropTypes.string.isRequired,
-    interval: React.PropTypes.number.isRequired,
-    showIndicators: React.PropTypes.bool.isRequired,
-    showControls: React.PropTypes.bool.isRequired,
-  }),
+Carousel.propTypes = {
+  id: React.PropTypes.string.isRequired,
+  interval: React.PropTypes.number.isRequired,
   children: React.PropTypes.any,
+  indicators: React.PropTypes.bool,
+  controls: React.PropTypes.bool,
+  classes: React.PropTypes.object,
 };

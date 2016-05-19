@@ -1,16 +1,16 @@
 @import '../../../../theme/constants.scss';
 
 .title {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: bold;
   margin: 0;
-  color: $darkBlue;
+  color: $color1;
 }
 
 .lastUpdate {
   font-size: 12px;
 
   span:first-of-type {
-    color: $blue;
+    color: $color2;
   }
 }

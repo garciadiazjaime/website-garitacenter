@@ -1,11 +1,5 @@
-$sprites-button_logo_black: -0px -0px 41px 41px;
-$sprites-icon_car_normal: -41px -0px 40px 30px;
-$sprites-icon_car_ready_lane: -0px -41px 40px 30px;
-$sprites-icon_car_sentri: -40px -41px 40px 30px;
-$sprites-icon_clock: -14px -71px 16px 15px;
-$sprites-icon_door: -0px -71px 14px 21px;
-$sprites-icon_pedestrian_normal: -81px -0px 40px 30px;
-$sprites-icon_pedestrian_sentri: -81px -30px 40px 30px;
+$sprites-brand: -0px -0px 150px 43px;
+$sprites-facebook-icon: -0px -43px 14px 27px;
 @mixin sprite-width($sprite) {
   width: nth($sprite, 3);
 }
@@ -13,10 +7,10 @@ $sprites-icon_pedestrian_sentri: -81px -30px 40px 30px;
   height: nth($sprite, 4);
 }
 @function sprite-width($sprite) {
-  @return nth($sprite, 3);
+   @return nth($sprite, 3);
 }
 @function sprite-height($sprite) {
-  @return nth($sprite, 4);
+   @return nth($sprite, 4);
 }
 @mixin sprite-position($sprite) {
   $sprite-offset-x: nth($sprite, 1);
@@ -24,13 +18,14 @@ $sprites-icon_pedestrian_sentri: -81px -30px 40px 30px;
   background-position: $sprite-offset-x $sprite-offset-y;
 }
 @mixin sprite($sprite, $display: block) {
-  @include sprite-position($sprite);
+   @include sprite-position($sprite);
   background-repeat: no-repeat;
   overflow: hidden;
   display: $display;
   @include sprite-width($sprite);
   @include sprite-height($sprite);
 }
+
 .icon-sprites {
   background-image: url('/images/sprites/sprite-sprites.png');
 }
