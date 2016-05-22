@@ -34,19 +34,21 @@ export default class MainMenu extends React.Component {
 
   render() {
     /*eslint-disable */
-    return (<div className={style.navbarWrapper}>
-      <nav className={style.navbarDefault + ' navbar navbar navbar-fixed-top'} id="menu_wrapper">
+    return (<nav className={style.navbar + ' navbar navbar-fixed-top'} id="menu_wrapper">
         <div className="container-fluid">
           <div className="row">
-            <div className={style.navbarHeader + ' navbar-header'}>
-              <Link className={style.navbarBrand + ' navbar-brand'} to="/inicio" />
+            <div className="col-sm-6 col-xs-12">
+              <Link className={style.navbarBrand + ' navbar-brand'} to="/inicio">
+                <img src="/images/garita-center-logo.png" alt="GaritaCenter - reporte de garitas" />
+              </Link>
               <h1>Reporte de Garitas</h1>
-              <h2>Tijuana y San Diego (San Ysidro y Otay)</h2>
+            </div>
+            <div className="col-sm-6 col-xs-12">
+              <h2 className="navbar-text navbar-right">Tijuana / San Diego</h2>
             </div>
           </div>
         </div>
-      </nav>
-    </div>);
+      </nav>);
     /*eslint-enable */
   }
 }
