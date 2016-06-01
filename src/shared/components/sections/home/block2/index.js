@@ -2,7 +2,6 @@ import React from 'react';
 
 const style = require('./style.scss');
 import Loader from '../../../elements/loader';
-window.adsbygoogle = [];
 
 export default class Block2 extends React.Component {
 
@@ -14,6 +13,7 @@ export default class Block2 extends React.Component {
   }
 
   componentDidMount() {
+    window.adsbygoogle = [];
     /*eslint-disable */
     this.setState({
       showLoader: false,
