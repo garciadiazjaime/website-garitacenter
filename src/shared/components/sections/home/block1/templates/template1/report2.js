@@ -18,7 +18,7 @@ export default class Report2 extends React.Component {
 
       <div className={'row ' + style.headers}>
         {/* Headers */}
-        <div className="col-xs-2">
+        <div className="col-xs-2 col-sm-offset-1 col-sm-2">
           <i className={style.car} />
           {titles.title2}
         </div>
@@ -42,7 +42,7 @@ export default class Report2 extends React.Component {
 
       {/* Times */}
       <div className={'row ' + style.times}>
-        <div className="col-xs-2">
+        <div className="col-xs-2 col-sm-offset-1 col-sm-2">
           {texts.text1}
         </div>
         <div className="col-xs-2">

@@ -16,8 +16,9 @@
   h2 {
     font-size: 16px;
     margin-top: 25px;
+    margin-right: 0px;
 
-    @media#{$isPhone}{
+    @media#{$isPhone} {
       margin: -22px 0 0 38px;
     }
   }

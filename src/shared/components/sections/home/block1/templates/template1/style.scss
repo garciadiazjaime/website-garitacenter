@@ -41,4 +41,11 @@
     @extend .icon-general-sprite;
     @include sprite($general-sprite-garita-person-sentri);
   }
+
+
+  .customHr {
+    @media #{$isPhone}{
+      margin-top: 10px;
+    }
+  }
 }
