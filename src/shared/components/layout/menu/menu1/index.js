@@ -15,7 +15,7 @@ export default class MainMenu extends React.Component {
               <h1>Reporte de Garitas</h1>
             </div>
             <div className="col-sm-6 col-xs-12">
-              <h2 className="navbar-text navbar-right">Tijuana / San Diego</h2>
+              <h2 className={'navbar-text navbar-right '}>Tijuana / San Diego</h2>
             </div>
           </div>
         </div>
