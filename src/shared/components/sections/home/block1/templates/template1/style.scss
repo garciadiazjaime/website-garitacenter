@@ -1,0 +1,44 @@
+@import '../../../../../../theme/constants.scss';
+
+.report {
+
+  h2 {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .headers {
+    font-size: 13px;
+  }
+
+  .times {
+    background-color: $gray;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .car {
+    @extend .icon-general-sprite;
+    @include sprite($general-sprite-garita-car);
+  }
+
+  .carSentri {
+    @extend .icon-general-sprite;
+    @include sprite($general-sprite-garita-car-sentri);
+  }
+
+  .carReadyLane {
+    @extend .icon-general-sprite;
+    @include sprite($general-sprite-garita-car-ready-lane);
+  }
+
+  .pedestrian {
+    @extend .icon-general-sprite;
+    @include sprite($general-sprite-garita-person);
+  }
+
+  .pedestrianSentri {
+    @extend .icon-general-sprite;
+    @include sprite($general-sprite-garita-person-sentri);
+  }
+}
