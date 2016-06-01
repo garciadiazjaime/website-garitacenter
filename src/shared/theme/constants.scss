@@ -1,24 +1,22 @@
+@import './helpers';
+@import './mixins';
 @import './sprite';
 
-$darkBlue: #343740;
-$blue: #1ebfdb;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,700');
 
-$blueGray: #839DAA;
-$lightBlue: #E6FFFE;
-$red: #EC645D;
-$orange: #F8B413;
-$green: #CADD17;
-$lightGray: #C0C2C4;
-$gray: #58595B;
-$black: #000;
 $white: #fff;
+$black: #000;
+$darkGray: #222222;
+$gray: #f2f2f2;
 
-$fontA: 'noto-sans-regular';
-$fontABold: 'noto-sans-bold';
+$fontA: 'Open Sans', sans-serif;
 
-
-$isTablet: "only screen and (max-width: 1023px)";
+$isLaptop: "only screen and (min-width: 1024px)";
+$isTablet: "only screen and (min-width: 768px) and (max-width: 1023px)";
 $isPhone: "only screen and (max-width: 767px)";
 
-$headerAdjuster: "only screen and (max-width: 969px) and (min-width: 767px)";
-$layout-phone_icon: -30px -35px 25px 16px;
+$color1: #343740;
+$color2: #1ebfdb;
+$color3: #666;
+
+$sprites-icon-car-normal: '';

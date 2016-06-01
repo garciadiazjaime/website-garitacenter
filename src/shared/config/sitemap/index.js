@@ -1,6 +1,5 @@
 import AppHandler from '../../components/AppHandler';
 import HomeSection from '../../components/sections/home';
-// import AboutSection from '../../components/sections/about';
 
 
 export default {
@@ -8,7 +7,7 @@ export default {
     component: AppHandler,
     default: HomeSection,
     children: [{
-      title: 'Tijuana/San Diego',
+      title: 'Inicio',
       url: '/inicio',
       component: HomeSection,
     }],
@@ -16,6 +15,11 @@ export default {
   icons: [{
     title: 'facebook',
     url: 'https://www.facebook.com/',
+  }, {
+    title: 'twitter',
+    url: 'https://www.twitter.com/',
+  }, {
+    title: 'google',
+    url: 'https://www.google.com/',
   }],
-  addresses: [],
 };

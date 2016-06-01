@@ -1,14 +1,29 @@
 @import '../../../../theme/constants';
 
-.navbarDefault {
-  background-color: $darkBlue!important;
-  border-bottom: 3px solid $blue;
-}
-.navbarNav {
-  float: right!important;
-  margin-right: 80px!important;
-}
-.navbarBrand {
-  @extend .icon-sprites;
-  @include sprite($sprites-button_logo_black);
+
+.navbar {
+  background: $color1;
+  color: $white;
+
+  h1 {
+    font-size: 20px;
+
+    @media#{$isPhone}{
+      margin-top: 5px;
+    }
+  }
+
+  h2 {
+    font-size: 16px;
+    margin-top: 25px;
+
+    @media#{$isPhone}{
+      margin: -22px 0 0 38px;
+    }
+  }
+
+  .navbarBrand {
+    padding: 5px;
+    margin-left: -15px;
+  }
 }

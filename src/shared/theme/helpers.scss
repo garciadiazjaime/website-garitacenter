@@ -1,3 +1,4 @@
+@import './mixins';
 // **************** CENTERS ************************************
 .fCenter{
   position: absolute;
@@ -10,6 +11,11 @@
   top: 50%;
   @include transform(translateY(-50%));
 }
+.vCenterRel{
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
 .hCenter{
   position: absolute;
   left: 50%;
@@ -17,4 +23,7 @@
 }
 .inheritHeight{
   height: inherit;
+}
+.hideOverflow{
+  overflow: hidden;
 }

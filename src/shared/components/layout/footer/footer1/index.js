@@ -1,88 +1,73 @@
+/* eslint max-len: [2, 500, 4] */
 import React from 'react';
 import { Link } from 'react-router';
 
-const style = process.env.TIER === 'FE' ? require('./style.scss') : {};
+const style = require('./style.scss');
+import Powered from './powered';
+import SVG from '../../../svg';
 
+export default class FooterAAA extends React.Component {
 
-export default class Footer1 extends React.Component {
-
-  getMenu(data, className) {
-    const items = data.map((item, index) => {
-      const children = item.children ? this.getMenu(item.children) : null;
-
-      return (<li key={index} className={className || style.menuChild}>
-        {
-          item.type ?
-          <a href={item.url} target="_blank">{item.title}</a> :
-          <Link to={item.url}>{item.title}</Link>
-        }
-        {children}
-      </li>);
-    }, this);
-
-    return (<ul>{items}</ul>);
-  }
-
-  getAddress(data) {
-    const items = data.map((item, index) => {
-      return (<div className="col-sm-4" key={index}>
-        <div className="row">
-          [address]
-        </div>
-      </div>);
+  getIcons(data) {
+    return data.map((item, index) => {
+      return (<div key={index} className="col-xs-3 col-sm-4">
+          <Link to={item.url} className={style.sm_icon} id={item.url} target="_blank">
+            <SVG network={item.title} className={style[item.title]}/>
+          </Link>
+        </div>);
     });
-
-    return (<div id={style.addresses} className="hidden-sm hidden-xs">{items}</div>);
   }
 
   render() {
-    const data = [{
-      name: 'POOL',
-      url: 'http://somospool.com',
-      title: 'somos pool',
-    }, {
-      name: 'MINT',
-      url: 'http://mintitmedia.com',
-      title: 'Diseño y Desarrollo Web en Tijuana',
-    }];
-
-    return (<div id={style.footer}>
-      <div className="container-fluid">
-
+    return (<div className={style.footerWrapper}>
+      <div className={'container-fluid ' + style.container}>
         <div className="row">
-          <div className="col-sm-8 col-xs-5">
-            [logo]
+          <div className="col-xs-12 col-sm-6">
+            <p>
+              <strong>GaritaCenter</strong> Es un servicio web con el objetivo de brindar
+              el reporte de garitas entre México (Tijuana) y Estados Unidos (San Diego),
+              en un formato amigable.
+            </p>
+            <p>
+              En <strong>GaritaCenter</strong> nos interesa tu opinión, si eres de Tijuana y cruzas seguido,
+              mándanos un mensaje sobre cómo podemos mejorar el reporte de garitas.
+            </p>
           </div>
-          <div className="col-sm-4 col-xs-6">
-            [sm]
+          <div className="col-xs-12 col-sm-4">
+            Amigos de GaritaCenter en Tijuana
+            <ul className={style.list}>
+              <li>
+                <a href="http://www.hoytoca.me/" title="Hoy Toca Me" target="_blank">Educación Sexual</a>
+              </li>
+              <li>
+                <a href="http://www.playami.com/" title="Directorio Playas de Tijuana" target="_blank">Directorio Playas de Tijuana</a>
+              </li>
+              <li>
+                <a href="http://ciudadtijuana.info/" title="Ciudad Tijuana" target="_blank">Ciudad Tijuana</a>
+              </li>
+              <li>
+                <a href="http://www.mexonline.com/cityguide-tijuana.htm" title="MexOnline" target="_blank">MexOnline</a>
+              </li>
+              <li>
+                <a href="http://www.hotellavilla.biz" title="La villa de Zaragoza" target="_blank">La villa de Zaragoza</a>
+              </li>
+            </ul>
+            <br />
+          </div>
+          <div className="col-xs-12 col-sm-2">
+            <div className="row">
+              {this.getIcons(this.props.icons)}
+            </div>
           </div>
         </div>
-
-        <div className="row">
-          <div className={style.footerMenu}>
-            {this.getMenu(this.props.items, style.menuParent)}
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-sm-7">
-            Todos los derechos reservados Garita Center 2016
-          </div>
-          <div className="col-sm-5">
-            Un proyecto de:&nbsp;
-            <a href={data[1].url} title={data[1].title} target="_blank">{data[1].name}</a>
-            &nbsp;&nbsp;
-            Diseño de:&nbsp;
-            <a href={data[0].url} title={data[0].title} target="_blank">{data[0].name}</a>
-          </div>
-        </div>
-
       </div>
+      <Powered />
     </div>);
   }
 }
 
-Footer1.propTypes = {
+FooterAAA.propTypes = {
   items: React.PropTypes.array.isRequired,
   addresses: React.PropTypes.array,
+  icons: React.PropTypes.array,
 };

@@ -1,1 +1,16 @@
 @import '../../../../theme/constants.scss';
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  color: $color1;
+}
+
+.lastUpdate {
+  margin-top: 10px;
+
+  @media #{$isPhone}{
+    margin-top: 0;
+  }
+}

@@ -2,7 +2,7 @@ const express = require('express');
 /*eslint-disable */
 const router = express.Router();
 /*eslint-enable */
-const conf = require('../../../config');
+const conf = require('../../../config.js');
 const sendgrid = require('sendgrid')(conf.get('sendgrid'));
 
 
