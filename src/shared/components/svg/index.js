@@ -3,7 +3,6 @@ import React from 'react';
 
 export default class SVG extends React.Component {
   renderItems(network, className) {
-    console.log('network, className', network, className);
     switch (network) {
       case 'facebook':
         return (<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 30 30" className={className}>

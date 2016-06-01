@@ -31,6 +31,9 @@ export default class Block3 extends React.Component {
           </div>
         </div>
       </div>
+      <div>
+        Excelente, tu respuesta nos ayuda a mejorar el reporte de garitas...
+      </div>
     </div>);
   }
 }

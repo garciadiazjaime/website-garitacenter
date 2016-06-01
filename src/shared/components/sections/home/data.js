@@ -1,5 +1,6 @@
 export default {
   template: 'template1',
+  location: 'Reporte de Garitas',
   report1: {
     titles: {
       title1: 'San Ysidro',

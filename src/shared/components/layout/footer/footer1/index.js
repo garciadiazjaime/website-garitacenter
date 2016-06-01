@@ -10,7 +10,7 @@ export default class FooterAAA extends React.Component {
 
   getIcons(data) {
     return data.map((item, index) => {
-      return (<div key={index} className="col-xs-3 col-sm-4">
+      return (<div key={index} className="col-xs-3 col-sm-12 col-md-4">
           <Link to={item.url} className={style.sm_icon} id={item.url} target="_blank">
             <SVG network={item.title} className={style[item.title]}/>
           </Link>

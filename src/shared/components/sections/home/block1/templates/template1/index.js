@@ -10,7 +10,7 @@ export default class Template1 extends React.Component {
   render() {
     const { data } = this.props;
     return (<div className={style.report}>
-      <div className="row"><hr /></div>
+      <div className="row"><hr className={style.customHr} /></div>
       <Report1 data={data.report1} />
       <div className="row"><hr /></div>
       <Report2 data={data.report2} />
