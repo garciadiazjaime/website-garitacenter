@@ -24488,7 +24488,7 @@
 	              { className: 'col-sm-6 col-xs-12' },
 	              _react2.default.createElement(
 	                'h2',
-	                { className: 'navbar-text navbar-right' },
+	                { className: 'navbar-text navbar-right ' },
 	                'Tijuana / San Diego'
 	              )
 	            )
@@ -24562,7 +24562,7 @@
 	      return data.map(function (item, index) {
 	        return _react2.default.createElement(
 	          'div',
-	          { key: index, className: 'col-xs-3 col-sm-4' },
+	          { key: index, className: 'col-xs-3 col-sm-12 col-md-4' },
 	          _react2.default.createElement(
 	            _reactRouter.Link,
 	            { to: item.url, className: style.sm_icon, id: item.url, target: '_blank' },
@@ -37549,7 +37549,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement('hr', null)
+	          _react2.default.createElement('hr', { className: style.customHr })
 	        ),
 	        _react2.default.createElement(_report2.default, { data: data.report1 }),
 	        _react2.default.createElement(
@@ -37636,7 +37636,7 @@
 	          { className: 'row ' + style.headers },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-2' },
+	            { className: 'col-xs-2 col-sm-offset-1 col-sm-2' },
 	            _react2.default.createElement('i', { className: style.car }),
 	            titles.title2
 	          ),
@@ -37670,7 +37670,7 @@
 	          { className: 'row ' + style.times },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-2' },
+	            { className: 'col-xs-2 col-sm-offset-1 col-sm-2' },
 	            texts.text1
 	          ),
 	          _react2.default.createElement(
@@ -37713,7 +37713,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"fCenter":"style__fCenter___3J7rq","vCenter":"style__vCenter___px7FK","vCenterRel":"style__vCenterRel___3-4Pc","hCenter":"style__hCenter___1FoV0","inheritHeight":"style__inheritHeight___2AId2","hideOverflow":"style__hideOverflow___33eUg","icon-general-sprite":"style__icon-general-sprite___2hbMj","report":"style__report___3oyH6","car":"style__car___I6XtV","carSentri":"style__carSentri___3O52I","carReadyLane":"style__carReadyLane___feZQo","pedestrian":"style__pedestrian___1pzB_","pedestrianSentri":"style__pedestrianSentri___1ZZJp","headers":"style__headers___InMaR","times":"style__times___22Gjy"};
+	module.exports = {"fCenter":"style__fCenter___3J7rq","vCenter":"style__vCenter___px7FK","vCenterRel":"style__vCenterRel___3-4Pc","hCenter":"style__hCenter___1FoV0","inheritHeight":"style__inheritHeight___2AId2","hideOverflow":"style__hideOverflow___33eUg","icon-general-sprite":"style__icon-general-sprite___2hbMj","report":"style__report___3oyH6","car":"style__car___I6XtV","carSentri":"style__carSentri___3O52I","carReadyLane":"style__carReadyLane___feZQo","pedestrian":"style__pedestrian___1pzB_","pedestrianSentri":"style__pedestrianSentri___1ZZJp","headers":"style__headers___InMaR","times":"style__times___22Gjy","customHr":"style__customHr___2O_Nf"};
 
 /***/ },
 /* 225 */
@@ -37779,7 +37779,7 @@
 	          { className: 'row ' + style.headers },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-2' },
+	            { className: 'col-xs-2 col-sm-offset-1 col-sm-2' },
 	            _react2.default.createElement('i', { className: style.car }),
 	            titles.title2
 	          ),
@@ -37813,7 +37813,7 @@
 	          { className: 'row ' + style.times },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-2' },
+	            { className: 'col-xs-2 col-sm-offset-1 col-sm-2' },
 	            texts.text1
 	          ),
 	          _react2.default.createElement(
@@ -38115,6 +38115,11 @@
 	              )
 	            )
 	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          'Excelente, tu respuesta nos ayuda a mejorar el reporte de garitas...'
 	        )
 	      );
 	    }
@@ -38143,6 +38148,7 @@
 	});
 	exports.default = {
 	  template: 'template1',
+	  location: 'Reporte de Garitas',
 	  report1: {
 	    titles: {
 	      title1: 'San Ysidro',
