@@ -1,8 +1,8 @@
 import React from 'react';
 
-const style = process.env.TIER === 'FE' ? require('./style.scss') : {};
+const style = require('./style.scss');
 import Loader from '../../../elements/loader';
-
+window.adsbygoogle = [];
 
 export default class Block2 extends React.Component {
 
@@ -15,25 +15,25 @@ export default class Block2 extends React.Component {
 
   componentDidMount() {
     /*eslint-disable */
-    // setTimeOut(() => {
-    //   console.log('here');
-      this.setState({
-        showLoader: false,
-      });
-    // }, 2000, this);
+    this.setState({
+      showLoader: false,
+    });
     /*eslint-enable */
   }
 
-  renderAds() {
-    return (<div className="col-xs-12">
-      <h4>Reporte de Garitas <small>patrocinado por</small></h4>
-    </div>);
+  getAds() {
+    /*eslint-disable */
+    window.adsbygoogle.push({});
+    return (<ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-2643588035417760" data-ad-slot="9117540736" data-ad-format="auto" />);
+    /*eslint-enable */
   }
 
   render() {
     return (<div className="container-fluid">
-      <div className={style.wrapper1 + ' row ' + style.wrapperBlock1}>
-        { this.state.showLoader ? <Loader /> : this.renderAds() }
+      <div className="row"><hr /></div>
+      <h4>Reporte de Garitas <small>patrocinado por</small></h4>
+      <div className={'row ' + style.ads}>
+        { this.state.showLoader ? <Loader /> : this.getAds() }
       </div>
     </div>);
   }

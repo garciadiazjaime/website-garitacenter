@@ -1,5 +1,9 @@
-$sprites-brand: -0px -0px 150px 43px;
-$sprites-facebook-icon: -0px -43px 14px 27px;
+$general-sprite-garita-car-ready-lane: -0px -0px 42px 30px;
+$general-sprite-garita-car-sentri: -42px -0px 42px 30px;
+$general-sprite-garita-car: -0px -30px 42px 30px;
+$general-sprite-garita-clock: -84px -30px 18px 17px;
+$general-sprite-garita-person-sentri: -42px -30px 42px 30px;
+$general-sprite-garita-person: -84px -0px 42px 30px;
 @mixin sprite-width($sprite) {
   width: nth($sprite, 3);
 }
@@ -26,6 +30,6 @@ $sprites-facebook-icon: -0px -43px 14px 27px;
   @include sprite-height($sprite);
 }
 
-.icon-sprites {
-  background-image: url('/images/sprites/sprite-sprites.png');
+.icon-general-sprite {
+  background-image: url('/images/sprites/sprite-general-sprite.png');
 }

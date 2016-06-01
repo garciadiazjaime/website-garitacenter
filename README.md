@@ -1,4 +1,4 @@
-Website Boilerplate
+GaritaCenter
 ----
 
 [![Build Status](https://travis-ci.org/garciadiazjaime/website-garitacenter.svg)](https://travis-ci.org/garciadiazjaime/website-garitacenter)

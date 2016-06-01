@@ -3,12 +3,14 @@
 $background-color: $darkGray;
 $link-color: $gray;
 $link-color-hover: $white;
-$sm-background: $gray;
+$sm-background: $color3;
 $sm-color: $white;
 
 // ------ STYLE ----------
 .footerWrapper {
-  background-color: $background-color;
+  margin-top: 42px;
+  background-color: $color1;
+  color: $white;
   a{
     font-size: 12px;
     color: $link-color!important;
@@ -17,7 +19,7 @@ $sm-color: $white;
     }
   }
   .container{
-    padding-top: 50px;
+    padding-top: 42px;
     padding-bottom: 50px;
   }
 
@@ -85,6 +87,17 @@ $sm-color: $white;
         fill: #fff;
       }
     }
+  }
+  .google{
+    &:hover{
+      circle {
+        fill: #30A45A;
+      }
+    }
+  }
+  .list {
+    list-style: none;
+    padding: 0 0 0 10px;
   }
 }
 .contact_info{

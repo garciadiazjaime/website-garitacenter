@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
-// const style = require('./style.scss');
+const style = require('./style.scss');
 import Template1 from './templates/template1';
 
 
@@ -20,14 +20,12 @@ export default class Block1 extends React.Component {
     const { data } = this.props;
     const Template = this.getTemplate(data.template);
     return !_.isEmpty(data) ? (<div className="container-fluid">
-      <div className="row">
-        <div className="pull-right">
-          <div>
-            <span>Actualizado </span>
-            <span>hace 15 minutos</span>
-          </div>
+      <div className="pull-right">
+        <div className={style.lastUpdate}>
+          Actualizado hace 15 minutos
         </div>
       </div>
+      <br className="clearfix" />
       <Template data={data} />
     </div>) : null;
   }

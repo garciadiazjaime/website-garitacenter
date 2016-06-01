@@ -18,5 +18,8 @@ export default {
   }, {
     title: 'twitter',
     url: 'https://www.twitter.com/',
+  }, {
+    title: 'google',
+    url: 'https://www.google.com/',
   }],
 };

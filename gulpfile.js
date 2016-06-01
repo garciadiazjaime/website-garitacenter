@@ -32,7 +32,7 @@ gulp.task('sprites:generatejs', () => {
 
 gulp.task('sprites:generate', () => {
   return sprity.src({
-      src: './resources/**/*.{png,jpg}',
+      src: './resources/sprites/**/*.{png,jpg}',
       style: './sprite.scss',
       dimension: [{
         ratio: 1,
@@ -48,6 +48,7 @@ gulp.task('sprites:generate', () => {
 
 gulp.task('clean:sprites', () => {
   return del([
+    './build/images/sprites',
     './static/images/sprites'
   ]);
 });

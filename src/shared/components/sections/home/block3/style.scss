@@ -1,47 +1,13 @@
-@import '../../../../theme/constants.scss';
-@import '../../../../theme/wrappers/wrappers';
-@import '../../../../theme/buttons/buttons';
-@import '../../../../theme/titles/titles';
-@import '../../../../theme/images/images';
-@import '../../../../theme/paragraphs/paragraphs';
-// --- 	WRAPPERS
-.wr1 {
-	height: 50px;
-	margin-top: -50px;
-	padding-left: 25px;
-	h2 {
-		@extend .vCenterRel;
-	}
-}
-.wr2, .wr3, .wr4, .wr5{
-	padding: 45px;
-}
-.wr5{
-	padding-bottom: 35px;
-	h3{
-		margin-bottom: 15px;
-	}
-}
-.title4 {
-	margin-top: 45px;
-}
-.title2 {
-	margin-bottom: 25px;
-}
-.title3 {
-	margin-bottom: 8px;
-}
-.par1{
-	max-width: 300px;
-	margin-bottom: 0;
-}
-@media #{$isTablet}{
-  .wr2, .wr3, .wr4, .wr5{
-    padding: 20px;
-  }
+.submit {
+	margin: 10px 0;
 }
 
-.max_width {
-	max-width: 90%;
-	margin: 45px auto 0;
+.voteWrapper {
+	width: 100%;
+	float: right;
+	text-align: right;
+
+	.input {
+		width: 50%;
+	}
 }

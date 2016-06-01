@@ -8,9 +8,9 @@
 }
 
 .lastUpdate {
-  font-size: 12px;
+  margin-top: 10px;
 
-  span:first-of-type {
-    color: $color2;
+  @media #{$isPhone}{
+    margin-top: 0;
   }
 }
