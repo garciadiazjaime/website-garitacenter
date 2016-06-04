@@ -32,6 +32,10 @@ export default class FooterAAA extends React.Component {
               En <strong>GaritaCenter</strong> nos interesa tu opinión, si eres de Tijuana y cruzas seguido,
               mándanos un mensaje sobre cómo podemos mejorar el reporte de garitas.
             </p>
+            <p>
+              <small>El reporte de gartias de GaritaCenter es extraido de CBP. <br />
+              Los datos contenidos en este sitio son de carácter informativo.</small>
+            </p>
           </div>
           <div className="col-xs-12 col-sm-4">
             Amigos de GaritaCenter en Tijuana
@@ -44,12 +48,6 @@ export default class FooterAAA extends React.Component {
               </li>
               <li>
                 <a href="http://ciudadtijuana.info/" title="Ciudad Tijuana" target="_blank">Ciudad Tijuana</a>
-              </li>
-              <li>
-                <a href="http://www.mexonline.com/cityguide-tijuana.htm" title="MexOnline" target="_blank">MexOnline</a>
-              </li>
-              <li>
-                <a href="http://www.hotellavilla.biz" title="La villa de Zaragoza" target="_blank">La villa de Zaragoza</a>
               </li>
             </ul>
             <br />
