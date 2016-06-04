@@ -571,7 +571,7 @@
 	    value: function componentDidMount() {
 	      this.scrollHandler(true);
 	      // window.addEventListener('scroll', this.onScroll, false);
-	      // this.googleAnalytics();
+	      this.googleAnalytics();
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
@@ -840,6 +840,17 @@
 	                  'GaritaCenter'
 	                ),
 	                ' nos interesa tu opinión, si eres de Tijuana y cruzas seguido, mándanos un mensaje sobre cómo podemos mejorar el reporte de garitas.'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                _react2.default.createElement(
+	                  'small',
+	                  null,
+	                  'El reporte de gartias de GaritaCenter es extraido de CBP. ',
+	                  _react2.default.createElement('br', null),
+	                  'Los datos contenidos en este sitio son de carácter informativo.'
+	                )
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -874,24 +885,6 @@
 	                    'a',
 	                    { href: 'http://ciudadtijuana.info/', title: 'Ciudad Tijuana', target: '_blank' },
 	                    'Ciudad Tijuana'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement(
-	                    'a',
-	                    { href: 'http://www.mexonline.com/cityguide-tijuana.htm', title: 'MexOnline', target: '_blank' },
-	                    'MexOnline'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement(
-	                    'a',
-	                    { href: 'http://www.hotellavilla.biz', title: 'La villa de Zaragoza', target: '_blank' },
-	                    'La villa de Zaragoza'
 	                  )
 	                )
 	              ),
@@ -1336,7 +1329,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: style.lastUpdate },
-	            'Actualizado hace 15 minutos'
+	            'Reporte de Garitas actualizado hace 15 minutos'
 	          )
 	        ),
 	        _react2.default.createElement('br', { className: 'clearfix' }),
@@ -1782,7 +1775,6 @@
 	    key: 'getAds',
 	    value: function getAds() {
 	      /*eslint-disable */
-	      window.adsbygoogle.push({});
 	      return _react2.default.createElement('ins', { className: 'adsbygoogle', style: { display: 'block' }, 'data-ad-client': 'ca-pub-2643588035417760', 'data-ad-slot': '9117540736', 'data-ad-format': 'auto' });
 	      /*eslint-enable */
 	    }
@@ -1902,26 +1894,57 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _loader = __webpack_require__(33);
+
+	var _loader2 = _interopRequireDefault(_loader);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 	var style = __webpack_require__(37);
 
 	var Block3 = function (_React$Component) {
 	  _inherits(Block3, _React$Component);
 
-	  function Block3() {
+	  function Block3(props) {
 	    _classCallCheck(this, Block3);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Block3).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Block3).call(this, props));
+
+	    _this.clickHandler = _this.clickHandler.bind(_this);
+	    _this.state = {
+	      showQuestions: true,
+	      showLoading: false
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Block3, [{
+	    key: 'clickHandler',
+	    value: function clickHandler() {
+	      var _this2 = this;
+
+	      this.setState({
+	        showLoading: true
+	      });
+	      // todo: remove this hard values once BE is working
+	      var currentUsers = Math.floor(Math.random() * 300) + 1 + 42;
+	      var futureUsers = Math.floor(Math.random() * 300) + 1 + 42;
+	      setTimeout(function () {
+	        _this2.setState({
+	          showLoading: false,
+	          showQuestions: false,
+	          currentUsers: currentUsers,
+	          futureUsers: futureUsers
+	        });
+	      }, 1500);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -1945,48 +1968,93 @@
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement('br', null)
 	        ),
-	        _react2.default.createElement(
+	        this.state.showQuestions ? _react2.default.createElement(
 	          'div',
 	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'btn-group ' + style.voteWrapper, 'data-toggle': 'buttons' },
+	            null,
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'btn btn-default pull-right ' + style.input },
-	              _react2.default.createElement('input', { type: 'radio', name: 'options', id: 'option2' }),
-	              'Cruzo más tarde'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'btn btn-default pull-right ' + style.input },
-	              _react2.default.createElement('input', { type: 'radio', name: 'options', id: 'option1' }),
-	              'Estoy en la fila'
+	              { className: 'btn-group ' + style.voteWrapper, 'data-toggle': 'buttons' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'btn btn-default pull-right ' + style.input },
+	                _react2.default.createElement('input', { type: 'radio', name: 'options', id: 'option2' }),
+	                'Cruzo más tarde'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'btn btn-default pull-right ' + style.input },
+	                _react2.default.createElement('input', { type: 'radio', name: 'options', id: 'option1' }),
+	                'Estoy en la fila'
+	              )
 	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
+	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-12' },
+	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'pull-right ' + style.submit },
+	              { className: 'col-xs-12' },
 	              _react2.default.createElement(
-	                'button',
-	                { className: 'btn btn-default' },
-	                'Enviar'
+	                'div',
+	                { className: 'pull-right ' + style.submit },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn btn-default', onClick: this.clickHandler },
+	                  'Enviar'
+	                )
 	              )
 	            )
 	          )
-	        ),
-	        _react2.default.createElement(
+	        ) : _react2.default.createElement(
 	          'div',
 	          null,
-	          'Excelente, tu respuesta nos ayuda a mejorar el reporte de garitas...'
-	        )
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Gracias, tu respuesta nos ayuda a mejorar el ',
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'reporte de garitas'
+	            ),
+	            '.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              this.state.currentUsers
+	            ),
+	            ' usuarios respondieron estar en la fila.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              this.state.futureUsers
+	            ),
+	            ' usuarios respondieron hacer la fila después.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Las respuestas son referentes a los últimos ',
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              '30 minutos'
+	            ),
+	            '.'
+	          )
+	        ),
+	        this.state.showLoading ? _react2.default.createElement(_loader2.default, null) : null
 	      );
 	    }
 	  }]);
