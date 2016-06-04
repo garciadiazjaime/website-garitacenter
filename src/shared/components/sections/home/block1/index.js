@@ -22,7 +22,7 @@ export default class Block1 extends React.Component {
     return !_.isEmpty(data) ? (<div className="container-fluid">
       <div className="pull-right">
         <div className={style.lastUpdate}>
-          Actualizado hace 15 minutos
+          Reporte de Garitas actualizado hace 15 minutos
         </div>
       </div>
       <br className="clearfix" />

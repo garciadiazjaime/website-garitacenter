@@ -23,7 +23,6 @@ export default class Block2 extends React.Component {
 
   getAds() {
     /*eslint-disable */
-    window.adsbygoogle.push({});
     return (<ins className="adsbygoogle" style={{ display: 'block' }} data-ad-client="ca-pub-2643588035417760" data-ad-slot="9117540736" data-ad-format="auto" />);
     /*eslint-enable */
   }
