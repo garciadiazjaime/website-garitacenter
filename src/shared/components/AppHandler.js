@@ -19,7 +19,7 @@ export default class AppHandler extends React.Component {
   componentDidMount() {
     this.scrollHandler(true);
     // window.addEventListener('scroll', this.onScroll, false);
-    // this.googleAnalytics();
+    this.googleAnalytics();
   }
 
   componentDidUpdate() {
