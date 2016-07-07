@@ -225,7 +225,7 @@
 .style__hideOverflow___33eUg {
   overflow: hidden; }
 
-.style__icon-general-sprite___2hbMj, .style__report___3oyH6 .style__car___I6XtV, .style__report___3oyH6 .style__carSentri___3O52I, .style__report___3oyH6 .style__carReadyLane___feZQo, .style__report___3oyH6 .style__pedestrian___1pzB_, .style__report___3oyH6 .style__pedestrianSentri___1ZZJp {
+.style__icon-general-sprite___2hbMj, .style__report___3oyH6 .style__clook___2Z6j_, .style__report___3oyH6 .style__car___I6XtV, .style__report___3oyH6 .style__carSentri___3O52I, .style__report___3oyH6 .style__carReadyLane___feZQo, .style__report___3oyH6 .style__pedestrian___1pzB_, .style__report___3oyH6 .style__pedestrianSentri___1ZZJp {
   background-image: url("/images/sprites/sprite-general-sprite.png"); }
 
 .style__report___3oyH6 h2 {
@@ -239,6 +239,23 @@
   background-color: #f2f2f2;
   font-weight: bold;
   font-size: 22px; }
+
+.style__report___3oyH6 .style__clookWrapper___1hPg4 {
+  background-color: #1ebfdb;
+  width: 35px;
+  position: absolute;
+  left: 0;
+  height: 30px; }
+
+.style__report___3oyH6 .style__clook___2Z6j_ {
+  background-position: -84px -30px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  width: 18px;
+  height: 17px;
+  margin-left: 8px;
+  margin-top: 6px; }
 
 .style__report___3oyH6 .style__car___I6XtV {
   background-position: 0px -30px;
@@ -282,7 +299,8 @@
 
 @media only screen and (max-width: 767px) {
   .style__report___3oyH6 .style__customHr___2O_Nf {
-    margin-top: 10px; } }
+    margin-top: 0px;
+    margin-bottom: 10px; } }
 .style__fCenter___1IAv0 {
   position: absolute;
   top: 50%;
@@ -339,7 +357,8 @@
   margin-top: 10px; }
   @media only screen and (max-width: 767px) {
     .style__lastUpdate___37Mwn {
-      margin-top: 0; } }
+      margin-top: 0;
+      font-size: 12px; } }
 .style__fCenter___1z8sB {
   position: absolute;
   top: 50%;
@@ -433,14 +452,8 @@
 .style__ads___14d7M {
   min-height: 100px;
   border: 1px dotted black; }
-.style__submit___3o4Ah {
-  margin: 10px 0; }
 
-.style__voteWrapper___33dea {
-  width: 100%;
-  float: right;
-  text-align: right; }
-  .style__voteWrapper___33dea .style__input___1dm76 {
-    width: 50%; }
+.style__hr___2v5i5 {
+  margin-bottom: 0px; }
 .style__mainWrapper___12ofC {
   margin-top: 58px; }

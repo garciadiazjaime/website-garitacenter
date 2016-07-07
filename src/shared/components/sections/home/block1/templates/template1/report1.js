@@ -1,61 +1,69 @@
 import React from 'react';
 
+import { minsToHrs, toTitleCase } from '../../../../../../utils/string';
 const style = require('./style.scss');
 
 export default class Report1 extends React.Component {
 
   render() {
-    const { titles, texts } = this.props.data;
+    const { content, garita } = this.props.data;
+    const { car, people } = content;
     return (<div>
       <div className="row">
         {/* Border */}
         <div className="col-xs-12">
           <h2>
-            Garita de {titles.title1}
+            Garita de {toTitleCase(garita)}
           </h2>
         </div>
       </div>
 
       <div className={'row ' + style.headers}>
         {/* Headers */}
-        <div className="col-xs-2 col-sm-offset-1 col-sm-2">
+        <div className="col-xs-1"></div>
+        <div className="col-xs-2 col-sm-2">
           <i className={style.car} />
-          {titles.title2}
+          Normal
         </div>
         <div className="col-xs-2">
           <i className={style.carSentri} />
-          {titles.title3}
+          Sentri
         </div>
-        <div className="col-xs-3">
+        <div className="col-xs-2">
           <i className={style.carReadyLane} />
-          {titles.title4}
+          R.&nbsp;Lane
         </div>
         <div className="col-xs-2">
           <i className={style.pedestrian} />
-          {titles.title5}
+          Normal
         </div>
         <div className="col-xs-2">
           <i className={style.pedestrianSentri} />
-          {titles.title6}
+          Sentry
         </div>
       </div>
 
       {/* Times */}
       <div className={'row ' + style.times}>
-        <div className="col-xs-2 col-sm-offset-1 col-sm-2">
-          {texts.text1}
+        <div className="col-xs-1">
+          <div className={style.clookWrapper}>
+            <i className={style.clook} />
+          </div>
+        </div>
+        <div className="col-xs-2 col-sm-2">
+          {minsToHrs(car.normal.time)}
         </div>
         <div className="col-xs-2">
-          {texts.text2}
-        </div>
-        <div className="col-xs-3">
-          {texts.text3}
+          {minsToHrs(car.sentry.time)}
         </div>
         <div className="col-xs-2">
-          {texts.text4}
+          {minsToHrs(car.readyLine.time)}
         </div>
         <div className="col-xs-2">
-          {texts.text5}
+          {minsToHrs(people.normal.time)}
+        </div>
+        <div className="col-xs-2">
+          {minsToHrs(people.readyLine.time)}
         </div>
       </div>
     </div>);
