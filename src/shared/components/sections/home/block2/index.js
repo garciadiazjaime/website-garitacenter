@@ -31,7 +31,7 @@ export default class Block2 extends React.Component {
 
   render() {
     return (<div className="container-fluid">
-      <div className="row"><hr /></div>
+      <div className="row"><hr className={style.hr} /></div>
       <h4>Reporte de Garitas <small>patrocinado por</small></h4>
       <div className={'row ' + style.ads}>
         { this.state.showLoader ? <Loader /> : <Gads client="ca-pub-2643588035417760" slot="9117540736" /> }

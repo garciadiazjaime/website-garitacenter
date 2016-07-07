@@ -23,6 +23,14 @@ var config = convict({
         format: String,
         default: '',
         env: 'SENDGRID_API_KEY'
+    },
+    api: {
+      url: {
+          doc: 'API URL',
+          format: String,
+          default: 'http://127.0.0.1:3000/',
+          env: 'GC_API_URL',
+      },
     }
 });
 

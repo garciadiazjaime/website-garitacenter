@@ -9,7 +9,7 @@ export default class Block1 extends React.Component {
 
   getTemplate(data) {
     switch (data.toUpperCase()) {
-      case 'TEMPLATE1':
+      case 'TIJUANA':
         return Template1;
       default:
         return null;
@@ -18,7 +18,8 @@ export default class Block1 extends React.Component {
 
   render() {
     const { data } = this.props;
-    const Template = this.getTemplate(data.template);
+    const report = JSON.parse(data.report);
+    const Template = this.getTemplate(data.city);
     return !_.isEmpty(data) ? (<div className="container-fluid">
       <div className="pull-right">
         <div className={style.lastUpdate}>
@@ -26,7 +27,7 @@ export default class Block1 extends React.Component {
         </div>
       </div>
       <br className="clearfix" />
-      <Template data={data} />
+      <Template data={report} />
     </div>) : null;
   }
 }

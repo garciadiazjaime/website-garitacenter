@@ -9,6 +9,7 @@ import DataWrapper from './dataWrapper';
 import config from '../../config';
 import apiRoutes from './helpers/api';
 import routes from '../shared/config/routes';
+import RequestUtil from '../utils/requestUtil';
 
 const app = express();
 
@@ -31,9 +32,21 @@ app.get('/*', function (req, res) {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-      const props = {};
-      const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
-      res.render('index', { content, props });
+      const city = 'TIJUANA';
+      const apiUrl = `${config.get('api.url')}report?city=${city}`;
+
+      RequestUtil.get(apiUrl)
+        .then((results) => {
+          const props = {
+            city,
+            report: results,
+          };
+          const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
+          res.render('index', { content, props });
+        })
+        .catch((error) => {
+          res.send('error');
+        });
     } else {
       res.status(404).send('Not found');
     }
