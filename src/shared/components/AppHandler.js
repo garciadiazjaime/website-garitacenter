@@ -12,7 +12,7 @@ export default class AppHandler extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      data: context.data ? context.data : {},
+      data: context.data ? context.data : window._data,
     };
   }
 
@@ -66,9 +66,12 @@ export default class AppHandler extends React.Component {
   }
 
   render() {
+    const children = React.Children.map(this.props.children, (child) => {
+      return React.cloneElement(child, { data: this.state.data });
+    });
     return (<div>
       <MainMenu />
-      {this.props.children}
+      {children}
       <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
     </div>);
   }

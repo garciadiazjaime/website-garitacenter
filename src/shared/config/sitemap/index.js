@@ -14,12 +14,12 @@ export default {
   },
   icons: [{
     title: 'facebook',
-    url: 'https://www.facebook.com/',
+    url: 'https://www.facebook.com/garitacenter/',
   }, {
     title: 'twitter',
-    url: 'https://www.twitter.com/',
+    url: 'https://twitter.com/garitacenter',
   }, {
-    title: 'google',
-    url: 'https://www.google.com/',
+    title: 'googleplus',
+    url: 'https://plus.google.com/102476216230239359040',
   }],
 };
