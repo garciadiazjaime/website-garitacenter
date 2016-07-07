@@ -44,7 +44,8 @@ app.get('/*', function (req, res) {
           const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
           res.render('index', { content, props });
         })
-        .catch((error) => {
+        .catch((err) => {
+          console.log('err', err);
           res.send('error');
         });
     } else {
