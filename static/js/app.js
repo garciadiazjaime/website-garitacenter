@@ -37782,23 +37782,23 @@
 	  var interval = Math.floor(seconds / 31536000);
 
 	  if (interval > 1) {
-	    return interval + ' años';
+	    return interval + ' año' + (interval > 1 ? 's' : '');
 	  }
 	  interval = Math.floor(seconds / 2592000);
 	  if (interval > 1) {
-	    return interval + ' meses';
+	    return interval + ' mes' + (interval > 1 ? 'es' : '');
 	  }
 	  interval = Math.floor(seconds / 86400);
 	  if (interval > 1) {
-	    return interval + ' días';
+	    return interval + ' día' + (interval > 1 ? 's' : '');
 	  }
 	  interval = Math.floor(seconds / 3600);
 	  if (interval > 1) {
-	    return interval + ' horas';
+	    return interval + ' hora' + (interval > 1 ? 's' : '');
 	  }
 	  interval = Math.floor(seconds / 60);
 	  if (interval > 1) {
-	    return interval + ' minutos';
+	    return interval + ' minuto' + (interval > 1 ? 's' : '');
 	  }
 	  return Math.floor(seconds) + ' segundos';
 	}
