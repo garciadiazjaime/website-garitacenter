@@ -78,7 +78,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _requestUtil = __webpack_require__(36);
+	var _requestUtil = __webpack_require__(37);
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
 
@@ -1033,7 +1033,9 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'col-xs-12 col-sm-6' },
-	              'Todos los derechos reservados © GaritaCenter'
+	              'Todos los derechos reservados © GaritaCenter ',
+	              _react2.default.createElement('br', null),
+	              'Reporte de garitas para San Ysidro y Otay | Tijuana'
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -1044,7 +1046,8 @@
 	                { href: data[1].url, title: data[1].title, target: '_blank' },
 	                data[1].name
 	              ),
-	              '   Diseño por: ',
+	              _react2.default.createElement('br', null),
+	              'Diseño por: ',
 	              _react2.default.createElement(
 	                'a',
 	                { href: data[0].url, title: data[0].title, target: '_blank' },
@@ -1282,7 +1285,7 @@
 
 	// import Block3 from './block3';
 	// <Block3 />
-	var style = __webpack_require__(35);
+	var style = __webpack_require__(36);
 
 	var HomeSection = function (_React$Component) {
 	  _inherits(HomeSection, _React$Component);
@@ -1560,14 +1563,14 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            _react2.default.createElement('i', { className: style.carSentri }),
-	            'Sentri'
+	            _react2.default.createElement('i', { className: style.carReadyLane }),
+	            'R. Lane'
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            _react2.default.createElement('i', { className: style.carReadyLane }),
-	            'R. Lane'
+	            _react2.default.createElement('i', { className: style.carSentri }),
+	            'Sentri'
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -1602,12 +1605,12 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            (0, _string.minsToHrs)(car.sentry.time)
+	            (0, _string.minsToHrs)(car.readyLine.time)
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            (0, _string.minsToHrs)(car.readyLine.time)
+	            (0, _string.minsToHrs)(car.sentry.time)
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -1739,7 +1742,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(34);
+	var style = __webpack_require__(35);
 	// import Loader from '../../../elements/loader';
 
 	var Block2 = function (_React$Component) {
@@ -1805,12 +1808,16 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
+
+	var style = __webpack_require__(34);
 
 	var Gads = function (_React$Component) {
 	  _inherits(Gads, _React$Component);
@@ -1829,7 +1836,9 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('ins', { className: 'adsbygoogle', style: { display: 'block' }, 'data-ad-client': this.props.client, 'data-ad-slot': this.props.slot, 'data-ad-format': 'auto' });
+	      var _React$createElement;
+
+	      return _react2.default.createElement('ins', (_React$createElement = { className: 'adsbygoogle' }, _defineProperty(_React$createElement, 'className', style.ads), _defineProperty(_React$createElement, 'data-ad-client', this.props.client), _defineProperty(_React$createElement, 'data-ad-slot', this.props.slot), _defineProperty(_React$createElement, 'data-ad-format', 'auto'), _React$createElement));
 	    }
 	  }]);
 
@@ -1849,17 +1858,24 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"ads":"style__ads___14d7M"};
+	module.exports = {"ads":"style__ads___1otzE"};
 
 /***/ },
 /* 35 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"mainWrapper":"style__mainWrapper___12ofC"};
+	module.exports = {"ads":"style__ads___14d7M"};
 
 /***/ },
 /* 36 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"mainWrapper":"style__mainWrapper___12ofC"};
+
+/***/ },
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1870,7 +1886,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _request = __webpack_require__(37);
+	var _request = __webpack_require__(38);
 
 	var _request2 = _interopRequireDefault(_request);
 
@@ -1929,7 +1945,7 @@
 	exports.default = RequestUtil;
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = require("request");
