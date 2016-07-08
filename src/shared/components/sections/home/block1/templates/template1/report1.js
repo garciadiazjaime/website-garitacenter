@@ -38,8 +38,8 @@ export default class Report1 extends React.Component {
           Normal
         </div>
         <div className="col-xs-2">
-          <i className={style.pedestrianSentri} />
-          Sentry
+          <i className={style.pedestrianReadyLane} />
+          R.&nbsp;Lane
         </div>
       </div>
 

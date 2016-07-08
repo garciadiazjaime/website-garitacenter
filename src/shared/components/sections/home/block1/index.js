@@ -25,7 +25,7 @@ export default class Block1 extends React.Component {
     return !_.isEmpty(data) ? (<div className="container-fluid">
       <div className="pull-right">
         <div className={style.lastUpdate}>
-          Reporte de Garitas actualizado hace {timeSince(created)} minutos
+          Reporte de Garitas actualizado hace {timeSince(created)}
         </div>
       </div>
       <br className="clearfix" />
