@@ -2,7 +2,7 @@
 import React from 'react';
 
 const style = require('./style.scss');
-import Loader from '../../../elements/loader';
+// import Loader from '../../../elements/loader';
 import Gads from '../../../elements/gads';
 
 export default class Block2 extends React.Component {
@@ -15,19 +15,19 @@ export default class Block2 extends React.Component {
   }
 
   componentDidMount() {
-    window.adsbygoogle = [];
-    /*eslint-disable */
-    this.setState({
-      showLoader: false,
-    });
-    /*eslint-enable */
+    // window.adsbygoogle = [];
+    // /*eslint-disable */
+    // this.setState({
+    //   showLoader: false,
+    // });
+    // /*eslint-enable */
   }
 
   render() {
-    // <Gads client="ca-pub-2643588035417760" slot="9117540736" />
+    // { this.state.showLoader ? <Loader /> : <Gads client="ca-pub-2643588035417760" slot="9117540736" /> }
     return (<div className="container-fluid">
       <div className={'row ' + style.ads}>
-      { this.state.showLoader ? <Loader /> : <Gads client="ca-pub-2643588035417760" slot="9117540736" /> }
+        <Gads client="ca-pub-2643588035417760" slot="9117540736" />
       </div>
     </div>);
   }
