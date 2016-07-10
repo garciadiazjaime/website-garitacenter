@@ -1,4 +1,5 @@
 /* eslint max-len: [2, 500, 4] */
+import newrelic from 'newrelic';
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -12,6 +13,7 @@ import routes from '../shared/config/routes';
 import RequestUtil from '../utils/requestUtil';
 
 const app = express();
+app.locals.newrelic = newrelic;
 
 app.set('views', './views');
 app.set('view engine', 'jade');
