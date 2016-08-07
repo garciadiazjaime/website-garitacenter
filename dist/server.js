@@ -1033,7 +1033,9 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'col-xs-12 col-sm-6' },
-	              'Todos los derechos reservados © GaritaCenter'
+	              'Todos los derechos reservados © GaritaCenter ',
+	              _react2.default.createElement('br', null),
+	              'Reporte de garitas para San Ysidro y Otay | Tijuana'
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -1044,7 +1046,8 @@
 	                { href: data[1].url, title: data[1].title, target: '_blank' },
 	                data[1].name
 	              ),
-	              '   Diseño por: ',
+	              _react2.default.createElement('br', null),
+	              'Diseño por: ',
 	              _react2.default.createElement(
 	                'a',
 	                { href: data[0].url, title: data[0].title, target: '_blank' },
@@ -1067,7 +1070,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"fCenter":"style__fCenter___24X-f","vCenter":"style__vCenter___rkH6k","vCenterRel":"style__vCenterRel___W_SE5","hCenter":"style__hCenter___rq5W3","inheritHeight":"style__inheritHeight___IbmOF","hideOverflow":"style__hideOverflow___3nmjb","icon-general-sprite":"style__icon-general-sprite___bVUR0","footerWrapper":"style__footerWrapper___zbtoF","container":"style__container___2PqEc","sitemap":"style__sitemap___2b9Al","facebook":"style__facebook___39dVV","twitter":"style__twitter___1oyfA","pinterest":"style__pinterest___2_EXF","instagram":"style__instagram___1nFr4","google":"style__google___3VUw5","list":"style__list___2_d4H","contact_info":"style__contact_info___31Ajw","powered":"style__powered___2okxk","serviceTitle":"style__serviceTitle___22DP1"};
+	module.exports = {"fCenter":"style__fCenter___24X-f","vCenter":"style__vCenter___rkH6k","vCenterRel":"style__vCenterRel___W_SE5","hCenter":"style__hCenter___rq5W3","inheritHeight":"style__inheritHeight___IbmOF","hideOverflow":"style__hideOverflow___3nmjb","icon-general-sprite":"style__icon-general-sprite___bVUR0","footerWrapper":"style__footerWrapper___zbtoF","container":"style__container___2PqEc","sitemap":"style__sitemap___2b9Al","facebook":"style__facebook___39dVV","twitter":"style__twitter___1oyfA","pinterest":"style__pinterest___2_EXF","instagram":"style__instagram___1nFr4","google":"style__google___3VUw5","googleplus":"style__googleplus___1casQ","list":"style__list___2_d4H","contact_info":"style__contact_info___31Ajw","powered":"style__powered___2okxk","serviceTitle":"style__serviceTitle___22DP1"};
 
 /***/ },
 /* 21 */
@@ -1138,7 +1141,7 @@
 	        case 'googleplus':
 	          return _react2.default.createElement(
 	            'svg',
-	            { xmlns: 'http://www.w3.org/2000/svg', width: '50', height: '50', viewBox: '0 0 50 50' },
+	            { xmlns: 'http://www.w3.org/2000/svg', width: '50', height: '50', viewBox: '0 0 50 50', className: className },
 	            _react2.default.createElement('circle', { cx: '25', cy: '25', r: '25', fill: '#DA5031' }),
 	            _react2.default.createElement('path', { d: 'M23.6 27.9c-0.5-0.7-1-1.3-1.1-2.1 -0.2-0.8 0-1.6 0.3-2.3 -0.3 0-0.7 0-1 0 -2.2 0.1-4.1-0.5-5.7-2.1 -1.2-1.2-1.8-2.6-1.9-4.2 -0.3-2.6 0.8-4.6 2.6-6.4 1.5-1.4 3.4-2.1 5.4-2.4 2-0.2 4-0.2 6-0.2C30 8.2 31.8 8.2 33.5 8.2c0.1 0 0.2 0 0.3 0 0 0 0 0.1 0 0.1 -0.8 0.5-1.5 1-2.4 1.3 -0.9 0.3-1.8 0.4-2.7 0.1 0 0 0 0.1-0.1 0.1 0.1 0.1 0.1 0.2 0.2 0.3 0.7 0.6 1.3 1.3 1.7 2.1 1.5 2.5 1.4 6.4-1.3 8.7 -0.7 0.6-1.3 1.2-2 1.8 -0.9 0.8-0.8 2.2 0.1 3 1.2 1 2.4 2 3.5 3 2.6 2.3 2.7 6.2 0.8 8.7 -1.4 1.9-3.3 3.1-5.5 3.7 -1.8 0.5-3.6 0.7-5.5 0.7 -1.9-0.1-3.8-0.5-5.5-1.4 -1.4-0.7-2.5-1.8-2.9-3.3 -0.6-1.9-0.2-3.6 1-5.1 1-1.3 2.4-2.2 4-2.7 1.2-0.4 2.4-0.6 3.6-0.8C21.8 28.2 22.7 28.1 23.6 27.9zM23.5 39.8c1.5 0.1 2.8-0.1 4-0.8 2.8-1.4 3.3-5 1-7 -0.8-0.7-1.6-1.3-2.4-2 -0.5-0.4-1.1-0.7-1.8-0.7 -0.7 0-1.4 0.1-2.1 0.2 -1.3 0.1-2.6 0.5-3.8 1.1 -3 1.6-3.1 5-1.4 6.9 0.8 0.9 1.9 1.5 3.1 1.9C21.3 39.7 22.4 39.8 23.5 39.8zM18.2 14.3c0 1.3 0.1 2.3 0.5 3.3 0.5 1.4 1.2 2.6 2.3 3.6 2 1.7 4.7 1 6-0.7 0.5-0.7 0.7-1.5 0.7-2.4 0.1-1-0.1-2-0.4-3 -0.4-1.7-1.2-3.2-2.5-4.4 -2-1.8-5.1-1.2-6.2 1.2C18.2 12.8 18.2 13.6 18.2 14.3z', fill: '#fff' }),
 	            _react2.default.createElement('path', { d: 'M33.2 24.5c0-0.7 0-1.4 0-2.1 1.1 0 2.2 0 3.3 0 0-0.1 0-0.2 0-0.3 0-0.9 0-1.8 0-2.6 0-0.4 0.1-0.4 0.4-0.4 0.4 0 0.8 0 1.2 0 0.3 0 0.4 0.1 0.4 0.4 0 1 0 1.9 0 2.9 1.1 0 2.2 0 3.3 0 0 0.7 0 1.4 0 2.1 -0.1 0-0.2 0-0.3 0 -0.9 0-1.7 0-2.6 0 -0.4 0-0.4 0-0.4 0.4 0 0.8 0 1.6 0 2.4 0 0.5-0.1 0.5-0.5 0.5 -0.4 0-0.7 0-1.1 0 -0.4 0-0.5-0.1-0.5-0.5 0-0.8 0-1.6 0-2.4 0-0.4-0.1-0.4-0.4-0.4 -0.9 0-1.8 0-2.8 0C33.3 24.5 33.3 24.5 33.2 24.5z', fill: '#fff' })
@@ -1390,8 +1393,7 @@
 	            'div',
 	            { className: style.lastUpdate },
 	            'Reporte de Garitas actualizado hace ',
-	            (0, _string.timeSince)(created),
-	            ' minutos'
+	            (0, _string.timeSince)(created)
 	          )
 	        ),
 	        _react2.default.createElement('br', { className: 'clearfix' }),
@@ -1561,14 +1563,14 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            _react2.default.createElement('i', { className: style.carSentri }),
-	            'Sentri'
+	            _react2.default.createElement('i', { className: style.carReadyLane }),
+	            'R. Lane'
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            _react2.default.createElement('i', { className: style.carReadyLane }),
-	            'R. Lane'
+	            _react2.default.createElement('i', { className: style.carSentri }),
+	            'Sentri'
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -1579,8 +1581,8 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            _react2.default.createElement('i', { className: style.pedestrianSentri }),
-	            'Sentry'
+	            _react2.default.createElement('i', { className: style.pedestrianReadyLane }),
+	            'R. Lane'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -1603,12 +1605,12 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            (0, _string.minsToHrs)(car.sentry.time)
+	            (0, _string.minsToHrs)(car.readyLine.time)
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            (0, _string.minsToHrs)(car.readyLine.time)
+	            (0, _string.minsToHrs)(car.sentry.time)
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -1676,23 +1678,23 @@
 	  var interval = Math.floor(seconds / 31536000);
 
 	  if (interval > 1) {
-	    return interval + ' años';
+	    return interval + ' año' + (interval > 1 ? 's' : '');
 	  }
 	  interval = Math.floor(seconds / 2592000);
 	  if (interval > 1) {
-	    return interval + ' meses';
+	    return interval + ' mes' + (interval > 1 ? 'es' : '');
 	  }
 	  interval = Math.floor(seconds / 86400);
 	  if (interval > 1) {
-	    return interval + ' días';
+	    return interval + ' día' + (interval > 1 ? 's' : '');
 	  }
 	  interval = Math.floor(seconds / 3600);
 	  if (interval > 1) {
-	    return interval + ' horas';
+	    return interval + ' hora' + (interval > 1 ? 's' : '');
 	  }
 	  interval = Math.floor(seconds / 60);
 	  if (interval > 1) {
-	    return interval + ' minutos';
+	    return interval + ' minuto' + (interval > 1 ? 's' : '');
 	  }
 	  return Math.floor(seconds) + ' segundos';
 	}
@@ -1702,7 +1704,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"fCenter":"style__fCenter___3J7rq","vCenter":"style__vCenter___px7FK","vCenterRel":"style__vCenterRel___3-4Pc","hCenter":"style__hCenter___1FoV0","inheritHeight":"style__inheritHeight___2AId2","hideOverflow":"style__hideOverflow___33eUg","icon-general-sprite":"style__icon-general-sprite___2hbMj","report":"style__report___3oyH6","clook":"style__clook___2Z6j_","car":"style__car___I6XtV","carSentri":"style__carSentri___3O52I","carReadyLane":"style__carReadyLane___feZQo","pedestrian":"style__pedestrian___1pzB_","pedestrianSentri":"style__pedestrianSentri___1ZZJp","headers":"style__headers___InMaR","times":"style__times___22Gjy","clookWrapper":"style__clookWrapper___1hPg4","customHr":"style__customHr___2O_Nf"};
+	module.exports = {"fCenter":"style__fCenter___3J7rq","vCenter":"style__vCenter___px7FK","vCenterRel":"style__vCenterRel___3-4Pc","hCenter":"style__hCenter___1FoV0","inheritHeight":"style__inheritHeight___2AId2","hideOverflow":"style__hideOverflow___33eUg","icon-general-sprite":"style__icon-general-sprite___2hbMj","report":"style__report___3oyH6","clook":"style__clook___2Z6j_","car":"style__car___I6XtV","carSentri":"style__carSentri___3O52I","carReadyLane":"style__carReadyLane___feZQo","pedestrian":"style__pedestrian___1pzB_","pedestrianReadyLane":"style__pedestrianReadyLane___1Bf3P","headers":"style__headers___InMaR","times":"style__times___22Gjy","clookWrapper":"style__clookWrapper___1hPg4","customHr":"style__customHr___2O_Nf"};
 
 /***/ },
 /* 31 */
@@ -1761,11 +1763,11 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      // window.adsbygoogle = [];
-	      /*eslint-disable */
+	      // /*eslint-disable */
 	      // this.setState({
 	      //   showLoader: false,
 	      // });
-	      /*eslint-enable */
+	      // /*eslint-enable */
 	    }
 	  }, {
 	    key: 'render',
@@ -1812,6 +1814,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
+
+	// const style = require('./style.scss');
 
 	var Gads = function (_React$Component) {
 	  _inherits(Gads, _React$Component);

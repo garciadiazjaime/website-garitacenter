@@ -4,7 +4,7 @@
 
   h2 {
     font-size: 20px;
-    margin-top: 5px;
+    margin-top: 0px;
   }
 
   .headers {
@@ -52,7 +52,7 @@
     @include sprite($general-sprite-garita-person);
   }
 
-  .pedestrianSentri {
+  .pedestrianReadyLane {
     @extend .icon-general-sprite;
     @include sprite($general-sprite-garita-person-sentri);
   }

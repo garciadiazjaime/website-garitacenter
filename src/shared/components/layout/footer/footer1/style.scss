@@ -95,6 +95,13 @@ $sm-color: $white;
       }
     }
   }
+  .googleplus{
+    &:hover{
+      circle {
+        fill: #30A45A;
+      }
+    }
+  }
   .list {
     list-style: none;
     padding: 0 0 0 10px;

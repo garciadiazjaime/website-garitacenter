@@ -9,7 +9,7 @@ import DataWrapper from './dataWrapper';
 import config from '../../config';
 import apiRoutes from './helpers/api';
 import routes from '../shared/config/routes';
-import RequestUtil from '../utils/requestUtil';
+import RequestUtil from '../shared/utils/requestUtil';
 
 const app = express();
 

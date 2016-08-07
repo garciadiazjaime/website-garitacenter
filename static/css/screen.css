@@ -159,6 +159,8 @@
     fill: #fff; }
   .style__footerWrapper___zbtoF .style__google___3VUw5:hover circle {
     fill: #30A45A; }
+  .style__footerWrapper___zbtoF .style__googleplus___1casQ:hover circle {
+    fill: #30A45A; }
   .style__footerWrapper___zbtoF .style__list___2_d4H {
     list-style: none;
     padding: 0 0 0 10px; }
@@ -225,12 +227,12 @@
 .style__hideOverflow___33eUg {
   overflow: hidden; }
 
-.style__icon-general-sprite___2hbMj, .style__report___3oyH6 .style__clook___2Z6j_, .style__report___3oyH6 .style__car___I6XtV, .style__report___3oyH6 .style__carSentri___3O52I, .style__report___3oyH6 .style__carReadyLane___feZQo, .style__report___3oyH6 .style__pedestrian___1pzB_, .style__report___3oyH6 .style__pedestrianSentri___1ZZJp {
+.style__icon-general-sprite___2hbMj, .style__report___3oyH6 .style__clook___2Z6j_, .style__report___3oyH6 .style__car___I6XtV, .style__report___3oyH6 .style__carSentri___3O52I, .style__report___3oyH6 .style__carReadyLane___feZQo, .style__report___3oyH6 .style__pedestrian___1pzB_, .style__report___3oyH6 .style__pedestrianReadyLane___1Bf3P {
   background-image: url("/images/sprites/sprite-general-sprite.png"); }
 
 .style__report___3oyH6 h2 {
   font-size: 20px;
-  margin-top: 5px; }
+  margin-top: 0px; }
 
 .style__report___3oyH6 .style__headers___InMaR {
   font-size: 13px; }
@@ -289,7 +291,7 @@
   width: 42px;
   height: 30px; }
 
-.style__report___3oyH6 .style__pedestrianSentri___1ZZJp {
+.style__report___3oyH6 .style__pedestrianReadyLane___1Bf3P {
   background-position: -42px -30px;
   background-repeat: no-repeat;
   overflow: hidden;

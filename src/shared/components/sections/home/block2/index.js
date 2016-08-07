@@ -16,11 +16,11 @@ export default class Block2 extends React.Component {
 
   componentDidMount() {
     // window.adsbygoogle = [];
-    /*eslint-disable */
+    // /*eslint-disable */
     // this.setState({
     //   showLoader: false,
     // });
-    /*eslint-enable */
+    // /*eslint-enable */
   }
 
   render() {

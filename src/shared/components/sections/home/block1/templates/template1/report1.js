@@ -26,20 +26,20 @@ export default class Report1 extends React.Component {
           Normal
         </div>
         <div className="col-xs-2">
-          <i className={style.carSentri} />
-          Sentri
-        </div>
-        <div className="col-xs-2">
           <i className={style.carReadyLane} />
           R.&nbsp;Lane
+        </div>
+        <div className="col-xs-2">
+          <i className={style.carSentri} />
+          Sentri
         </div>
         <div className="col-xs-2">
           <i className={style.pedestrian} />
           Normal
         </div>
         <div className="col-xs-2">
-          <i className={style.pedestrianSentri} />
-          Sentry
+          <i className={style.pedestrianReadyLane} />
+          R.&nbsp;Lane
         </div>
       </div>
 
@@ -54,10 +54,10 @@ export default class Report1 extends React.Component {
           {minsToHrs(car.normal.time)}
         </div>
         <div className="col-xs-2">
-          {minsToHrs(car.sentry.time)}
+          {minsToHrs(car.readyLine.time)}
         </div>
         <div className="col-xs-2">
-          {minsToHrs(car.readyLine.time)}
+          {minsToHrs(car.sentry.time)}
         </div>
         <div className="col-xs-2">
           {minsToHrs(people.normal.time)}

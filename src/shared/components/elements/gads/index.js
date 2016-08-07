@@ -1,6 +1,8 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
 
+// const style = require('./style.scss');
+
 export default class Gads extends React.Component {
 
   componentDidMount() {
