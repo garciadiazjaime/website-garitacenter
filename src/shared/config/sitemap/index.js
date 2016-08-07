@@ -1,6 +1,6 @@
 import AppHandler from '../../components/AppHandler';
 import HomeSection from '../../components/sections/home';
-
+import ReporteUsuarioSection from '../../components/sections/reporteUsuario';
 
 export default {
   items: {
@@ -10,6 +10,10 @@ export default {
       title: 'Inicio',
       url: '/inicio',
       component: HomeSection,
+    }, {
+      title: 'Reporte de Usuario',
+      url: '/reporte-usuario',
+      component: ReporteUsuarioSection,
     }],
   },
   icons: [{

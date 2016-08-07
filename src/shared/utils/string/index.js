@@ -46,5 +46,4 @@ export function timeSince(data) {
     return `${interval} minutos`;
   }
   return `1 minuto`;
-  // return `${Math.floor(seconds)} segundos`;
 }
