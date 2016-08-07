@@ -59,10 +59,10 @@ app.post('/user/report', (req, res) => {
   const data = req.body;
   RequestUtil.post(apiUrl, data)
     .then((results) => {
-      res.status(200).send(true);
+      res.status(200).send(results);
     })
-    .catch((err) => {
-      res.send('error');
+    .catch((error) => {
+      res.send(error);
     });
 });
 
