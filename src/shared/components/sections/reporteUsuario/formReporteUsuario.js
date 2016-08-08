@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import ClickOption from './clickOption';
 import { toTitleCase } from '../../../utils/string';
+import RequestUtil from '../../../utils/requestUtil';
 
 export default class FormReporteUsuario extends React.Component {
 
@@ -27,7 +28,12 @@ export default class FormReporteUsuario extends React.Component {
   }
 
   submitHandler() {
-    console.log(this.state);
+    const data = this.state;
+    const url = '/user/report';
+    RequestUtil.post(url, data)
+      .then((results) => {
+        console.log('results', results);
+      });
   }
 
   clickHandler(option, value) {

@@ -25,7 +25,7 @@ app.use(express.static('static'));
 
 app.use('/api/', apiRoutes);
 
-app.get('/*', function (req, res) {
+app.get('/*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message);
@@ -39,7 +39,7 @@ app.get('/*', function (req, res) {
         .then((results) => {
           const props = {
             city,
-            report: results,
+            report: results.entity,
           };
           const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
           res.render('index', { content, props });
@@ -54,6 +54,18 @@ app.get('/*', function (req, res) {
   });
 });
 
+app.post('/user/report', (req, res) => {
+  const apiUrl = `${config.get('api.url')}user/report`;
+  const data = req.body;
+  RequestUtil.post(apiUrl, data)
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
 app.set('ipaddress', config.get('ipaddress'));
 app.set('port', config.get('port'));
 
@@ -61,7 +73,6 @@ const server = app.listen(app.get('port'), app.get('ipaddress'), (err) => {
   if (err) {
     console.log(err);
   }
-
   const host = server.address().address;
   const port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);
