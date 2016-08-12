@@ -30,10 +30,29 @@ export default class FormReporteUsuario extends React.Component {
   submitHandler() {
     const data = this.state;
     const url = '/user/report';
-    RequestUtil.post(url, data)
-      .then((results) => {
-        console.log('results', results);
+    if (data && data.port && data.place && data.time) {
+      delete data.formMessage;
+      RequestUtil.post(url, data)
+        .then((results) => {
+          if (results.status) {
+            this.setState({
+              formMessage: 'Gracias por el dato.',
+            });
+          } else {
+            this.setState({
+              formMessage: 'Lo sentimos, favor de intentar más tarde.',
+            });
+          }
+        }, () => {
+          this.setState({
+            formMessage: 'Lo sentimos, favor de intentar más tarde.',
+          });
+        });
+    } else {
+      this.setState({
+        formMessage: 'Favor de llenar todos los campos.',
       });
+    }
   }
 
   clickHandler(option, value) {
@@ -95,7 +114,12 @@ export default class FormReporteUsuario extends React.Component {
             </ul>
           </div>
         </div>
+      </div>
+      <div className="form-group">
         <button className="btn btn-default" onClick={this.submitHandler}>Submit</button>
+      </div>
+      <div className="form-group">
+        <span className="text-danger">{this.state.formMessage}</span>
       </div>
     </div>);
   }

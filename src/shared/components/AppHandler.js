@@ -2,6 +2,7 @@ import React from 'react';
 
 import sitemap from '../config/sitemap';
 import MainMenu from './layout/menu/menu1';
+import MenuReport from './elements/menus/menuReport';
 import Footer from './layout/footer/footer1';
 import scrollUtil from '../utils/scroll';
 import menuUtil from '../utils/menu';
@@ -71,6 +72,7 @@ export default class AppHandler extends React.Component {
     });
     return (<div>
       <MainMenu />
+      <MenuReport location={this.props.location.pathname} />
       {children}
       <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
     </div>);
