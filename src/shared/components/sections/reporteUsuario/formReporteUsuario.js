@@ -5,6 +5,7 @@ import _ from 'lodash';
 import ClickOption from './clickOption';
 import { toTitleCase } from '../../../utils/string';
 import RequestUtil from '../../../utils/requestUtil';
+import refData from './data.js';
 
 export default class FormReporteUsuario extends React.Component {
 
@@ -13,6 +14,7 @@ export default class FormReporteUsuario extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
+    this.renderPlaces = this.renderPlaces.bind(this);
     this.state = {};
   }
 
@@ -61,6 +63,12 @@ export default class FormReporteUsuario extends React.Component {
     this.setState(state);
   }
 
+  renderPlaces() {
+    return this.state.port ? refData[this.state.port].map((place, index) => {
+      return (<li key={index}><ClickOption prop="place" value={place.id} clickHandler={this.clickHandler}>{place.title}</ClickOption></li>);
+    }) : null;
+  }
+
   render() {
     return (<div className="container-fluid">
       <h1>Reporte de Usuario</h1>
@@ -90,11 +98,7 @@ export default class FormReporteUsuario extends React.Component {
               {this.getLabel('place')} <span className="caret"></span>
             </button>
             <ul className="dropdown-menu">
-              <li><ClickOption prop="place" value="place_a" clickHandler={this.clickHandler}>Place A</ClickOption></li>
-              <li><ClickOption prop="place" value="place_b" clickHandler={this.clickHandler}>Place B</ClickOption></li>
-              <li><ClickOption prop="place" value="place_c" clickHandler={this.clickHandler}>Place C</ClickOption></li>
-              <li><ClickOption prop="place" value="place_d" clickHandler={this.clickHandler}>Place D</ClickOption></li>
-              <li><ClickOption prop="place" value="place_e" clickHandler={this.clickHandler}>Place E</ClickOption></li>
+              {this.renderPlaces()}
             </ul>
           </div>
         </div>
