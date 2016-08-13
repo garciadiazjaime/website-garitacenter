@@ -4,7 +4,6 @@ import _ from 'lodash';
 const style = require('./style.scss');
 import Template1 from './templates/template1';
 import { timeSince } from '../../../../utils/string';
-import MenuReport from '../../../elements/menus/menuReport';
 
 
 export default class Block1 extends React.Component {
@@ -24,9 +23,6 @@ export default class Block1 extends React.Component {
     const created = report[0].created;
     const Template = this.getTemplate(data.city);
     return !_.isEmpty(data) ? (<div className="container-fluid">
-      <div>
-        <MenuReport />
-      </div>
       <div className="pull-right">
         <div className={style.lastUpdate}>
           Reporte de Garitas actualizado hace {timeSince(created)}
