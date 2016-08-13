@@ -2,10 +2,11 @@
 import React from 'react';
 import _ from 'lodash';
 
+import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
 import { toTitleCase } from '../../../utils/string';
 import RequestUtil from '../../../utils/requestUtil';
-import refData from './data.js';
+import refData from './portsData.js';
 
 export default class FormReporteUsuario extends React.Component {
 
@@ -13,9 +14,10 @@ export default class FormReporteUsuario extends React.Component {
     super();
     this.clickHandler = this.clickHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
-    this.clickHandler = this.clickHandler.bind(this);
     this.renderPlaces = this.renderPlaces.bind(this);
-    this.state = {};
+    this.state = {
+      showLoading: false,
+    };
   }
 
   getLabel(prop) {
@@ -32,40 +34,58 @@ export default class FormReporteUsuario extends React.Component {
   submitHandler() {
     const data = this.state;
     const url = '/user/report';
+    const promise = [];
+    let message = 'Favor de llenar todos los campos.';
     if (data && data.port && data.place && data.time) {
       delete data.formMessage;
-      RequestUtil.post(url, data)
-        .then((results) => {
-          if (results.status) {
-            this.setState({
-              formMessage: 'Gracias por el dato.',
-            });
-          } else {
-            this.setState({
-              formMessage: 'Lo sentimos, favor de intentar más tarde.',
-            });
-          }
-        }, () => {
-          this.setState({
-            formMessage: 'Lo sentimos, favor de intentar más tarde.',
-          });
-        });
-    } else {
-      this.setState({
-        formMessage: 'Favor de llenar todos los campos.',
-      });
+      this.setState(_.assign({}, this.state, {
+        showLoading: true,
+      }));
+      promise.push(RequestUtil.post(url, data));
     }
+
+    Promise.all(promise).then((results) => {
+      if (results.length) {
+        message = results[0].status ? 'Gracias por el dato.' : 'Lo sentimos, favor de intentar más tarde.';
+      }
+      this.setState({
+        formMessage: message,
+        showLoading: false,
+      });
+    }, () => {
+      this.setState({
+        formMessage: 'Lo sentimos, favor de intentar más tarde.',
+        showLoading: false,
+      });
+    });
   }
 
-  clickHandler(option, value) {
+  clickHandler(option, value, portIndex) {
     const state = _.assign({}, this.state);
     state[option] = value;
+    if (option === 'port') {
+      state.portIndex = portIndex;
+      state.place = '';
+      state.time = '';
+    }
     this.setState(state);
   }
 
+  renderPorts() {
+    return refData.map((port, index) => {
+      return (<li key={index}><ClickOption prop="port" value={port.id} index={index} clickHandler={this.clickHandler}>{port.title}</ClickOption></li>);
+    });
+  }
+
   renderPlaces() {
-    return this.state.port ? refData[this.state.port].map((place, index) => {
+    return this.state.port ? refData[this.state.portIndex].places.map((place, index) => {
       return (<li key={index}><ClickOption prop="place" value={place.id} clickHandler={this.clickHandler}>{place.title}</ClickOption></li>);
+    }) : null;
+  }
+
+  renderTimes() {
+    return this.state.port ? refData[this.state.portIndex].times.map((time, index) => {
+      return (<li key={index}><ClickOption prop="time" value={time.id} clickHandler={this.clickHandler}>{time.title}</ClickOption></li>);
     }) : null;
   }
 
@@ -85,8 +105,7 @@ export default class FormReporteUsuario extends React.Component {
               {this.getLabel('port')} <span className="caret"></span>
             </button>
             <ul className="dropdown-menu">
-            <li><ClickOption prop="port" value="san_ysidro" clickHandler={this.clickHandler}>San Ysidro</ClickOption></li>
-            <li><ClickOption prop="port" value="otay" clickHandler={this.clickHandler}>Otay</ClickOption></li>
+              {this.renderPorts()}
             </ul>
           </div>
         </div>
@@ -110,11 +129,7 @@ export default class FormReporteUsuario extends React.Component {
               {this.getLabel('time')} <span className="caret"></span>
             </button>
             <ul className="dropdown-menu">
-            <li><ClickOption prop="time" value="time_a" clickHandler={this.clickHandler}>Tiempo A</ClickOption></li>
-            <li><ClickOption prop="time" value="time_b" clickHandler={this.clickHandler}>Tiempo B</ClickOption></li>
-            <li><ClickOption prop="time" value="time_c" clickHandler={this.clickHandler}>Tiempo C</ClickOption></li>
-            <li><ClickOption prop="time" value="time_d" clickHandler={this.clickHandler}>Tiempo D</ClickOption></li>
-            <li><ClickOption prop="time" value="time_e" clickHandler={this.clickHandler}>Tiempo E</ClickOption></li>
+              {this.renderTimes()}
             </ul>
           </div>
         </div>
@@ -125,6 +140,7 @@ export default class FormReporteUsuario extends React.Component {
       <div className="form-group">
         <span className="text-danger">{this.state.formMessage}</span>
       </div>
+      { this.state.showLoading ? <Loader /> : null }
     </div>);
   }
 }
