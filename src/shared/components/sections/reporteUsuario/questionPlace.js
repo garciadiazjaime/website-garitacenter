@@ -7,6 +7,7 @@ export default class QuestionPlace extends React.Component {
   constructor() {
     super();
     this.clickHandler = this.clickHandler.bind(this);
+    this.backHandler = this.backHandler.bind(this);
   }
 
   clickHandler(value) {
@@ -14,6 +15,14 @@ export default class QuestionPlace extends React.Component {
       place: value,
     };
     this.props.clickHandler('QUESTION_TIME', state);
+  }
+
+  backHandler() {
+    this.props.clickHandler('QUESTION_ENTRY', {
+      entry: '',
+      port: '',
+      type: '',
+    });
   }
 
   render() {
@@ -45,6 +54,9 @@ export default class QuestionPlace extends React.Component {
             En el parque de la amistad
           </ClickOption>
         </div>
+      </div>
+      <div className="row">
+        <a onClick={this.backHandler}>Volver</a>
       </div>
     </div>);
   }

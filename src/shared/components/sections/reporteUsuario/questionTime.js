@@ -7,6 +7,7 @@ export default class QuestionTime extends React.Component {
   constructor() {
     super();
     this.clickHandler = this.clickHandler.bind(this);
+    this.backHandler = this.backHandler.bind(this);
   }
 
   clickHandler(value) {
@@ -14,6 +15,12 @@ export default class QuestionTime extends React.Component {
       time: value,
     };
     this.props.clickHandler('QUESTION_REVIEW', state);
+  }
+
+  backHandler() {
+    this.props.clickHandler('QUESTION_PLACE', {
+      place: '',
+    });
   }
 
   render() {
@@ -46,20 +53,23 @@ export default class QuestionTime extends React.Component {
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_e" clickHandler={this.clickHandler}>
+          <ClickOption value="time_f" clickHandler={this.clickHandler}>
             3:00
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_e" clickHandler={this.clickHandler}>
+          <ClickOption value="time_g" clickHandler={this.clickHandler}>
             4:00
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_e" clickHandler={this.clickHandler}>
+          <ClickOption value="time_h" clickHandler={this.clickHandler}>
             ya vivo aquí
           </ClickOption>
         </div>
+      </div>
+      <div className="row">
+        <a onClick={this.backHandler}>Volver</a>
       </div>
     </div>);
   }

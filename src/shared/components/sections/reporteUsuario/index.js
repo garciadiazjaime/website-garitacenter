@@ -23,9 +23,9 @@ export default class ReporteUsuarioSection extends React.Component {
         view: 'QUESTION_ENTRY',
       });
     } else {
-      const newState = _.assign({}, this.state, state, {
+      const newState = viewState !== 'QUESTION_SAVE' ? _.assign({}, this.state, state, {
         view: viewState,
-      });
+      }) : { view: 'QUESTION_SAVE', entry: '', place: '', port: '', time: '', type: '' };
       this.setState(newState);
     }
   }
@@ -52,7 +52,7 @@ export default class ReporteUsuarioSection extends React.Component {
     } else if (this.state.view === 'QUESTION_TIME') {
       content = (<QuestionTime clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_REVIEW') {
-      content = (<QuestionReview clickHandler={this.clickHandler} />);
+      content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
     } else if (this.state.view === 'QUESTION_SAVE') {
       content = this.renderInit();
     }
