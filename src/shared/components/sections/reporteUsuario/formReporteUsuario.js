@@ -32,12 +32,16 @@ export default class FormReporteUsuario extends React.Component {
   }
 
   submitHandler() {
-    const data = this.state;
+    const data = _.assign({}, this.state);
     const url = '/user/report';
     const promise = [];
     let message = 'Favor de llenar todos los campos.';
     if (data && data.port && data.place && data.time) {
+      // remove data not related to survey
       delete data.formMessage;
+      delete data.showLoading;
+      delete data.portIndex;
+      delete data.status;
       this.setState(_.assign({}, this.state, {
         showLoading: true,
       }));
@@ -46,9 +50,10 @@ export default class FormReporteUsuario extends React.Component {
 
     Promise.all(promise).then((results) => {
       if (results.length) {
-        message = results[0].status ? 'Gracias por el dato.' : 'Lo sentimos, favor de intentar más tarde.';
+        message = results[0].entity.status ? 'Gracias por el dato.' : 'Lo sentimos, favor de intentar más tarde.';
       }
       this.setState({
+        status: _.isArray(results) && results.length ? results[0].entity.status : false,
         formMessage: message,
         showLoading: false,
       });
@@ -138,7 +143,7 @@ export default class FormReporteUsuario extends React.Component {
         <button className="btn btn-default" onClick={this.submitHandler}>Submit</button>
       </div>
       <div className="form-group">
-        <span className="text-danger">{this.state.formMessage}</span>
+        <span className={ this.state.status !== true ? 'text-danger' : 'text-success' }>{this.state.formMessage}</span>
       </div>
       { this.state.showLoading ? <Loader /> : null }
     </div>);

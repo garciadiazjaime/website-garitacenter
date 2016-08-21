@@ -1,6 +1,10 @@
 import React from 'react';
+import _ from 'lodash';
 
-import FormReporteUsuario from './formReporteUsuario';
+import QuestionEntry from './questionEntry';
+import QuestionPlace from './questionPlace';
+import QuestionTime from './questionTime';
+import QuestionReview from './questionReview';
 
 
 export default class ReporteUsuarioSection extends React.Component {
@@ -9,29 +13,51 @@ export default class ReporteUsuarioSection extends React.Component {
     super();
     this.clickHandler = this.clickHandler.bind(this);
     this.state = {
-      showForm: false,
+      view: 'INIT',
     };
   }
 
-  clickHandler() {
-    if (!this.state.showForm) {
+  clickHandler(viewState, state) {
+    if (typeof viewState === 'object') {
       this.setState({
-        showForm: true,
+        view: 'QUESTION_ENTRY',
       });
+    } else {
+      const newState = viewState !== 'QUESTION_SAVE' ? _.assign({}, this.state, state, {
+        view: viewState,
+      }) : { view: 'QUESTION_SAVE', entry: '', place: '', port: '', time: '', type: '' };
+      this.setState(newState);
     }
   }
 
-  render() {
-    return (<div className="container-fluid">
+  renderInit() {
+    return (<div>
+      <a className="btn btn-default" onClick={this.clickHandler}>Reportar</a>
+      <br />
       <div>
         mostrar feed de twitter
       </div>
-      <div>
-        { !this.state.showForm ?
-          <a className="btn btn-default" onClick={this.clickHandler}>Reportar</a>
-          : <FormReporteUsuario />
-        }
-      </div>
+    </div>);
+  }
+
+  render() {
+    console.log(this.state);
+    let content;
+    if (!this.state.view || this.state.view === 'INIT') {
+      content = this.renderInit();
+    } else if (this.state.view === 'QUESTION_ENTRY') {
+      content = (<QuestionEntry clickHandler={this.clickHandler} />);
+    } else if (this.state.view === 'QUESTION_PLACE') {
+      content = (<QuestionPlace clickHandler={this.clickHandler} />);
+    } else if (this.state.view === 'QUESTION_TIME') {
+      content = (<QuestionTime clickHandler={this.clickHandler} />);
+    } else if (this.state.view === 'QUESTION_REVIEW') {
+      content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
+    } else if (this.state.view === 'QUESTION_SAVE') {
+      content = this.renderInit();
+    }
+    return (<div className="container-fluid">
+      {content}
     </div>);
   }
 }
