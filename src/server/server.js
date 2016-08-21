@@ -59,7 +59,7 @@ app.post('/user/report', (req, res) => {
   const data = req.body;
   RequestUtil.post(apiUrl, data)
     .then((results) => {
-      res.status(200).send(results);
+      res.status(200).send(results.entity);
     })
     .catch((error) => {
       res.send(error);

@@ -8,21 +8,21 @@ export default class ClickOption extends React.Component {
   }
 
   clickHandler() {
-    const { prop, value, index } = this.props;
-    this.props.clickHandler(prop, value, index);
+    const { value } = this.props;
+    this.props.clickHandler(value);
   }
 
   render() {
-    return (<a onClick={this.clickHandler}>
-      {this.props.children}
-    </a>);
+    const { className } = this.props;
+    return (<a onClick={this.clickHandler} className={className || ''}>
+        {this.props.children}
+      </a>);
   }
 }
 
 ClickOption.propTypes = {
   children: React.PropTypes.any.isRequired,
-  prop: React.PropTypes.string.isRequired,
   value: React.PropTypes.string.isRequired,
-  index: React.PropTypes.number,
   clickHandler: React.PropTypes.func.isRequired,
+  className: React.PropTypes.string,
 };
