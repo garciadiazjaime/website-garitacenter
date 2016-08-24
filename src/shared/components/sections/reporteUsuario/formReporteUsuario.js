@@ -98,7 +98,7 @@ export default class FormReporteUsuario extends React.Component {
       </p>
       <div>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Qué Garita?</label>
+          <label htmlFor="exampleInputEmail1">¿Por dónde cruzas?</label>
           <br />
           <div className="btn-group">
             <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

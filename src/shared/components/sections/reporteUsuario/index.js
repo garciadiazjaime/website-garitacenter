@@ -1,5 +1,7 @@
+/* eslint max-len: [2, 500, 4] */
 import React from 'react';
 
+const style = require('./style.scss');
 import FormReporteUsuario from './formReporteUsuario';
 
 
@@ -28,7 +30,7 @@ export default class ReporteUsuarioSection extends React.Component {
       </div>
       <div>
         { !this.state.showForm ?
-          <a className="btn btn-default" onClick={this.clickHandler}>Reportar</a>
+          <a className={style.btn_reportar + ' btn btn-default '} onClick={this.clickHandler}>¿Cómo te va en la Línea?<span className={style.subtitle}>Repórtalo aquí y ayuda a los demás</span></a>
           : <FormReporteUsuario />
         }
       </div>
