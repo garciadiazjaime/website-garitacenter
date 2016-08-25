@@ -1,5 +1,9 @@
+/* eslint max-len: [2, 500, 4] */
 import React from 'react';
+import _ from 'lodash';
+import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
+import RequestUtil from '../../../utils/requestUtil';
 
 
 export default class QuestionReview extends React.Component {
@@ -8,15 +12,61 @@ export default class QuestionReview extends React.Component {
     super();
     this.clickHandler = this.clickHandler.bind(this);
     this.backHandler = this.backHandler.bind(this);
+    this.saveSurvey = this.saveSurvey.bind(this);
+    this.renderInvalidResponse = this.renderInvalidResponse.bind(this);
+    this.state = {
+      formMessage: '',
+      showLoading: false,
+    };
   }
 
   clickHandler() {
-    this.props.clickHandler('QUESTION_SAVE');
+    this.saveSurvey();
   }
 
   backHandler() {
     this.props.clickHandler('QUESTION_TIME', {
       time: '',
+    });
+  }
+
+  saveSurvey() {
+    const data = _.assign({}, this.props.data);
+    const url = '/user/report';
+    console.log('data', data);
+    if (data && data.port && data.type && data.entry && data.place && data.time) {
+      // remove data not related to survey
+      delete data.view;
+      this.setState(_.assign({}, this.state, {
+        showLoading: true,
+      }));
+      RequestUtil.post(url, data).then((results) => {
+        if (results) {
+          if (results.entity.status) {
+            this.props.clickHandler('QUESTION_SAVE');
+          } else {
+            this.renderInvalidResponse();
+          }
+        } else {
+          this.renderInvalidResponse();
+        }
+      }, () => {
+        this.renderInvalidResponse();
+      });
+    } else {
+      this.setState({
+        formMessage: 'Favor de llenar todos los campos.',
+        showLoading: false,
+        status: false,
+      });
+    }
+  }
+
+  renderInvalidResponse() {
+    this.setState({
+      formMessage: 'Lo sentimos, favor de intentar más tarde.',
+      showLoading: false,
+      status: false,
     });
   }
 
@@ -70,6 +120,10 @@ export default class QuestionReview extends React.Component {
       <div className="row">
         <a onClick={this.backHandler}>Volver</a>
       </div>
+      <div className="form-group">
+        <span className={ this.state.status !== true ? 'text-danger' : 'text-success' }>{this.state.formMessage}</span>
+      </div>
+      { this.state.showLoading ? <Loader /> : null }
     </div>);
   }
 }
