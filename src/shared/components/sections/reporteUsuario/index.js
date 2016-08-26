@@ -23,14 +23,10 @@ export default class ReporteUsuarioSection extends React.Component {
         view: 'QUESTION_ENTRY',
       });
     } else {
-      if (viewState !== 'QUESTION_SAVE') {
-        const newState = _.assign({}, this.state, state, {
-          view: viewState,
-        });
-        this.setState(newState);
-      } else {
-        this.saveSurvey();
-      }
+      const newState = _.assign({}, this.state, state, {
+        view: viewState,
+      });
+      this.setState(newState);
     }
   }
 

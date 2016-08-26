@@ -28,42 +28,42 @@ export default class QuestionTime extends React.Component {
       Cuánto tiempo llevas esperando?
       <div className="row">
         <div className="col-sm-6">
-          <ClickOption value="time_a" clickHandler={this.clickHandler}>
+          <ClickOption value="15_mins" clickHandler={this.clickHandler}>
             0:15
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_b" clickHandler={this.clickHandler}>
+          <ClickOption value="30_mins" clickHandler={this.clickHandler}>
             0:30
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_c" clickHandler={this.clickHandler}>
+          <ClickOption value="1_hra" clickHandler={this.clickHandler}>
             1:00
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_d" clickHandler={this.clickHandler}>
+          <ClickOption value="1:30_hra" clickHandler={this.clickHandler}>
             1:30
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_e" clickHandler={this.clickHandler}>
+          <ClickOption value="2_hrs" clickHandler={this.clickHandler}>
             2:00
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_f" clickHandler={this.clickHandler}>
+          <ClickOption value="3_hrs" clickHandler={this.clickHandler}>
             3:00
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_g" clickHandler={this.clickHandler}>
+          <ClickOption value="4_hrs" clickHandler={this.clickHandler}>
             4:00
           </ClickOption>
         </div>
         <div className="col-sm-6">
-          <ClickOption value="time_h" clickHandler={this.clickHandler}>
+          <ClickOption value="ya_vivo_aqui" clickHandler={this.clickHandler}>
             ya vivo aquí
           </ClickOption>
         </div>
