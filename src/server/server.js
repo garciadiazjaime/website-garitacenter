@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import DataWrapper from './dataWrapper';
 import config from '../../config';
 import apiRoutes from './helpers/api';
+import userRoutes from './routes/userRoutes';
 import routes from '../shared/config/routes';
 import RequestUtil from '../shared/utils/requestUtil';
 
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('static'));
 
 app.use('/api/', apiRoutes);
+app.use('/user/', userRoutes);
 
 app.get('/*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -52,18 +54,6 @@ app.get('/*', (req, res) => {
       res.status(404).send('Not found');
     }
   });
-});
-
-app.post('/user/report', (req, res) => {
-  const apiUrl = `${config.get('api.url')}user/report`;
-  const data = req.body;
-  RequestUtil.post(apiUrl, data)
-    .then((results) => {
-      res.status(200).send(results.entity);
-    })
-    .catch((error) => {
-      res.send(error);
-    });
 });
 
 app.set('ipaddress', config.get('ipaddress'));
