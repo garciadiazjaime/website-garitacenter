@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
+import TweetsBlock from './tweetsBlock';
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
@@ -18,20 +19,10 @@ export default class ReporteUsuarioSection extends React.Component {
   }
 
   clickHandler(viewState, state) {
-    if (typeof viewState === 'object') {
-      this.setState({
-        view: 'QUESTION_ENTRY',
-      });
-    } else {
-      if (viewState !== 'QUESTION_SAVE') {
-        const newState = _.assign({}, this.state, state, {
-          view: viewState,
-        });
-        this.setState(newState);
-      } else {
-        this.saveSurvey();
-      }
-    }
+    const newState = _.assign({}, this.state, state, {
+      view: viewState,
+    });
+    this.setState(newState);
   }
 
   renderInit() {
@@ -48,7 +39,7 @@ export default class ReporteUsuarioSection extends React.Component {
     console.log(this.state);
     let content;
     if (!this.state.view || this.state.view === 'INIT') {
-      content = this.renderInit();
+      content = (<TweetsBlock clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_ENTRY') {
       content = (<QuestionEntry clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_PLACE') {
@@ -58,7 +49,7 @@ export default class ReporteUsuarioSection extends React.Component {
     } else if (this.state.view === 'QUESTION_REVIEW') {
       content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
     } else if (this.state.view === 'QUESTION_SAVE') {
-      content = this.renderInit();
+      content = (<TweetsBlock clickHandler={this.clickHandler} />);
     }
     return (<div className="container-fluid">
       {content}

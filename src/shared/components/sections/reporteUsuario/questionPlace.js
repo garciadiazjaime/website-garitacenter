@@ -30,27 +30,27 @@ export default class QuestionPlace extends React.Component {
   renderSanYsidrio() {
     return (<div className="row">
       <div className="col-sm-12">
-        <ClickOption value="place_a" clickHandler={this.clickHandler}>
+        <ClickOption value="a_menos_de_10_carros" clickHandler={this.clickHandler}>
           A menos de 10 carros
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_b" clickHandler={this.clickHandler}>
+        <ClickOption value="el_puente" clickHandler={this.clickHandler}>
           En el puente
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_c" clickHandler={this.clickHandler}>
+        <ClickOption value="las_tiendas" clickHandler={this.clickHandler}>
           En las tiendas
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_d" clickHandler={this.clickHandler}>
+        <ClickOption value="el_arco" clickHandler={this.clickHandler}>
           En el arco
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_e" clickHandler={this.clickHandler}>
+        <ClickOption value="costco" clickHandler={this.clickHandler}>
           En costco
         </ClickOption>
       </div>
@@ -60,27 +60,27 @@ export default class QuestionPlace extends React.Component {
   renderOtay() {
     return (<div className="row">
       <div className="col-sm-12">
-        <ClickOption value="place_a" clickHandler={this.clickHandler}>
+        <ClickOption value="a_menos_de_10_carros" clickHandler={this.clickHandler}>
           A menos de 10 carros
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_b" clickHandler={this.clickHandler}>
+        <ClickOption value="el_puente" clickHandler={this.clickHandler}>
           En el puente
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_c" clickHandler={this.clickHandler}>
+        <ClickOption value="la_fruteria" clickHandler={this.clickHandler}>
           En la frutería
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_d" clickHandler={this.clickHandler}>
+        <ClickOption value="los_mariscos" clickHandler={this.clickHandler}>
           En los mariscos
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="place_e" clickHandler={this.clickHandler}>
+        <ClickOption value="el_parque_de_la_amistad" clickHandler={this.clickHandler}>
           En el parque de la amistad
         </ClickOption>
       </div>

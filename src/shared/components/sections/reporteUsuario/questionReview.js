@@ -33,7 +33,6 @@ export default class QuestionReview extends React.Component {
   saveSurvey() {
     const data = _.assign({}, this.props.data);
     const url = '/user/report';
-    console.log('data', data);
     if (data && data.port && data.type && data.entry && data.place && data.time) {
       // remove data not related to survey
       delete data.view;
@@ -41,12 +40,8 @@ export default class QuestionReview extends React.Component {
         showLoading: true,
       }));
       RequestUtil.post(url, data).then((results) => {
-        if (results) {
-          if (results.entity.status) {
-            this.props.clickHandler('QUESTION_SAVE');
-          } else {
-            this.renderInvalidResponse();
-          }
+        if (results && results.entity.status) {
+          this.props.clickHandler('QUESTION_SAVE');
         } else {
           this.renderInvalidResponse();
         }
