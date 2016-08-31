@@ -110,3 +110,9 @@
   background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
   background: linear-gradient($direction, $color-stops);
 }
+/// Mixin box-shadow
+@mixin box-shadow($string) {
+	-webkit-box-shadow: $string;
+	-moz-box-shadow:    $string;
+	box-shadow:         $string;
+}
