@@ -2,8 +2,12 @@
 import React from 'react';
 import _ from 'lodash';
 
+<<<<<<< HEAD
 const style = require('./style.scss');
 
+=======
+import TweetsBlock from './tweetsBlock';
+>>>>>>> d91693ea93d0453f38e044a1264d184f5423abcf
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
@@ -21,16 +25,10 @@ export default class ReporteUsuarioSection extends React.Component {
   }
 
   clickHandler(viewState, state) {
-    if (typeof viewState === 'object') {
-      this.setState({
-        view: 'QUESTION_ENTRY',
-      });
-    } else {
-      const newState = viewState !== 'QUESTION_SAVE' ? _.assign({}, this.state, state, {
-        view: viewState,
-      }) : { view: 'QUESTION_SAVE', entry: '', place: '', port: '', time: '', type: '' };
-      this.setState(newState);
-    }
+    const newState = _.assign({}, this.state, state, {
+      view: viewState,
+    });
+    this.setState(newState);
   }
 
   renderInit() {
@@ -51,17 +49,17 @@ export default class ReporteUsuarioSection extends React.Component {
     console.log(this.state);
     let content;
     if (!this.state.view || this.state.view === 'INIT') {
-      content = this.renderInit();
+      content = (<TweetsBlock clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_ENTRY') {
       content = (<QuestionEntry clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_PLACE') {
-      content = (<QuestionPlace clickHandler={this.clickHandler} />);
+      content = (<QuestionPlace clickHandler={this.clickHandler} port={this.state.port} />);
     } else if (this.state.view === 'QUESTION_TIME') {
       content = (<QuestionTime clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_REVIEW') {
       content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
     } else if (this.state.view === 'QUESTION_SAVE') {
-      content = this.renderInit();
+      content = (<TweetsBlock clickHandler={this.clickHandler} />);
     }
     return (<div className="container-fluid">
       {content}
