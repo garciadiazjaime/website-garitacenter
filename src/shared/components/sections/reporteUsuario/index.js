@@ -2,12 +2,8 @@
 import React from 'react';
 import _ from 'lodash';
 
-<<<<<<< HEAD
 const style = require('./style.scss');
-
-=======
 import TweetsBlock from './tweetsBlock';
->>>>>>> d91693ea93d0453f38e044a1264d184f5423abcf
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
