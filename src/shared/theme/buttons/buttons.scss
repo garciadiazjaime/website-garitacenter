@@ -1,0 +1,25 @@
+.btn1 {
+  background: #000;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  @include box-shadow(0 5px 10px rgba(0,0,0,0.3));
+
+  &:hover {
+    color: #fff;
+    @include box-shadow(0 7px 20px rgba(0,0,0,0.2));
+    @include translate(0, -2px);
+  }
+  &:active, &:focus {
+    @include box-shadow(0 3px 6px rgba(0,0,0,0.35));
+    @include translate(0, 2px);
+  }
+}

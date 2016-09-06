@@ -5,6 +5,8 @@ import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
 import RequestUtil from '../../../utils/requestUtil';
 
+const style = require('./style.scss');
+
 
 export default class QuestionReview extends React.Component {
 
@@ -107,7 +109,7 @@ export default class QuestionReview extends React.Component {
           {this.renderTime(data.time)}
         </div>
         <div className="col-sm-12">
-          <ClickOption clickHandler={this.clickHandler} value="">
+          <ClickOption clickHandler={this.clickHandler} value="" className={style.btn1}>
             Publicar
           </ClickOption>
         </div>

@@ -1,3 +1,6 @@
+/* eslint max-len: [2, 500, 4] */
+const style = require('./style.scss');
+
 import React from 'react';
 import _ from 'lodash';
 
@@ -27,7 +30,11 @@ export default class ReporteUsuarioSection extends React.Component {
 
   renderInit() {
     return (<div>
-      <a className="btn btn-default" onClick={this.clickHandler}>Reportar</a>
+      <a className={style.btn_report} onClick={this.clickHandler}>¿Cómo te va en la línea?
+        <span className={style.subtitle}>
+          Repórtalo aquí y ayuda a los demás
+        </span>
+      </a>
       <br />
       <div>
         mostrar feed de twitter

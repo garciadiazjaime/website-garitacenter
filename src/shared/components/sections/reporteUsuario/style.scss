@@ -1,0 +1,32 @@
+@import '../../../theme/constants.scss';
+@import '../../../theme/buttons/buttons.scss';
+
+.btn_report {
+  @extend .btn1;
+  background: $cyan;
+
+  .subtitle {
+    color: $yellow;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+  }
+}
+.btn_option {
+  @extend .btn1;
+  background: #fff;
+  color: $darkBlue;
+
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &:hover {
+    color: $darkBlue;
+  }
+}
+.btn_wide {
+  @extend .btn_option;
+  width: 100%;
+}
