@@ -14,6 +14,7 @@ export default class AppHandler extends React.Component {
     super(props, context);
     this.state = {
       data: context.data ? context.data : window._data,
+      showOnlyContentOn: '/reporte-usuario',
     };
   }
 
@@ -66,15 +67,28 @@ export default class AppHandler extends React.Component {
     }
   }
 
+  renderFullContent(content) {
+    return (<div>
+      <MainMenu />
+      <MenuReport location={this.props.location.pathname} />
+      {content}
+      <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
+    </div>);
+  }
+
+  renderJustContent(content) {
+    return content;
+  }
+
   render() {
     const children = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, { data: this.state.data });
     });
     return (<div>
-      <MainMenu />
-      <MenuReport location={this.props.location.pathname} />
-      {children}
-      <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
+      {
+        this.props.location.pathname !== this.state.showOnlyContentOn ?
+          this.renderFullContent(children) : this.renderJustContent(children)
+      }
     </div>);
   }
 }

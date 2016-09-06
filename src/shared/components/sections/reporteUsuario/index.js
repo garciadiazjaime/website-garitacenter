@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 const style = require('./style.scss');
 
-import TweetsBlock from './tweetsBlock';
+import SurveyInit from './surveyInit';
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
@@ -43,10 +43,9 @@ export default class ReporteUsuarioSection extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     let content;
     if (!this.state.view || this.state.view === 'INIT') {
-      content = (<TweetsBlock clickHandler={this.clickHandler} />);
+      content = (<SurveyInit clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_ENTRY') {
       content = (<QuestionEntry clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_PLACE') {
@@ -56,7 +55,7 @@ export default class ReporteUsuarioSection extends React.Component {
     } else if (this.state.view === 'QUESTION_REVIEW') {
       content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
     } else if (this.state.view === 'QUESTION_SAVE') {
-      content = (<TweetsBlock clickHandler={this.clickHandler} />);
+      content = (<SurveyInit clickHandler={this.clickHandler} />);
     }
     return (<div className={style.report}>
       {content}
