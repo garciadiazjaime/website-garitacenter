@@ -24,36 +24,36 @@ export default class QuestionPort extends React.Component {
 
   render() {
     return (<div className="container-fluid">
-      Por dónde cruzas?
       <div className="row">
         <div className="col-sm-12">
-          San Ysidrio
+          <h2 className={style.heading2}>Por dónde cruzas?</h2>
+          <h3 className={style.heading3}>San Ysidrio</h3>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="san_ysidro::carro::normal" clickHandler={this.clickHandler}>
             <SVG network="normal-lane" />
             Normal
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="san_ysidro::caro::ready_lane" clickHandler={this.clickHandler}>
             <SVG network="ready-lane" />
             R. Lane
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="san_ysidro::carro::sentri" clickHandler={this.clickHandler}>
             <SVG network="sentry-lane" />
             Sentri
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="san_ysidro::peatonal::normal" clickHandler={this.clickHandler}>
             <SVG network="normal-ped" />
             Normal
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="san_ysidro::peatonal::ready_lane" clickHandler={this.clickHandler}>
             <SVG network="ready-ped" />
             R. Lane
@@ -63,33 +63,33 @@ export default class QuestionPort extends React.Component {
 
       <div className="row">
         <div className="col-sm-12">
-          Otay
+          <h3 className={style.heading3}>Otay</h3>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="otay::carro::normal" clickHandler={this.clickHandler}>
             <SVG network="normal-lane" />
             Normal
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="otay::carro::ready_lane" clickHandler={this.clickHandler}>
             <SVG network="ready-lane" />
             R. Lane
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="otay::carro::sentri" clickHandler={this.clickHandler}>
             <SVG network="sentry-lane" />
             Sentri
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="otay::peatonal::normal" clickHandler={this.clickHandler}>
             <SVG network="normal-ped" />
             Normal
           </ClickOption>
         </div>
-        <div className="col-sm-4">
+        <div className="col-xs-4">
           <ClickOption className={style.btn_option} value="otay::peatonal::ready_lane" clickHandler={this.clickHandler}>
             <SVG network="ready-ped" />
             R.Lane

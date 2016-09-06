@@ -27,51 +27,53 @@ export default class QuestionTime extends React.Component {
 
   render() {
     return (<div className="container-fluid">
-      Cuánto tiempo llevas esperando?
+      <h2 className={style.heading2}>Cuánto tiempo llevas esperando?</h2>
       <div className="row">
-        <div className="col-sm-6">
-          <ClickOption value="15_mins" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="15_mins" clickHandler={this.clickHandler} className={style.btn_option}>
             0:15
           </ClickOption>
         </div>
-        <div className="col-sm-6">
-          <ClickOption value="30_mins" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="30_mins" clickHandler={this.clickHandler} className={style.btn_option}>
             0:30
           </ClickOption>
         </div>
-        <div className="col-sm-6">
-          <ClickOption value="1_hra" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="1_hra" clickHandler={this.clickHandler} className={style.btn_option}>
             1:00
           </ClickOption>
         </div>
-        <div className="col-sm-6">
-          <ClickOption value="1:30_hra" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="1:30_hra" clickHandler={this.clickHandler} className={style.btn_option}>
             1:30
           </ClickOption>
         </div>
-        <div className="col-sm-6">
-          <ClickOption value="2_hrs" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="2_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
             2:00
           </ClickOption>
         </div>
-        <div className="col-sm-6">
-          <ClickOption value="3_hrs" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="3_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
             3:00
           </ClickOption>
         </div>
-        <div className="col-sm-6">
-          <ClickOption value="4_hrs" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="4_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
             4:00
           </ClickOption>
         </div>
-        <div className="col-sm-6">
-          <ClickOption value="ya_vivo_aqui" clickHandler={this.clickHandler} className={style.btn_wide}>
+        <div className="col-xs-6">
+          <ClickOption value="ya_vivo_aqui" clickHandler={this.clickHandler} className={style.btn_option}>
             ya vivo aquí
           </ClickOption>
         </div>
       </div>
       <div className="row">
-        <a onClick={this.backHandler}>Volver</a>
+        <div className="col-xs-12">
+          <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
+        </div>
       </div>
     </div>);
   }

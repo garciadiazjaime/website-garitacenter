@@ -1,9 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
 
-import RequestUtil from '../../../utils/requestUtil';
+// import RequestUtil from '../../../utils/requestUtil';
 import { timeSince } from '../../../utils/string';
 
+const style = require('./style.scss');
 
 export default class TweetsBlock extends React.Component {
 
@@ -15,20 +16,20 @@ export default class TweetsBlock extends React.Component {
     };
   }
 
-  componentDidMount() {
-    RequestUtil.get('/user/report')
-      .then((results) => {
-        if (_.isArray(results.entity) && results.entity.length) {
-          const tweets = _.sortBy(results.entity, (item) => {
-            return new Date(item.created_at);
-          }).reverse();
-          const newState = _.assign({}, this.state, {
-            tweets,
-          });
-          this.setState(newState);
-        }
-      });
-  }
+  // componentDidMount() {
+  //   RequestUtil.get('/user/report')
+  //     .then((results) => {
+  //       if (_.isArray(results.entity) && results.entity.length) {
+  //         const tweets = _.sortBy(results.entity, (item) => {
+  //           return new Date(item.created_at);
+  //         }).reverse();
+  //         const newState = _.assign({}, this.state, {
+  //           tweets,
+  //         });
+  //         this.setState(newState);
+  //       }
+  //     });
+  // }
 
   clickHandler() {
     this.props.clickHandler('QUESTION_ENTRY', {});
@@ -48,7 +49,11 @@ export default class TweetsBlock extends React.Component {
 
   render() {
     return (<div>
-      <a className="btn btn-default" onClick={this.clickHandler}>Reportar</a>
+      <a className={style.btn_report} onClick={this.clickHandler}>¿Cómo te va en la línea?
+        <span className={style.subtitle}>
+          Repórtalo aquí y ayuda a los demás
+        </span>
+      </a>
       <br />
       { this.renderTweets(this.state.tweets) }
     </div>);
