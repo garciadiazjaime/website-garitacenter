@@ -96,26 +96,34 @@ export default class QuestionReview extends React.Component {
     return (<div className="container-fluid">
       <div className="row">
         <div className="col-sm-12">
-          <p>Por dónde cruzas?</p>
-          {this.renderPort(data.port)}
-          {this.renderEntry(data.entry, data.type)}
+          <h2 className={style.heading2}>Por dónde cruzas?</h2>
+          <h3 className={style.heading3}>
+            {this.renderPort(data.port)}
+            {this.renderEntry(data.entry, data.type)}
+          </h3>
         </div>
         <div className="col-sm-12">
-          <p>A qué altura estas?</p>
-          {this.renderPlace(data.place)}
+          <h2 className={style.heading2}>A qué altura estas?</h2>
+          <h3 className={style.heading3}>
+            {this.renderPlace(data.place)}
+          </h3>
         </div>
         <div className="col-sm-12">
-          <p>Cuánto tiempo llevas esperando?</p>
-          {this.renderTime(data.time)}
+          <h2 className={style.heading2}>Cuánto tiempo llevas esperando?</h2>
+          <h3 className={style.heading3}>
+            {this.renderTime(data.time)}
+          </h3>
         </div>
         <div className="col-sm-12">
-          <ClickOption clickHandler={this.clickHandler} value="" className={style.btn1}>
+          <ClickOption clickHandler={this.clickHandler} value="" className={style.btn_publish}>
             Publicar
           </ClickOption>
         </div>
       </div>
       <div className="row">
-        <a onClick={this.backHandler}>Volver</a>
+        <div className="col-xs-12">
+          <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
+        </div>
       </div>
       <div className="form-group">
         <span className={ this.state.status !== true ? 'text-danger' : 'text-success' }>{this.state.formMessage}</span>

@@ -32,28 +32,28 @@ export default class QuestionPlace extends React.Component {
   renderSanYsidrio() {
     return (<div className="row">
       ¿A qué altura estas?
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_a" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_a" clickHandler={this.clickHandler}>
           A menos de 10 carros
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_b" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_b" clickHandler={this.clickHandler}>
           En el puente de las ballenas
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_c" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_c" clickHandler={this.clickHandler}>
           Por el Palacio Municipal
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_d" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_d" clickHandler={this.clickHandler}>
           Por el Hospital General
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_e" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_e" clickHandler={this.clickHandler}>
           Por la 20 de noviembre
         </ClickOption>
       </div>
@@ -62,29 +62,29 @@ export default class QuestionPlace extends React.Component {
 
   renderOtay() {
     return (<div className="row">
-      ¿A qué altura estas?
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_a" clickHandler={this.clickHandler}>
+      <h2 className={style.heading2}>¿A qué altura estas?</h2>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_a" clickHandler={this.clickHandler}>
           A menos de 10 carros
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_b" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_b" clickHandler={this.clickHandler}>
           En el puente
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_c" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_c" clickHandler={this.clickHandler}>
           En la frutería
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_d" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_d" clickHandler={this.clickHandler}>
           En los mariscos
         </ClickOption>
       </div>
-      <div className="col-sm-12">
-        <ClickOption className={style.btn_wide} value="place_e" clickHandler={this.clickHandler}>
+      <div className="col-xs-12">
+        <ClickOption className={style.btn_option} value="place_e" clickHandler={this.clickHandler}>
           En el parque de la amistad
         </ClickOption>
       </div>
@@ -96,7 +96,9 @@ export default class QuestionPlace extends React.Component {
     return (<div className="container-fluid">
       { port === 'san_ysidro' ? this.renderSanYsidrio() : this.renderOtay() }
       <div className="row">
-        <a onClick={this.backHandler}>Volver</a>
+        <div className="col-xs-12">
+          <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
+        </div>
       </div>
     </div>);
   }

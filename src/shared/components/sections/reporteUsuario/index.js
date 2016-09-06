@@ -1,8 +1,8 @@
 /* eslint max-len: [2, 500, 4] */
-const style = require('./style.scss');
-
 import React from 'react';
 import _ from 'lodash';
+
+const style = require('./style.scss');
 
 import TweetsBlock from './tweetsBlock';
 import QuestionEntry from './questionEntry';
@@ -58,7 +58,7 @@ export default class ReporteUsuarioSection extends React.Component {
     } else if (this.state.view === 'QUESTION_SAVE') {
       content = (<TweetsBlock clickHandler={this.clickHandler} />);
     }
-    return (<div className="container-fluid">
+    return (<div className={style.report}>
       {content}
     </div>);
   }
