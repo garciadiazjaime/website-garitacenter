@@ -1,5 +1,4 @@
 /* eslint max-len: [2, 500, 4] */
-
 import React from 'react';
 import ClickOption from './clickOption';
 import SVG from '../../svg';

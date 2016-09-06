@@ -1,8 +1,9 @@
 /* eslint max-len: [2, 500, 4] */
+const style = require('./style.scss');
+
 import React from 'react';
 import _ from 'lodash';
 
-const style = require('./style.scss');
 import TweetsBlock from './tweetsBlock';
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
@@ -30,9 +31,9 @@ export default class ReporteUsuarioSection extends React.Component {
   renderInit() {
     return (<div>
       <a className={style.btn_report} onClick={this.clickHandler}>¿Cómo te va en la línea?
-      <span className={style.subtitle}>
-        Repórtalo aquí y ayuda a los demás
-      </span>
+        <span className={style.subtitle}>
+          Repórtalo aquí y ayuda a los demás
+        </span>
       </a>
       <br />
       <div>

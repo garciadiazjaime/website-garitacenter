@@ -31,29 +31,30 @@ export default class QuestionPlace extends React.Component {
 
   renderSanYsidrio() {
     return (<div className="row">
+      ¿A qué altura estas?
       <div className="col-sm-12">
-        <ClickOption value="a_menos_de_10_carros" clickHandler={this.clickHandler}>
+        <ClickOption className={style.btn_wide} value="place_a" clickHandler={this.clickHandler}>
           A menos de 10 carros
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="el_puente" clickHandler={this.clickHandler}>
-          En el puente
+        <ClickOption className={style.btn_wide} value="place_b" clickHandler={this.clickHandler}>
+          En el puente de las ballenas
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="las_tiendas" clickHandler={this.clickHandler}>
-          En las tiendas
+        <ClickOption className={style.btn_wide} value="place_c" clickHandler={this.clickHandler}>
+          Por el Palacio Municipal
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="el_arco" clickHandler={this.clickHandler}>
-          En el arco
+        <ClickOption className={style.btn_wide} value="place_d" clickHandler={this.clickHandler}>
+          Por el Hospital General
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="costco" clickHandler={this.clickHandler}>
-          En costco
+        <ClickOption className={style.btn_wide} value="place_e" clickHandler={this.clickHandler}>
+          Por la 20 de noviembre
         </ClickOption>
       </div>
     </div>);
@@ -61,28 +62,29 @@ export default class QuestionPlace extends React.Component {
 
   renderOtay() {
     return (<div className="row">
+      ¿A qué altura estas?
       <div className="col-sm-12">
-        <ClickOption value="a_menos_de_10_carros" clickHandler={this.clickHandler}>
+        <ClickOption className={style.btn_wide} value="place_a" clickHandler={this.clickHandler}>
           A menos de 10 carros
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="el_puente" clickHandler={this.clickHandler}>
+        <ClickOption className={style.btn_wide} value="place_b" clickHandler={this.clickHandler}>
           En el puente
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="la_fruteria" clickHandler={this.clickHandler}>
+        <ClickOption className={style.btn_wide} value="place_c" clickHandler={this.clickHandler}>
           En la frutería
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="los_mariscos" clickHandler={this.clickHandler}>
+        <ClickOption className={style.btn_wide} value="place_d" clickHandler={this.clickHandler}>
           En los mariscos
         </ClickOption>
       </div>
       <div className="col-sm-12">
-        <ClickOption value="el_parque_de_la_amistad" clickHandler={this.clickHandler}>
+        <ClickOption className={style.btn_wide} value="place_e" clickHandler={this.clickHandler}>
           En el parque de la amistad
         </ClickOption>
       </div>
@@ -92,34 +94,6 @@ export default class QuestionPlace extends React.Component {
   render() {
     const { port } = this.props;
     return (<div className="container-fluid">
-      <div className="row">
-        ¿A qué altura estas?
-        <div className="col-sm-12">
-          <ClickOption className={style.btn_place} value="place_a" clickHandler={this.clickHandler}>
-            A menos de 10 carros
-          </ClickOption>
-        </div>
-        <div className="col-sm-12">
-          <ClickOption className={style.btn_place} value="place_b" clickHandler={this.clickHandler}>
-            En el puente
-          </ClickOption>
-        </div>
-        <div className="col-sm-12">
-          <ClickOption className={style.btn_place} value="place_c" clickHandler={this.clickHandler}>
-            En la frutería
-          </ClickOption>
-        </div>
-        <div className="col-sm-12">
-          <ClickOption className={style.btn_place} value="place_d" clickHandler={this.clickHandler}>
-            En los mariscos
-          </ClickOption>
-        </div>
-        <div className="col-sm-12">
-          <ClickOption className={style.btn_place} value="place_e" clickHandler={this.clickHandler}>
-            En el parque de la amistad
-          </ClickOption>
-        </div>
-      </div>
       { port === 'san_ysidro' ? this.renderSanYsidrio() : this.renderOtay() }
       <div className="row">
         <a onClick={this.backHandler}>Volver</a>
