@@ -3,7 +3,7 @@ import React from 'react';
 import ClickOption from './clickOption';
 import SVG from '../../svg';
 
-const style = require('./style.scss');
+const style = require('../reporteUsuario/style.scss');
 
 export default class QuestionPort extends React.Component {
 

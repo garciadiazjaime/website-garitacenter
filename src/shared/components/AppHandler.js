@@ -14,7 +14,7 @@ export default class AppHandler extends React.Component {
     super(props, context);
     this.state = {
       data: context.data ? context.data : window._data,
-      showOnlyContentOn: '/reporte-usuario',
+      showOnlyContentOn: '/encuesta',
     };
   }
 

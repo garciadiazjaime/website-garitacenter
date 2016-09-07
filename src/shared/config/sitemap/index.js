@@ -1,6 +1,7 @@
 import AppHandler from '../../components/AppHandler';
 import HomeSection from '../../components/sections/home';
 import ReporteUsuarioSection from '../../components/sections/reporteUsuario';
+import SurverSection from '../../components/sections/survey';
 
 export default {
   items: {
@@ -14,6 +15,10 @@ export default {
       title: 'Reporte de Usuario',
       url: '/reporte-usuario',
       component: ReporteUsuarioSection,
+    }, {
+      title: 'Forma Reporte de Usuario',
+      url: '/encuesta',
+      component: SurverSection,
     }],
   },
   icons: [{

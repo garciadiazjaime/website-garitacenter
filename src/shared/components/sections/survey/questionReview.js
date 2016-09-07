@@ -5,7 +5,7 @@ import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
 import RequestUtil from '../../../utils/requestUtil';
 
-const style = require('./style.scss');
+const style = require('../reporteUsuario/style.scss');
 
 
 export default class QuestionReview extends React.Component {

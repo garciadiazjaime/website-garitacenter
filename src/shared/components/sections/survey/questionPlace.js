@@ -2,7 +2,7 @@
 import React from 'react';
 import ClickOption from './clickOption';
 
-const style = require('./style.scss');
+const style = require('../reporteUsuario/style.scss');
 
 export default class QuestionPlace extends React.Component {
 
