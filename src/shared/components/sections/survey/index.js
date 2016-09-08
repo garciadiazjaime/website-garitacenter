@@ -1,13 +1,15 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
+import { Link } from 'react-router';
 import _ from 'lodash';
-
-const style = require('../reporteUsuario/style.scss');
 
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
 import QuestionReview from './questionReview';
+import { toTitleCase } from '../../../utils/string';
+
+const style = require('../reporteUsuario/style.scss');
 
 
 export default class ReporteUsuarioSection extends React.Component {
@@ -15,8 +17,10 @@ export default class ReporteUsuarioSection extends React.Component {
   constructor() {
     super();
     this.clickHandler = this.clickHandler.bind(this);
+    this.renderBreadcrumb = this.renderBreadcrumb.bind(this);
     this.state = {
       view: 'QUESTION_ENTRY',
+      showBreadCrumb: ['QUESTION_PLACE', 'QUESTION_TIME'],
     };
   }
 
@@ -41,6 +45,20 @@ export default class ReporteUsuarioSection extends React.Component {
     </div>);
   }
 
+  renderBreadcrumb() {
+    const { showBreadCrumb, view } = this.state;
+    const port = toTitleCase(this.state.port || '');
+    const entry = toTitleCase(this.state.entry || '');
+    const type = toTitleCase(this.state.type || '');
+    const place = toTitleCase(this.state.place || '');
+    return showBreadCrumb.indexOf(view.toUpperCase()) !== -1 ? (<div>
+      { port } <span>.</span>
+      { entry } <span>.</span>
+      { type } { place ? <span>.</span> : null }
+      { place }
+    </div>) : null;
+  }
+
   render() {
     let content;
     if (this.state.view === 'QUESTION_ENTRY') {
@@ -55,6 +73,14 @@ export default class ReporteUsuarioSection extends React.Component {
       content = (<div>fin</div>);
     }
     return (<div className={style.report}>
+      <div>
+        <div>
+          {this.renderBreadcrumb()}
+        </div>
+        <div>
+          <Link to="/reporte-usuario">x</Link>
+        </div>
+      </div>
       {content}
     </div>);
   }
