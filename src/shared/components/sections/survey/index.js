@@ -52,9 +52,9 @@ export default class ReporteUsuarioSection extends React.Component {
     const type = toTitleCase(this.state.type || '');
     const place = toTitleCase(this.state.place || '');
     return showBreadCrumb.indexOf(view.toUpperCase()) !== -1 ? (<div>
-      { port } <span>.</span>
-      { entry } <span>.</span>
-      { type } { place ? <span>.</span> : null }
+      { port } <span className={style.triangleRight}></span>
+      { entry } <span className={style.triangleRight}></span>
+      { type } { place ? <span className={style.triangleRight}></span> : null }
       { place }
     </div>) : null;
   }
@@ -74,11 +74,9 @@ export default class ReporteUsuarioSection extends React.Component {
     }
     return (<div className={style.report}>
       <div>
-        <div>
+        <div className={style.reportHeader}>
           {this.renderBreadcrumb()}
-        </div>
-        <div>
-          <Link to="/reporte-usuario">x</Link>
+            <Link to="/reporte-usuario" className={style.closeButton}>&times;</Link>
         </div>
       </div>
       {content}

@@ -70,11 +70,7 @@ export default class QuestionTime extends React.Component {
           </ClickOption>
         </div>
       </div>
-      <div className="row">
-        <div className="col-xs-12">
-          <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
-        </div>
-      </div>
+      <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
     </div>);
   }
 }
