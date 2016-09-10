@@ -31,7 +31,7 @@ export default class QuestionPlace extends React.Component {
 
   renderSanYsidrio() {
     return (<div className="row">
-      ¿A qué altura estas?
+      <h2 className={style.heading2}>¿A qué altura estas?</h2>
       <div className="col-xs-12">
         <ClickOption className={style.btn_option} value="place_a" clickHandler={this.clickHandler}>
           A menos de 10 carros
@@ -95,11 +95,7 @@ export default class QuestionPlace extends React.Component {
     const { port } = this.props;
     return (<div className="container-fluid">
       { port === 'san_ysidro' ? this.renderSanYsidrio() : this.renderOtay() }
-      <div className="row">
-        <div className="col-xs-12">
-          <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
-        </div>
-      </div>
+      <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
     </div>);
   }
 }
