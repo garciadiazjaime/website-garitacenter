@@ -72,7 +72,7 @@ export default class ReporteUsuarioSection extends React.Component {
     } else if (this.state.view === 'QUESTION_SAVE') {
       content = (<div>fin</div>);
     }
-    return (<div className={style.report}>
+    return (<div className={style.survey}>
       <div>
         <div className={style.reportHeader}>
           {this.renderBreadcrumb()}
