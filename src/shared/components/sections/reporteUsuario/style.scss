@@ -2,11 +2,15 @@
 @import '../../../theme/buttons/buttons.scss';
 
 .report {
-  background: $cyan;
   text-align: center;
   height: 100%;
   width: 100%;
   overflow: scroll;
+}
+
+.survey {
+  background: $cyan;
+  @extend .report;
 }
 
 .reportHeader {
