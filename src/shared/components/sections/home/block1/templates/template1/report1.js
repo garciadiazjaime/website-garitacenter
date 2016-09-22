@@ -5,6 +5,13 @@ const style = require('./style.scss');
 
 export default class Report1 extends React.Component {
 
+  renderTime(data) {
+    const addMinsFix = 20;
+    const mins = parseInt(data, 10) || 0;
+    const adjustTime = mins + addMinsFix;
+    return minsToHrs(adjustTime);
+  }
+
   render() {
     const { content, garita } = this.props.data;
     const { car, people } = content;
@@ -51,19 +58,19 @@ export default class Report1 extends React.Component {
           </div>
         </div>
         <div className="col-xs-2 col-sm-2">
-          {minsToHrs(car.normal.time)}
+          {this.renderTime(car.normal.time)}
         </div>
         <div className="col-xs-2">
-          {minsToHrs(car.readyLine.time)}
+          {this.renderTime(car.readyLine.time)}
         </div>
         <div className="col-xs-2">
-          {minsToHrs(car.sentry.time)}
+          {this.renderTime(car.sentry.time)}
         </div>
         <div className="col-xs-2">
-          {minsToHrs(people.normal.time)}
+          {this.renderTime(people.normal.time)}
         </div>
         <div className="col-xs-2">
-          {minsToHrs(people.readyLine.time)}
+          {this.renderTime(people.readyLine.time)}
         </div>
       </div>
     </div>);
