@@ -4,6 +4,7 @@ import _ from 'lodash';
 import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
 import RequestUtil from '../../../utils/requestUtil';
+import { toTitleCase } from '../../../utils/string';
 
 const style = require('../reporteUsuario/style.scss');
 
@@ -69,25 +70,25 @@ export default class QuestionReview extends React.Component {
 
   renderPort(data) {
     return (<div>
-      {data}
+      {toTitleCase(data)}
     </div>);
   }
 
   renderEntry(entry, type) {
     return (<div>
-      {entry}, {type}
+      {toTitleCase(entry)}, {toTitleCase(type)}
     </div>);
   }
 
   renderPlace(data) {
     return (<div>
-      {data}
+      {toTitleCase(data)}
     </div>);
   }
 
   renderTime(data) {
     return (<div>
-      {data}
+      {toTitleCase(data)}
     </div>);
   }
 

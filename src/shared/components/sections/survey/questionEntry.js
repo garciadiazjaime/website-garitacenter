@@ -36,7 +36,7 @@ export default class QuestionPort extends React.Component {
           </ClickOption>
         </div>
         <div className="col-xs-4">
-          <ClickOption className={style.btn_entry} value="san_ysidro::caro::ready_lane" clickHandler={this.clickHandler}>
+          <ClickOption className={style.btn_entry} value="san_ysidro::carro::ready_lane" clickHandler={this.clickHandler}>
             <SVG network="ready-lane" />
             R. Lane
           </ClickOption>
