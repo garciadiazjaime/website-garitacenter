@@ -6,6 +6,7 @@ import MenuReport from './elements/menus/menuReport';
 import Footer from './layout/footer/footer1';
 import scrollUtil from '../utils/scroll';
 import menuUtil from '../utils/menu';
+const style = require('./style.scss');
 
 
 export default class AppHandler extends React.Component {
@@ -84,7 +85,9 @@ export default class AppHandler extends React.Component {
     const children = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, { data: this.state.data });
     });
-    return (<div>
+    const { location } = this.props;
+    const className = location.pathname.indexOf('encuesta') === -1 ? '' : style.background;
+    return (<div className={className}>
       {
         this.props.location.pathname !== this.state.showOnlyContentOn ?
           this.renderFullContent(children) : this.renderJustContent(children)
