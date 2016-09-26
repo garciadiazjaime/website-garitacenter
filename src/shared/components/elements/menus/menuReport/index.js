@@ -9,17 +9,17 @@ export default class MenuReport extends React.Component {
   render() {
     const { location } = this.props;
     const reportLocation = 'reporte-usuario';
-    return (<div className="container-fluid">
-      <div className={style.mainWrapper}>
+    return (<div className={style.mainWrapper}>
+      <div className="container-fluid">
         <ul className="nav nav-tabs">
           <li role="presentation" className={location.indexOf(reportLocation) === -1 ? 'active' : ''}>
             <Link to="/">
-              Reporte oficial
+              Reporte Oficial
             </Link>
           </li>
           <li role="presentation" className={location.indexOf(reportLocation) !== -1 ? 'active' : ''}>
             <Link to="/reporte-usuario">
-              Reporte de usuarios
+              Reporte Usuarios
             </Link>
           </li>
         </ul>

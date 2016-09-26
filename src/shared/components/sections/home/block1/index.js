@@ -23,12 +23,11 @@ export default class Block1 extends React.Component {
     const created = report[0].created;
     const Template = this.getTemplate(data.city);
     return !_.isEmpty(data) ? (<div className="container-fluid">
-      <div className="pull-right">
+      <div>
         <div className={style.lastUpdate}>
           Reporte de Garitas actualizado hace {timeSince(created)}
         </div>
       </div>
-      <br className="clearfix" />
       <Template data={report} />
     </div>) : null;
   }
