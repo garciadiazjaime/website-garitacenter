@@ -4,9 +4,11 @@
 .navbar {
   background: $color1;
   color: $white;
+  padding: 10px;
 
   h1 {
-    font-size: 20px;
+    font-size: 16px;
+    opacity: .6;
 
     @media#{$isPhone}{
       margin-top: 5px;
@@ -14,12 +16,12 @@
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 22px;
     margin-top: 25px;
     margin-right: 0px;
 
     @media#{$isPhone} {
-      margin: -22px 0 0 38px;
+      margin: -26px 0 0 36px;
     }
   }
 
