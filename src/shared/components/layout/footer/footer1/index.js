@@ -44,7 +44,7 @@ export default class FooterAAA extends React.Component {
                 <a href="http://www.playami.com/" title="Directorio Playas de Tijuana" target="_blank">Directorio Playas de Tijuana</a>
               </li>
               <li>
-                <a href="http://www.hoytoca.me/" title="Hoy Toca Me" target="_blank">Educación Sexual</a>
+                <a href="http://www.somospool.com" title="somos pool" target="_blank">POOL</a>
               </li>
               <li>
                 <a href="http://ciudadtijuana.info/" title="Ciudad Tijuana" target="_blank">Ciudad Tijuana</a>

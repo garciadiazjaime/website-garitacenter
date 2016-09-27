@@ -1,8 +1,16 @@
 @import '../../../../theme/constants';
 
 .mainWrapper {
-  margin-top: 72px;
+  margin-top: 85px;
   background: $color1;
+
+  @media#{$isPhone} {
+    margin-top: 72px;
+  }
+
+  @media#{$isTablet} {
+    margin-top: 72px;
+  }
 
   ul {
     border-bottom: none!important;
