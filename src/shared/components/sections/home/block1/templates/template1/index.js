@@ -144,7 +144,7 @@ export default class Template1 extends React.Component {
         </div>
         <div className="col-xs-5">
           <div className={style.port1}>
-            {this.renderTime(port1.content.people.readyLine.time)}
+            {this.renderTime(port1.content.people.pedwest.time)}
           </div>
         </div>
       </div>

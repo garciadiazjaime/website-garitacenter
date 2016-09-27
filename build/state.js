@@ -26,6 +26,10 @@ window._data = {
         "readyLine": {
           "time": "5",
           "lanes": "8"
+        },
+        "pedwest": {
+          "time": "5",
+          "lanes": "8"
         }
       }
     },
