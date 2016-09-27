@@ -4,7 +4,9 @@
 .navbar {
   background: $color1;
   color: $white;
-  padding: 10px;
+  padding: 5px 0 5px 10px;
+  margin-bottom: 0px;
+  border-radius: inherit;
 
   h1 {
     font-size: 16px;
