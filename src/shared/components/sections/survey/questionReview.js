@@ -39,6 +39,9 @@ export default class QuestionReview extends React.Component {
     if (data && data.port && data.type && data.entry && data.place && data.time) {
       // remove data not related to survey
       delete data.view;
+      delete data.showBreadCrumb;
+      // todo: set city using variable
+      data.city = 'tijuana';
       this.setState(_.assign({}, this.state, {
         showLoading: true,
       }));

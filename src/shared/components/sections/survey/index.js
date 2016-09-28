@@ -18,6 +18,7 @@ export default class ReporteUsuarioSection extends React.Component {
     super();
     this.clickHandler = this.clickHandler.bind(this);
     this.renderBreadcrumb = this.renderBreadcrumb.bind(this);
+    this.redirect = this.redirect.bind(this);
     this.state = {
       view: 'QUESTION_ENTRY',
       showBreadCrumb: ['QUESTION_PLACE', 'QUESTION_TIME'],
@@ -25,10 +26,18 @@ export default class ReporteUsuarioSection extends React.Component {
   }
 
   clickHandler(viewState, state) {
-    const newState = _.assign({}, this.state, state, {
-      view: viewState,
-    });
-    this.setState(newState);
+    if (viewState === 'QUESTION_SAVE') {
+      this.redirect();
+    } else {
+      const newState = _.assign({}, this.state, state, {
+        view: viewState,
+      });
+      this.setState(newState);
+    }
+  }
+
+  redirect() {
+    this.props.history.push('/reporte-usuario');
   }
 
   renderInit() {
@@ -64,13 +73,11 @@ export default class ReporteUsuarioSection extends React.Component {
     if (this.state.view === 'QUESTION_ENTRY') {
       content = (<QuestionEntry clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_PLACE') {
-      content = (<QuestionPlace clickHandler={this.clickHandler} port={this.state.port} />);
+      content = (<QuestionPlace clickHandler={this.clickHandler} port={this.state.port} entry={this.state.entry} type={this.state.type} />);
     } else if (this.state.view === 'QUESTION_TIME') {
       content = (<QuestionTime clickHandler={this.clickHandler} />);
     } else if (this.state.view === 'QUESTION_REVIEW') {
       content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
-    } else if (this.state.view === 'QUESTION_SAVE') {
-      content = (<div>fin</div>);
     }
     return (<div className={style.survey}>
       <div>
@@ -83,3 +90,7 @@ export default class ReporteUsuarioSection extends React.Component {
     </div>);
   }
 }
+
+ReporteUsuarioSection.propTypes = {
+  history: React.PropTypes.any,
+};

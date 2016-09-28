@@ -1,6 +1,8 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import ClickOption from './clickOption';
+import _ from 'lodash';
+import PlaceOption from './placeOption';
+import placesData from './placesData';
 
 const style = require('../reporteUsuario/style.scss');
 
@@ -10,8 +12,6 @@ export default class QuestionPlace extends React.Component {
     super();
     this.clickHandler = this.clickHandler.bind(this);
     this.backHandler = this.backHandler.bind(this);
-    this.renderSanYsidrio = this.renderSanYsidrio.bind(this);
-    this.renderOtay = this.renderOtay.bind(this);
   }
 
   clickHandler(value) {
@@ -29,72 +29,15 @@ export default class QuestionPlace extends React.Component {
     });
   }
 
-  renderSanYsidrio() {
-    return (<div className="row">
-      <h2 className={style.heading2}>¿A qué altura estas?</h2>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_a" clickHandler={this.clickHandler}>
-          A menos de 10 carros
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_b" clickHandler={this.clickHandler}>
-          En el puente de las ballenas
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_c" clickHandler={this.clickHandler}>
-          Por el Palacio Municipal
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_d" clickHandler={this.clickHandler}>
-          Por el Hospital General
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_e" clickHandler={this.clickHandler}>
-          Por la 20 de noviembre
-        </ClickOption>
-      </div>
-    </div>);
-  }
-
-  renderOtay() {
-    return (<div className="row">
-      <h2 className={style.heading2}>¿A qué altura estas?</h2>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_a" clickHandler={this.clickHandler}>
-          A menos de 10 carros
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_b" clickHandler={this.clickHandler}>
-          En el puente
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_c" clickHandler={this.clickHandler}>
-          En la frutería
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_d" clickHandler={this.clickHandler}>
-          En los mariscos
-        </ClickOption>
-      </div>
-      <div className="col-xs-12">
-        <ClickOption className={style.btn_option} value="place_e" clickHandler={this.clickHandler}>
-          En el parque de la amistad
-        </ClickOption>
-      </div>
-    </div>);
+  renderQuestions(port, type, entry) {
+    const data = placesData[port] && placesData[port][type] && _.isArray(placesData[port][type][entry]) ? placesData[port][type][entry] : [];
+    return (<PlaceOption data={data} btnClassName={style.btn_option} clickHandler={this.clickHandler} />);
   }
 
   render() {
-    const { port } = this.props;
+    const { port, type, entry } = this.props;
     return (<div className="container-fluid">
-      { port === 'san_ysidro' ? this.renderSanYsidrio() : this.renderOtay() }
+      {this.renderQuestions(port, type, entry)}
       <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
     </div>);
   }
@@ -103,4 +46,6 @@ export default class QuestionPlace extends React.Component {
 QuestionPlace.propTypes = {
   clickHandler: React.PropTypes.func.isRequired,
   port: React.PropTypes.string.isRequired,
+  entry: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string.isRequired,
 };
