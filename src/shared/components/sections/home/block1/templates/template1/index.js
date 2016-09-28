@@ -5,8 +5,8 @@ const style = require('./style.scss');
 
 export default class Template1 extends React.Component {
 
-  renderTime(data) {
-    const addMinsFix = 20;
+  renderTime(data, doAdjust) {
+    const addMinsFix = doAdjust ? 20 : 10;
     const mins = parseInt(data, 10) || 0;
     const adjustTime = mins + addMinsFix;
     return minsToHrs(adjustTime);
@@ -16,6 +16,7 @@ export default class Template1 extends React.Component {
     const { data } = this.props;
     const port1 = data[0];
     const port2 = data[1];
+    const port3 = data[2];
 
     return (<div className={style.report}>
       <div className="row">
@@ -39,12 +40,12 @@ export default class Template1 extends React.Component {
         </div>
         <div className="col-xs-5">
           <div className={style.port1}>
-            {this.renderTime(port1.content.car.normal.time)}
+            {this.renderTime(port1.content.car.normal.time, true)}
           </div>
         </div>
         <div className="col-xs-4">
           <div className={style.port2}>
-            {this.renderTime(port2.content.car.normal.time)}
+            {this.renderTime(port2.content.car.normal.time, true)}
           </div>
         </div>
       </div>
@@ -60,12 +61,12 @@ export default class Template1 extends React.Component {
         </div>
         <div className="col-xs-5">
           <div className={style.port1}>
-            {this.renderTime(port1.content.car.readyLine.time)}
+            {this.renderTime(port1.content.car.readyLine.time, true)}
           </div>
         </div>
         <div className="col-xs-4">
           <div className={style.port2}>
-            {this.renderTime(port2.content.car.readyLine.time)}
+            {this.renderTime(port2.content.car.readyLine.time, true)}
           </div>
         </div>
       </div>
@@ -81,12 +82,12 @@ export default class Template1 extends React.Component {
         </div>
         <div className="col-xs-5">
           <div className={style.port1}>
-            {this.renderTime(port1.content.car.sentry.time)}
+            {this.renderTime(port1.content.car.sentry.time, true)}
           </div>
         </div>
         <div className="col-xs-4">
           <div className={style.port2}>
-            {this.renderTime(port2.content.car.sentry.time)}
+            {this.renderTime(port2.content.car.sentry.time, true)}
           </div>
         </div>
       </div>
@@ -102,12 +103,12 @@ export default class Template1 extends React.Component {
         </div>
         <div className="col-xs-5">
           <div className={style.port1}>
-            {this.renderTime(port1.content.people.normal.time)}
+            {this.renderTime(port1.content.people.normal.time, true)}
           </div>
         </div>
         <div className="col-xs-4">
           <div className={style.port2}>
-            {this.renderTime(port2.content.people.normal.time)}
+            {this.renderTime(port2.content.people.normal.time, true)}
           </div>
         </div>
       </div>
@@ -123,12 +124,12 @@ export default class Template1 extends React.Component {
         </div>
         <div className="col-xs-5">
           <div className={style.port1}>
-            {this.renderTime(port1.content.people.readyLine.time)}
+            {this.renderTime(port1.content.people.readyLine.time, true)}
           </div>
         </div>
         <div className="col-xs-4">
           <div className={style.port2}>
-            {this.renderTime(port2.content.people.readyLine.time)}
+            {this.renderTime(port2.content.people.readyLine.time, true)}
           </div>
         </div>
       </div>
@@ -144,7 +145,7 @@ export default class Template1 extends React.Component {
         </div>
         <div className="col-xs-5">
           <div className={style.port1}>
-            {this.renderTime(port1.content.people.pedwest.time)}
+            {this.renderTime(port3.content.people.normal.time, false)}
           </div>
         </div>
       </div>
