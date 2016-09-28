@@ -19,10 +19,11 @@
   background: $cyan;
 
   .subtitle {
-    color: $gray;
+    color: $white;
     display: block;
     font-size: 13px;
     font-weight: bold;
+    opacity: .8;
   }
 }
 
@@ -125,7 +126,7 @@
   padding: 15px 0;
 
   .time {
-    color: $color2;
+    color: $cyan;
   }
 }
 

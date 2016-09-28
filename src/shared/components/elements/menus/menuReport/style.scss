@@ -1,3 +1,20 @@
+@import '../../../../theme/constants';
+
 .mainWrapper {
-  margin-top: 60px;
+  background: $color1;
+
+  ul {
+    border-bottom: none!important;
+  }
+
+  a {
+    border: none!important;
+    border-radius: inherit!important;
+    font-size: $size1;
+    color: $gray;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

@@ -8,10 +8,12 @@
 }
 
 .lastUpdate {
-  margin-top: 10px;
+  color: $black;
+  opacity: .6;
+  text-align: center;
+  padding: 8px 0;
 
   @media #{$isPhone}{
-    margin-top: 0;
     font-size: 12px;
   }
 }
