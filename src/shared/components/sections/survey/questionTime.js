@@ -56,7 +56,17 @@ export default class QuestionTime extends React.Component {
         </div>
         <div className="col-xs-6">
           <ClickOption value="3_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
+            2:30
+          </ClickOption>
+        </div>
+        <div className="col-xs-6">
+          <ClickOption value="4_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
             3:00
+          </ClickOption>
+        </div>
+        <div className="col-xs-6">
+          <ClickOption value="5_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
+            3:30
           </ClickOption>
         </div>
         <div className="col-xs-6">
@@ -65,8 +75,8 @@ export default class QuestionTime extends React.Component {
           </ClickOption>
         </div>
         <div className="col-xs-6">
-          <ClickOption value="ya_vivo_aqui" clickHandler={this.clickHandler} className={style.btn_option}>
-            ya vivo aquí
+          <ClickOption value="5_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
+            4:30
           </ClickOption>
         </div>
       </div>
