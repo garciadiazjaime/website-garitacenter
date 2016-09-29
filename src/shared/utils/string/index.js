@@ -47,3 +47,20 @@ export function timeSince(data) {
   }
   return `1 minuto`;
 }
+
+export function printTime(value) {
+  const date = new Date(value);
+  let hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let mins = date.getMinutes();
+  if (mins < 10) {
+    mins = `0${mins}`;
+  }
+  const period = date.getHours() > 12 ? 'PM' : 'AM';
+  return {
+    unity: date.getHours() === 1 || date.getHours() === 13,
+    print: `${hour}:${mins} ${period}`,
+  };
+}
