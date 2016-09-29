@@ -3,9 +3,9 @@ import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router';
 
-// import RequestUtil from '../../../utils/requestUtil';
+import RequestUtil from '../../../utils/requestUtil';
 import { timeSince, toTitleCase } from '../../../utils/string';
-import tweetsData from './tweetsData';
+// import tweetsData from './tweetsData';
 const style = require('./style.scss');
 
 export default class ReporteUsuarioSection extends React.Component {
@@ -18,24 +18,24 @@ export default class ReporteUsuarioSection extends React.Component {
   }
 
   componentDidMount() {
-    // RequestUtil.get('/user/report')
-    //   .then((results) => {
-    //     if (_.isArray(results.entity) && results.entity.length) {
-    //       const tweets = _.sortBy(results.entity, (item) => {
-    //         return new Date(item.created_at);
-    //       }).reverse();
-    //       const newState = _.assign({}, this.state, {
-    //         tweets,
-    //       });
-    //       this.setState(newState);
-    //     }
-    //   });
-    /*eslint-disable */
-    const newState = _.assign({}, this.state, {
-      tweets: tweetsData,
-    });
-    this.setState(newState);
-    /*eslint-enable */
+    RequestUtil.get('/user/report')
+      .then((results) => {
+        if (_.isArray(results.entity) && results.entity.length) {
+          const tweets = _.sortBy(results.entity, (item) => {
+            return new Date(item.created_at);
+          }).reverse();
+          const newState = _.assign({}, this.state, {
+            tweets,
+          });
+          this.setState(newState);
+        }
+      });
+    // /*eslint-disable */
+    // const newState = _.assign({}, this.state, {
+    //   tweets: tweetsData,
+    // });
+    // this.setState(newState);
+    // /*eslint-enable */
   }
 
   renderTweets(data) {
