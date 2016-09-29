@@ -16,6 +16,7 @@
 
 .btn_report {
   @extend .btn1;
+  margin-bottom: 0;
   background: $cyan;
 
   .subtitle {
@@ -132,5 +133,6 @@
 
 .tweetFirst {
   @extend .tweet;
-  border-top: none
+  border-top: none;
+  margin-top: 15px;
 }

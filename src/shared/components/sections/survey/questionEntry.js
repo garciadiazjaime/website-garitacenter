@@ -26,7 +26,7 @@ export default class QuestionPort extends React.Component {
     return (<div className="container-fluid">
       <div className="row">
         <div className="col-sm-12">
-          <h2 className={style.heading2}>Por dónde cruzas?</h2>
+          <h2 className={style.heading2}>¿Por dónde cruzas?</h2>
           <h3 className={style.heading3}>San Ysidrio</h3>
         </div>
         <div className="col-xs-4">

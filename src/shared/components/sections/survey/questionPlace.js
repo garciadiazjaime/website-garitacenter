@@ -4,7 +4,7 @@ import _ from 'lodash';
 import PlaceOption from './placeOption';
 import placesData from './placesData';
 
-const style = require('../reporteUsuario/style.scss');
+const style = require('./style.scss');
 
 export default class QuestionPlace extends React.Component {
 
@@ -37,6 +37,9 @@ export default class QuestionPlace extends React.Component {
   render() {
     const { port, type, entry } = this.props;
     return (<div className="container-fluid">
+      <div className="col-sm-12">
+        <h2 className={style.heading2}>¿A qué altura estas?</h2>
+      </div>
       {this.renderQuestions(port, type, entry)}
       <a onClick={this.backHandler} className={style.prevStep}>Volver</a>
     </div>);

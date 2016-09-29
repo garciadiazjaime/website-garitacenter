@@ -27,7 +27,7 @@ export default class QuestionTime extends React.Component {
 
   render() {
     return (<div className="container-fluid">
-      <h2 className={style.heading2}>Cuánto tiempo llevas esperando?</h2>
+      <h2 className={style.heading2}>¿Cuánto tiempo llevas esperando?</h2>
       <div className="row">
         <div className="col-xs-6">
           <ClickOption value="15_mins" clickHandler={this.clickHandler} className={style.btn_option}>

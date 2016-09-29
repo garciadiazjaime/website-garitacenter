@@ -71,18 +71,16 @@
   @extend .btn_option;
   font-size: 14px;
   padding: 8px 0;
+  display: block;
 }
 
 .prevStep {
-  bottom: 0;
-  left: 15px;
   color: $darkBlue;
   position: relative;
   display: block;
   font-size: 18px;
   text-align: left;
   padding: 15px;
-  position: absolute;
 
   &::before {
     content: "";

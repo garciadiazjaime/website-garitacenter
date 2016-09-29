@@ -78,7 +78,10 @@ export default class AppHandler extends React.Component {
   }
 
   renderJustContent(content) {
-    return content;
+    return (<div>
+      {content}
+      <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
+    </div>);
   }
 
   render() {
