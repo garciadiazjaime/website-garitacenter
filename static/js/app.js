@@ -38326,7 +38326,8 @@
 	      if (_lodash2.default.isArray(data) && data.length) {
 	        return data.map(function (item, index) {
 	          var className = index === 0 ? style.tweetFirst : style.tweet;
-	          var time = (0, _string.printTime)(item.created);
+	          var date = new Date(item.created);
+	          var time = (0, _string.printTime)(date.setHours(date.getHours() - 2));
 	          return _react2.default.createElement(
 	            'div',
 	            { key: index, className: 'row' },
