@@ -16,11 +16,9 @@ export default {
         'Smart & Final',
       ],
       sentri: [
-        'En los postes amarillos',
-        'En el puente de las ballenas',
-        'Por el Palacio Municipal',
-        'Por el Hospital General',
-        'Por la 20 de noviembre',
+        'En el alto',
+        'La glorieta',
+        'Los semáforos',
       ],
     },
     peatonal: {
