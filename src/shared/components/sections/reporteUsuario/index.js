@@ -21,11 +21,8 @@ export default class ReporteUsuarioSection extends React.Component {
     RequestUtil.get('/user/report')
       .then((results) => {
         if (_.isArray(results.entity) && results.entity.length) {
-          const tweets = _.sortBy(results.entity, (item) => {
-            return new Date(item.created_at);
-          }).reverse();
           const newState = _.assign({}, this.state, {
-            tweets,
+            tweets: results.entity,
           });
           this.setState(newState);
         }
