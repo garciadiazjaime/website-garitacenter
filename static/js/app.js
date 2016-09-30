@@ -24453,7 +24453,12 @@
 	  }, {
 	    key: 'renderJustContent',
 	    value: function renderJustContent(content) {
-	      return content;
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        content,
+	        _react2.default.createElement(_footer2.default, { items: _sitemap2.default.items.children, addresses: _sitemap2.default.addresses, icons: _sitemap2.default.icons })
+	      );
 	    }
 	  }, {
 	    key: 'render',
@@ -37849,7 +37854,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: style.port1 },
-	              this.renderTime(port1.content.car.readyLine.time, true)
+	              this.renderTime(port1.content.car.readyLine.time, false)
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -37858,7 +37863,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: style.port2 },
-	              this.renderTime(port2.content.car.readyLine.time, true)
+	              this.renderTime(port2.content.car.readyLine.time, false)
 	            )
 	          )
 	        ),
@@ -37882,7 +37887,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: style.port1 },
-	              this.renderTime(port1.content.car.sentry.time, true)
+	              this.renderTime(port1.content.car.sentry.time, false)
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -37891,7 +37896,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: style.port2 },
-	              this.renderTime(port2.content.car.sentry.time, true)
+	              this.renderTime(port2.content.car.sentry.time, false)
 	            )
 	          )
 	        ),
@@ -37952,7 +37957,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: style.port1 },
-	              this.renderTime(port1.content.people.readyLine.time, true)
+	              this.renderTime(port1.content.people.readyLine.time, false)
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -37961,7 +37966,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: style.port2 },
-	              this.renderTime(port2.content.people.readyLine.time, true)
+	              this.renderTime(port2.content.people.readyLine.time, false)
 	            )
 	          )
 	        ),
@@ -38016,6 +38021,7 @@
 	exports.minsToHrs = minsToHrs;
 	exports.toTitleCase = toTitleCase;
 	exports.timeSince = timeSince;
+	exports.printTime = printTime;
 
 	function printMinutes(data) {
 	  if (data < 10) {
@@ -38064,6 +38070,23 @@
 	    return interval + ' minutos';
 	  }
 	  return '1 minuto';
+	}
+
+	function printTime(value) {
+	  var date = new Date(value);
+	  var hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+	  if (hour < 10) {
+	    hour = '0' + hour;
+	  }
+	  var mins = date.getMinutes();
+	  if (mins < 10) {
+	    mins = '0' + mins;
+	  }
+	  var period = date.getHours() > 12 ? 'PM' : 'AM';
+	  return {
+	    unity: date.getHours() === 1 || date.getHours() === 13,
+	    print: hour + ':' + mins + ' ' + period
+	  };
 	}
 
 /***/ },
@@ -38284,11 +38307,8 @@
 
 	      _requestUtil2.default.get('/user/report').then(function (results) {
 	        if (_lodash2.default.isArray(results.entity) && results.entity.length) {
-	          var tweets = _lodash2.default.sortBy(results.entity, function (item) {
-	            return new Date(item.created_at);
-	          }).reverse();
 	          var newState = _lodash2.default.assign({}, _this2.state, {
-	            tweets: tweets
+	            tweets: results.entity
 	          });
 	          _this2.setState(newState);
 	        }
@@ -38306,6 +38326,7 @@
 	      if (_lodash2.default.isArray(data) && data.length) {
 	        return data.map(function (item, index) {
 	          var className = index === 0 ? style.tweetFirst : style.tweet;
+	          var time = (0, _string.printTime)(item.created);
 	          return _react2.default.createElement(
 	            'div',
 	            { key: index, className: 'row' },
@@ -38318,14 +38339,16 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: style.time },
-	                  'Hace ',
-	                  (0, _string.timeSince)(item.created)
+	                  'Publicado a la',
+	                  time.unity ? '' : 's',
+	                  ' ',
+	                  time.print
 	                ),
 	                _react2.default.createElement(
 	                  'div',
 	                  null,
 	                  (0, _string.toTitleCase)(item.port),
-	                  ' ',
+	                  ' - ',
 	                  (0, _string.toTitleCase)(item.entry),
 	                  ' ',
 	                  _react2.default.createElement('br', null),
@@ -43301,11 +43324,11 @@
 
 	var _questionPlace2 = _interopRequireDefault(_questionPlace);
 
-	var _questionTime = __webpack_require__(285);
+	var _questionTime = __webpack_require__(286);
 
 	var _questionTime2 = _interopRequireDefault(_questionTime);
 
-	var _questionReview = __webpack_require__(286);
+	var _questionReview = __webpack_require__(287);
 
 	var _questionReview2 = _interopRequireDefault(_questionReview);
 
@@ -43320,7 +43343,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(289);
+	var style = __webpack_require__(285);
 
 	var ReporteUsuarioSection = function (_React$Component) {
 	  _inherits(ReporteUsuarioSection, _React$Component);
@@ -43525,7 +43548,7 @@
 	            _react2.default.createElement(
 	              'h2',
 	              { className: style.heading2 },
-	              'Por dónde cruzas?'
+	              '¿Por dónde cruzas?'
 	            ),
 	            _react2.default.createElement(
 	              'h3',
@@ -43777,7 +43800,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(278);
+	var style = __webpack_require__(285);
 
 	var QuestionPlace = function (_React$Component) {
 	  _inherits(QuestionPlace, _React$Component);
@@ -43826,6 +43849,15 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container-fluid' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-12' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: style.heading2 },
+	            '¿A qué altura estas?'
+	          )
+	        ),
 	        this.renderQuestions(port, type, entry),
 	        _react2.default.createElement(
 	          'a',
@@ -43959,7 +43991,7 @@
 	    carro: {
 	      ready_lane: ['En los postes amarillos', 'En el puente de las ballenas', 'Por el Palacio Municipal', 'Por el Hospital General', 'Por la 20 de noviembre'],
 	      normal: ['Postes amarillos', 'Terminando las tienditas', 'Empezando las tienditas', 'Puente de las Banderas', 'Smart & Final'],
-	      sentri: ['En los postes amarillos', 'En el puente de las ballenas', 'Por el Palacio Municipal', 'Por el Hospital General', 'Por la 20 de noviembre']
+	      sentri: ['En el alto', 'La glorieta', 'Los semáforos']
 	    },
 	    peatonal: {
 	      ready_lane: ['Antes de entrar al edificio', 'En el duty free', 'Empezando la curva'],
@@ -43983,6 +44015,13 @@
 
 /***/ },
 /* 285 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"fCenter":"style__fCenter___1Fkxv","vCenter":"style__vCenter___25Kv6","prevStep":"style__prevStep___DvMcx","vCenterRel":"style__vCenterRel___3kqNY","hCenter":"style__hCenter___2R96t","inheritHeight":"style__inheritHeight___4sBbG","hideOverflow":"style__hideOverflow___3Xmgq","icon-general-sprite":"style__icon-general-sprite___16WYn","btn1":"style__btn1___3m1Mq","btn_report":"style__btn_report___3H1tW","btn_option":"style__btn_option___3E6D-","btn_publish":"style__btn_publish___2nEqp","btn_entry":"style__btn_entry___3NuvN","survey":"style__survey___1BYPk","reportHeader":"style__reportHeader___2gP-V","subtitle":"style__subtitle___27Fbx","heading2":"style__heading2___1GLQk","heading3":"style__heading3___1Bc9K","triangleRight":"style__triangleRight___1hbMD","closeButton":"style__closeButton___2vRwt","tweet":"style__tweet___34OIV","tweetFirst":"style__tweetFirst___2Ea-h","time":"style__time___2Z1G9"};
+
+/***/ },
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44049,7 +44088,7 @@
 	        _react2.default.createElement(
 	          'h2',
 	          { className: style.heading2 },
-	          'Cuánto tiempo llevas esperando?'
+	          '¿Cuánto tiempo llevas esperando?'
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -44077,7 +44116,7 @@
 	            { className: 'col-xs-6' },
 	            _react2.default.createElement(
 	              _clickOption2.default,
-	              { value: '1_hra', clickHandler: this.clickHandler, className: style.btn_option },
+	              { value: '1_hr', clickHandler: this.clickHandler, className: style.btn_option },
 	              '1:00'
 	            )
 	          ),
@@ -44086,7 +44125,7 @@
 	            { className: 'col-xs-6' },
 	            _react2.default.createElement(
 	              _clickOption2.default,
-	              { value: '1:30_hra', clickHandler: this.clickHandler, className: style.btn_option },
+	              { value: '1:30_hrs', clickHandler: this.clickHandler, className: style.btn_option },
 	              '1:30'
 	            )
 	          ),
@@ -44104,7 +44143,7 @@
 	            { className: 'col-xs-6' },
 	            _react2.default.createElement(
 	              _clickOption2.default,
-	              { value: '3_hrs', clickHandler: this.clickHandler, className: style.btn_option },
+	              { value: '2:30_hrs', clickHandler: this.clickHandler, className: style.btn_option },
 	              '2:30'
 	            )
 	          ),
@@ -44113,7 +44152,7 @@
 	            { className: 'col-xs-6' },
 	            _react2.default.createElement(
 	              _clickOption2.default,
-	              { value: '4_hrs', clickHandler: this.clickHandler, className: style.btn_option },
+	              { value: '3_hrs', clickHandler: this.clickHandler, className: style.btn_option },
 	              '3:00'
 	            )
 	          ),
@@ -44122,7 +44161,7 @@
 	            { className: 'col-xs-6' },
 	            _react2.default.createElement(
 	              _clickOption2.default,
-	              { value: '5_hrs', clickHandler: this.clickHandler, className: style.btn_option },
+	              { value: '3:30_hrs', clickHandler: this.clickHandler, className: style.btn_option },
 	              '3:30'
 	            )
 	          ),
@@ -44140,7 +44179,7 @@
 	            { className: 'col-xs-6' },
 	            _react2.default.createElement(
 	              _clickOption2.default,
-	              { value: '5_hrs', clickHandler: this.clickHandler, className: style.btn_option },
+	              { value: '4:30_hrs', clickHandler: this.clickHandler, className: style.btn_option },
 	              '4:30'
 	            )
 	          )
@@ -44165,7 +44204,7 @@
 	};
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44184,7 +44223,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loader = __webpack_require__(287);
+	var _loader = __webpack_require__(288);
 
 	var _loader2 = _interopRequireDefault(_loader);
 
@@ -44337,7 +44376,7 @@
 	            _react2.default.createElement(
 	              'h2',
 	              { className: style.heading2 },
-	              'Por dónde cruzas?'
+	              '¿Por dónde cruzas?'
 	            ),
 	            _react2.default.createElement(
 	              'h3',
@@ -44352,7 +44391,7 @@
 	            _react2.default.createElement(
 	              'h2',
 	              { className: style.heading2 },
-	              'A qué altura estas?'
+	              '¿A qué altura estas?'
 	            ),
 	            _react2.default.createElement(
 	              'h3',
@@ -44366,7 +44405,7 @@
 	            _react2.default.createElement(
 	              'h2',
 	              { className: style.heading2 },
-	              'Cuánto tiempo llevas esperando?'
+	              '¿Cuánto tiempo llevas esperando?'
 	            ),
 	            _react2.default.createElement(
 	              'h3',
@@ -44415,7 +44454,7 @@
 	};
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44438,7 +44477,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = __webpack_require__(288);
+	var style = __webpack_require__(289);
 
 	var Loader = function (_React$Component) {
 	  _inherits(Loader, _React$Component);
@@ -44466,18 +44505,11 @@
 	exports.default = Loader;
 
 /***/ },
-/* 288 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-	module.exports = {"fCenter":"style__fCenter___1z8sB","vCenter":"style__vCenter___3iEWL","vCenterRel":"style__vCenterRel___IMEMa","hCenter":"style__hCenter___3Z_kY","inheritHeight":"style__inheritHeight___1lX1a","hideOverflow":"style__hideOverflow___2lxKJ","icon-general-sprite":"style__icon-general-sprite___yikUy","wrapper":"style__wrapper___2dK3R","loader":"style__loader___2-Uv7"};
-
-/***/ },
 /* 289 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"fCenter":"style__fCenter___1Fkxv","vCenter":"style__vCenter___25Kv6","prevStep":"style__prevStep___DvMcx","vCenterRel":"style__vCenterRel___3kqNY","hCenter":"style__hCenter___2R96t","inheritHeight":"style__inheritHeight___4sBbG","hideOverflow":"style__hideOverflow___3Xmgq","icon-general-sprite":"style__icon-general-sprite___16WYn","btn1":"style__btn1___3m1Mq","btn_report":"style__btn_report___3H1tW","btn_option":"style__btn_option___3E6D-","btn_publish":"style__btn_publish___2nEqp","btn_entry":"style__btn_entry___3NuvN","survey":"style__survey___1BYPk","reportHeader":"style__reportHeader___2gP-V","subtitle":"style__subtitle___27Fbx","heading2":"style__heading2___1GLQk","heading3":"style__heading3___1Bc9K","triangleRight":"style__triangleRight___1hbMD","closeButton":"style__closeButton___2vRwt","tweet":"style__tweet___34OIV","tweetFirst":"style__tweetFirst___2Ea-h","time":"style__time___2Z1G9"};
+	module.exports = {"fCenter":"style__fCenter___1z8sB","vCenter":"style__vCenter___3iEWL","vCenterRel":"style__vCenterRel___IMEMa","hCenter":"style__hCenter___3Z_kY","inheritHeight":"style__inheritHeight___1lX1a","hideOverflow":"style__hideOverflow___2lxKJ","icon-general-sprite":"style__icon-general-sprite___yikUy","wrapper":"style__wrapper___2dK3R","loader":"style__loader___2-Uv7"};
 
 /***/ }
 /******/ ]);
