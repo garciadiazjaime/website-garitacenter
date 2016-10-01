@@ -129,32 +129,6 @@
 	        console.log('err', err);
 	        res.send('error');
 	      });
-
-	      // const cacheReport = redisUtil.get(city);
-	      // const promises = [];
-	      // if (!cacheReport || (cacheReport && shouldUpdateReport(cacheReport.updated))) {
-	      //   console.log(`Update report, last updated: ${cacheReport ? cacheReport.updated : ''}, new date: ${new Date()}`);
-	      //   promises.push(RequestUtil.get(apiUrl));
-	      // } else {
-	      //   console.log(`No requested needed, last updated: ${cacheReport ? cacheReport.updated : ''}, new date: ${new Date()}`);
-	      // }
-	      // Promise.all(promises)
-	      //   .then((results) => {
-	      //     if (_.isArray(results) && results.length) {
-	      //       redisUtil.set(city, results[0].entity);
-	      //     }
-	      //     const report = redisUtil.get(city).data;
-	      //     const props = {
-	      //       city,
-	      //       report,
-	      //     };
-	      //     const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
-	      //     res.render('index', { content, props });
-	      //   })
-	      //   .catch((err) => {
-	      //     console.log('err', err);
-	      //     res.send('error');
-	      //   });
 	    } else {
 	      res.status(404).send('Not found');
 	    }
@@ -299,7 +273,8 @@
 	      url: {
 	          doc: 'API URL',
 	          format: String,
-	          default: 'http://127.0.0.1:3000/'
+	          default: 'http://127.0.0.1:3000/',
+	          env: 'GC_API_URL',
 	      },
 	    }
 	});
@@ -3707,6 +3682,13 @@
 	    this.apiUrl = _config2.default.get('api.url') + 'report?city=';
 	  }
 
+	  /*
+	   * Checks if it's time to do an update.
+	   * @param {date} lastUpdate When was last update
+	   * @return {boolean} true when last udpate is minor than current time minus one minute, otherwise false
+	  */
+
+
 	  _createClass(ReportController, [{
 	    key: 'doUpdate',
 	    value: function doUpdate(lastUpdate) {
@@ -3714,11 +3696,17 @@
 	        var nowDate = new Date();
 	        var minutesToWait = 1;
 	        var lastNMinutes = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), nowDate.getHours(), nowDate.getMinutes() - minutesToWait, nowDate.getSeconds());
-	        console.log('lastNMinutes', lastNMinutes, 'lastUpdate', lastUpdate);
 	        return lastUpdate < lastNMinutes ? true : false;
 	      }
 	      return true;
 	    }
+
+	    /*
+	     * Get port report using proxy. Returns a promise which is resolved with the city report data.
+	     * @param {string} city City name
+	     * @return {promise} resolve(report)
+	    */
+
 	  }, {
 	    key: 'getReport',
 	    value: function getReport(city) {
@@ -3731,7 +3719,6 @@
 	          promises.push(_requestUtil2.default.get('' + _this.apiUrl + city));
 	          _this.requestsPerMinute[city] = 1;
 	        } else {
-	          console.log('No requested needed for ' + city + ', last updated: ' + _this.updated[city] + ', new date: ' + new Date());
 	          _this.requestsPerMinute[city]++;
 	        }
 	        Promise.all(promises).then(function (results) {
