@@ -3,9 +3,9 @@ import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router';
 
-// import RequestUtil from '../../../utils/requestUtil';
-import { timeSince, toTitleCase } from '../../../utils/string';
-import tweetsData from './tweetsData';
+import RequestUtil from '../../../utils/requestUtil';
+import { printTime, toTitleCase } from '../../../utils/string';
+// import tweetsData from './tweetsData';
 const style = require('./style.scss');
 
 export default class ReporteUsuarioSection extends React.Component {
@@ -18,38 +18,36 @@ export default class ReporteUsuarioSection extends React.Component {
   }
 
   componentDidMount() {
-    // RequestUtil.get('/user/report')
-    //   .then((results) => {
-    //     if (_.isArray(results.entity) && results.entity.length) {
-    //       const tweets = _.sortBy(results.entity, (item) => {
-    //         return new Date(item.created_at);
-    //       }).reverse();
-    //       const newState = _.assign({}, this.state, {
-    //         tweets,
-    //       });
-    //       this.setState(newState);
-    //     }
-    //   });
-    /*eslint-disable */
-    const newState = _.assign({}, this.state, {
-      tweets: tweetsData,
-    });
-    this.setState(newState);
-    /*eslint-enable */
+    RequestUtil.get('/user/report')
+      .then((results) => {
+        if (_.isArray(results.entity) && results.entity.length) {
+          const newState = _.assign({}, this.state, {
+            tweets: results.entity,
+          });
+          this.setState(newState);
+        }
+      });
+    // /*eslint-disable */
+    // const newState = _.assign({}, this.state, {
+    //   tweets: tweetsData,
+    // });
+    // this.setState(newState);
+    // /*eslint-enable */
   }
 
   renderTweets(data) {
     if (_.isArray(data) && data.length) {
       return data.map((item, index) => {
         const className = index === 0 ? style.tweetFirst : style.tweet;
+        const time = printTime(item.created);
         return (<div key={index} className="row">
           <div className="col-sm-12">
             <div className={className}>
               <div className={style.time}>
-                Hace {timeSince(item.created)}
+                Publicado a la{time.unity ? '' : 's'} {time.print}
               </div>
               <div>
-                {toTitleCase(item.port)} {toTitleCase(item.entry)} <br />
+                {toTitleCase(item.port)} - {toTitleCase(item.entry)} <br />
                 {toTitleCase(item.place)} <br />
                 Llevo esperando {toTitleCase(item.time)}
               </div>

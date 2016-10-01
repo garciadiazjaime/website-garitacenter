@@ -27,7 +27,7 @@ export default class QuestionTime extends React.Component {
 
   render() {
     return (<div className="container-fluid">
-      <h2 className={style.heading2}>Cuánto tiempo llevas esperando?</h2>
+      <h2 className={style.heading2}>¿Cuánto tiempo llevas esperando?</h2>
       <div className="row">
         <div className="col-xs-6">
           <ClickOption value="15_mins" clickHandler={this.clickHandler} className={style.btn_option}>
@@ -40,12 +40,12 @@ export default class QuestionTime extends React.Component {
           </ClickOption>
         </div>
         <div className="col-xs-6">
-          <ClickOption value="1_hra" clickHandler={this.clickHandler} className={style.btn_option}>
+          <ClickOption value="1_hr" clickHandler={this.clickHandler} className={style.btn_option}>
             1:00
           </ClickOption>
         </div>
         <div className="col-xs-6">
-          <ClickOption value="1:30_hra" clickHandler={this.clickHandler} className={style.btn_option}>
+          <ClickOption value="1:30_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
             1:30
           </ClickOption>
         </div>
@@ -55,8 +55,18 @@ export default class QuestionTime extends React.Component {
           </ClickOption>
         </div>
         <div className="col-xs-6">
+          <ClickOption value="2:30_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
+            2:30
+          </ClickOption>
+        </div>
+        <div className="col-xs-6">
           <ClickOption value="3_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
             3:00
+          </ClickOption>
+        </div>
+        <div className="col-xs-6">
+          <ClickOption value="3:30_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
+            3:30
           </ClickOption>
         </div>
         <div className="col-xs-6">
@@ -65,8 +75,8 @@ export default class QuestionTime extends React.Component {
           </ClickOption>
         </div>
         <div className="col-xs-6">
-          <ClickOption value="ya_vivo_aqui" clickHandler={this.clickHandler} className={style.btn_option}>
-            ya vivo aquí
+          <ClickOption value="4:30_hrs" clickHandler={this.clickHandler} className={style.btn_option}>
+            4:30
           </ClickOption>
         </div>
       </div>
