@@ -82,9 +82,9 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _requestUtil = __webpack_require__(12);
+	var _reportController = __webpack_require__(55);
 
-	var _requestUtil2 = _interopRequireDefault(_requestUtil);
+	var _reportController2 = _interopRequireDefault(_reportController);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -104,6 +104,9 @@
 	app.use('/api/', _api2.default);
 	app.use('/user/', _userRoutes2.default);
 
+	var city = 'TIJUANA';
+	var reportController = new _reportController2.default();
+
 	app.get('/*', function (req, res) {
 	  (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (error, redirectLocation, renderProps) {
 	    if (error) {
@@ -111,26 +114,47 @@
 	    } else if (redirectLocation) {
 	      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
 	    } else if (renderProps) {
-	      (function () {
-	        var city = 'TIJUANA';
-	        var apiUrl = _config2.default.get('api.url') + 'report?city=' + city;
+	      reportController.getReport(city).then(function (results) {
+	        var props = {
+	          city: city,
+	          report: results
+	        };
+	        var content = (0, _server.renderToString)(_react2.default.createElement(
+	          _dataWrapper2.default,
+	          { data: props },
+	          _react2.default.createElement(_reactRouter.RoutingContext, renderProps)
+	        ));
+	        res.render('index', { content: content, props: props });
+	      }).catch(function (err) {
+	        console.log('err', err);
+	        res.send('error');
+	      });
 
-	        _requestUtil2.default.get(apiUrl).then(function (results) {
-	          var props = {
-	            city: city,
-	            report: results.entity
-	          };
-	          var content = (0, _server.renderToString)(_react2.default.createElement(
-	            _dataWrapper2.default,
-	            { data: props },
-	            _react2.default.createElement(_reactRouter.RoutingContext, renderProps)
-	          ));
-	          res.render('index', { content: content, props: props });
-	        }).catch(function (err) {
-	          console.log('err', err);
-	          res.send('error');
-	        });
-	      })();
+	      // const cacheReport = redisUtil.get(city);
+	      // const promises = [];
+	      // if (!cacheReport || (cacheReport && shouldUpdateReport(cacheReport.updated))) {
+	      //   console.log(`Update report, last updated: ${cacheReport ? cacheReport.updated : ''}, new date: ${new Date()}`);
+	      //   promises.push(RequestUtil.get(apiUrl));
+	      // } else {
+	      //   console.log(`No requested needed, last updated: ${cacheReport ? cacheReport.updated : ''}, new date: ${new Date()}`);
+	      // }
+	      // Promise.all(promises)
+	      //   .then((results) => {
+	      //     if (_.isArray(results) && results.length) {
+	      //       redisUtil.set(city, results[0].entity);
+	      //     }
+	      //     const report = redisUtil.get(city).data;
+	      //     const props = {
+	      //       city,
+	      //       report,
+	      //     };
+	      //     const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
+	      //     res.render('index', { content, props });
+	      //   })
+	      //   .catch((err) => {
+	      //     console.log('err', err);
+	      //     res.send('error');
+	      //   });
 	    } else {
 	      res.status(404).send('Not found');
 	    }
@@ -275,8 +299,7 @@
 	      url: {
 	          doc: 'API URL',
 	          format: String,
-	          default: 'http://127.0.0.1:3000/',
-	          env: 'GC_API_URL',
+	          default: 'http://127.0.0.1:3000/'
 	      },
 	    }
 	});
@@ -3644,6 +3667,90 @@
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___1z8sB","vCenter":"style__vCenter___3iEWL","vCenterRel":"style__vCenterRel___IMEMa","hCenter":"style__hCenter___3Z_kY","inheritHeight":"style__inheritHeight___1lX1a","hideOverflow":"style__hideOverflow___2lxKJ","icon-general-sprite":"style__icon-general-sprite___yikUy","wrapper":"style__wrapper___2dK3R","loader":"style__loader___2-Uv7"};
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint max-len: [2, 500, 4] */
+
+
+	var _lodash = __webpack_require__(34);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _requestUtil = __webpack_require__(12);
+
+	var _requestUtil2 = _interopRequireDefault(_requestUtil);
+
+	var _config = __webpack_require__(7);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ReportController = function () {
+	  function ReportController() {
+	    _classCallCheck(this, ReportController);
+
+	    this.proxy = {};
+	    this.requestsPerMinute = {};
+	    this.updated = {};
+	    this.apiUrl = _config2.default.get('api.url') + 'report?city=';
+	  }
+
+	  _createClass(ReportController, [{
+	    key: 'doUpdate',
+	    value: function doUpdate(lastUpdate) {
+	      if (lastUpdate) {
+	        var nowDate = new Date();
+	        var minutesToWait = 1;
+	        var lastNMinutes = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), nowDate.getHours(), nowDate.getMinutes() - minutesToWait, nowDate.getSeconds());
+	        console.log('lastNMinutes', lastNMinutes, 'lastUpdate', lastUpdate);
+	        return lastUpdate < lastNMinutes ? true : false;
+	      }
+	      return true;
+	    }
+	  }, {
+	    key: 'getReport',
+	    value: function getReport(city) {
+	      var _this = this;
+
+	      return new Promise(function (resolve, reject) {
+	        var promises = [];
+	        if (!_this.proxy[city] || _this.doUpdate(_this.updated[city])) {
+	          console.log('Update report for ' + city + ', last update: ' + _this.updated[city] + ', new date: ' + new Date() + ', Request per Minute: ' + _this.requestsPerMinute[city]);
+	          promises.push(_requestUtil2.default.get('' + _this.apiUrl + city));
+	          _this.requestsPerMinute[city] = 1;
+	        } else {
+	          console.log('No requested needed for ' + city + ', last updated: ' + _this.updated[city] + ', new date: ' + new Date());
+	          _this.requestsPerMinute[city]++;
+	        }
+	        Promise.all(promises).then(function (results) {
+	          if (_lodash2.default.isArray(results) && results.length) {
+	            _this.proxy[city] = results[0].entity;
+	            _this.updated[city] = new Date();
+	          }
+	          resolve(_this.proxy[city]);
+	        }).catch(function (error) {
+	          return reject(error);
+	        });
+	      });
+	    }
+	  }]);
+
+	  return ReportController;
+	}();
+
+	exports.default = ReportController;
 
 /***/ }
 /******/ ]);
