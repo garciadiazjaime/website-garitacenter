@@ -12,95 +12,102 @@ export default class Client extends React.Component {
     this.state = {
       showClient: false,
     };
-    this.isSectionEnable = false;
     this.clients = [{
-      id: 'club54',
-      title: 'club54',
-      image: 'club54.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
-      status: true,
-    }, {
-      id: 'electric',
-      title: 'electric',
-      image: 'electric.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
-      status: true,
-    }, {
-      id: 'garden-spa',
-      title: 'garden-spa',
-      image: 'garden-spa.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
-      status: true,
-    }, {
-      id: 'hola-bonita',
-      title: 'hola-bonita',
-      image: 'hola-bonita.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
-      status: true,
-    }, {
-      id: 'kids-dent',
-      title: 'kids-dent',
-      image: 'kids-dent.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
-      status: true,
-    }, {
-      id: 'mayco',
-      title: 'mayco',
-      image: 'mayco.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
-      status: true,
-    }, {
       id: 'nutrirte',
-      title: 'nutrirte',
+      title: 'Nutrirte: cambia tu vida HOY',
       image: 'nutrirte.gif',
-      link: 'https://www.facebook.com/nutrirte',
-      ends: '2017-01-31',
+      link: 'https://www.facebook.com/Nutrirte-281465582043299/',
+      ends: '2017-05-30',
       status: true,
-    }, {
-      id: 'ri',
-      title: 'ri',
-      image: 'ri.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
-      status: true,
-    }, {
-      id: 'sano-y-punto',
-      title: 'sano-y-punto',
+    },
+    {
+      id: 'sano',
+      title: 'Sano y Punto',
       image: 'sano-y-punto.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
+      link: 'http://www.sanoypunto.com/',
+      ends: '2017-05-30',
       status: true,
-    }, {
-      id: 'smile-dent',
-      title: 'smile-dent',
+    },
+    {
+      id: 'smile',
+      title: 'Smile Dent',
       image: 'smile-dent.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
+      link: 'https://www.facebook.com/smiledenttijuana',
+      ends: '2017-05-30',
       status: true,
-    }, {
+    },
+    {
+      id: 'garden',
+      title: 'Garden Spa',
+      image: 'garden-spa.gif',
+      link: 'https://www.facebook.com/thegardenspa',
+      ends: '2017-05-30',
+      status: true,
+    },
+    {
+      id: 'Mayco',
+      title: 'Mayco Limpiadur&iacute;a',
+      image: 'mayco.gif',
+      link: 'https://www.facebook.com/maycolimpiaduria/',
+      ends: '2017-05-30',
+      status: true,
+    },
+    {
+      id: 'ri',
+      title: 'Relaciones Inesperadas',
+      image: 'ri.gif',
+      link: 'https://www.facebook.com/RelacionesInesperadas/',
+      ends: '2017-05-30',
+      status: true,
+    },
+    {
       id: 'torrente',
-      title: 'torrente',
+      title: 'Torrente',
       image: 'torrente.gif',
-      link: 'http://www.playami.com/',
-      ends: '2017-01-31',
+      link: 'https://www.facebook.com/TorrenteTJ/',
+      ends: '2017-05-30',
+      status: true,
+    },
+    {
+      id: 'club54',
+      title: 'Club 54',
+      image: 'club54.gif',
+      link: 'https://www.facebook.com/club54grados/',
+      ends: '2017-05-30',
+      status: true,
+    },
+    {
+      id: 'kids',
+      title: 'Kids Dent',
+      image: 'kids-dent.gif',
+      link: 'https://www.facebook.com/kidsdent.tijuana/',
+      ends: '2017-04-30',
+      status: true,
+    },
+    {
+      id: 'electric',
+      title: 'Electric Coffee Roasters',
+      image: 'electric.gif',
+      link: 'https://www.facebook.com/ElectricCoffeeRoasters/',
+      ends: '2017-03-30',
+      status: true,
+    },
+    {
+      id: 'hola',
+      title: 'Hola Bonita',
+      image: 'hola-bonita.gif',
+      link: 'http://holabonita.com.mx/',
+      ends: '2017-03-30',
       status: true,
     }];
   }
 
   componentDidMount() {
-    if (this.isSectionEnable) {
-      /*eslint-disable */
-      this.setState({
-        showClient: true,
-      });
-      /*eslint-enable */
-    }
+    /*eslint-disable */
+    this.setState({
+      showClient: true,
+    });
+    /*eslint-enable */
   }
 
   getActiveClients(data) {
@@ -122,10 +129,6 @@ export default class Client extends React.Component {
     return today < expiresOn;
   }
 
-  isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  }
-
   renderClient() {
     const activeClients = this.getActiveClients(this.clients);
     if (_.isArray(activeClients) && activeClients.length) {
@@ -144,8 +147,8 @@ export default class Client extends React.Component {
   }
 
   render() {
-    return this.isSectionEnable && !this.isMobile() ? (<div className={style.client}>
-      { this.state.showClient ? this.renderClient() : null }
+    return this.state.showClient ? (<div className={style.client}>
+      { this.renderClient() }
     </div>) : null;
   }
 }
