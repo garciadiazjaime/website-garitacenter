@@ -43321,15 +43321,15 @@
 
 	var _questionEntry2 = _interopRequireDefault(_questionEntry);
 
-	var _questionPlace = __webpack_require__(282);
+	var _questionPlace = __webpack_require__(284);
 
 	var _questionPlace2 = _interopRequireDefault(_questionPlace);
 
-	var _questionTime = __webpack_require__(286);
+	var _questionTime = __webpack_require__(287);
 
 	var _questionTime2 = _interopRequireDefault(_questionTime);
 
-	var _questionReview = __webpack_require__(287);
+	var _questionReview = __webpack_require__(288);
 
 	var _questionReview2 = _interopRequireDefault(_questionReview);
 
@@ -43344,7 +43344,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(285);
+	var style = __webpack_require__(283);
 
 	var ReporteUsuarioSection = function (_React$Component) {
 	  _inherits(ReporteUsuarioSection, _React$Component);
@@ -43509,7 +43509,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(278);
+	var style = __webpack_require__(283);
 
 	var QuestionPort = function (_React$Component) {
 	  _inherits(QuestionPort, _React$Component);
@@ -43711,6 +43711,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	__webpack_require__(282);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43745,7 +43747,7 @@
 
 	      return _react2.default.createElement(
 	        'a',
-	        { onClick: this.clickHandler, className: className || '' },
+	        { onClick: this.clickHandler, className: className || '', href: '#' },
 	        this.props.children
 	      );
 	    }
@@ -43770,6 +43772,259 @@
 
 	'use strict';
 
+	(function () {
+
+	  var React = __webpack_require__(1);
+
+	  var originalCreateElement = React.createElement;
+
+	  // Moved if Math.abs(downX - upX) > MOVE_THRESHOLD;
+	  var MOVE_THRESHOLD = 8;
+	  var TOUCH_DELAY = 1000;
+
+	  var touchKeysToStore = [
+	    'clientX',
+	    'clientY',
+	    'pageX',
+	    'pageY',
+	    'screenX',
+	    'screenY',
+	    'radiusX',
+	    'radiusY'
+	  ];
+
+	  var touchEvents = {
+	    downPos: {},
+	    lastPos: {}
+	  };
+
+	  var isDisabled = function (element) {
+	    if (!element) {
+	      return false;
+	    }
+	    var disabled = element.getAttribute('disabled');
+
+	    return disabled !== false && disabled !== null;
+	  };
+
+	  var focus = function (event, target) {
+	    var myTarget = target || event.currentTarget;
+
+	    if (!myTarget || isDisabled(myTarget)) {
+	      return;
+	    }
+
+	    myTarget.focus();
+	  };
+
+	  var handleType = {
+	    input: function (event) {
+	      focus(event);
+	      event.stopPropagation();
+	    },
+	    textarea: function (event) {
+	      focus(event);
+	      event.stopPropagation();
+	    },
+	    select: function (event) {
+	      focus(event);
+	      event.stopPropagation();
+	    },
+	    label: function (event) {
+	      var input;
+
+	      var forTarget = event.currentTarget.getAttribute('for');
+
+	      if (forTarget) {
+	        input = document.getElementById(forTarget);
+	      } else {
+	        input = event.currentTarget.querySelectorAll('input, textarea, select')[0];
+	      }
+
+	      if (input) {
+	        focus(event, input);
+	      }
+	    }
+	  };
+
+	  var fakeClickEvent = function (event) {
+	    if (typeof event.persist === 'function') {
+	      event.persist();
+	    }
+
+	    event.fastclick = true;
+	    event.type = 'click';
+	    event.button = 0;
+	  };
+
+	  var copyTouchKeys = function (touch, target) {
+	    if (typeof target.persist === 'function') {
+	      target.persist();
+	    }
+
+	    if (touch) {
+	      for (var i = 0; i < touchKeysToStore.length; i += 1) {
+	        var key = touchKeysToStore[i];
+	        target[key] = touch[key];
+	      }
+	    }
+	  };
+
+	  var noTouchHappened = function () {
+	    return !touchEvents.touched && (
+	      !touchEvents.lastTouchDate || new Date().getTime() > touchEvents.lastTouchDate + TOUCH_DELAY
+	    );
+	  };
+
+	  var invalidateIfMoreThanOneTouch = function (event) {
+	    touchEvents.invalid = event.touches && event.touches.length > 1 || touchEvents.invalid;
+	  };
+
+	  var onMouseEvent = function (callback, event) {
+	    // Prevent any mouse events if we touched recently
+	    if (typeof callback === 'function' && noTouchHappened()) {
+	      callback(event);
+	    }
+	    if (event.type === 'click') {
+	      touchEvents.invalid = false;
+	      touchEvents.touched = false;
+	      touchEvents.moved = false;
+	    }
+	  };
+
+	  var onTouchStart = function (callback, event) {
+	    touchEvents.invalid = false;
+	    touchEvents.moved = false;
+	    touchEvents.touched = true;
+	    touchEvents.lastTouchDate = new Date().getTime();
+
+	    copyTouchKeys(event.touches[0], touchEvents.downPos);
+	    copyTouchKeys(event.touches[0], touchEvents.lastPos);
+
+	    invalidateIfMoreThanOneTouch(event);
+
+	    if (typeof callback === 'function') {
+	      callback(event);
+	    }
+	  };
+
+	  var onTouchMove = function (callback, event) {
+	    touchEvents.touched = true;
+	    touchEvents.lastTouchDate = new Date().getTime();
+
+	    copyTouchKeys(event.touches[0], touchEvents.lastPos);
+
+	    invalidateIfMoreThanOneTouch(event);
+
+	    if (Math.abs(touchEvents.downPos.clientX - touchEvents.lastPos.clientX) > MOVE_THRESHOLD ||
+	      Math.abs(touchEvents.downPos.clientY - touchEvents.lastPos.clientY) > MOVE_THRESHOLD) {
+	      touchEvents.moved = true;
+	    }
+
+	    if (typeof callback === 'function') {
+	      callback(event);
+	    }
+	  };
+
+	  var onTouchEnd = function (callback, onClick, type, event) {
+	    touchEvents.touched = true;
+	    touchEvents.lastTouchDate = new Date().getTime();
+
+	    invalidateIfMoreThanOneTouch(event);
+
+	    if (typeof callback === 'function') {
+	      callback(event);
+	    }
+
+	    if (!touchEvents.invalid && !touchEvents.moved) {
+	      var box = event.currentTarget.getBoundingClientRect();
+
+	      if (touchEvents.lastPos.clientX - (touchEvents.lastPos.radiusX || 0) <= box.right &&
+	        touchEvents.lastPos.clientX + (touchEvents.lastPos.radiusX || 0) >= box.left &&
+	        touchEvents.lastPos.clientY - (touchEvents.lastPos.radiusY || 0) <= box.bottom &&
+	        touchEvents.lastPos.clientY + (touchEvents.lastPos.radiusY || 0) >= box.top) {
+
+	        if (!isDisabled(event.currentTarget)) {
+	          if (typeof onClick === 'function') {
+	            copyTouchKeys(touchEvents.lastPos, event);
+	            fakeClickEvent(event);
+	            onClick(event);
+	          }
+
+	          if (!event.defaultPrevented && handleType[type]) {
+	            handleType[type](event);
+	          }
+	        }
+	      }
+	    }
+	  };
+
+	  var propsWithFastclickEvents = function (type, props) {
+	    var newProps = {};
+
+	    // Loop over props
+	    for (var key in props) {
+	      // Copy props to newProps
+	      newProps[key] = props[key];
+	    }
+
+	    // Apply our wrapped mouse and touch handlers
+	    newProps.onClick = onMouseEvent.bind(null, props.onClick);
+	    newProps.onMouseDown = onMouseEvent.bind(null, props.onMouseDown);
+	    newProps.onMouseMove = onMouseEvent.bind(null, props.onMouseMove);
+	    newProps.onMouseUp = onMouseEvent.bind(null, props.onMouseUp);
+	    newProps.onTouchStart = onTouchStart.bind(null, props.onTouchStart);
+	    newProps.onTouchMove = onTouchMove.bind(null, props.onTouchMove);
+	    newProps.onTouchEnd = onTouchEnd.bind(null, props.onTouchEnd, props.onClick, type);
+
+	    if (typeof Object.freeze === 'function') {
+	      Object.freeze(newProps);
+	    }
+
+	    return newProps;
+	  };
+
+	  React.createElement = function () {
+	    // Convert arguments to array
+	    var args = Array.prototype.slice.call(arguments);
+
+	    var type = args[0];
+	    var props = args[1];
+
+	    // Check if basic element & has onClick prop
+	    if (type && typeof type === 'string' && (
+	      (props && typeof props.onClick === 'function') || handleType[type]
+	    )) {
+	      // Add our own events to props
+	      args[1] = propsWithFastclickEvents(type, props || {});
+	    }
+
+	    // Apply args to original createElement function
+	    return originalCreateElement.apply(null, args);
+	  };
+
+	  if (typeof React.DOM === 'object') {
+	    for (var key in React.DOM) {
+	      React.DOM[key] = React.createElement.bind(null, key);
+	    }
+	  }
+
+	})();
+
+
+/***/ },
+/* 283 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"fCenter":"style__fCenter___1Fkxv","vCenter":"style__vCenter___25Kv6","prevStep":"style__prevStep___DvMcx","vCenterRel":"style__vCenterRel___3kqNY","hCenter":"style__hCenter___2R96t","inheritHeight":"style__inheritHeight___4sBbG","hideOverflow":"style__hideOverflow___3Xmgq","icon-general-sprite":"style__icon-general-sprite___16WYn","btn1":"style__btn1___3m1Mq","btn_report":"style__btn_report___3H1tW","btn_option":"style__btn_option___3E6D-","btn_publish":"style__btn_publish___2nEqp","btn_entry":"style__btn_entry___3NuvN","survey":"style__survey___1BYPk","reportHeader":"style__reportHeader___2gP-V","subtitle":"style__subtitle___27Fbx","heading2":"style__heading2___1GLQk","heading3":"style__heading3___1Bc9K","triangleRight":"style__triangleRight___1hbMD","closeButton":"style__closeButton___2vRwt","tweet":"style__tweet___34OIV","tweetFirst":"style__tweetFirst___2Ea-h","time":"style__time___2Z1G9"};
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -43784,11 +44039,11 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _placeOption = __webpack_require__(283);
+	var _placeOption = __webpack_require__(285);
 
 	var _placeOption2 = _interopRequireDefault(_placeOption);
 
-	var _placesData = __webpack_require__(284);
+	var _placesData = __webpack_require__(286);
 
 	var _placesData2 = _interopRequireDefault(_placesData);
 
@@ -43801,7 +44056,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(285);
+	var style = __webpack_require__(283);
 
 	var QuestionPlace = function (_React$Component) {
 	  _inherits(QuestionPlace, _React$Component);
@@ -43883,7 +44138,7 @@
 	};
 
 /***/ },
-/* 283 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43979,7 +44234,7 @@
 	};
 
 /***/ },
-/* 284 */
+/* 286 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -44015,14 +44270,7 @@
 	};
 
 /***/ },
-/* 285 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-	module.exports = {"fCenter":"style__fCenter___1Fkxv","vCenter":"style__vCenter___25Kv6","prevStep":"style__prevStep___DvMcx","vCenterRel":"style__vCenterRel___3kqNY","hCenter":"style__hCenter___2R96t","inheritHeight":"style__inheritHeight___4sBbG","hideOverflow":"style__hideOverflow___3Xmgq","icon-general-sprite":"style__icon-general-sprite___16WYn","btn1":"style__btn1___3m1Mq","btn_report":"style__btn_report___3H1tW","btn_option":"style__btn_option___3E6D-","btn_publish":"style__btn_publish___2nEqp","btn_entry":"style__btn_entry___3NuvN","survey":"style__survey___1BYPk","reportHeader":"style__reportHeader___2gP-V","subtitle":"style__subtitle___27Fbx","heading2":"style__heading2___1GLQk","heading3":"style__heading3___1Bc9K","triangleRight":"style__triangleRight___1hbMD","closeButton":"style__closeButton___2vRwt","tweet":"style__tweet___34OIV","tweetFirst":"style__tweetFirst___2Ea-h","time":"style__time___2Z1G9"};
-
-/***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44050,7 +44298,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(278);
+	var style = __webpack_require__(283);
 
 	var QuestionTime = function (_React$Component) {
 	  _inherits(QuestionTime, _React$Component);
@@ -44205,7 +44453,7 @@
 	};
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44224,7 +44472,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loader = __webpack_require__(288);
+	var _loader = __webpack_require__(289);
 
 	var _loader2 = _interopRequireDefault(_loader);
 
@@ -44455,7 +44703,7 @@
 	};
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44478,7 +44726,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = __webpack_require__(289);
+	var style = __webpack_require__(290);
 
 	var Loader = function (_React$Component) {
 	  _inherits(Loader, _React$Component);
@@ -44506,7 +44754,7 @@
 	exports.default = Loader;
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

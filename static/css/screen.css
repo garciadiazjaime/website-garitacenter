@@ -805,7 +805,8 @@
 .style__btn_entry___3NuvN {
   font-size: 14px;
   padding: 8px 0;
-  display: block; }
+  display: block;
+  cursor: pointer; }
 
 .style__prevStep___DvMcx {
   color: #292e47;
