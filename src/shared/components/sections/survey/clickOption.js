@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-fastclick';
 
 export default class ClickOption extends React.Component {
 
@@ -14,9 +15,9 @@ export default class ClickOption extends React.Component {
 
   render() {
     const { className } = this.props;
-    return (<a onClick={this.clickHandler} className={className || ''}>
-        {this.props.children}
-      </a>);
+    return (<a onClick={this.clickHandler} className={className || ''} href="#">
+      {this.props.children}
+    </a>);
   }
 }
 
