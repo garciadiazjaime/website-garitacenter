@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import _ from 'lodash';
 
+import Block2 from '../home/block2';
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
@@ -87,6 +88,7 @@ export default class ReporteUsuarioSection extends React.Component {
         </div>
       </div>
       {content}
+      <Block2 />
     </div>);
   }
 }
