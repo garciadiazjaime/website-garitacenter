@@ -39,7 +39,8 @@ export default class ReporteUsuarioSection extends React.Component {
     if (_.isArray(data) && data.length) {
       return data.map((item, index) => {
         const className = index === 0 ? style.tweetFirst : style.tweet;
-        const time = printTime(item.created);
+        const date = new Date(item.created);
+        const time = printTime(date.setHours(date.getHours() - 2));
         return (<div key={index} className="row">
           <div className="col-sm-12">
             <div className={className}>

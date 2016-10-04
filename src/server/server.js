@@ -10,7 +10,7 @@ import config from '../../config';
 import apiRoutes from './helpers/api';
 import userRoutes from './routes/userRoutes';
 import routes from '../shared/config/routes';
-import RequestUtil from '../shared/utils/requestUtil';
+import ReportController from './controllers/reportController';
 
 const app = express();
 
@@ -27,6 +27,9 @@ app.use(express.static('static'));
 app.use('/api', apiRoutes);
 app.use('/user', userRoutes);
 
+const city = 'TIJUANA';
+const reportController = new ReportController();
+
 app.get('/*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
@@ -34,14 +37,11 @@ app.get('/*', (req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-      const city = 'TIJUANA';
-      const apiUrl = `${config.get('api.url')}report?city=${city}`;
-
-      RequestUtil.get(apiUrl)
+      reportController.getReport(city)
         .then((results) => {
           const props = {
             city,
-            report: results.entity,
+            report: results,
           };
           const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
           res.render('index', { content, props });
