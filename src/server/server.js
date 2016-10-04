@@ -24,8 +24,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('static'));
 
-app.use('/api/', apiRoutes);
-app.use('/user/', userRoutes);
+app.use('/api', apiRoutes);
+app.use('/user', userRoutes);
 
 app.get('/*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
