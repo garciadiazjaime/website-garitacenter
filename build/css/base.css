@@ -15,3 +15,7 @@ a:hover {
 #app{
 	overflow: hidden;
 }
+
+html, body {
+  -webkit-tap-highlight-color: transparent;
+}

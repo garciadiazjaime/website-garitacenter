@@ -1,64 +1,94 @@
 window._data = {
   city: 'TIJUANA',
   report: [{
-    "_id": "5775990056797ab3c42ce18f",
+    "_id": "57eb093255bc7b5927cf53c3",
     "garita": "SAN_YSIDRO",
     "content": {
       "car": {
         "normal": {
-          "time": "10",
-          "lanes": "8"
+          "time": "150",
+          "lanes": "10"
         },
         "sentry": {
           "time": "10",
           "lanes": "6"
         },
         "readyLine": {
-          "time": "45",
-          "lanes": "11"
+          "time": "100",
+          "lanes": "8"
         }
       },
       "people": {
         "normal": {
-          "time": "10",
-          "lanes": "7"
+          "time": "15",
+          "lanes": "3"
         },
         "readyLine": {
           "time": "5",
-          "lanes": "8"
+          "lanes": "3"
         }
       }
     },
-    "created": "2016-06-30T22:11:12.695Z"
+    "created": "2016-09-28T00:05:06.577Z"
   }, {
-    "_id": "5775b558cf2776a3de494df9",
+    "_id": "57eb093255bc7b5927cf53c4",
     "garita": "OTAY",
     "content": {
       "car": {
         "normal": {
-          "time": "40",
-          "lanes": "3"
+          "time": "150",
+          "lanes": "4"
         },
         "sentry": {
-          "time": "5",
-          "lanes": "1"
+          "time": "10",
+          "lanes": "2"
         },
         "readyLine": {
-          "time": "15",
-          "lanes": "8"
+          "time": "120",
+          "lanes": "7"
         }
       },
       "people": {
         "normal": {
-          "time": "25",
+          "time": "5",
           "lanes": "3"
         },
         "readyLine": {
-          "time": "10",
+          "time": "5",
           "lanes": "3"
         }
       }
     },
-    "created": "2016-07-01T00:12:07.977Z"
-  }],
+    "created": "2016-09-28T00:05:06.730Z"
+  }, {
+    "_id": "57eb093255bc7b5927cf53c5",
+    "garita": "PEDWEST",
+    "content": {
+      "car": {
+        "normal": {
+          "time": "",
+          "lanes": ""
+        },
+        "sentry": {
+          "time": "",
+          "lanes": ""
+        },
+        "readyLine": {
+          "time": "",
+          "lanes": ""
+        }
+      },
+      "people": {
+        "normal": {
+          "time": "5",
+          "lanes": "6"
+        },
+        "readyLine": {
+          "time": "",
+          "lanes": ""
+        }
+      }
+    },
+    "created": "2016-09-28T00:05:06.861Z"
+  }]
 };

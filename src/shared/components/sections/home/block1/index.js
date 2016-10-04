@@ -20,7 +20,7 @@ export default class Block1 extends React.Component {
   render() {
     const { data } = this.props;
     const { report } = data;
-    const created = report[0].created;
+    const created = _.isArray(report) && report.length && report[0] ? report[0].created : '';
     const Template = this.getTemplate(data.city);
     return !_.isEmpty(data) ? (<div className="container-fluid">
       <div>

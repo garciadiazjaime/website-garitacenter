@@ -26,7 +26,7 @@ export default {
     url: 'https://www.facebook.com/garitacenter/',
   }, {
     title: 'twitter',
-    url: 'https://twitter.com/garitacenter',
+    url: 'https://twitter.com/garita_center',
   }, {
     title: 'googleplus',
     url: 'https://plus.google.com/102476216230239359040',
