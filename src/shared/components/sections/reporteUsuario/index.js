@@ -3,6 +3,7 @@ import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router';
 
+import Block2 from '../home/block2';
 import RequestUtil from '../../../utils/requestUtil';
 import { printTime, toTitleCase } from '../../../utils/string';
 // import tweetsData from './tweetsData';
@@ -40,6 +41,7 @@ export default class ReporteUsuarioSection extends React.Component {
       return data.map((item, index) => {
         const className = index === 0 ? style.tweetFirst : style.tweet;
         const date = new Date(item.created);
+        // adjust to Tijuana time
         const time = printTime(date.setHours(date.getHours() - 2));
         return (<div key={index} className="row">
           <div className="col-sm-12">
@@ -71,6 +73,7 @@ export default class ReporteUsuarioSection extends React.Component {
           </Link>
         </div>
         { this.renderTweets(this.state.tweets) }
+        <Block2 />
       </div>
     </div>);
   }

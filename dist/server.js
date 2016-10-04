@@ -101,8 +101,8 @@
 
 	app.use(_express2.default.static('static'));
 
-	app.use('/api/', _api2.default);
-	app.use('/user/', _userRoutes2.default);
+	app.use('/api', _api2.default);
+	app.use('/user', _userRoutes2.default);
 
 	var city = 'TIJUANA';
 	var reportController = new _reportController2.default();
@@ -273,8 +273,7 @@
 	      url: {
 	          doc: 'API URL',
 	          format: String,
-	          default: 'http://127.0.0.1:3000/',
-	          env: 'GC_API_URL',
+	          default: 'http://127.0.0.1:3000/'
 	      },
 	    }
 	});
@@ -695,7 +694,7 @@
 	    url: 'https://www.facebook.com/garitacenter/'
 	  }, {
 	    title: 'twitter',
-	    url: 'https://twitter.com/garitacenter'
+	    url: 'https://twitter.com/garita_center'
 	  }, {
 	    title: 'googleplus',
 	    url: 'https://plus.google.com/102476216230239359040'
@@ -1701,7 +1700,7 @@
 	      var data = this.props.data;
 	      var report = data.report;
 
-	      var created = report[0].created;
+	      var created = _lodash2.default.isArray(report) && report.length && report[0] ? report[0].created : '';
 	      var Template = this.getTemplate(data.city);
 	      return !_lodash2.default.isEmpty(data) ? _react2.default.createElement(
 	        'div',
@@ -1753,6 +1752,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _lodash = __webpack_require__(34);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	var _string = __webpack_require__(36);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -1787,234 +1790,237 @@
 	    value: function render() {
 	      var data = this.props.data;
 
-	      var port1 = data[0];
-	      var port2 = data[1];
-	      var port3 = data[2];
+	      if (_lodash2.default.isArray(data) && data.length && data[0] && data[1] && data[2]) {
+	        var port1 = data[0];
+	        var port2 = data[1];
+	        var port3 = data[2];
 
-	      return _react2.default.createElement(
-	        'div',
-	        { className: style.report },
-	        _react2.default.createElement(
+	        return _react2.default.createElement(
 	          'div',
-	          { className: 'row' },
+	          { className: style.report },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-3' },
-	            _react2.default.createElement('i', { className: style.clook })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-5' },
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              (0, _string.toTitleCase)(port1.garita)
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-4' },
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              (0, _string.toTitleCase)(port2.garita)
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-3' },
+	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: style.icon },
-	              _react2.default.createElement('i', { className: style.car }),
-	              'Normal'
+	              { className: 'col-xs-3' },
+	              _react2.default.createElement('i', { className: style.clook })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-5' },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                (0, _string.toTitleCase)(port1.garita)
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-4' },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                (0, _string.toTitleCase)(port2.garita)
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-5' },
+	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: style.port1 },
-	              this.renderTime(port1.content.car.normal.time, true)
+	              { className: 'col-xs-3' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.icon },
+	                _react2.default.createElement('i', { className: style.car }),
+	                'Normal'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port1 },
+	                this.renderTime(port1.content.car.normal.time, true)
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-4' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port2 },
+	                this.renderTime(port2.content.car.normal.time, true)
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: style.hr }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-3' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.icon },
+	                _react2.default.createElement('i', { className: style.carReadyLane }),
+	                'R. Lane'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port1 },
+	                this.renderTime(port1.content.car.readyLine.time, false)
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-4' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port2 },
+	                this.renderTime(port2.content.car.readyLine.time, false)
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: style.hr }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-3' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.icon },
+	                _react2.default.createElement('i', { className: style.carSentri }),
+	                'Sentri'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port1 },
+	                this.renderTime(port1.content.car.sentry.time, false)
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-4' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port2 },
+	                this.renderTime(port2.content.car.sentry.time, false)
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-4' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.port2 },
-	              this.renderTime(port2.content.car.normal.time, true)
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: style.hr }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.icon },
-	              _react2.default.createElement('i', { className: style.carReadyLane }),
-	              'R. Lane'
-	            )
+	            { className: 'row' },
+	            _react2.default.createElement('div', { className: style.br })
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-5' },
+	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: style.port1 },
-	              this.renderTime(port1.content.car.readyLine.time, false)
+	              { className: 'col-xs-3' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.icon },
+	                _react2.default.createElement('i', { className: style.pedestrian }),
+	                'Normal'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port1 },
+	                this.renderTime(port1.content.people.normal.time, true)
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-4' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port2 },
+	                this.renderTime(port2.content.people.normal.time, true)
+	              )
 	            )
 	          ),
+	          _react2.default.createElement('div', { className: style.hr }),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-4' },
+	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: style.port2 },
-	              this.renderTime(port2.content.car.readyLine.time, false)
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: style.hr }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-3' },
+	              { className: 'col-xs-3' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.icon },
+	                _react2.default.createElement('i', { className: style.pedestrianReadyLane }),
+	                'R. Lane'
+	              )
+	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: style.icon },
-	              _react2.default.createElement('i', { className: style.carSentri }),
-	              'Sentri'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-5' },
+	              { className: 'col-xs-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port1 },
+	                this.renderTime(port1.content.people.readyLine.time, false)
+	              )
+	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: style.port1 },
-	              this.renderTime(port1.content.car.sentry.time, false)
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-4' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.port2 },
-	              this.renderTime(port2.content.car.sentry.time, false)
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement('div', { className: style.br })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.icon },
-	              _react2.default.createElement('i', { className: style.pedestrian }),
-	              'Normal'
+	              { className: 'col-xs-4' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port2 },
+	                this.renderTime(port2.content.people.readyLine.time, false)
+	              )
 	            )
 	          ),
+	          _react2.default.createElement('div', { className: style.hr }),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-5' },
+	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: style.port1 },
-	              this.renderTime(port1.content.people.normal.time, true)
+	              { className: 'col-xs-3' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.icon },
+	                _react2.default.createElement('i', { className: style.pedestrian }),
+	                'Pedwest'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: style.port1 },
+	                this.renderTime(port3.content.people.normal.time, false)
+	              )
 	            )
 	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-4' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.port2 },
-	              this.renderTime(port2.content.people.normal.time, true)
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: style.hr }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.icon },
-	              _react2.default.createElement('i', { className: style.pedestrianReadyLane }),
-	              'R. Lane'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-5' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.port1 },
-	              this.renderTime(port1.content.people.readyLine.time, false)
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-4' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.port2 },
-	              this.renderTime(port2.content.people.readyLine.time, false)
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: style.hr }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-3' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.icon },
-	              _react2.default.createElement('i', { className: style.pedestrian }),
-	              'Pedwest'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-5' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: style.port1 },
-	              this.renderTime(port3.content.people.normal.time, false)
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: 'row ' + style.times })
-	      );
+	          _react2.default.createElement('div', { className: 'row ' + style.times })
+	        );
+	      }
+	      return null;
 	    }
 	  }]);
 
@@ -2287,6 +2293,10 @@
 
 	var _reactRouter = __webpack_require__(4);
 
+	var _block = __webpack_require__(39);
+
+	var _block2 = _interopRequireDefault(_block);
+
 	var _requestUtil = __webpack_require__(12);
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
@@ -2346,6 +2356,7 @@
 	        return data.map(function (item, index) {
 	          var className = index === 0 ? style.tweetFirst : style.tweet;
 	          var date = new Date(item.created);
+	          // adjust to Tijuana time
 	          var time = (0, _string.printTime)(date.setHours(date.getHours() - 2));
 	          return _react2.default.createElement(
 	            'div',
@@ -2408,7 +2419,8 @@
 	              )
 	            )
 	          ),
-	          this.renderTweets(this.state.tweets)
+	          this.renderTweets(this.state.tweets),
+	          _react2.default.createElement(_block2.default, null)
 	        )
 	      );
 	    }
@@ -2447,6 +2459,10 @@
 	var _lodash = __webpack_require__(34);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _block = __webpack_require__(39);
+
+	var _block2 = _interopRequireDefault(_block);
 
 	var _questionEntry = __webpack_require__(45);
 
@@ -2592,7 +2608,8 @@
 	            )
 	          )
 	        ),
-	        content
+	        content,
+	        _react2.default.createElement(_block2.default, null)
 	      );
 	    }
 	  }]);
