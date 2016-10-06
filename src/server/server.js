@@ -30,6 +30,11 @@ app.use('/user', userRoutes);
 const city = 'TIJUANA';
 const reportController = new ReportController();
 
+app.get('/health', (req, res) => {
+  res.writeHead(200);
+  res.end();
+});
+
 app.get('/*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
@@ -48,7 +53,12 @@ app.get('/*', (req, res) => {
         })
         .catch((err) => {
           console.log('err', err);
-          res.send('error');
+          const props = {
+            city,
+            report: [],
+          };
+          const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
+          res.render('index', { content, props });
         });
     } else {
       res.status(404).send('Not found');

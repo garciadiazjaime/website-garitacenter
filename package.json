@@ -1,8 +1,8 @@
 {
   "name": "website-garitacenter",
-  "version": "0.0.1",
+  "version": "3.0.0",
   "description": "GaritaCenter website",
-  "main": "node --use_strict start.js",
+  "main": "start.js",
   "scripts": {
     "test": "npm run lint",
     "dev": "./node_modules/.bin/webpack-dev-server",
@@ -93,8 +93,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/garciadiazjaime/website-garitacenter"
-  },
-  "engines": {
-    "node": "~4.1"
   }
 }

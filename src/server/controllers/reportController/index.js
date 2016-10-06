@@ -49,7 +49,7 @@ export default class ReportController {
             this.updated[city] = new Date();
           }
           resolve(this.proxy[city]);
-        })
+        }, () => resolve(this.proxy[city]))
         .catch((error) => reject(error));
     });
   }

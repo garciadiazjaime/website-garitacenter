@@ -50,7 +50,7 @@ export default class ReporteUsuarioSection extends React.Component {
                 Publicado a la{time.unity ? '' : 's'} {time.print}
               </div>
               <div>
-                {toTitleCase(item.port)} - {toTitleCase(item.entry)} <br />
+                {toTitleCase(item.port)} - {toTitleCase(item.entry)} - {toTitleCase(item.type)} <br />
                 {toTitleCase(item.place)} <br />
                 Llevo esperando {toTitleCase(item.time)}
               </div>

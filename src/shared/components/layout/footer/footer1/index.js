@@ -33,7 +33,7 @@ export default class FooterAAA extends React.Component {
               mándanos un mensaje sobre cómo podemos mejorar el reporte de garitas.
             </p>
             <p>
-              <small>El reporte de gartias de GaritaCenter es extraido de CBP. Los datos
+              <small>El reporte de garitas de GaritaCenter es extraido de CBP. Los datos
               contenidos en este sitio son de carácter informativo.</small>
             </p>
           </div>
