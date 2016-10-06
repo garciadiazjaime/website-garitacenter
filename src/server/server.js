@@ -30,6 +30,11 @@ app.use('/user', userRoutes);
 const city = 'TIJUANA';
 const reportController = new ReportController();
 
+app.get('/health', (req, res) => {
+  res.writeHead(200);
+  res.end();
+});
+
 app.get('/*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
