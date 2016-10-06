@@ -48,7 +48,12 @@ app.get('/*', (req, res) => {
         })
         .catch((err) => {
           console.log('err', err);
-          res.send('error');
+          const props = {
+            city,
+            report: [],
+          };
+          const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
+          res.render('index', { content, props });
         });
     } else {
       res.status(404).send('Not found');
