@@ -107,6 +107,11 @@
 	var city = 'TIJUANA';
 	var reportController = new _reportController2.default();
 
+	app.get('/health', function (req, res) {
+	  res.writeHead(200);
+	  res.end();
+	});
+
 	app.get('/*', function (req, res) {
 	  (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (error, redirectLocation, renderProps) {
 	    if (error) {
@@ -127,7 +132,16 @@
 	        res.render('index', { content: content, props: props });
 	      }).catch(function (err) {
 	        console.log('err', err);
-	        res.send('error');
+	        var props = {
+	          city: city,
+	          report: []
+	        };
+	        var content = (0, _server.renderToString)(_react2.default.createElement(
+	          _dataWrapper2.default,
+	          { data: props },
+	          _react2.default.createElement(_reactRouter.RoutingContext, renderProps)
+	        ));
+	        res.render('index', { content: content, props: props });
 	      });
 	    } else {
 	      res.status(404).send('Not found');
@@ -1169,7 +1183,7 @@
 	                _react2.default.createElement(
 	                  'small',
 	                  null,
-	                  'El reporte de gartias de GaritaCenter es extraido de CBP. Los datos contenidos en este sitio son de carácter informativo.'
+	                  'El reporte de garitas de GaritaCenter es extraido de CBP. Los datos contenidos en este sitio son de carácter informativo.'
 	                )
 	              )
 	            ),
@@ -2382,6 +2396,8 @@
 	                  (0, _string.toTitleCase)(item.port),
 	                  ' - ',
 	                  (0, _string.toTitleCase)(item.entry),
+	                  ' - ',
+	                  (0, _string.toTitleCase)(item.type),
 	                  ' ',
 	                  _react2.default.createElement('br', null),
 	                  (0, _string.toTitleCase)(item.place),
@@ -3753,6 +3769,8 @@
 	            _this.updated[city] = new Date();
 	          }
 	          resolve(_this.proxy[city]);
+	        }, function () {
+	          return resolve(_this.proxy[city]);
 	        }).catch(function (error) {
 	          return reject(error);
 	        });

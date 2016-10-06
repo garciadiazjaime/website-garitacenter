@@ -24782,7 +24782,7 @@
 	                _react2.default.createElement(
 	                  'small',
 	                  null,
-	                  'El reporte de gartias de GaritaCenter es extraido de CBP. Los datos contenidos en este sitio son de carácter informativo.'
+	                  'El reporte de garitas de GaritaCenter es extraido de CBP. Los datos contenidos en este sitio son de carácter informativo.'
 	                )
 	              )
 	            ),
@@ -38363,6 +38363,8 @@
 	                  (0, _string.toTitleCase)(item.port),
 	                  ' - ',
 	                  (0, _string.toTitleCase)(item.entry),
+	                  ' - ',
+	                  (0, _string.toTitleCase)(item.type),
 	                  ' ',
 	                  _react2.default.createElement('br', null),
 	                  (0, _string.toTitleCase)(item.place),
