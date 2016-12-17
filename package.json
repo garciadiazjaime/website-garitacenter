@@ -87,6 +87,7 @@
     "source-map": "^0.5.3",
     "sprity": "^1.0.8",
     "strict-uri-encode": "^1.1.0",
+    "util-ganalytics": "git+https://github.com/garciadiazjaime/util-ganalytics.git",
     "webpack-sources": "^0.1.0",
     "when": "^3.7.7"
   },

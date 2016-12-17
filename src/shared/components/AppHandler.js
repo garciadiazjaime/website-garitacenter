@@ -6,6 +6,7 @@ import MenuReport from './elements/menus/menuReport';
 import Footer from './layout/footer/footer1';
 import scrollUtil from '../utils/scroll';
 import menuUtil from '../utils/menu';
+import UtilGAnalytics from 'util-ganalytics'
 const style = require('./style.scss');
 
 
@@ -17,12 +18,12 @@ export default class AppHandler extends React.Component {
       data: context.data ? context.data : window._data,
       showOnlyContentOn: '/encuesta',
     };
+    this.googleAnalytics = new UtilGAnalytics('UA-26633604-1', false);
   }
 
   componentDidMount() {
     this.scrollHandler(true);
-    // window.addEventListener('scroll', this.onScroll, false);
-    this.googleAnalytics();
+    this.googleAnalytics.init();
   }
 
   componentDidUpdate() {
@@ -40,17 +41,6 @@ export default class AppHandler extends React.Component {
     } else {
       $('#menu_wrapper').removeClass('navbar-fixed-top');
     }
-  }
-
-  googleAnalytics() {
-    /*eslint-disable */
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	  ga('create', 'UA-26633604-1', 'garitacenter.com');
-	  ga('send', 'pageview');
-    /*eslint-enable */
   }
 
   scrollHandler(isFirstTime) {
