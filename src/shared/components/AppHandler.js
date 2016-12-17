@@ -6,7 +6,7 @@ import MenuReport from './elements/menus/menuReport';
 import Footer from './layout/footer/footer1';
 import scrollUtil from '../utils/scroll';
 import menuUtil from '../utils/menu';
-import UtilGAnalytics from 'util-ganalytics'
+import GaUtil from 'util-ganalytics';
 const style = require('./style.scss');
 
 
@@ -18,12 +18,12 @@ export default class AppHandler extends React.Component {
       data: context.data ? context.data : window._data,
       showOnlyContentOn: '/encuesta',
     };
-    this.googleAnalytics = new UtilGAnalytics('UA-26633604-1', false);
+    this.gaUtil = new GaUtil('UA-75576478-1', false);
   }
 
   componentDidMount() {
     this.scrollHandler(true);
-    this.googleAnalytics.init();
+    this.gaUtil.init();
   }
 
   componentDidUpdate() {

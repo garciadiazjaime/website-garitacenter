@@ -6,7 +6,9 @@ const display = false;
 export default class Gads extends React.Component {
 
   componentDidMount() {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    if (display) {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
   }
 
   render() {
