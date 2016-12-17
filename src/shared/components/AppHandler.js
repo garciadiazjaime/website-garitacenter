@@ -4,8 +4,6 @@ import sitemap from '../config/sitemap';
 import MainMenu from './layout/menu/menu1';
 import MenuReport from './elements/menus/menuReport';
 import Footer from './layout/footer/footer1';
-import scrollUtil from '../utils/scroll';
-import menuUtil from '../utils/menu';
 import GaUtil from 'util-ganalytics';
 const style = require('./style.scss');
 
@@ -22,40 +20,7 @@ export default class AppHandler extends React.Component {
   }
 
   componentDidMount() {
-    this.scrollHandler(true);
     this.gaUtil.init();
-  }
-
-  componentDidUpdate() {
-    this.scrollHandler();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll, false);
-  }
-
-  onScroll() {
-    const offset = window.pageYOffset;
-    if (offset > 186) {
-      $('#menu_wrapper').addClass('navbar-fixed-top');
-    } else {
-      $('#menu_wrapper').removeClass('navbar-fixed-top');
-    }
-  }
-
-  scrollHandler(isFirstTime) {
-    const { location } = this.props;
-    scrollUtil(location);
-    if (!isFirstTime) {
-      const bits = location.pathname.split('/');
-      menuUtil(bits[1] || 'inicio');
-    }
-  }
-
-  clickHandler() {
-    if ($('.navbar-header button').is(':visible')) {
-      $('.navbar-header button').click();
-    }
   }
 
   renderFullContent(content) {
