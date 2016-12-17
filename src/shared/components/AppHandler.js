@@ -1,10 +1,10 @@
 import React from 'react';
+import GaUtil from 'util-ganalytics';
 
 import sitemap from '../config/sitemap';
 import MainMenu from './layout/menu/menu1';
 import MenuReport from './elements/menus/menuReport';
 import Footer from './layout/footer/footer1';
-import GaUtil from 'util-ganalytics';
 const style = require('./style.scss');
 
 
@@ -28,14 +28,14 @@ export default class AppHandler extends React.Component {
       <MainMenu city="Tijuana / San Diego" />
       <MenuReport location={this.props.location.pathname} />
       {content}
-      <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
+      <Footer icons={sitemap.icons}/>
     </div>);
   }
 
   renderJustContent(content) {
     return (<div>
       {content}
-      <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
+      <Footer icons={sitemap.icons}/>
     </div>);
   }
 
