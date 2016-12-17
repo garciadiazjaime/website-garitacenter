@@ -25,7 +25,7 @@ export default class AppHandler extends React.Component {
 
   renderFullContent(content) {
     return (<div>
-      <MainMenu />
+      <MainMenu city="Tijuana / San Diego" />
       <MenuReport location={this.props.location.pathname} />
       {content}
       <Footer items={sitemap.items.children} addresses={sitemap.addresses} icons={sitemap.icons}/>
