@@ -62,7 +62,5 @@ export default class FooterAAA extends React.Component {
 }
 
 FooterAAA.propTypes = {
-  items: React.PropTypes.array.isRequired,
-  addresses: React.PropTypes.array,
   icons: React.PropTypes.array,
 };
