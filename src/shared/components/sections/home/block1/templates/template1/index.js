@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
+import Client from '../../../../../elements/clients';
 import { minsToHrs, toTitleCase } from '../../../../../../utils/string';
 const style = require('./style.scss');
 
@@ -95,9 +96,9 @@ export default class Template1 extends React.Component {
           </div>
         </div>
 
-        <div className="row"><div className={style.br} /></div>
+        <Client />
 
-        <div className="row">
+        <div className={`row ${style.pedestrianSection}`}>
           <div className="col-xs-3">
             <div className={style.icon}>
               <i className={style.pedestrian} />
