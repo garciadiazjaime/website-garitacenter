@@ -5,7 +5,6 @@ import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
 import RequestUtil from '../../../utils/requestUtil';
 import { toTitleCase } from '../../../utils/string';
-
 const style = require('../reporteUsuario/style.scss');
 
 
