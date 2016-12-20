@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import GaUtilAdapter from '../../../../adapters/gaUtilAdapter';
-
 const style = require('./style.scss');
 
 

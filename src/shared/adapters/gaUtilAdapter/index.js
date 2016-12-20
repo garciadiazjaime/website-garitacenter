@@ -11,7 +11,6 @@ export default class GaUtilAdapter {
   }
 
   static sendEvent(eventCategory, eventAction, eventLabel, eventValue) {
-    console.log('eventCategory', eventCategory, 'eventAction', eventAction, 'eventLabel', eventLabel, 'eventValue', eventValue);
     if (enable) {
       GaUtil.sendEvent(eventCategory, eventAction, eventLabel, eventValue);
     }
