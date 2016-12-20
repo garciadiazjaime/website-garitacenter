@@ -1,6 +1,6 @@
 import React from 'react';
-import GaUtil from 'util-ganalytics';
 
+import GaUtilAdapter from '../adapters/gaUtilAdapter';
 import sitemap from '../config/sitemap';
 import MainMenu from './layout/menu/menu1';
 import MenuReport from './elements/menus/menuReport';
@@ -16,11 +16,10 @@ export default class AppHandler extends React.Component {
       data: context.data ? context.data : window._data,
       showOnlyContentOn: '/encuesta',
     };
-    this.gaUtil = new GaUtil('UA-75576478-1', false);
   }
 
   componentDidMount() {
-    this.gaUtil.init();
+    GaUtilAdapter.init();
   }
 
   renderFullContent(content) {
