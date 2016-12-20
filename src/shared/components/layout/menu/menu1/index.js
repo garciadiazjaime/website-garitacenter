@@ -13,7 +13,7 @@ export default function MainMenu({ city }) {
           <h1>Reporte de Garitas</h1>
         </div>
         <div className="col-sm-6 col-xs-12">
-          <h2 className={'navbar-text navbar-right '}>{city}</h2>
+          <h2 className={'navbar-text navbar-right'}>{city}</h2>
         </div>
       </div>
     </div>
