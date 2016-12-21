@@ -1,0 +1,12 @@
+@import '../../../theme/constants.scss';
+
+.lastUpdate {
+  color: $black;
+  opacity: .6;
+  text-align: center;
+  padding: 8px 0;
+
+  @media #{$isPhone}{
+    font-size: 12px;
+  }
+}
