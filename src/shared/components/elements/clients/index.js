@@ -2,6 +2,7 @@
 import React from 'react';
 import _ from 'lodash';
 
+import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
 const style = require('./style.scss');
 
 export default class Client extends React.Component {
@@ -11,71 +12,82 @@ export default class Client extends React.Component {
     this.state = {
       showClient: false,
     };
-    this.isSectionEnable = false;
+    this.isSectionEnable = true;
     this.clients = [{
+      id: 'club54',
+      title: 'club54',
       image: 'club54.gif',
       link: 'http://www.playami.com/',
-      title: 'club54',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'electric',
+      title: 'electric',
       image: 'electric.gif',
       link: 'http://www.playami.com/',
-      title: 'electric',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'garden-spa',
+      title: 'garden-spa',
       image: 'garden-spa.gif',
       link: 'http://www.playami.com/',
-      title: 'garden-spa',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'hola-bonita',
+      title: 'hola-bonita',
       image: 'hola-bonita.gif',
       link: 'http://www.playami.com/',
-      title: 'hola-bonita',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'kids-dent',
+      title: 'kids-dent',
       image: 'kids-dent.gif',
       link: 'http://www.playami.com/',
-      title: 'kids-dent',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'mayco',
+      title: 'mayco',
       image: 'mayco.gif',
       link: 'http://www.playami.com/',
-      title: 'mayco',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'nutrirte',
+      title: 'nutrirte',
       image: 'nutrirte.gif',
       link: 'https://www.facebook.com/nutrirte',
-      title: 'Nutrirte: Cambia tu vida HOY',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'ri',
+      title: 'ri',
       image: 'ri.gif',
       link: 'http://www.playami.com/',
-      title: 'ri',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'sano-y-punto',
+      title: 'sano-y-punto',
       image: 'sano-y-punto.gif',
       link: 'http://www.playami.com/',
-      title: 'sano-y-punto',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'smile-dent',
+      title: 'smile-dent',
       image: 'smile-dent.gif',
       link: 'http://www.playami.com/',
-      title: 'smile-dent',
       ends: '2017-01-31',
       status: true,
     }, {
+      id: 'torrente',
+      title: 'torrente',
       image: 'torrente.gif',
       link: 'http://www.playami.com/',
-      title: 'torrente',
       ends: '2017-01-31',
       status: true,
     }];
@@ -99,6 +111,11 @@ export default class Client extends React.Component {
     }
   }
 
+  clickHandler(e) {
+    const item = e.currentTarget.getAttribute('data-item');
+    GaUtilAdapter.sendEvent('client', 'click', item);
+  }
+
   isClientActive(data) {
     const expiresOn = new Date(data.ends);
     const today = new Date();
@@ -115,8 +132,9 @@ export default class Client extends React.Component {
       const index = Math.floor(Math.random() * activeClients.length);
       const client = activeClients[index];
       if (client) {
+        GaUtilAdapter.sendEvent('client', 'show', client.id);
         return (<div>
-          <a href={client.link} title={client.title} target="_blank">
+          <a href={client.link} title={client.title} target="_blank" onClick={this.clickHandler} data-item={client.id}>
             <img src={`/images/clients/` + client.image } />
           </a>
         </div>);
@@ -126,7 +144,7 @@ export default class Client extends React.Component {
   }
 
   render() {
-    return this.isSectionEnable && !this.isMobile() ? (<div className={style.client}>
+    return this.isSectionEnable && this.isMobile() ? (<div className={style.client}>
       { this.state.showClient ? this.renderClient() : null }
     </div>) : null;
   }
