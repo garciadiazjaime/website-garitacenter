@@ -12,7 +12,7 @@ export default class Client extends React.Component {
     this.state = {
       showClient: false,
     };
-    this.isSectionEnable = true;
+    this.isSectionEnable = false;
     this.clients = [{
       id: 'club54',
       title: 'club54',
@@ -144,7 +144,7 @@ export default class Client extends React.Component {
   }
 
   render() {
-    return this.isSectionEnable && this.isMobile() ? (<div className={style.client}>
+    return this.isSectionEnable && !this.isMobile() ? (<div className={style.client}>
       { this.state.showClient ? this.renderClient() : null }
     </div>) : null;
   }
