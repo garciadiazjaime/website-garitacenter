@@ -67,7 +67,7 @@
     "cryptiles": "^3.1.1",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "history": "^4.5.0",
+    "history": "^1.17.0",
     "hoek": "^4.1.0",
     "is-promise": "^2.1.0",
     "jade": "^1.11.0",
