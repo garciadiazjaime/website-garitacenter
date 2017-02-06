@@ -21,6 +21,7 @@ export default class MenuReport extends React.Component {
             <Link to="/reporte-usuario">
               Reporte Usuarios
             </Link>
+            <a className={style.notification}>99</a>
           </li>
         </ul>
       </div>
