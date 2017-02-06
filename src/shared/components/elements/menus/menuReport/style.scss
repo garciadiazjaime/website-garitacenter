@@ -22,7 +22,11 @@
     background: lighten($color1, 10%);
 
     &:hover {
+<<<<<<< HEAD
       color: $cyan;
+=======
+      color: $blue;
+>>>>>>> client information
       cursor: pointer;
     }
   }
