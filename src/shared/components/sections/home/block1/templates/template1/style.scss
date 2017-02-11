@@ -3,6 +3,7 @@
 .report {
   font-size: 26px;
   font-weight: bold;
+  margin-top: 15px;
 
   h2 {
     font-size: 18px;
@@ -74,6 +75,10 @@
     @include sprite($general-sprite-garita-car-ready-lane);
   }
 
+  .pedestrianSection {
+    padding-top: 15px;
+  }
+
   .pedestrian {
     @extend .icon-general-sprite;
     @include sprite($general-sprite-garita-person);
@@ -82,5 +87,15 @@
   .pedestrianReadyLane {
     @extend .icon-general-sprite;
     @include sprite($general-sprite-garita-person-sentri);
+  }
+}
+
+.client {
+  margin-bottom: 15px;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }

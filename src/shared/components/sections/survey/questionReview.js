@@ -5,7 +5,6 @@ import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
 import RequestUtil from '../../../utils/requestUtil';
 import { toTitleCase } from '../../../utils/string';
-
 const style = require('../reporteUsuario/style.scss');
 
 
@@ -99,6 +98,9 @@ export default class QuestionReview extends React.Component {
     const { data } = this.props;
     return (<div className="container-fluid">
       <div className="row">
+        <div className="col-sm-12">
+          Estos son tus resultados
+        </div>
         <div className="col-sm-12">
           <h2 className={style.heading2}>¿Por dónde cruzas?</h2>
           <h3 className={style.heading3}>

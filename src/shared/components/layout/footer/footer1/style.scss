@@ -1,40 +1,20 @@
 @import '../../../../theme/constants';
-// ------ VARIABLES ---------
-$background-color: $darkGray;
-$link-color: $gray;
-$link-color-hover: $white;
-$sm-background: $color3;
-$sm-color: $white;
 
 // ------ STYLE ----------
 .footerWrapper {
-  margin-top: 42px;
   background-color: $color1;
   color: $white;
   a{
     font-size: 12px;
-    color: $link-color!important;
+    color: $gray !important;
     &:hover{
-      color: $link-color-hover!important;
+      color: $white !important;
     }
   }
   .container{
-    padding-top: 42px;
-    padding-bottom: 50px;
+    padding-top: 20px;
   }
 
-  .sitemap{
-    padding-left: 0;
-    list-style: none;
-    li{
-      display: block;
-    }
-    a{
-      display: block;
-      margin-bottom: 10px;
-      font-family: $fontA;
-    }
-  }
   svg {
     position: relative;
     display: block;
@@ -42,10 +22,10 @@ $sm-color: $white;
     width: 40px;
     height: 40px;
     circle{
-      fill: $sm-background;
+      fill: $color3;
     }
     path{
-      fill: $sm-color;
+      fill: $white;
     }
   }
   .facebook{
@@ -68,33 +48,6 @@ $sm-color: $white;
       }
     }
   }
-  .pinterest{
-    &:hover{
-      circle {
-        fill: #cb2027;
-      }
-      path {
-        fill: #fff;
-      }
-    }
-  }
-  .instagram{
-    &:hover{
-      circle {
-        fill: #125688;
-      }
-      path {
-        fill: #fff;
-      }
-    }
-  }
-  .google{
-    &:hover{
-      circle {
-        fill: #30A45A;
-      }
-    }
-  }
   .googleplus{
     &:hover{
       circle {
@@ -107,11 +60,7 @@ $sm-color: $white;
     padding: 0 0 0 10px;
   }
 }
-.contact_info{
-  a{
-    display: block;
-  }
-}
+
 .powered {
   background-color: $black;
   color: $white;
@@ -123,14 +72,5 @@ $sm-color: $white;
     &:hover{
       color: $white;
     }
-  }
-}
-
-@media #{$isPhone}{
-  .serviceTitle{
-    margin-top: 30px;
-  }
-  .facebook{
-    margin-top: 30px;
   }
 }
