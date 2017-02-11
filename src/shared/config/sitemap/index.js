@@ -1,7 +1,7 @@
 import AppHandler from '../../components/AppHandler';
 import HomeSection from '../../components/sections/home';
 import ReporteUsuarioSection from '../../components/sections/reporteUsuario';
-import SurverSection from '../../components/sections/survey';
+import SurveySection from '../../components/sections/survey';
 
 export default {
   items: {
@@ -18,7 +18,7 @@ export default {
     }, {
       title: 'Forma Reporte de Usuario',
       url: '/encuesta',
-      component: SurverSection,
+      component: SurveySection,
     }],
   },
   icons: [{
@@ -26,7 +26,7 @@ export default {
     url: 'https://www.facebook.com/garitacenter/',
   }, {
     title: 'twitter',
-    url: 'https://twitter.com/garitacenter',
+    url: 'https://twitter.com/garita_center',
   }, {
     title: 'googleplus',
     url: 'https://plus.google.com/102476216230239359040',

@@ -1,21 +1,17 @@
+/* eslint max-len: [2, 500, 4] */
 import React from 'react';
 
+import GaUtilAdapter from '../../../../adapters/gaUtilAdapter';
 const style = require('./style.scss');
-
 
 export default class Powered extends React.Component {
 
-  render() {
-    const data = [{
-      name: 'POOL',
-      url: 'http://somospool.com',
-      title: 'somos pool',
-    }, {
-      name: 'MINT',
-      url: 'http://mintitmedia.com',
-      title: 'Diseño y Desarrollo Web en Tijuana',
-    }];
+  clickHandler(e) {
+    const item = e.currentTarget.getAttribute('data-item');
+    GaUtilAdapter.sendEvent('footer', 'click', item);
+  }
 
+  render() {
     return (<div className={style.powered}>
         <div className="container-fluid">
           <div className="row">
@@ -24,8 +20,10 @@ export default class Powered extends React.Component {
               Reporte de garitas para San Ysidro y Otay | Tijuana
             </div>
             <div className="col-xs-12 col-sm-6">
-              Un proyecto de:&nbsp;
-              <a href={data[1].url} title={data[1].title} target="_blank">{data[1].name}</a>
+              Un proyecto de &nbsp;
+              <a href="http://www.mintitmedia.com" title="Diseño y Desarrollo Web en Tijuana" target="_blank" onClick={this.clickHandler} data-item="mintitmedia">
+                MINT
+              </a>
             </div>
           </div>
         </div>

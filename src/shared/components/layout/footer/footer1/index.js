@@ -1,21 +1,26 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import { Link } from 'react-router';
 
-const style = require('./style.scss');
+import GaUtilAdapter from '../../../../adapters/gaUtilAdapter';
 import Powered from './powered';
 import SVG from '../../../svg';
+const style = require('./style.scss');
 
 export default class FooterAAA extends React.Component {
 
   getIcons(data) {
     return data.map((item, index) => {
       return (<div key={index} className="col-xs-3 col-sm-12 col-md-4">
-          <Link to={item.url} className={style.sm_icon} id={item.url} target="_blank">
-            <SVG network={item.title} className={style[item.title]}/>
-          </Link>
+          <a href={item.url} className={style.sm_icon} id={item.url} target="_blank" onClick={this.clickHandler} data-item={item.title}>
+            <SVG network={item.title} className={style[item.title]} />
+          </a>
         </div>);
     });
+  }
+
+  clickHandler(e) {
+    const item = e.currentTarget.getAttribute('data-item');
+    GaUtilAdapter.sendEvent('footer', 'click', item);
   }
 
   render() {
@@ -33,7 +38,7 @@ export default class FooterAAA extends React.Component {
               mándanos un mensaje sobre cómo podemos mejorar el reporte de garitas.
             </p>
             <p>
-              <small>El reporte de gartias de GaritaCenter es extraido de CBP. Los datos
+              <small>El reporte de garitas de GaritaCenter es extraido de CBP. Los datos
               contenidos en este sitio son de carácter informativo.</small>
             </p>
           </div>
@@ -41,10 +46,14 @@ export default class FooterAAA extends React.Component {
             Amigos de GaritaCenter en Tijuana
             <ul className={style.list}>
               <li>
-                <a href="http://www.playami.com/" title="Directorio Playas de Tijuana" target="_blank">Directorio Playas de Tijuana</a>
+                <a href="http://www.playami.com/" title="Directorio Playas de Tijuana" target="_blank" onClick={this.clickHandler} data-item="playami">
+                  Directorio Playas de Tijuana
+                </a>
               </li>
               <li>
-                <a href="http://www.somospool.com" title="somos pool" target="_blank">POOL</a>
+                <a href="http://www.somospool.com" title="somos pool" target="_blank" onClick={this.clickHandler} data-item="somospool">
+                  POOL
+                </a>
               </li>
             </ul>
             <br />
@@ -62,7 +71,5 @@ export default class FooterAAA extends React.Component {
 }
 
 FooterAAA.propTypes = {
-  items: React.PropTypes.array.isRequired,
-  addresses: React.PropTypes.array,
   icons: React.PropTypes.array,
 };

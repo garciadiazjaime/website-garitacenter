@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import _ from 'lodash';
 
+import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
+import Block2 from '../home/block2';
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
@@ -25,33 +27,25 @@ export default class ReporteUsuarioSection extends React.Component {
     };
   }
 
-  clickHandler(viewState, state) {
-    if (viewState === 'QUESTION_SAVE') {
+  clickHandler(view, data) {
+    let label = '';
+    if (view === 'QUESTION_SAVE') {
       this.redirect();
+      label = 'published';
     } else {
-      const newState = _.assign({}, this.state, state, {
-        view: viewState,
-      });
-      this.setState(newState);
+      if (data) {
+        const newState = _.assign({}, this.state, data, {
+          view,
+        });
+        this.setState(newState);
+        label = Object.values(data).join(':').replace(/ /g, '_').toLowerCase();
+      }
     }
+    GaUtilAdapter.sendEvent('survey', 'click', label.length > 3 ? label : 'back');
   }
 
   redirect() {
     this.props.history.push('/reporte-usuario');
-  }
-
-  renderInit() {
-    return (<div>
-      <a className={style.btn_report} onClick={this.clickHandler}>¿Cómo te va en la línea?
-        <span className={style.subtitle}>
-          Repórtalo aquí y ayuda a los demás
-        </span>
-      </a>
-      <br />
-      <div>
-        mostrar feed de twitter
-      </div>
-    </div>);
   }
 
   renderBreadcrumb() {
@@ -83,10 +77,11 @@ export default class ReporteUsuarioSection extends React.Component {
       <div>
         <div className={style.reportHeader}>
           {this.renderBreadcrumb()}
-            <Link to="/reporte-usuario" className={style.closeButton}>&times;</Link>
+            <Link to="/reporte-usuario" className={style.closeButton} onClick={this.clickHandler}>&times;</Link>
         </div>
       </div>
       {content}
+      <Block2 />
     </div>);
   }
 }

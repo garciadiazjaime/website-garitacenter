@@ -1,15 +1,15 @@
 {
   "name": "website-garitacenter",
-  "version": "0.0.1",
+  "version": "3.0.0",
   "description": "GaritaCenter website",
-  "main": "dist/server.js",
+  "main": "start.js",
   "scripts": {
     "test": "npm run lint",
     "dev": "./node_modules/.bin/webpack-dev-server",
     "build": "npm run build-be && npm run build-fe && npm run assets && npm run minify",
     "build-fe": "./node_modules/.bin/webpack",
     "build-be": "./node_modules/.bin/webpack",
-    "start": "node dist/server.js",
+    "start": "node --use_strict start.js",
     "clean": "rm ./static/css/screen.css && rm ./static/js/app.js && rm ./dist/server.js",
     "sprites": "./node_modules/.bin/gulp build:sprites",
     "lint": "./node_modules/.bin/eslint --ignore-pattern **/app-*.js, **/**/sprite.js --ext .js,.jsx src",
@@ -76,6 +76,7 @@
     "newrelic": "^1.28.2",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-fastclick": "^2.1.2",
     "react-router": "^1.0.3",
     "react-tap-event-plugin": "^0.2.2",
     "readable-stream": "^2.0.5",
@@ -86,14 +87,9 @@
     "source-map": "^0.5.3",
     "sprity": "^1.0.8",
     "strict-uri-encode": "^1.1.0",
+    "util-ganalytics": "git+https://github.com/garciadiazjaime/util-ganalytics.git",
     "webpack-sources": "^0.1.0",
     "when": "^3.7.7"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/garciadiazjaime/website-garitacenter"
-  },
-  "engines": {
-    "node": "~4.1"
-  }
+  "repository": "https://github.com/garciadiazjaime/website-garitacenter"
 }
