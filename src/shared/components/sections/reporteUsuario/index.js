@@ -7,7 +7,7 @@ import RequestUtil from '../../../utils/requestUtil';
 import { printTime, toTitleCase } from '../../../utils/string';
 import tweetsData from './tweetsData';
 const style = require('./style.scss');
-const enable = true;
+const enable = false;
 
 export default class ReporteUsuarioSection extends React.Component {
 
