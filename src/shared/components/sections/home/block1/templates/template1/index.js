@@ -96,8 +96,6 @@ export default class Template1 extends React.Component {
           </div>
         </div>
 
-        <Client />
-
         <div className={`row ${style.pedestrianSection}`}>
           <div className="col-xs-3">
             <div className={style.icon}>
@@ -154,9 +152,7 @@ export default class Template1 extends React.Component {
           </div>
         </div>
 
-        <div className={'row ' + style.times}>
-        </div>
-
+        <Client />
       </div>);
     }
     return null;

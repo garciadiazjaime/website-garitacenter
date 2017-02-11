@@ -1,6 +1,6 @@
 /* eslint max-len: [2, 500, 4] */
 import GaUtil from 'util-ganalytics';
-const enable = true;
+const enable = false;
 
 export default class GaUtilAdapter {
 
