@@ -73,11 +73,11 @@
   @extend .btn_option;
   font-size: 14px;
   padding: 8px 0;
-  display: block;
-  cursor: pointer;
 }
 
 .prevStep {
+  bottom: 0;
+  left: 15px;
   color: $darkBlue;
   position: relative;
   display: block;

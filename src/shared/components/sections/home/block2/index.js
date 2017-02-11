@@ -3,12 +3,12 @@ import React from 'react';
 
 import Gads from '../../../elements/gads';
 const style = require('./style.scss');
-
+const enable = false;
 
 export default function Block2() {
-  return (<div className="container-fluid">
+  return enable ? (<div className="container-fluid">
     <div className={'row ' + style.donuts}>
       <Gads client="ca-pub-2643588035417760" slot="9117540736" />
     </div>
-  </div>);
+  </div>) : <div />;
 }

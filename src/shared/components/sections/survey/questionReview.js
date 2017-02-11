@@ -38,9 +38,6 @@ export default class QuestionReview extends React.Component {
     if (data && data.port && data.type && data.entry && data.place && data.time) {
       // remove data not related to survey
       delete data.view;
-      delete data.showBreadCrumb;
-      // todo: set city using variable
-      data.city = 'tijuana';
       this.setState(_.assign({}, this.state, {
         showLoading: true,
       }));
@@ -99,23 +96,20 @@ export default class QuestionReview extends React.Component {
     return (<div className="container-fluid">
       <div className="row">
         <div className="col-sm-12">
-          Estos son tus resultados
-        </div>
-        <div className="col-sm-12">
-          <h2 className={style.heading2}>¿Por dónde cruzas?</h2>
+          <h2 className={style.heading2}>Por dónde cruzas?</h2>
           <h3 className={style.heading3}>
             {this.renderPort(data.port)}
             {this.renderEntry(data.entry, data.type)}
           </h3>
         </div>
         <div className="col-sm-12">
-          <h2 className={style.heading2}>¿A qué altura estas?</h2>
+          <h2 className={style.heading2}>A qué altura estas?</h2>
           <h3 className={style.heading3}>
             {this.renderPlace(data.place)}
           </h3>
         </div>
         <div className="col-sm-12">
-          <h2 className={style.heading2}>¿Cuánto tiempo llevas esperando?</h2>
+          <h2 className={style.heading2}>Cuánto tiempo llevas esperando?</h2>
           <h3 className={style.heading3}>
             {this.renderTime(data.time)}
           </h3>
