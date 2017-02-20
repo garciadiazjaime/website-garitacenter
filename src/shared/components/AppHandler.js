@@ -4,6 +4,7 @@ import GaUtilAdapter from '../adapters/gaUtilAdapter';
 import sitemap from '../config/sitemap';
 import MainMenu from './layout/menu/menu1';
 import MenuReport from './elements/menus/menuReport';
+import MenuCities from './elements/menus/menuCities';
 import Footer from './layout/footer/footer1';
 const style = require('./style.scss');
 
@@ -25,6 +26,7 @@ export default class AppHandler extends React.Component {
   renderFullContent(content) {
     return (<div>
       <MainMenu city="Tijuana / San Diego" />
+      <MenuCities />
       <MenuReport location={this.props.location.pathname} />
       {content}
       <Footer icons={sitemap.icons}/>
