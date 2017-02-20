@@ -53,11 +53,11 @@ export default class ReporteUsuarioSection extends React.Component {
         const date = new Date(item.created);
         // adjust to Tijuana time
         const time = printTime(date.setHours(date.getHours() - 2));
-        return (<div key={index} className="row">
+        return (<div key={index} className={style.row + ' row'}>
           <div className="col-sm-12">
             <div className={className}>
               <div className={style.time}>
-                Publicado a la{time.unity ? '' : 's'} {time.print}
+                Publicado a la{time.unity ? '' : 's'} <span className={style.recentReport}>{time.print}</span>
               </div>
               <div>
                 {toTitleCase(item.port)} - {toTitleCase(item.entry)} - {toTitleCase(item.type)} <br />
