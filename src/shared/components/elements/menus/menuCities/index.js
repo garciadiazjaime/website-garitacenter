@@ -22,7 +22,8 @@ export default class MenuCities extends React.Component {
   render() {
     return (<div>
       <div className={style.menuControl} onClick={this.clickHandler}>
-        <i className="glyphicon glyphicon-menu-hamburger" />
+        <span className={style.hamburgerBar}></span>
+        <span className={style.hamburgerBar}></span>
       </div>
       {
         this.state.showMenu ? <div className={style.citiesList}>
