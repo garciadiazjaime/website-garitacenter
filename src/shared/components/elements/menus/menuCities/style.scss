@@ -1,0 +1,41 @@
+@import '../../../../theme/constants.scss';
+.menuControl {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: $color1;
+  color: white;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-align: center;
+
+  .hamburgerBar {
+    width: 16px;
+    height: 3px;
+    background: white;
+    display: block;
+    margin: 3px 0;
+  }
+}
+
+.citiesList {
+background: darken($color1, 5%);
+
+  ul {
+    list-style: none;
+    padding: 0 40px;
+    margin-bottom: 0;
+
+    li {
+      color: white;
+      text-align: center;
+      border-bottom: 1px solid white;
+      padding: 15px 0;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}

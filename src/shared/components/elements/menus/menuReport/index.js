@@ -23,7 +23,10 @@ export default class MenuReport extends React.Component {
             <Link to="/" onClick={this.clickHandler} data-item="homepage">Reporte Oficial</Link>
           </li>
           <li role="presentation" className={location.indexOf(reportLocation) !== -1 ? 'active' : ''}>
-            <Link to="/reporte-usuario" onClick={this.clickHandler} data-item="reporte-usuario">Reporte Usuarios</Link>
+            <Link to="/reporte-usuario" onClick={this.clickHandler} data-item="reporte-usuario">
+              Reporte Usuarios
+              <span className={style.notification}>99</span>
+            </Link>
           </li>
         </ul>
       </div>

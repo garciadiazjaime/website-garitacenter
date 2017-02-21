@@ -1,8 +1,9 @@
 @import '../../../theme/constants.scss';
 @import '../../../theme/buttons/buttons.scss';
 
-.survey {
+.report {
   text-align: center;
+  padding: 15px 0;
 }
 
 .reportHeader {
@@ -18,10 +19,11 @@
   background: $cyan;
 
   .subtitle {
-    color: $gray;
+    color: $white;
     display: block;
     font-size: 13px;
     font-weight: bold;
+    opacity: .8;
   }
 }
 
@@ -71,17 +73,19 @@
   @extend .btn_option;
   font-size: 14px;
   padding: 8px 0;
-  display: block;
-  cursor: pointer;
 }
 
 .prevStep {
+  bottom: 0;
+  left: 15px;
   color: $darkBlue;
   position: relative;
   display: block;
   font-size: 18px;
   text-align: left;
   padding: 15px;
+  position: absolute;
+  cursor: pointer;
 
   &::before {
     content: "";
@@ -123,7 +127,7 @@
   padding: 15px 0;
 
   .time {
-    color: $color2;
+    color: $cyan;
   }
 }
 

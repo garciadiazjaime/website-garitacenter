@@ -1,6 +1,7 @@
 @import '../../../../theme/constants';
 
 .mainWrapper {
+  padding-top: 10px;
   background: $color1;
 
   ul {
@@ -9,12 +10,29 @@
 
   a {
     border: none!important;
-    border-radius: inherit!important;
+    border-radius: inherit;
     font-size: $size1;
     color: $gray;
 
     &:hover {
+      color: $cyan;
       cursor: pointer;
+    }
+  }
+
+  .notification {
+    background: $red;
+    border-radius: 5px;
+    position: absolute;
+    display: block;
+    top: -3px;
+    right: -3px;
+    padding: 2px 5px;
+    font-size: 10px;
+    color: white;
+    &:hover {
+      background: $brightRed;
+      color: white,
     }
   }
 }
