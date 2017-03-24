@@ -24826,7 +24826,7 @@
 	                _react2.default.createElement(
 	                  'span',
 	                  { className: style.notification },
-	                  '99'
+	                  'new'
 	                )
 	              )
 	            )
