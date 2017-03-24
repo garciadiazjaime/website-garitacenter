@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___cfX-h {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___cfX-h {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -56,15 +56,17 @@
 
 @media only screen and (max-width: 767px) {
   .style__navbar___1jtlv h1 {
-    margin-top: 5px; } }
+    margin-top: 5px;
+    font-size: 14px; } }
   .style__navbar___1jtlv h2 {
-    font-size: 22px;
-    margin-top: 25px;
+    font-size: 20px;
+    margin-top: 16px;
     margin-right: 0px; }
 
 @media only screen and (max-width: 767px) {
   .style__navbar___1jtlv h2 {
-    margin: -26px 0 0 36px; } }
+    margin: -26px 0 0 36px;
+    font-size: 16px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .style__navbar___1jtlv h2 {
@@ -119,16 +121,107 @@
   background-image: url("/images/sprites/sprite-general-sprite.png"); }
 
 .style__mainWrapper___2Vi4a {
+  padding-top: 10px;
   background: #343740; }
   .style__mainWrapper___2Vi4a ul {
     border-bottom: none !important; }
   .style__mainWrapper___2Vi4a a {
     border: none !important;
-    border-radius: inherit !important;
+    border-radius: inherit;
     font-size: 15px;
     color: #f2f2f2; }
     .style__mainWrapper___2Vi4a a:hover {
+      color: #1b8ece;
       cursor: pointer; }
+  .style__mainWrapper___2Vi4a .style__notification___TJ9VB {
+    background: #D04545;
+    border-radius: 5px;
+    position: absolute;
+    display: block;
+    top: -3px;
+    right: -3px;
+    padding: 2px 5px;
+    font-size: 10px;
+    color: white; }
+    .style__mainWrapper___2Vi4a .style__notification___TJ9VB:hover {
+      background: #EE4545;
+      color: white; }
+.style__fCenter___3JKf9 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); }
+
+.style__vCenter___FH6VK {
+  position: absolute;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.style__vCenterRel___27D8B {
+  position: relative;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.style__hCenter___3N_EY {
+  position: absolute;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.style__inheritHeight___1W-a5 {
+  height: inherit; }
+
+.style__hideOverflow___1kVZC {
+  overflow: hidden; }
+
+.style__icon-general-sprite___JpYcO {
+  background-image: url("/images/sprites/sprite-general-sprite.png"); }
+
+.style__menuControl___Spzia {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #343740;
+  color: white;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-align: center; }
+  .style__menuControl___Spzia .style__hamburgerBar___3TYMt {
+    width: 16px;
+    height: 3px;
+    background: white;
+    display: block;
+    margin: 3px 0; }
+
+.style__citiesList___2yMpE {
+  background: #292b32; }
+  .style__citiesList___2yMpE ul {
+    list-style: none;
+    padding: 0 40px;
+    margin-bottom: 0; }
+    .style__citiesList___2yMpE ul li {
+      color: white;
+      text-align: center;
+      border-bottom: 1px solid white;
+      padding: 15px 0; }
+    .style__citiesList___2yMpE ul li:last-child {
+      border-bottom: none; }
 .style__fCenter___24X-f {
   position: absolute;
   top: 50%;
@@ -611,7 +704,8 @@
   font-size: 18px;
   text-align: left;
   padding: 15px;
-  position: absolute; }
+  position: absolute;
+  cursor: pointer; }
   .style__prevStep___10k1H::before {
     content: "";
     width: 0;
@@ -643,13 +737,31 @@
 .style__tweet___1n8tf, .style__tweetFirst___e7Bwg {
   text-align: left;
   border-top: 1px solid #f2f2f2;
-  padding: 15px 0; }
+  padding: 15px; }
   .style__tweet___1n8tf .style__time___mTgSW, .style__tweetFirst___e7Bwg .style__time___mTgSW {
     color: #1b8ece; }
 
 .style__tweetFirst___e7Bwg {
   border-top: none;
-  margin-top: 15px; }
+  margin-top: 15px;
+  background: #fffcd7;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 15px 30px; }
+  .style__tweetFirst___e7Bwg:after {
+    content: "RECIENTE";
+    color: #fff471;
+    font-size: 11px;
+    position: absolute;
+    font-weight: bold;
+    top: 15px;
+    padding: 2px 5px;
+    background: #1b8ece;
+    border-radius: 5px;
+    right: 10px; }
+  .style__tweetFirst___e7Bwg .style__recentReport___6VGDv {
+    font-weight: bold;
+    font-size: 16px; }
 .style__fCenter___1Fkxv {
   position: absolute;
   top: 50%;
@@ -732,8 +844,9 @@
     -webkit-transform: translate(0, 2px);
     transform: translate(0, 2px); }
 
-.style__survey___1BYPk {
-  text-align: center; }
+.style__report___18bOt {
+  text-align: center;
+  padding: 15px 0; }
 
 .style__reportHeader___2gP-V {
   background: #292e47;
@@ -745,10 +858,11 @@
 .style__btn_report___3H1tW {
   background: #1b8ece; }
   .style__btn_report___3H1tW .style__subtitle___27Fbx {
-    color: #f2f2f2;
+    color: #fff;
     display: block;
     font-size: 13px;
-    font-weight: bold; }
+    font-weight: bold;
+    opacity: .8; }
 
 .style__heading2___1GLQk {
   color: #fff;
@@ -784,17 +898,19 @@
 
 .style__btn_entry___3NuvN {
   font-size: 14px;
-  padding: 8px 0;
-  display: block;
-  cursor: pointer; }
+  padding: 8px 0; }
 
 .style__prevStep___DvMcx {
+  bottom: 0;
+  left: 15px;
   color: #292e47;
   position: relative;
   display: block;
   font-size: 18px;
   text-align: left;
-  padding: 15px; }
+  padding: 15px;
+  position: absolute;
+  cursor: pointer; }
   .style__prevStep___DvMcx::before {
     content: "";
     width: 0;
@@ -828,7 +944,7 @@
   border-top: 1px solid #f2f2f2;
   padding: 15px 0; }
   .style__tweet___34OIV .style__time___2Z1G9, .style__tweetFirst___2Ea-h .style__time___2Z1G9 {
-    color: #1ebfdb; }
+    color: #1b8ece; }
 
 .style__tweetFirst___2Ea-h {
   border-top: none; }
