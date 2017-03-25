@@ -4,7 +4,6 @@ import React from 'react';
 import Gads from '../../../elements/gads';
 const style = require('./style.scss');
 
-
 export default function Block2() {
   return (<div className="container-fluid">
     <div className={'row ' + style.donuts}>

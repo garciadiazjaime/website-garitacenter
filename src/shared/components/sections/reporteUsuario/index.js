@@ -3,13 +3,15 @@ import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router';
 
-import Block2 from '../home/block2';
+// ads disabled during april
+// import Block2 from '../home/block2';
+// <Block2 />
 import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
 import RequestUtil from '../../../utils/requestUtil';
 import { printTime, toTitleCase } from '../../../utils/string';
 import tweetsData from './tweetsData';
 const style = require('./style.scss');
-const enable = true;
+const enable = false;
 
 export default class ReporteUsuarioSection extends React.Component {
 
@@ -49,18 +51,18 @@ export default class ReporteUsuarioSection extends React.Component {
   renderTweets(data) {
     if (_.isArray(data) && data.length) {
       return data.map((item, index) => {
-        const className = index === 0 ? style.tweetFirst : style.tweet;
         const date = new Date(item.created);
         // adjust to Tijuana time
         const time = printTime(date.setHours(date.getHours() - 2));
+        const className = time.recent < 61 ? style.tweetFirst : style.tweet;
         return (<div key={index} className="row">
           <div className="col-sm-12">
             <div className={className}>
               <div className={style.time}>
-                Publicado a la{time.unity ? '' : 's'} {time.print}
+                Reporte a la{time.unity ? '' : 's'} {time.print}
               </div>
               <div>
-                {toTitleCase(item.port)} - {toTitleCase(item.entry)} - {toTitleCase(item.type)} <br />
+                Garita {toTitleCase(item.port)} - {toTitleCase(item.entry)} - {toTitleCase(item.type)} <br />
                 {toTitleCase(item.place)} <br />
                 Llevo esperando {toTitleCase(item.time)}
               </div>
@@ -83,7 +85,6 @@ export default class ReporteUsuarioSection extends React.Component {
           </Link>
         </div>
         { this.renderTweets(this.state.tweets) }
-        <Block2 />
       </div>
     </div>);
   }
