@@ -147,14 +147,19 @@
     font-size: 11px;
     position: absolute;
     font-weight: bold;
-    top: 15px;
+    top: 30px;
     padding: 2px 5px;
     background: $cyan;
     border-radius: 5px;
     right: 10px;
+
+    @media #{$isPhone}{
+      top: 15px;
+    }
   }
   .recentReport {
     font-weight: bold;
     font-size: 16px;
   }
+
 }

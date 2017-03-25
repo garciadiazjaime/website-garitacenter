@@ -42,6 +42,7 @@
   font-weight: bold;
   margin-bottom: 16px;
   margin-top: 0;
+  text-align: center;
 }
 
 .btn_option {
@@ -64,9 +65,10 @@
 
 .btn_publish {
   @extend .btn_option;
-  display: inline-block;
+  display: block;
   font-size: 28px;
   width: auto;
+  margin: 0 auto;
 }
 
 .btn_entry {
