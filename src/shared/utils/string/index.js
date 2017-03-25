@@ -42,13 +42,16 @@ export function timeSince(data) {
     return `${interval} hora${interval > 1 ? 's' : ''}`;
   }
   interval = Math.floor(seconds / 60);
-  if (interval > 1) {
+  if (interval < 6) {
+    return `5 minutos`;
+  } else if (interval > 5) {
     return `${interval} minutos`;
   }
   return `1 minuto`;
 }
 
 export function printTime(value) {
+  const now = new Date();
   const date = new Date(value);
   let hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
   if (hour < 10) {
@@ -62,5 +65,6 @@ export function printTime(value) {
   return {
     unity: date.getHours() === 1 || date.getHours() === 13,
     print: `${hour}:${mins} ${period}`,
+    recent: parseInt(Math.abs(now - date) / 1000 / 60, 10),
   };
 }

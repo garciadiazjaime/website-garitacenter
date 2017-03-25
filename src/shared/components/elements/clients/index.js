@@ -120,7 +120,10 @@ export default class Client extends React.Component {
 
   clickHandler(e) {
     const item = e.currentTarget.getAttribute('data-item');
+    const url = e.currentTarget.getAttribute('data-url');
     GaUtilAdapter.sendEvent('client', 'click', item);
+    e.preventDefault();
+    window.open(url, '_blank');
   }
 
   isClientActive(data) {
@@ -137,7 +140,7 @@ export default class Client extends React.Component {
       if (client) {
         GaUtilAdapter.sendEvent('client', 'show', client.id);
         return (<div>
-          <a href={client.link} title={client.title} target="_blank" onClick={this.clickHandler} data-item={client.id}>
+          <a href={client.link} title={client.title} onClick={this.clickHandler} data-item={client.id} data-url={client.link}>
             <img src={`/images/clients/` + client.image } />
           </a>
         </div>);

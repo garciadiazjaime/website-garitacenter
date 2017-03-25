@@ -4,7 +4,9 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 
 import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
-import Block2 from '../home/block2';
+// ads disable during April
+// import Block2 from '../home/block2';
+// <Block2 />
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
@@ -81,7 +83,6 @@ export default class ReporteUsuarioSection extends React.Component {
         </div>
       </div>
       {content}
-      <Block2 />
     </div>);
   }
 }
