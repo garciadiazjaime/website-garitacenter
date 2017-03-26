@@ -62,29 +62,37 @@
 
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-	var _dataWrapper = __webpack_require__(6);
+	var _cacheHelper = __webpack_require__(6);
+
+	var _cacheHelper2 = _interopRequireDefault(_cacheHelper);
+
+	var _dataWrapper = __webpack_require__(8);
 
 	var _dataWrapper2 = _interopRequireDefault(_dataWrapper);
 
-	var _config = __webpack_require__(7);
+	var _config = __webpack_require__(9);
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _api = __webpack_require__(9);
+	var _api = __webpack_require__(11);
 
 	var _api2 = _interopRequireDefault(_api);
 
-	var _userRoutes = __webpack_require__(11);
+	var _userRoutes = __webpack_require__(13);
 
 	var _userRoutes2 = _interopRequireDefault(_userRoutes);
 
-	var _routes = __webpack_require__(16);
+	var _routes = __webpack_require__(18);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reportController = __webpack_require__(58);
+	var _reportController = __webpack_require__(60);
 
 	var _reportController2 = _interopRequireDefault(_reportController);
+
+	var _metaHelper = __webpack_require__(61);
+
+	var _metaHelper2 = _interopRequireDefault(_metaHelper);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -112,7 +120,16 @@
 	  res.end();
 	});
 
-	app.get('/*', function (req, res) {
+	app.get('/*', function (req, res, next) {
+	  if (req.url.indexOf('/images/') === 0) {
+	    res.setHeader('Cache-Control", "public, max-age=2592000');
+	    res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
+	  }
+	  next();
+	});
+
+	app.get('/*', (0, _cacheHelper2.default)(), function (req, res) {
+	  var metaData = (0, _metaHelper2.default)(req.url);
 	  (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (error, redirectLocation, renderProps) {
 	    if (error) {
 	      res.status(500).send(error.message);
@@ -129,7 +146,7 @@
 	          { data: props },
 	          _react2.default.createElement(_reactRouter.RoutingContext, renderProps)
 	        ));
-	        res.render('index', { content: content, props: props });
+	        res.render('index', { content: content, props: props, metaData: metaData });
 	      }).catch(function (err) {
 	        console.log('err', err);
 	        var props = {
@@ -141,7 +158,7 @@
 	          { data: props },
 	          _react2.default.createElement(_reactRouter.RoutingContext, renderProps)
 	        ));
-	        res.render('index', { content: content, props: props });
+	        res.render('index', { content: content, props: props, metaData: metaData });
 	      });
 	    } else {
 	      res.status(404).send('Not found');
@@ -193,6 +210,62 @@
 
 /***/ },
 /* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function () {
+	  return function (req, res, next) {
+	    var url = req.originalUrl || req.url;
+	    var duration = getCacheTime(url);
+	    var key = '__express__' + url;
+	    var cachedBody = _memoryCache2.default.get(key);
+	    if (cachedBody) {
+	      res.send(cachedBody);
+	    } else {
+	      res.sendResponse = res.send;
+	      res.send = function (body) {
+	        _memoryCache2.default.put(key, body, duration * 1000);
+	        res.sendResponse(body);
+	      };
+	      next();
+	    }
+	  };
+	};
+
+	var _memoryCache = __webpack_require__(7);
+
+	var _memoryCache2 = _interopRequireDefault(_memoryCache);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var getCacheTime = function getCacheTime(url) {
+	  if (url === '/') {
+	    // cache set to 2 minutes in secs
+	    return 120;
+	  } else if (url === '/encuesta') {
+	    // cache set to 1 month in secs
+	    return 2592000;
+	  } else if (url === '/reporte-usuario') {
+	    // cache set to 1 minute in secs
+	    return 60;
+	  }
+	  // anything else let's wait 5 mins in secs
+	  return 300;
+	}; /* eslint-disable no-param-reassign */
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = require("memory-cache");
+
+/***/ },
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -254,10 +327,10 @@
 	};
 
 /***/ },
-/* 7 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var convict = __webpack_require__(8);
+	var convict = __webpack_require__(10);
 
 	var config = convict({
 	    email: {
@@ -299,13 +372,13 @@
 
 
 /***/ },
-/* 8 */
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = require("convict");
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -317,8 +390,8 @@
 	/*eslint-disable */
 	var router = express.Router();
 	/*eslint-enable */
-	var conf = __webpack_require__(7);
-	var sendgrid = __webpack_require__(10)(conf.get('sendgrid'));
+	var conf = __webpack_require__(9);
+	var sendgrid = __webpack_require__(12)(conf.get('sendgrid'));
 
 	router.post('/send_email', function (req, res) {
 	  var fromname = req.body.fromname;
@@ -351,13 +424,13 @@
 	exports.default = router;
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = require("sendgrid");
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -366,7 +439,7 @@
 	  value: true
 	});
 
-	var _requestUtil = __webpack_require__(12);
+	var _requestUtil = __webpack_require__(14);
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
 
@@ -377,7 +450,7 @@
 	var router = express.Router();
 
 	/*eslint-enable */
-	var config = __webpack_require__(7);
+	var config = __webpack_require__(9);
 
 	router.get('/report', function (req, res) {
 	  var apiUrl = config.get('api.url') + 'user/report?city=tijuana';
@@ -401,7 +474,7 @@
 	exports.default = router;
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -412,15 +485,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _rest = __webpack_require__(13);
+	var _rest = __webpack_require__(15);
 
 	var _rest2 = _interopRequireDefault(_rest);
 
-	var _mime = __webpack_require__(14);
+	var _mime = __webpack_require__(16);
 
 	var _mime2 = _interopRequireDefault(_mime);
 
-	var _errorCode = __webpack_require__(15);
+	var _errorCode = __webpack_require__(17);
 
 	var _errorCode2 = _interopRequireDefault(_errorCode);
 
@@ -465,25 +538,25 @@
 	exports.default = RequestUtil;
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = require("rest");
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = require("rest/interceptor/mime");
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = require("rest/interceptor/errorCode");
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -498,11 +571,11 @@
 
 	var _reactRouter = __webpack_require__(4);
 
-	var _createBrowserHistory = __webpack_require__(18);
+	var _createBrowserHistory = __webpack_require__(20);
 
 	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 
-	var _sitemap = __webpack_require__(19);
+	var _sitemap = __webpack_require__(21);
 
 	var _sitemap2 = _interopRequireDefault(_sitemap);
 
@@ -525,10 +598,10 @@
 	    routes
 	  )
 	);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -714,13 +787,13 @@
 
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = require("history/lib/createBrowserHistory");
 
 /***/ },
-/* 19 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -729,19 +802,19 @@
 	  value: true
 	});
 
-	var _AppHandler = __webpack_require__(20);
+	var _AppHandler = __webpack_require__(22);
 
 	var _AppHandler2 = _interopRequireDefault(_AppHandler);
 
-	var _home = __webpack_require__(34);
+	var _home = __webpack_require__(36);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _reporteUsuario = __webpack_require__(43);
+	var _reporteUsuario = __webpack_require__(45);
 
 	var _reporteUsuario2 = _interopRequireDefault(_reporteUsuario);
 
-	var _survey = __webpack_require__(46);
+	var _survey = __webpack_require__(48);
 
 	var _survey2 = _interopRequireDefault(_survey);
 
@@ -778,7 +851,7 @@
 	};
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -793,27 +866,27 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
-	var _sitemap = __webpack_require__(19);
+	var _sitemap = __webpack_require__(21);
 
 	var _sitemap2 = _interopRequireDefault(_sitemap);
 
-	var _menu = __webpack_require__(23);
+	var _menu = __webpack_require__(25);
 
 	var _menu2 = _interopRequireDefault(_menu);
 
-	var _menuReport = __webpack_require__(25);
+	var _menuReport = __webpack_require__(27);
 
 	var _menuReport2 = _interopRequireDefault(_menuReport);
 
-	var _menuCities = __webpack_require__(27);
+	var _menuCities = __webpack_require__(29);
 
 	var _menuCities2 = _interopRequireDefault(_menuCities);
 
-	var _footer = __webpack_require__(29);
+	var _footer = __webpack_require__(31);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -825,7 +898,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = __webpack_require__(33);
+	var style = __webpack_require__(35);
 
 	var AppHandler = function (_React$Component) {
 	  _inherits(AppHandler, _React$Component);
@@ -907,7 +980,7 @@
 	};
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -919,7 +992,7 @@
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint max-len: [2, 500, 4] */
 
 
-	var _utilGanalytics = __webpack_require__(22);
+	var _utilGanalytics = __webpack_require__(24);
 
 	var _utilGanalytics2 = _interopRequireDefault(_utilGanalytics);
 
@@ -956,13 +1029,13 @@
 	exports.default = GaUtilAdapter;
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = require("util-ganalytics");
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -987,7 +1060,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = __webpack_require__(24);
+	var style = __webpack_require__(26);
 
 	var MainMenu = function (_React$Component) {
 	  _inherits(MainMenu, _React$Component);
@@ -1050,14 +1123,14 @@
 	};
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___cfX-h","vCenter":"style__vCenter___ZA14l","vCenterRel":"style__vCenterRel___1GkYt","hCenter":"style__hCenter___2Rj-i","inheritHeight":"style__inheritHeight___2LMcf","hideOverflow":"style__hideOverflow___3olA9","icon-general-sprite":"style__icon-general-sprite___8hFb_","navbar":"style__navbar___1jtlv","navbarBrand":"style__navbarBrand___2rqc0"};
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1074,7 +1147,7 @@
 
 	var _reactRouter = __webpack_require__(4);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
@@ -1087,7 +1160,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(26);
+	var style = __webpack_require__(28);
 
 	var MenuReport = function (_React$Component) {
 	  _inherits(MenuReport, _React$Component);
@@ -1159,14 +1232,14 @@
 	};
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___2bJg7","vCenter":"style__vCenter___1gceq","vCenterRel":"style__vCenterRel___3JMRJ","hCenter":"style__hCenter___RDWhc","inheritHeight":"style__inheritHeight___170iI","hideOverflow":"style__hideOverflow___1Rfch","icon-general-sprite":"style__icon-general-sprite___1I4Yq","mainWrapper":"style__mainWrapper___2Vi4a","notification":"style__notification___TJ9VB"};
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1181,7 +1254,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
@@ -1194,7 +1267,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(28);
+	var style = __webpack_require__(30);
 
 	var MenuCities = function (_React$Component) {
 	  _inherits(MenuCities, _React$Component);
@@ -1271,14 +1344,14 @@
 	exports.default = MenuCities;
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___3JKf9","vCenter":"style__vCenter___FH6VK","vCenterRel":"style__vCenterRel___27D8B","hCenter":"style__hCenter___3N_EY","inheritHeight":"style__inheritHeight___1W-a5","hideOverflow":"style__hideOverflow___1kVZC","icon-general-sprite":"style__icon-general-sprite___JpYcO","menuControl":"style__menuControl___Spzia","hamburgerBar":"style__hamburgerBar___3TYMt","citiesList":"style__citiesList___2yMpE"};
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1293,15 +1366,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
-	var _powered = __webpack_require__(30);
+	var _powered = __webpack_require__(32);
 
 	var _powered2 = _interopRequireDefault(_powered);
 
-	var _svg = __webpack_require__(32);
+	var _svg = __webpack_require__(34);
 
 	var _svg2 = _interopRequireDefault(_svg);
 
@@ -1314,7 +1387,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(31);
+	var style = __webpack_require__(33);
 
 	var FooterAAA = function (_React$Component) {
 	  _inherits(FooterAAA, _React$Component);
@@ -1449,7 +1522,7 @@
 	};
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1464,7 +1537,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
@@ -1477,7 +1550,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(31);
+	var style = __webpack_require__(33);
 
 	var Powered = function (_React$Component) {
 	  _inherits(Powered, _React$Component);
@@ -1535,14 +1608,14 @@
 	exports.default = Powered;
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___24X-f","vCenter":"style__vCenter___rkH6k","vCenterRel":"style__vCenterRel___W_SE5","hCenter":"style__hCenter___rq5W3","inheritHeight":"style__inheritHeight___IbmOF","hideOverflow":"style__hideOverflow___3nmjb","icon-general-sprite":"style__icon-general-sprite___bVUR0","footerWrapper":"style__footerWrapper___zbtoF","container":"style__container___2PqEc","facebook":"style__facebook___39dVV","twitter":"style__twitter___1oyfA","googleplus":"style__googleplus___1casQ","list":"style__list___2_d4H","powered":"style__powered___2okxk"};
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1727,14 +1800,14 @@
 	};
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___1Oa0i","vCenter":"style__vCenter___V9jBy","vCenterRel":"style__vCenterRel___3xytS","hCenter":"style__hCenter___9Wk6Y","inheritHeight":"style__inheritHeight___2lTtv","hideOverflow":"style__hideOverflow___3uDtP","icon-general-sprite":"style__icon-general-sprite___3Bwwe","background":"style__background___100HK"};
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1749,15 +1822,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _block = __webpack_require__(36);
+	var _block = __webpack_require__(38);
 
 	var _block2 = _interopRequireDefault(_block);
 
-	var _string = __webpack_require__(40);
+	var _string = __webpack_require__(42);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1772,7 +1845,7 @@
 	// <Block2 />
 
 
-	var style = __webpack_require__(42);
+	var style = __webpack_require__(44);
 
 	var HomeSection = function (_React$Component) {
 	  _inherits(HomeSection, _React$Component);
@@ -1819,13 +1892,13 @@
 	};
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports) {
 
 	module.exports = require("lodash");
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1840,11 +1913,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _template = __webpack_require__(37);
+	var _template = __webpack_require__(39);
 
 	var _template2 = _interopRequireDefault(_template);
 
@@ -1901,7 +1974,7 @@
 	};
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1916,15 +1989,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _clients = __webpack_require__(38);
+	var _clients = __webpack_require__(40);
 
 	var _clients2 = _interopRequireDefault(_clients);
 
-	var _string = __webpack_require__(40);
+	var _string = __webpack_require__(42);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1934,7 +2007,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = __webpack_require__(41);
+	var style = __webpack_require__(43);
 
 	var Template1 = function (_React$Component) {
 	  _inherits(Template1, _React$Component);
@@ -2198,7 +2271,7 @@
 	};
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2213,11 +2286,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
@@ -2230,7 +2303,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(39);
+	var style = __webpack_require__(41);
 
 	var Client = function (_React$Component) {
 	  _inherits(Client, _React$Component);
@@ -2399,14 +2472,14 @@
 	exports.default = Client;
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"client":"style__client___3i79I"};
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2490,21 +2563,21 @@
 	}
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___3J7rq","vCenter":"style__vCenter___px7FK","vCenterRel":"style__vCenterRel___3-4Pc","hCenter":"style__hCenter___1FoV0","inheritHeight":"style__inheritHeight___2AId2","hideOverflow":"style__hideOverflow___33eUg","icon-general-sprite":"style__icon-general-sprite___2hbMj","report":"style__report___3oyH6","clook":"style__clook___2Z6j_","car":"style__car___I6XtV","carSentri":"style__carSentri___3O52I","carReadyLane":"style__carReadyLane___feZQo","pedestrian":"style__pedestrian___1pzB_","pedestrianReadyLane":"style__pedestrianReadyLane___1Bf3P","br":"style__br___LILTJ","hr":"style__hr___1P1Ee","icon":"style__icon___1LpsF","port1":"style__port1___33WuG","port2":"style__port2___1wOeD","times":"style__times___22Gjy","clookWrapper":"style__clookWrapper___1hPg4","pedestrianSection":"style__pedestrianSection___1a-SK","client":"style__client___2EPFN"};
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___qougA","vCenter":"style__vCenter___2pche","vCenterRel":"style__vCenterRel___WRKiA","hCenter":"style__hCenter___GVDHq","inheritHeight":"style__inheritHeight___3vMr3","hideOverflow":"style__hideOverflow___DySF5","icon-general-sprite":"style__icon-general-sprite___3kaOy","lastUpdate":"style__lastUpdate___2KanV"};
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2519,23 +2592,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
 	var _reactRouter = __webpack_require__(4);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
-	var _requestUtil = __webpack_require__(12);
+	var _requestUtil = __webpack_require__(14);
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
 
-	var _string = __webpack_require__(40);
+	var _string = __webpack_require__(42);
 
-	var _tweetsData = __webpack_require__(44);
+	var _tweetsData = __webpack_require__(46);
 
 	var _tweetsData2 = _interopRequireDefault(_tweetsData);
 
@@ -2553,7 +2626,7 @@
 	// <Block2 />
 
 
-	var style = __webpack_require__(45);
+	var style = __webpack_require__(47);
 	var enable = false;
 
 	var ReporteUsuarioSection = function (_React$Component) {
@@ -2684,7 +2757,7 @@
 	exports.default = ReporteUsuarioSection;
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2716,14 +2789,14 @@
 	}];
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___3Lxs4","vCenter":"style__vCenter___3kYLY","prevStep":"style__prevStep___10k1H","vCenterRel":"style__vCenterRel___1sfpl","hCenter":"style__hCenter___162iY","inheritHeight":"style__inheritHeight___2SoiS","hideOverflow":"style__hideOverflow___3NX7s","icon-general-sprite":"style__icon-general-sprite___2Xc4H","btn1":"style__btn1___FJ7-a","btn_report":"style__btn_report___2nR-t","btn_option":"style__btn_option___29b-3","btn_publish":"style__btn_publish___3K2oI","btn_entry":"style__btn_entry___1XRBP","report":"style__report___2lnJ4","reportHeader":"style__reportHeader___2a9Ex","subtitle":"style__subtitle___2kkxH","heading2":"style__heading2___326bl","heading3":"style__heading3___1E4Ul","triangleRight":"style__triangleRight___3QajC","closeButton":"style__closeButton___3Z7B_","tweet":"style__tweet___1n8tf","tweetFirst":"style__tweetFirst___e7Bwg","time":"style__time___mTgSW","recentReport":"style__recentReport___6VGDv"};
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2740,31 +2813,31 @@
 
 	var _reactRouter = __webpack_require__(4);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _gaUtilAdapter = __webpack_require__(21);
+	var _gaUtilAdapter = __webpack_require__(23);
 
 	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
 
-	var _questionEntry = __webpack_require__(47);
+	var _questionEntry = __webpack_require__(49);
 
 	var _questionEntry2 = _interopRequireDefault(_questionEntry);
 
-	var _questionPlace = __webpack_require__(51);
+	var _questionPlace = __webpack_require__(53);
 
 	var _questionPlace2 = _interopRequireDefault(_questionPlace);
 
-	var _questionTime = __webpack_require__(54);
+	var _questionTime = __webpack_require__(56);
 
 	var _questionTime2 = _interopRequireDefault(_questionTime);
 
-	var _questionReview = __webpack_require__(55);
+	var _questionReview = __webpack_require__(57);
 
 	var _questionReview2 = _interopRequireDefault(_questionReview);
 
-	var _string = __webpack_require__(40);
+	var _string = __webpack_require__(42);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2779,7 +2852,7 @@
 	// <Block2 />
 
 
-	var style = __webpack_require__(50);
+	var style = __webpack_require__(52);
 
 	var ReporteUsuarioSection = function (_React$Component) {
 	  _inherits(ReporteUsuarioSection, _React$Component);
@@ -2894,7 +2967,7 @@
 	};
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2909,11 +2982,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _clickOption = __webpack_require__(48);
+	var _clickOption = __webpack_require__(50);
 
 	var _clickOption2 = _interopRequireDefault(_clickOption);
 
-	var _svg = __webpack_require__(32);
+	var _svg = __webpack_require__(34);
 
 	var _svg2 = _interopRequireDefault(_svg);
 
@@ -2926,7 +2999,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(50);
+	var style = __webpack_require__(52);
 
 	var QuestionPort = function (_React$Component) {
 	  _inherits(QuestionPort, _React$Component);
@@ -3113,7 +3186,7 @@
 	};
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3128,7 +3201,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(49);
+	__webpack_require__(51);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3184,20 +3257,20 @@
 	};
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports) {
 
 	module.exports = require("react-fastclick");
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___1Fkxv","vCenter":"style__vCenter___25Kv6","prevStep":"style__prevStep___DvMcx","vCenterRel":"style__vCenterRel___3kqNY","hCenter":"style__hCenter___2R96t","inheritHeight":"style__inheritHeight___4sBbG","hideOverflow":"style__hideOverflow___3Xmgq","icon-general-sprite":"style__icon-general-sprite___16WYn","btn1":"style__btn1___3m1Mq","btn_report":"style__btn_report___3H1tW","btn_option":"style__btn_option___3E6D-","btn_publish":"style__btn_publish___2nEqp","btn_entry":"style__btn_entry___3NuvN","report":"style__report___18bOt","reportHeader":"style__reportHeader___2gP-V","subtitle":"style__subtitle___27Fbx","heading2":"style__heading2___1GLQk","heading3":"style__heading3___1Bc9K","triangleRight":"style__triangleRight___1hbMD","closeButton":"style__closeButton___2vRwt","tweet":"style__tweet___34OIV","tweetFirst":"style__tweetFirst___2Ea-h","time":"style__time___2Z1G9"};
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3212,15 +3285,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _placeOption = __webpack_require__(52);
+	var _placeOption = __webpack_require__(54);
 
 	var _placeOption2 = _interopRequireDefault(_placeOption);
 
-	var _placesData = __webpack_require__(53);
+	var _placesData = __webpack_require__(55);
 
 	var _placesData2 = _interopRequireDefault(_placesData);
 
@@ -3233,7 +3306,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(50);
+	var style = __webpack_require__(52);
 
 	var QuestionPlace = function (_React$Component) {
 	  _inherits(QuestionPlace, _React$Component);
@@ -3315,7 +3388,7 @@
 	};
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3330,11 +3403,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _clickOption = __webpack_require__(48);
+	var _clickOption = __webpack_require__(50);
 
 	var _clickOption2 = _interopRequireDefault(_clickOption);
 
@@ -3411,7 +3484,7 @@
 	};
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3447,7 +3520,7 @@
 	};
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3462,7 +3535,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _clickOption = __webpack_require__(48);
+	var _clickOption = __webpack_require__(50);
 
 	var _clickOption2 = _interopRequireDefault(_clickOption);
 
@@ -3475,7 +3548,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(50);
+	var style = __webpack_require__(52);
 
 	var QuestionTime = function (_React$Component) {
 	  _inherits(QuestionTime, _React$Component);
@@ -3630,7 +3703,7 @@
 	};
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3645,23 +3718,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loader = __webpack_require__(56);
+	var _loader = __webpack_require__(58);
 
 	var _loader2 = _interopRequireDefault(_loader);
 
-	var _clickOption = __webpack_require__(48);
+	var _clickOption = __webpack_require__(50);
 
 	var _clickOption2 = _interopRequireDefault(_clickOption);
 
-	var _requestUtil = __webpack_require__(12);
+	var _requestUtil = __webpack_require__(14);
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
 
-	var _string = __webpack_require__(40);
+	var _string = __webpack_require__(42);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3672,7 +3745,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
 
 
-	var style = __webpack_require__(45);
+	var style = __webpack_require__(47);
 
 	var QuestionReview = function (_React$Component) {
 	  _inherits(QuestionReview, _React$Component);
@@ -3885,7 +3958,7 @@
 	};
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3908,7 +3981,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = __webpack_require__(57);
+	var style = __webpack_require__(59);
 
 	var Loader = function (_React$Component) {
 	  _inherits(Loader, _React$Component);
@@ -3936,14 +4009,14 @@
 	exports.default = Loader;
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___1z8sB","vCenter":"style__vCenter___3iEWL","vCenterRel":"style__vCenterRel___IMEMa","hCenter":"style__hCenter___3Z_kY","inheritHeight":"style__inheritHeight___1lX1a","hideOverflow":"style__hideOverflow___2lxKJ","icon-general-sprite":"style__icon-general-sprite___yikUy","wrapper":"style__wrapper___2dK3R","loader":"style__loader___2-Uv7"};
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3955,15 +4028,15 @@
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint max-len: [2, 500, 4] */
 
 
-	var _lodash = __webpack_require__(35);
+	var _lodash = __webpack_require__(37);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _requestUtil = __webpack_require__(12);
+	var _requestUtil = __webpack_require__(14);
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
 
-	var _config = __webpack_require__(7);
+	var _config = __webpack_require__(9);
 
 	var _config2 = _interopRequireDefault(_config);
 
@@ -4039,6 +4112,34 @@
 	}();
 
 	exports.default = ReportController;
+
+/***/ },
+/* 61 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (url) {
+	  if (url === '/reporte-usuario') {
+	    return {
+	      title: 'GaritaCenter - Reporte de Usuarios para San Ysidro y Otay | Tijuana',
+	      description: 'Información reportada por la comunidad de GaritaCenter.'
+	    };
+	  } else if (url === '/encuesta') {
+	    return {
+	      title: 'GaritaCenter - Encuesta. Reporta el tiempo en espera que llevas en garita.',
+	      description: '¿Cómo te va en la línea? Da tu reporte de garitas aquí y ayuda a los demás'
+	    };
+	  }
+	  return {
+	    title: 'GaritaCenter - Reporte de Garitas para San Ysidro y Otay | Tijuana',
+	    description: 'Reporte de Garitas en Tijuana / San Diego para la Garita de San Ysidrio y Otay. Garitacenter, tiempo en línea fronteriza.'
+	  };
+	};
 
 /***/ }
 /******/ ]);

@@ -46,7 +46,7 @@ app.get('/*', (req, res, next) => {
 });
 
 
-app.get('/*', cacheHelper(120), (req, res) => {
+app.get('/*', cacheHelper(), (req, res) => {
   const metaData = metaHelper(req.url);
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
