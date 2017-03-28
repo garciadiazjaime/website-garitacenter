@@ -8,7 +8,6 @@ import bodyParser from 'body-parser';
 import cacheHelper from './helpers/cacheHelper';
 import DataWrapper from './dataWrapper';
 import config from '../../config';
-import apiRoutes from './helpers/api';
 import userRoutes from './routes/userRoutes';
 import routes from '../shared/config/routes';
 import ReportController from './controllers/reportController';
@@ -23,10 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
-
 app.use(express.static('static'));
-
-app.use('/api', apiRoutes);
 app.use('/user', userRoutes);
 
 const city = 'TIJUANA';

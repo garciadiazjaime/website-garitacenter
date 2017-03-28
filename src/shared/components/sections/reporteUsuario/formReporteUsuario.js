@@ -1,6 +1,5 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import _ from 'lodash';
 
 import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
@@ -22,17 +21,17 @@ export default class FormReporteUsuario extends React.Component {
 
   getLabel(prop) {
     if (prop === 'port') {
-      return !_.isEmpty(this.state.port) ? toTitleCase(this.state.port) : 'Seleccionar Garita';
+      return !!this.state.port ? toTitleCase(this.state.port) : 'Seleccionar Garita';
     } else if (prop === 'place') {
-      return !_.isEmpty(this.state.place) ? toTitleCase(this.state.place) : 'Seleccionar Lugar';
+      return !!this.state.place ? toTitleCase(this.state.place) : 'Seleccionar Lugar';
     } else if (prop === 'time') {
-      return !_.isEmpty(this.state.time) ? toTitleCase(this.state.time) : 'Seleccionar Tiempo';
+      return !!this.state.time ? toTitleCase(this.state.time) : 'Seleccionar Tiempo';
     }
     return '';
   }
 
   submitHandler() {
-    const data = _.assign({}, this.state);
+    const data = Object.assign({}, this.state);
     const url = '/user/report';
     const promise = [];
     let message = 'Favor de llenar todos los campos.';
@@ -42,7 +41,7 @@ export default class FormReporteUsuario extends React.Component {
       delete data.showLoading;
       delete data.portIndex;
       delete data.status;
-      this.setState(_.assign({}, this.state, {
+      this.setState(Object.assign({}, this.state, {
         showLoading: true,
       }));
       promise.push(RequestUtil.post(url, data));
@@ -53,7 +52,7 @@ export default class FormReporteUsuario extends React.Component {
         message = results[0].entity.status ? 'Gracias por el dato.' : 'Lo sentimos, favor de intentar más tarde.';
       }
       this.setState({
-        status: _.isArray(results) && results.length ? results[0].entity.status : false,
+        status: results.constructor === Array && results.length ? results[0].entity.status : false,
         formMessage: message,
         showLoading: false,
       });
@@ -66,7 +65,7 @@ export default class FormReporteUsuario extends React.Component {
   }
 
   clickHandler(option, value, portIndex) {
-    const state = _.assign({}, this.state);
+    const state = Object.assign({}, this.state);
     state[option] = value;
     if (option === 'port') {
       state.portIndex = portIndex;

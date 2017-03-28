@@ -1,8 +1,5 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import { Link } from 'react-router';
-import _ from 'lodash';
-
 import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
 // ads disable during April
 // import Block2 from '../home/block2';
@@ -36,7 +33,7 @@ export default class ReporteUsuarioSection extends React.Component {
       label = 'published';
     } else {
       if (data) {
-        const newState = _.assign({}, this.state, data, {
+        const newState = Object.assign({}, this.state, data, {
           view,
         });
         this.setState(newState);
@@ -76,12 +73,6 @@ export default class ReporteUsuarioSection extends React.Component {
       content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
     }
     return (<div className={style.survey}>
-      <div>
-        <div className={style.reportHeader}>
-          {this.renderBreadcrumb()}
-            <Link to="/reporte-usuario" className={style.closeButton} onClick={this.clickHandler}>&times;</Link>
-        </div>
-      </div>
       {content}
     </div>);
   }
