@@ -1,6 +1,5 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import _ from 'lodash';
 import PlaceOption from './placeOption';
 import placesData from './placesData';
 
@@ -30,7 +29,7 @@ export default class QuestionPlace extends React.Component {
   }
 
   renderQuestions(port, type, entry) {
-    const data = placesData[port] && placesData[port][type] && _.isArray(placesData[port][type][entry]) ? placesData[port][type][entry] : [];
+    const data = placesData[port] && placesData[port][type] && placesData[port][type][entry].constructor === Array ? placesData[port][type][entry] : [];
     return (<PlaceOption data={data} btnClassName={style.btn_option} clickHandler={this.clickHandler} />);
   }
 

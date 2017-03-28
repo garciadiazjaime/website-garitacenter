@@ -5,12 +5,13 @@ import { renderToString } from 'react-dom/server';
 import { match, RoutingContext } from 'react-router';
 import bodyParser from 'body-parser';
 
+import cacheHelper from './helpers/cacheHelper';
 import DataWrapper from './dataWrapper';
 import config from '../../config';
-import apiRoutes from './helpers/api';
 import userRoutes from './routes/userRoutes';
 import routes from '../shared/config/routes';
 import ReportController from './controllers/reportController';
+import metaHelper from './helpers/metaHelper';
 
 const app = express();
 
@@ -21,10 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
-
 app.use(express.static('static'));
-
-app.use('/api', apiRoutes);
 app.use('/user', userRoutes);
 
 const city = 'TIJUANA';
@@ -35,7 +33,17 @@ app.get('/health', (req, res) => {
   res.end();
 });
 
-app.get('/*', (req, res) => {
+app.get('/*', (req, res, next) => {
+  if (req.url.indexOf('/images/') === 0) {
+    res.setHeader('Cache-Control", "public, max-age=2592000');
+    res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
+  }
+  next();
+});
+
+
+app.get('/*', cacheHelper(), (req, res) => {
+  const metaData = metaHelper(req.url);
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message);
@@ -49,7 +57,7 @@ app.get('/*', (req, res) => {
             report: results,
           };
           const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
-          res.render('index', { content, props });
+          res.render('index', { content, props, metaData });
         })
         .catch((err) => {
           console.log('err', err);
@@ -58,7 +66,7 @@ app.get('/*', (req, res) => {
             report: [],
           };
           const content = renderToString(<DataWrapper data={props}><RoutingContext {...renderProps} /></DataWrapper>);
-          res.render('index', { content, props });
+          res.render('index', { content, props, metaData });
         });
     } else {
       res.status(404).send('Not found');

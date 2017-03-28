@@ -1,6 +1,5 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import _ from 'lodash';
 import Loader from '../../elements/loader';
 import ClickOption from './clickOption';
 import RequestUtil from '../../../utils/requestUtil';
@@ -33,7 +32,7 @@ export default class QuestionReview extends React.Component {
   }
 
   saveSurvey() {
-    const data = _.assign({}, this.props.data);
+    const data = Object.assign({}, this.props.data);
     const url = '/user/report';
     if (data && data.port && data.type && data.entry && data.place && data.time) {
       // remove data not related to survey
@@ -41,7 +40,7 @@ export default class QuestionReview extends React.Component {
       delete data.showBreadCrumb;
       // todo: set city using variable
       data.city = 'tijuana';
-      this.setState(_.assign({}, this.state, {
+      this.setState(Object.assign({}, this.state, {
         showLoading: true,
       }));
       RequestUtil.post(url, data).then((results) => {

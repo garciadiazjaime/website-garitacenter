@@ -73,6 +73,7 @@
     "jade": "^1.11.0",
     "jquery": "^2.2.1",
     "lodash": "^3.10.1",
+    "memory-cache": "^0.1.6",
     "newrelic": "^1.28.2",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",

@@ -1,6 +1,5 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import _ from 'lodash';
 
 import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
 const style = require('./style.scss');
@@ -111,7 +110,7 @@ export default class Client extends React.Component {
   }
 
   getActiveClients(data) {
-    if (_.isArray(data) && data.length) {
+    if (data.constructor === Array && data.length) {
       return data.filter((item) => {
         return item.status && this.isClientActive(item);
       });
@@ -134,7 +133,7 @@ export default class Client extends React.Component {
 
   renderClient() {
     const activeClients = this.getActiveClients(this.clients);
-    if (_.isArray(activeClients) && activeClients.length) {
+    if (activeClients.constructor === Array && activeClients.length) {
       const index = Math.floor(Math.random() * activeClients.length);
       const client = activeClients[index];
       if (client) {
