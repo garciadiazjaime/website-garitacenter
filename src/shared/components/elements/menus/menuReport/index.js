@@ -16,7 +16,6 @@ export default class MenuReport extends React.Component {
   render() {
     const { location } = this.props;
     const defaultLocation = '/';
-    console.log('location', location);
     return (<div className={style.mainWrapper}>
       <div className="container-fluid">
         <ul className="nav nav-tabs">
