@@ -6,8 +6,6 @@ import MainMenu from './layout/menu/menu1';
 import MenuReport from './elements/menus/menuReport';
 import MenuCities from './elements/menus/menuCities';
 import Footer from './layout/footer/footer1';
-const style = require('./style.scss');
-
 
 export default class AppHandler extends React.Component {
 
@@ -23,34 +21,16 @@ export default class AppHandler extends React.Component {
     GaUtilAdapter.init();
   }
 
-  renderFullContent(content) {
-    return (<div>
-      <MainMenu city="Tijuana / San Diego" />
-      <MenuCities />
-      <MenuReport location={this.props.location.pathname} />
-      {content}
-      <Footer icons={sitemap.icons}/>
-    </div>);
-  }
-
-  renderJustContent(content) {
-    return (<div>
-      {content}
-      <Footer icons={sitemap.icons}/>
-    </div>);
-  }
-
   render() {
     const children = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, { data: this.state.data });
     });
-    const { location } = this.props;
-    const className = location.pathname.indexOf('encuesta') === -1 ? '' : style.background;
-    return (<div className={className}>
-      {
-        this.props.location.pathname !== this.state.showOnlyContentOn ?
-          this.renderFullContent(children) : this.renderJustContent(children)
-      }
+    return (<div>
+      <MainMenu city="Tijuana / San Diego" />
+      <MenuCities />
+      <MenuReport location={this.props.location.pathname} />
+      {children}
+      <Footer icons={sitemap.icons}/>
     </div>);
   }
 }

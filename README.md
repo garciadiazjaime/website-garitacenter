@@ -43,3 +43,10 @@ rhc env list -a app
 
 Code to increase jslint max line length limit
 /* eslint max-len: [2, 500, 4] */
+
+Ads code
+-- view.jade
+script(src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async)
+-- home/index.js
+import Block2 from './block2';
+<Block2 />

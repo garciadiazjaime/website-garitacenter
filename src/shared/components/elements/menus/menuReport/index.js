@@ -15,14 +15,14 @@ export default class MenuReport extends React.Component {
 
   render() {
     const { location } = this.props;
-    const reportLocation = 'reporte-usuario';
+    const defaultLocation = '/';
     return (<div className={style.mainWrapper}>
       <div className="container-fluid">
         <ul className="nav nav-tabs">
-          <li role="presentation" className={location.indexOf(reportLocation) === -1 ? 'active' : ''}>
+          <li role="presentation" className={location === defaultLocation ? 'active' : ''}>
             <Link to="/" onClick={this.clickHandler} data-item="homepage">Reporte Oficial</Link>
           </li>
-          <li role="presentation" className={location.indexOf(reportLocation) !== -1 ? 'active' : ''}>
+          <li role="presentation" className={location !== defaultLocation ? 'active' : ''}>
             <Link to="/reporte-usuario" onClick={this.clickHandler} data-item="reporte-usuario">
               Reporte Usuarios
               <span className={style.notification}>new</span>

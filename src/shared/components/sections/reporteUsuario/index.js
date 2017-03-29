@@ -1,6 +1,5 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-import _ from 'lodash';
 import { Link } from 'react-router';
 
 // ads disabled during april
@@ -26,8 +25,8 @@ export default class ReporteUsuarioSection extends React.Component {
     if (enable) {
       RequestUtil.get('/user/report')
         .then((results) => {
-          if (_.isArray(results.entity) && results.entity.length) {
-            const newState = _.assign({}, this.state, {
+          if (results.entity === Array && results.entity.length) {
+            const newState = Object.assign({}, this.state, {
               tweets: results.entity,
             });
             this.setState(newState);
@@ -36,7 +35,7 @@ export default class ReporteUsuarioSection extends React.Component {
     } else {
       // for testing purpose
       /*eslint-disable */
-      const newState = _.assign({}, this.state, {
+      const newState = Object.assign({}, this.state, {
         tweets: tweetsData,
       });
       this.setState(newState);
@@ -49,7 +48,7 @@ export default class ReporteUsuarioSection extends React.Component {
   }
 
   renderTweets(data) {
-    if (_.isArray(data) && data.length) {
+    if (data.constructor === Array && data.length) {
       return data.map((item, index) => {
         const date = new Date(item.created);
         // adjust to Tijuana time

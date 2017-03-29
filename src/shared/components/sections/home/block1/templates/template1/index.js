@@ -1,10 +1,8 @@
 import React from 'react';
-import _ from 'lodash';
 
 import Client from '../../../../../elements/clients';
 import { minsToHrs, toTitleCase } from '../../../../../../utils/string';
 const style = require('./style.scss');
-
 
 export default class Template1 extends React.Component {
 
@@ -17,7 +15,7 @@ export default class Template1 extends React.Component {
 
   render() {
     const { data } = this.props;
-    if (_.isArray(data) && data.length && data[0] && data[1] && data[2]) {
+    if (data.constructor === Array && data.length && data[0] && data[1] && data[2]) {
       const port1 = data[0];
       const port2 = data[1];
       const port3 = data[2];

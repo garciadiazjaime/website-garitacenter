@@ -113,11 +113,15 @@ if(TARGET === 'build-fe') {
 
     plugins: [
       new ExtractTextPlugin("../css/screen.css", {
-           allChunks: true
-       }),
-       new webpack.DefinePlugin({
-        'process.env.TIER': JSON.stringify('FE')
-      })
+        allChunks: true
+      }),
+      new webpack.DefinePlugin({
+        'process.env': {
+          TIER: JSON.stringify('FE'),
+          NODE_ENV: JSON.stringify('production'),
+        },
+      }),
+      new webpack.optimize.DedupePlugin(),
     ],
 
     module: {
@@ -161,7 +165,14 @@ if(TARGET === 'build-be') {
     plugins: [
       new ExtractTextPlugin("../static/css/screen.css", {
            allChunks: true
-       })
+       }),
+       new webpack.DefinePlugin({
+         'process.env': {
+           NODE_ENV: JSON.stringify('production'),
+         },
+       }),
+       new webpack.optimize.DedupePlugin(),
+       new webpack.optimize.UglifyJsPlugin(),
     ],
 
     module: {

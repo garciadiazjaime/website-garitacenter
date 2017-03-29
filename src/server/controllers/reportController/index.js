@@ -1,5 +1,4 @@
 /* eslint max-len: [2, 500, 4] */
-import _ from 'lodash';
 import RequestUtil from '../../../shared/utils/requestUtil';
 import config from '../../../../config';
 
@@ -44,7 +43,7 @@ export default class ReportController {
       }
       Promise.all(promises)
         .then((results) => {
-          if (_.isArray(results) && results.length) {
+          if (results.constructor === Array && results.length) {
             this.proxy[city] = results[0].entity;
             this.updated[city] = new Date();
           }

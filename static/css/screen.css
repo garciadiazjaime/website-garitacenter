@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___cfX-h {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___cfX-h {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -312,54 +312,6 @@
     color: #f2f2f2 !important; }
     .style__powered___2okxk a:hover {
       color: #fff; }
-.style__fCenter___1Oa0i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -o-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%); }
-
-.style__vCenter___V9jBy {
-  position: absolute;
-  top: 50%;
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%); }
-
-.style__vCenterRel___3xytS {
-  position: relative;
-  top: 50%;
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%); }
-
-.style__hCenter___9Wk6Y {
-  position: absolute;
-  left: 50%;
-  -moz-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%); }
-
-.style__inheritHeight___2lTtv {
-  height: inherit; }
-
-.style__hideOverflow___3uDtP {
-  overflow: hidden; }
-
-.style__icon-general-sprite___3Bwwe {
-  background-image: url("/images/sprites/sprite-general-sprite.png"); }
-
-.style__background___100HK {
-  background: #1b8ece; }
 .style__client___3i79I {
   margin-top: 30px;
   margin-bottom: 15px;
@@ -863,7 +815,6 @@
     opacity: .8; }
 
 .style__heading2___1GLQk {
-  color: #fff;
   font-size: 18px;
   text-align: center;
   font-weight: normal;

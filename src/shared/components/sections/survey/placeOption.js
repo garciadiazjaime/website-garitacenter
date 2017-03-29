@@ -1,7 +1,6 @@
 /* eslint max-len: [2, 500, 4] */
 
 import React from 'react';
-import _ from 'lodash';
 import ClickOption from './clickOption';
 
 export default class PlaceOption extends React.Component {
@@ -16,7 +15,7 @@ export default class PlaceOption extends React.Component {
   }
 
   renderItems(data, btnClassName) {
-    if (_.isArray(data) && data.length) {
+    if (data.constructor === Array && data.length) {
       return data.map((item, index) => {
         return (<ClickOption className={btnClassName} value={item} clickHandler={this.clickHandler} key={index}>
           {item}
