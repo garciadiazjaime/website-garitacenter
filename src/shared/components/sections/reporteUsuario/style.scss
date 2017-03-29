@@ -16,7 +16,7 @@
 
 .btn_report {
   @extend .btn1;
-  margin-bottom: 0;
+  margin-bottom: 15px;
   background: $cyan;
 
   .subtitle {
@@ -29,7 +29,7 @@
 }
 
 .heading2 {
-  color: $white;
+  color: $cyan;
   font-size: 18px;
   text-align: center;
   font-weight: normal;
@@ -43,12 +43,24 @@
   font-weight: bold;
   margin-bottom: 16px;
   margin-top: 0;
+  text-align: center;
+}
+
+.heading4 {
+  color: $darkBlue;
+  font-size: 18px;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  border-bottom: 1px solid $gray;
 }
 
 .btn_option {
   @extend .btn1;
-  background: #fff;
-  color: $darkBlue;
+  background: $cyan;
+  color: #fff;
   width: 100%;
   padding-right: 12px;
   padding-left: 12px;
@@ -65,8 +77,9 @@
 
 .btn_publish {
   @extend .btn_option;
-  display: inline-block;
+  display: block;
   font-size: 28px;
+  margin: 0 60px 20px;
   width: auto;
 }
 

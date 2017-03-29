@@ -1,6 +1,7 @@
 @import '../../../../theme/constants.scss';
 .menuControl {
   position: absolute;
+  display: none;
   top: 8px;
   right: 8px;
   background: $color1;
