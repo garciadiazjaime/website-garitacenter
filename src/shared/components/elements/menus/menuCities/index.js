@@ -1,7 +1,7 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
+import GaUtilAdapter from '../../../../adapters/gaUtilAdapter';
 const style = require('./style.scss');
-
 
 export default class MenuCities extends React.Component {
 
@@ -11,12 +11,19 @@ export default class MenuCities extends React.Component {
       showMenu: false,
     };
     this.clickHandler = this.clickHandler.bind(this);
+    this.clickCityHandler = this.clickCityHandler.bind(this);
   }
 
   clickHandler() {
+    GaUtilAdapter.sendEvent('click', 'city_menu', !this.state.showMenu);
     this.setState({
       showMenu: !this.state.showMenu,
     });
+  }
+
+  clickCityHandler(e) {
+    const city = e.currentTarget.getAttribute('data-city');
+    GaUtilAdapter.sendEvent('click', 'city_report', city);
   }
 
   render() {
@@ -28,9 +35,9 @@ export default class MenuCities extends React.Component {
       {
         this.state.showMenu ? <div className={style.citiesList}>
           <ul>
-            <li>Tijuana</li>
-            <li>Mexicali</li>
-            <li>Tecate</li>
+            <li onClick={this.clickCityHandler} data-city="tijuana">Tijuana</li>
+            <li onClick={this.clickCityHandler} data-city="mexicali">Mexicali</li>
+            <li onClick={this.clickCityHandler} data-city="tecate">Tecate</li>
           </ul>
         </div> : null
       }
