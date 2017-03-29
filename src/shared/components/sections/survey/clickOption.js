@@ -15,7 +15,7 @@ export default class ClickOption extends React.Component {
 
   render() {
     const { className } = this.props;
-    return (<a onClick={this.clickHandler} className={className || ''} href="#">
+    return (<a onClick={this.clickHandler} className={className || ''} href="#" rel="nofollow">
       {this.props.children}
     </a>);
   }

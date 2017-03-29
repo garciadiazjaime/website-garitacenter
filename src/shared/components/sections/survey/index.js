@@ -1,28 +1,22 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
+
 import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
-// ads disable during April
-// import Block2 from '../home/block2';
-// <Block2 />
 import QuestionEntry from './questionEntry';
 import QuestionPlace from './questionPlace';
 import QuestionTime from './questionTime';
 import QuestionReview from './questionReview';
-import { toTitleCase } from '../../../utils/string';
 
 const style = require('./style.scss');
-
 
 export default class ReporteUsuarioSection extends React.Component {
 
   constructor() {
     super();
     this.clickHandler = this.clickHandler.bind(this);
-    this.renderBreadcrumb = this.renderBreadcrumb.bind(this);
     this.redirect = this.redirect.bind(this);
     this.state = {
       view: 'QUESTION_ENTRY',
-      showBreadCrumb: ['QUESTION_PLACE', 'QUESTION_TIME'],
     };
   }
 
@@ -40,40 +34,27 @@ export default class ReporteUsuarioSection extends React.Component {
         label = Object.values(data).join(':').replace(/ /g, '_').toLowerCase();
       }
     }
-    GaUtilAdapter.sendEvent('survey', 'click', label.length > 3 ? label : 'back');
+    GaUtilAdapter.sendEvent('survey', 'click', label);
   }
 
   redirect() {
     this.props.history.push('/reporte-usuario');
   }
 
-  renderBreadcrumb() {
-    const { showBreadCrumb, view } = this.state;
-    const port = toTitleCase(this.state.port || '');
-    const entry = toTitleCase(this.state.entry || '');
-    const type = toTitleCase(this.state.type || '');
-    const place = toTitleCase(this.state.place || '');
-    return showBreadCrumb.indexOf(view.toUpperCase()) !== -1 ? (<div>
-      { port } <span className={style.triangleRight}></span>
-      { entry } <span className={style.triangleRight}></span>
-      { type } { place ? <span className={style.triangleRight}></span> : null }
-      { place }
-    </div>) : null;
+  renderView(data) {
+    if (data === 'QUESTION_PLACE') {
+      return (<QuestionPlace clickHandler={this.clickHandler} port={this.state.port} entry={this.state.entry} type={this.state.type} />);
+    } else if (data === 'QUESTION_TIME') {
+      return (<QuestionTime clickHandler={this.clickHandler} />);
+    } else if (data === 'QUESTION_REVIEW') {
+      return (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
+    }
+    return (<QuestionEntry clickHandler={this.clickHandler} />);
   }
 
   render() {
-    let content;
-    if (this.state.view === 'QUESTION_ENTRY') {
-      content = (<QuestionEntry clickHandler={this.clickHandler} />);
-    } else if (this.state.view === 'QUESTION_PLACE') {
-      content = (<QuestionPlace clickHandler={this.clickHandler} port={this.state.port} entry={this.state.entry} type={this.state.type} />);
-    } else if (this.state.view === 'QUESTION_TIME') {
-      content = (<QuestionTime clickHandler={this.clickHandler} />);
-    } else if (this.state.view === 'QUESTION_REVIEW') {
-      content = (<QuestionReview clickHandler={this.clickHandler} data={this.state} />);
-    }
     return (<div className={style.survey}>
-      {content}
+      {this.renderView(this.state.view)}
     </div>);
   }
 }

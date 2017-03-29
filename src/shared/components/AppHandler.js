@@ -1,8 +1,9 @@
+/* eslint max-len: [2, 500, 4] */
 import React from 'react';
 
 import GaUtilAdapter from '../adapters/gaUtilAdapter';
 import sitemap from '../config/sitemap';
-import MainMenu from './layout/menu/menu1';
+import Header from './layout/header';
 import MenuReport from './elements/menus/menuReport';
 import MenuCities from './elements/menus/menuCities';
 import Footer from './layout/footer/footer1';
@@ -13,7 +14,6 @@ export default class AppHandler extends React.Component {
     super(props, context);
     this.state = {
       data: context.data ? context.data : window._data,
-      showOnlyContentOn: '/encuesta',
     };
   }
 
@@ -22,11 +22,9 @@ export default class AppHandler extends React.Component {
   }
 
   render() {
-    const children = React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, { data: this.state.data });
-    });
+    const children = React.Children.map(this.props.children, (child) => React.cloneElement(child, { data: this.state.data }));
     return (<div>
-      <MainMenu city="Tijuana / San Diego" />
+      <Header city="Tijuana / San Diego" />
       <MenuCities />
       <MenuReport location={this.props.location.pathname} />
       {children}

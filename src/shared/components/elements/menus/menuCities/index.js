@@ -11,7 +11,6 @@ export default class MenuCities extends React.Component {
       showMenu: false,
     };
     this.clickHandler = this.clickHandler.bind(this);
-    this.clickCityHandler = this.clickCityHandler.bind(this);
   }
 
   clickHandler() {
