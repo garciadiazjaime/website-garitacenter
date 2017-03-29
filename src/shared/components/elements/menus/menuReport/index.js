@@ -21,7 +21,7 @@ export default ({ location }) => {
         <li role="presentation" className={location !== defaultLocation ? 'active' : ''}>
           <Link to="/reporte-usuario" onClick={clickHandler} data-item="reporte-usuario">
             Reporte Usuarios
-            <span className={style.notification}>new</span>
+            <span className={style.notification}>nuevo</span>
           </Link>
         </li>
       </ul>
