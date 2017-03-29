@@ -28,11 +28,14 @@
 }
 
 .heading2 {
+  color: $darkBlue;
   font-size: 18px;
   text-align: center;
   font-weight: normal;
-  margin-bottom: 15px;
-  margin-top: 0;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $gray;
 }
 
 .heading3 {
@@ -41,12 +44,13 @@
   font-weight: bold;
   margin-bottom: 16px;
   margin-top: 0;
+  text-align: center;
 }
 
 .btn_option {
   @extend .btn1;
-  background: #fff;
-  color: $darkBlue;
+  background: $cyan;
+  color: #fff;
   width: 100%;
   padding-right: 12px;
   padding-left: 12px;
@@ -63,9 +67,10 @@
 
 .btn_publish {
   @extend .btn_option;
-  display: inline-block;
+  display: block;
   font-size: 28px;
   width: auto;
+  margin: 0 auto;
 }
 
 .btn_entry {
@@ -75,28 +80,24 @@
 }
 
 .prevStep {
-  bottom: 0;
-  left: 15px;
   color: $darkBlue;
   position: relative;
   display: block;
   font-size: 18px;
   text-align: left;
-  padding: 15px;
-  position: absolute;
+  padding: 5px 15px 20px;
   cursor: pointer;
 
   &::before {
     content: "";
     width: 0;
     height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 5px solid $darkBlue;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 4px solid $darkBlue;
     position: absolute;
     left: 0;
-
-    @extend .vCenter;
+    top: 14px;
   }
 }
 
