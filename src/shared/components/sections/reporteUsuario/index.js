@@ -2,15 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-// ads disabled during april
-// import Block2 from '../home/block2';
-// <Block2 />
 import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
 import RequestUtil from '../../../utils/requestUtil';
 import { printTime, toTitleCase } from '../../../utils/string';
 import tweetsData from './tweetsData';
 const style = require('./style.scss');
-const enable = false;
+const enable = true;
 
 export default class ReporteUsuarioSection extends React.Component {
 

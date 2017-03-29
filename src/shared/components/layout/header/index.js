@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 const style = require('./style.scss');
 
-export default class MainMenu extends React.Component {
+export default class Header extends React.Component {
 
   render() {
     return (<nav className={style.navbar + ' navbar'} id="menu_wrapper">
@@ -23,6 +23,6 @@ export default class MainMenu extends React.Component {
   }
 }
 
-MainMenu.propTypes = {
+Header.propTypes = {
   city: React.PropTypes.string,
 };

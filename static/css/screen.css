@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___cfX-h {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___JsY47 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8,7 +8,7 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%); }
 
-.style__vCenter___ZA14l {
+.style__vCenter___FVU6M {
   position: absolute;
   top: 50%;
   -moz-transform: translateY(-50%);
@@ -17,7 +17,7 @@
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%); }
 
-.style__vCenterRel___1GkYt {
+.style__vCenterRel___1Q8gX {
   position: relative;
   top: 50%;
   -moz-transform: translateY(-50%);
@@ -26,7 +26,7 @@
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%); }
 
-.style__hCenter___2Rj-i {
+.style__hCenter___2YjIY {
   position: absolute;
   left: 50%;
   -moz-transform: translateX(-50%);
@@ -35,43 +35,43 @@
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%); }
 
-.style__inheritHeight___2LMcf {
+.style__inheritHeight___33bMH {
   height: inherit; }
 
-.style__hideOverflow___3olA9 {
+.style__hideOverflow___1g9bG {
   overflow: hidden; }
 
-.style__icon-general-sprite___8hFb_ {
+.style__icon-general-sprite___1CQsW {
   background-image: url("/images/sprites/sprite-general-sprite.png"); }
 
-.style__navbar___1jtlv {
+.style__navbar___2mKCH {
   background: #343740;
   color: #fff;
   padding: 5px 0 5px 10px;
   margin-bottom: 0px;
   border-radius: inherit; }
-  .style__navbar___1jtlv h1 {
+  .style__navbar___2mKCH h1 {
     font-size: 16px;
     opacity: .6; }
 
 @media only screen and (max-width: 767px) {
-  .style__navbar___1jtlv h1 {
+  .style__navbar___2mKCH h1 {
     margin-top: 5px;
     font-size: 14px; } }
-  .style__navbar___1jtlv h2 {
+  .style__navbar___2mKCH h2 {
     font-size: 20px;
     margin-top: 16px;
     margin-right: 0px; }
 
 @media only screen and (max-width: 767px) {
-  .style__navbar___1jtlv h2 {
+  .style__navbar___2mKCH h2 {
     margin: -26px 0 0 36px;
     font-size: 16px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .style__navbar___1jtlv h2 {
+  .style__navbar___2mKCH h2 {
     margin-top: 15px; } }
-  .style__navbar___1jtlv .style__navbarBrand___2rqc0 {
+  .style__navbar___2mKCH .style__navbarBrand___3H4oD {
     padding: 5px;
     margin-left: -15px; }
 .style__fCenter___2bJg7 {
@@ -138,9 +138,9 @@
     border-radius: 5px;
     position: absolute;
     display: block;
-    top: -3px;
-    right: -3px;
-    padding: 2px 5px;
+    top: -7px;
+    right: -7px;
+    padding: 2px 5px 4px 7px;
     font-size: 10px;
     color: white; }
     .style__mainWrapper___2Vi4a .style__notification___TJ9VB:hover {
@@ -194,6 +194,7 @@
 
 .style__menuControl___Spzia {
   position: absolute;
+  display: none;
   top: 8px;
   right: 8px;
   background: #343740;
@@ -600,7 +601,7 @@
   min-height: 46px; }
 
 .style__btn_report___2nR-t {
-  margin-bottom: 0;
+  margin-bottom: 15px;
   background: #1b8ece; }
   .style__btn_report___2nR-t .style__subtitle___2kkxH {
     color: #fff;
@@ -610,7 +611,7 @@
     opacity: .8; }
 
 .style__heading2___326bl {
-  color: #fff;
+  color: #1b8ece;
   font-size: 18px;
   text-align: center;
   font-weight: normal;
@@ -622,11 +623,22 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 16px;
-  margin-top: 0; }
+  margin-top: 0;
+  text-align: center; }
+
+.style__heading4___2yO-R {
+  color: #292e47;
+  font-size: 18px;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  border-bottom: 1px solid #f2f2f2; }
 
 .style__btn_option___29b-3, .style__btn_publish___3K2oI, .style__btn_entry___1XRBP {
-  background: #fff;
-  color: #292e47;
+  background: #1b8ece;
+  color: #fff;
   width: 100%;
   padding-right: 12px;
   padding-left: 12px; }
@@ -637,8 +649,9 @@
     color: #292e47; }
 
 .style__btn_publish___3K2oI {
-  display: inline-block;
+  display: block;
   font-size: 28px;
+  margin: 0 60px 20px;
   width: auto; }
 
 .style__btn_entry___1XRBP {
@@ -676,14 +689,6 @@
   border-bottom: 5px solid transparent;
   border-left: 5px solid #fff; }
 
-.style__closeButton___3Z7B_ {
-  color: #1b8ece;
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 28px;
-  padding: 0 10px; }
-
 .style__tweet___1n8tf, .style__tweetFirst___e7Bwg {
   text-align: left;
   border-top: 1px solid #f2f2f2;
@@ -704,11 +709,14 @@
     font-size: 11px;
     position: absolute;
     font-weight: bold;
-    top: 15px;
+    top: 30px;
     padding: 2px 5px;
     background: #1b8ece;
     border-radius: 5px;
     right: 10px; }
+    @media only screen and (max-width: 767px) {
+      .style__tweetFirst___e7Bwg:after {
+        top: 15px; } }
   .style__tweetFirst___e7Bwg .style__recentReport___6VGDv {
     font-weight: bold;
     font-size: 16px; }
@@ -722,7 +730,7 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%); }
 
-.style__vCenter___25Kv6, .style__prevStep___DvMcx::before {
+.style__vCenter___25Kv6 {
   position: absolute;
   top: 50%;
   -moz-transform: translateY(-50%);
@@ -815,22 +823,26 @@
     opacity: .8; }
 
 .style__heading2___1GLQk {
+  color: #292e47;
   font-size: 18px;
   text-align: center;
   font-weight: normal;
-  margin-bottom: 15px;
-  margin-top: 0; }
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f2f2f2; }
 
 .style__heading3___1Bc9K {
   color: #292e47;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 16px;
-  margin-top: 0; }
+  margin-top: 0;
+  text-align: center; }
 
 .style__btn_option___3E6D-, .style__btn_publish___2nEqp, .style__btn_entry___3NuvN {
-  background: #fff;
-  color: #292e47;
+  background: #1b8ece;
+  color: #fff;
   width: 100%;
   padding-right: 12px;
   padding-left: 12px; }
@@ -841,34 +853,33 @@
     color: #292e47; }
 
 .style__btn_publish___2nEqp {
-  display: inline-block;
+  display: block;
   font-size: 28px;
-  width: auto; }
+  width: auto;
+  margin: 0 auto; }
 
 .style__btn_entry___3NuvN {
   font-size: 14px;
   padding: 8px 0; }
 
 .style__prevStep___DvMcx {
-  bottom: 0;
-  left: 15px;
   color: #292e47;
   position: relative;
   display: block;
   font-size: 18px;
   text-align: left;
-  padding: 15px;
-  position: absolute;
+  padding: 5px 15px 20px;
   cursor: pointer; }
   .style__prevStep___DvMcx::before {
     content: "";
     width: 0;
     height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 5px solid #292e47;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 4px solid #292e47;
     position: absolute;
-    left: 0; }
+    left: 0;
+    top: 14px; }
 
 .style__triangleRight___1hbMD {
   display: inline-block;
@@ -879,14 +890,6 @@
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 5px solid #fff; }
-
-.style__closeButton___2vRwt {
-  color: #1b8ece;
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 28px;
-  padding: 0 10px; }
 
 .style__tweet___34OIV, .style__tweetFirst___2Ea-h {
   text-align: left;

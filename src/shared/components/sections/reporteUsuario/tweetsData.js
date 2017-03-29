@@ -12,11 +12,4 @@ export default [{
   place: 'el_arco',
   time: '15_mins',
   created: '2017-03-25T14:53:59.147Z',
-}, {
-  port: 'san_ysidro',
-  type: 'peatonal',
-  entry: 'ready_lane',
-  place: 'las_tiendas',
-  time: '1_hra',
-  created: '2017-03-25T19:49:22.617Z',
 }];
