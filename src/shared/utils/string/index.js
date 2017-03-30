@@ -1,9 +1,6 @@
-
+/* eslint max-len: [2, 500, 4] */
 function printMinutes(data) {
-  if (data < 10) {
-    return `0${data}`;
-  }
-  return data;
+  return (data < 10) ? `0${data}` : data;
 }
 
 export function minsToHrs(data) {
@@ -17,9 +14,7 @@ export function minsToHrs(data) {
 
 export function toTitleCase(data) {
   const response = data.replace(/_/g, ' ');
-  return response.replace(/\w\S*/g, (txt) => {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
+  return response.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
 export function timeSince(data) {

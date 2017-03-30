@@ -45,6 +45,8 @@ Code to increase jslint max line length limit
 /* eslint max-len: [2, 500, 4] */
 
 Ads code
+-- index.html
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 -- view.jade
 script(src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async)
 -- home/index.js

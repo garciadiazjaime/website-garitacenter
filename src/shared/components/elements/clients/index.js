@@ -14,9 +14,10 @@ export default class Client extends React.Component {
     this.clients = [{
       id: 'nutrirte',
       title: 'Nutrirte: cambia tu vida HOY',
-      image: 'nutrirte.gif',
+      image: 'nutrirte.jpg',
       link: 'https://www.facebook.com/Nutrirte-281465582043299/',
       ends: '2017-06-30',
+
       status: true,
     },
     {
@@ -25,11 +26,12 @@ export default class Client extends React.Component {
       image: 'nutrirte.jpg',
       link: 'https://www.facebook.com/Nutrirte-281465582043299/',
       ends: '2017-06-30',
+
       status: true,
-    },
-    {
+    }, {
       id: 'sano',
       title: 'Sano y Punto',
+
       image: 'sano-y-punto.gif',
       link: 'https://www.facebook.com/sanoypunto/',
       ends: '2017-06-30',
@@ -38,17 +40,18 @@ export default class Client extends React.Component {
     {
       id: 'sano',
       title: 'Sano y Punto',
+
       image: 'sano-y-punto.jpg',
       link: 'https://www.facebook.com/sanoypunto/',
       ends: '2017-06-30',
       status: true,
-    },
-    {
+    }, {
       id: 'smile',
       title: 'Smile Dent',
-      image: 'smile-dent.gif',
+      image: 'smile-dent.jpg',
       link: 'https://www.facebook.com/smiledenttijuana',
       ends: '2017-06-30',
+
       status: true,
     },
     {
@@ -57,14 +60,15 @@ export default class Client extends React.Component {
       image: 'smile-dent.jpg',
       link: 'https://www.facebook.com/smiledenttijuana',
       ends: '2017-06-30',
+
       status: true,
-    },
-    {
+    }, {
       id: 'garden',
       title: 'Garden Spa',
-      image: 'garden-spa.gif',
+      image: 'garden-spa.jpg',
       link: 'https://www.facebook.com/thegardenspa',
       ends: '2017-06-30',
+
       status: true,
     },
     {
@@ -73,14 +77,15 @@ export default class Client extends React.Component {
       image: 'garden-spa.jpg',
       link: 'https://www.facebook.com/thegardenspa',
       ends: '2017-06-30',
+
       status: true,
-    },
-    {
+    }, {
       id: 'Mayco',
-      title: 'Mayco Limpiadur&iacute;a',
-      image: 'mayco.gif',
+      title: 'Mayco Limpiaduría',
+      image: 'mayco.jpg',
       link: 'https://www.facebook.com/maycolimpiaduria/',
       ends: '2017-06-30',
+
       status: true,
     },
     {
@@ -89,14 +94,15 @@ export default class Client extends React.Component {
       image: 'mayco.jpg',
       link: 'https://www.facebook.com/maycolimpiaduria/',
       ends: '2017-06-30',
+
       status: true,
-    },
-    {
+    }, {
       id: 'ri',
       title: 'Relaciones Inesperadas',
-      image: 'ri.gif',
+      image: 'ri.jpg',
       link: 'https://www.facebook.com/RelacionesInesperadas/',
       ends: '2017-06-30',
+
       status: true,
     },
     {
@@ -105,14 +111,15 @@ export default class Client extends React.Component {
       image: 'ri.jpg',
       link: 'https://www.facebook.com/RelacionesInesperadas/',
       ends: '2017-06-30',
+
       status: true,
-    },
-    {
+    }, {
       id: 'torrente',
       title: 'Torrente',
-      image: 'torrente.gif',
+      image: 'torrente.jpg',
       link: 'https://www.facebook.com/TorrenteTJ/',
       ends: '2017-06-30',
+
       status: true,
     },
     {
@@ -121,9 +128,9 @@ export default class Client extends React.Component {
       image: 'torrente.jpg',
       link: 'https://www.facebook.com/TorrenteTJ/',
       ends: '2017-06-30',
+
       status: true,
-    },
-    {
+    }, {
       id: 'club54',
       title: 'Club 54',
       image: 'club54.jpg',
@@ -134,9 +141,10 @@ export default class Client extends React.Component {
     {
       id: 'kids',
       title: 'Kids Dent',
-      image: 'kids-dent.gif',
+      image: 'kids-dent.jpg',
       link: 'https://www.facebook.com/kidsdent.tijuana/',
       ends: '2017-05-31',
+
       status: true,
     },
     {
@@ -145,9 +153,9 @@ export default class Client extends React.Component {
       image: 'kids-dent.jpg',
       link: 'https://www.facebook.com/kidsdent.tijuana/',
       ends: '2017-05-31',
+
       status: true,
-    },
-    {
+    }, {
       id: 'electric',
       title: 'Electric Coffee Roasters',
       image: 'electric.jpg',
