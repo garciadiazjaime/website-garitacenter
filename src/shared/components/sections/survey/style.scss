@@ -7,11 +7,10 @@
 }
 
 .reportHeader {
-  background: $darkBlue;
-  color: $white;
-  padding: 12px 50px 12px 10px;
-  margin-bottom: 14px;
-  min-height: 46px;
+  color: $cyan;
+  padding: 0 15px;
+  margin-bottom: 0;
+  margin-top: 5px;
 }
 
 .btn_report {
@@ -60,8 +59,9 @@
     margin: 0 auto;
   }
 
-  &:hover {
-    color: $darkBlue;
+  &:hover, &:selected, &:visited {
+    color: $white;
+    text-decoration: none;
   }
 }
 
@@ -109,7 +109,7 @@
   height: 0;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-left: 5px solid $white;
+  border-left: 5px solid $cyan;
 }
 
 .tweet {

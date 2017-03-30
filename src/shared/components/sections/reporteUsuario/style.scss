@@ -29,9 +29,9 @@
 }
 
 .heading2 {
-  color: $cyan;
+  color: $darkBlue;
   font-size: 18px;
-  text-align: center;
+  text-align: left;
   font-weight: normal;
   margin-bottom: 15px;
   margin-top: 0;
@@ -41,9 +41,9 @@
   color: $darkBlue;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   margin-top: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .heading4 {
@@ -70,16 +70,17 @@
     margin: 0 auto;
   }
 
-  &:hover {
-    color: $darkBlue;
+  &:hover, &:selected, &:visited {
+    color: $white;
   }
 }
 
 .btn_publish {
   @extend .btn_option;
   display: block;
-  font-size: 28px;
-  margin: 0 60px 20px;
+  font-size: 20px;
+  padding: 10px 0;
+  margin: 0 80px 20px;
   width: auto;
 }
 
@@ -90,28 +91,26 @@
 }
 
 .prevStep {
-  bottom: 0;
-  left: 15px;
   color: $darkBlue;
   position: relative;
   display: block;
   font-size: 18px;
-  text-align: left;
-  padding: 15px;
-  position: absolute;
+  text-align: center;
+  padding: 5px 0 0;
   cursor: pointer;
+  margin: 0 auto;
+  width: 50px;
 
   &::before {
     content: "";
     width: 0;
     height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 5px solid $darkBlue;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 4px solid $darkBlue;
     position: absolute;
-    left: 0;
-
-    @extend .vCenter;
+    left: -10px;
+    top: 14px;
   }
 }
 
