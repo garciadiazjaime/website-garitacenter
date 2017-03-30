@@ -14,121 +14,51 @@ export default class Client extends React.Component {
     this.clients = [{
       id: 'nutrirte',
       title: 'Nutrirte: cambia tu vida HOY',
-      image: 'nutrirte.jpg',
+      image: 'nutrirte.gif',
       link: 'https://www.facebook.com/Nutrirte-281465582043299/',
       ends: '2017-06-30',
-
-      status: true,
-    },
-    {
-      id: 'nutrirte',
-      title: 'Nutrirte: cambia tu vida HOY',
-      image: 'nutrirte.jpg',
-      link: 'https://www.facebook.com/Nutrirte-281465582043299/',
-      ends: '2017-06-30',
-
       status: true,
     }, {
       id: 'sano',
       title: 'Sano y Punto',
-
       image: 'sano-y-punto.gif',
       link: 'https://www.facebook.com/sanoypunto/',
       ends: '2017-06-30',
       status: true,
-    },
-    {
-      id: 'sano',
-      title: 'Sano y Punto',
-
-      image: 'sano-y-punto.jpg',
-      link: 'https://www.facebook.com/sanoypunto/',
-      ends: '2017-06-30',
-      status: true,
     }, {
       id: 'smile',
       title: 'Smile Dent',
-      image: 'smile-dent.jpg',
+      image: 'smile-dent.gif',
       link: 'https://www.facebook.com/smiledenttijuana',
       ends: '2017-06-30',
-
-      status: true,
-    },
-    {
-      id: 'smile',
-      title: 'Smile Dent',
-      image: 'smile-dent.jpg',
-      link: 'https://www.facebook.com/smiledenttijuana',
-      ends: '2017-06-30',
-
       status: true,
     }, {
       id: 'garden',
       title: 'Garden Spa',
-      image: 'garden-spa.jpg',
+      image: 'garden-spa.gif',
       link: 'https://www.facebook.com/thegardenspa',
       ends: '2017-06-30',
-
-      status: true,
-    },
-    {
-      id: 'garden',
-      title: 'Garden Spa',
-      image: 'garden-spa.jpg',
-      link: 'https://www.facebook.com/thegardenspa',
-      ends: '2017-06-30',
-
       status: true,
     }, {
       id: 'Mayco',
       title: 'Mayco Limpiaduría',
-      image: 'mayco.jpg',
+      image: 'mayco.gif',
       link: 'https://www.facebook.com/maycolimpiaduria/',
       ends: '2017-06-30',
-
-      status: true,
-    },
-    {
-      id: 'Mayco',
-      title: 'Mayco Limpiadur&iacute;a',
-      image: 'mayco.jpg',
-      link: 'https://www.facebook.com/maycolimpiaduria/',
-      ends: '2017-06-30',
-
       status: true,
     }, {
       id: 'ri',
       title: 'Relaciones Inesperadas',
-      image: 'ri.jpg',
+      image: 'ri.gif',
       link: 'https://www.facebook.com/RelacionesInesperadas/',
       ends: '2017-06-30',
-
-      status: true,
-    },
-    {
-      id: 'ri',
-      title: 'Relaciones Inesperadas',
-      image: 'ri.jpg',
-      link: 'https://www.facebook.com/RelacionesInesperadas/',
-      ends: '2017-06-30',
-
       status: true,
     }, {
       id: 'torrente',
       title: 'Torrente',
-      image: 'torrente.jpg',
+      image: 'torrente.gif',
       link: 'https://www.facebook.com/TorrenteTJ/',
       ends: '2017-06-30',
-
-      status: true,
-    },
-    {
-      id: 'torrente',
-      title: 'Torrente',
-      image: 'torrente.jpg',
-      link: 'https://www.facebook.com/TorrenteTJ/',
-      ends: '2017-06-30',
-
       status: true,
     }, {
       id: 'club54',
@@ -141,19 +71,9 @@ export default class Client extends React.Component {
     {
       id: 'kids',
       title: 'Kids Dent',
-      image: 'kids-dent.jpg',
+      image: 'kids-dent.gif',
       link: 'https://www.facebook.com/kidsdent.tijuana/',
       ends: '2017-05-31',
-
-      status: true,
-    },
-    {
-      id: 'kids',
-      title: 'Kids Dent',
-      image: 'kids-dent.jpg',
-      link: 'https://www.facebook.com/kidsdent.tijuana/',
-      ends: '2017-05-31',
-
       status: true,
     }, {
       id: 'electric',
