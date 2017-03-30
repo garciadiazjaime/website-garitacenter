@@ -24001,7 +24001,7 @@
 	            _react2.default.createElement(
 	              'span',
 	              { className: style.notification },
-	              'new'
+	              'nuevo'
 	            )
 	          )
 	        )
@@ -25033,49 +25033,49 @@
 	    _this.clients = [{
 	      id: 'nutrirte',
 	      title: 'Nutrirte: cambia tu vida HOY',
-	      image: 'nutrirte.jpg',
+	      image: 'nutrirte.gif',
 	      link: 'https://www.facebook.com/Nutrirte-281465582043299/',
 	      ends: '2017-06-30',
 	      status: true
 	    }, {
 	      id: 'sano',
 	      title: 'Sano y Punto',
-	      image: 'sano-y-punto.jpg',
+	      image: 'sano-y-punto.gif',
 	      link: 'https://www.facebook.com/sanoypunto/',
 	      ends: '2017-06-30',
 	      status: true
 	    }, {
 	      id: 'smile',
 	      title: 'Smile Dent',
-	      image: 'smile-dent.jpg',
+	      image: 'smile-dent.gif',
 	      link: 'https://www.facebook.com/smiledenttijuana',
 	      ends: '2017-06-30',
 	      status: true
 	    }, {
 	      id: 'garden',
 	      title: 'Garden Spa',
-	      image: 'garden-spa.jpg',
+	      image: 'garden-spa.gif',
 	      link: 'https://www.facebook.com/thegardenspa',
 	      ends: '2017-06-30',
 	      status: true
 	    }, {
 	      id: 'Mayco',
 	      title: 'Mayco Limpiaduría',
-	      image: 'mayco.jpg',
+	      image: 'mayco.gif',
 	      link: 'https://www.facebook.com/maycolimpiaduria/',
 	      ends: '2017-06-30',
 	      status: true
 	    }, {
 	      id: 'ri',
 	      title: 'Relaciones Inesperadas',
-	      image: 'ri.jpg',
+	      image: 'ri.gif',
 	      link: 'https://www.facebook.com/RelacionesInesperadas/',
 	      ends: '2017-06-30',
 	      status: true
 	    }, {
 	      id: 'torrente',
 	      title: 'Torrente',
-	      image: 'torrente.jpg',
+	      image: 'torrente.gif',
 	      link: 'https://www.facebook.com/TorrenteTJ/',
 	      ends: '2017-06-30',
 	      status: true
@@ -25089,7 +25089,7 @@
 	    }, {
 	      id: 'kids',
 	      title: 'Kids Dent',
-	      image: 'kids-dent.jpg',
+	      image: 'kids-dent.gif',
 	      link: 'https://www.facebook.com/kidsdent.tijuana/',
 	      ends: '2017-05-31',
 	      status: true
@@ -30600,7 +30600,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"fCenter":"style__fCenter___3Lxs4","vCenter":"style__vCenter___3kYLY","prevStep":"style__prevStep___10k1H","vCenterRel":"style__vCenterRel___1sfpl","hCenter":"style__hCenter___162iY","inheritHeight":"style__inheritHeight___2SoiS","hideOverflow":"style__hideOverflow___3NX7s","icon-general-sprite":"style__icon-general-sprite___2Xc4H","btn1":"style__btn1___FJ7-a","btn_report":"style__btn_report___2nR-t","btn_option":"style__btn_option___29b-3","btn_publish":"style__btn_publish___3K2oI","btn_entry":"style__btn_entry___1XRBP","report":"style__report___2lnJ4","reportHeader":"style__reportHeader___2a9Ex","subtitle":"style__subtitle___2kkxH","heading2":"style__heading2___326bl","heading3":"style__heading3___1E4Ul","heading4":"style__heading4___2yO-R","triangleRight":"style__triangleRight___3QajC","tweet":"style__tweet___1n8tf","tweetFirst":"style__tweetFirst___e7Bwg","time":"style__time___mTgSW","recentReport":"style__recentReport___6VGDv"};
+	module.exports = {"fCenter":"style__fCenter___3Lxs4","vCenter":"style__vCenter___3kYLY","vCenterRel":"style__vCenterRel___1sfpl","hCenter":"style__hCenter___162iY","inheritHeight":"style__inheritHeight___2SoiS","hideOverflow":"style__hideOverflow___3NX7s","icon-general-sprite":"style__icon-general-sprite___2Xc4H","btn1":"style__btn1___FJ7-a","btn_report":"style__btn_report___2nR-t","btn_option":"style__btn_option___29b-3","btn_publish":"style__btn_publish___3K2oI","btn_entry":"style__btn_entry___1XRBP","report":"style__report___2lnJ4","reportHeader":"style__reportHeader___2a9Ex","subtitle":"style__subtitle___2kkxH","heading2":"style__heading2___326bl","heading3":"style__heading3___1E4Ul","heading4":"style__heading4___2yO-R","prevStep":"style__prevStep___10k1H","triangleRight":"style__triangleRight___3QajC","tweet":"style__tweet___1n8tf","tweetFirst":"style__tweetFirst___e7Bwg","time":"style__time___mTgSW","recentReport":"style__recentReport___6VGDv"};
 
 /***/ },
 /* 274 */
@@ -31927,7 +31927,8 @@
 	              'h3',
 	              { className: style.heading3 },
 	              this.renderTime(data.time)
-	            )
+	            ),
+	            _react2.default.createElement('hr', null)
 	          ),
 	          _react2.default.createElement(
 	            'div',
