@@ -117,6 +117,7 @@ export default class QuestionReview extends React.Component {
           <h3 className={style.heading3}>
             {this.renderTime(data.time)}
           </h3>
+          <hr />
         </div>
         <div className="col-sm-12">
           <ClickOption clickHandler={this.clickHandler} value="" className={style.btn_publish}>
