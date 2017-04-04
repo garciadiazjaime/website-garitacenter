@@ -22,7 +22,7 @@ export default class ReporteUsuarioSection extends React.Component {
     if (enable) {
       RequestUtil.get('/user/report')
         .then((results) => {
-          if (results.entity === Array && results.entity.length) {
+          if (results && results.entity.constructor === Array && results.entity.length) {
             const newState = Object.assign({}, this.state, {
               tweets: results.entity,
             });
