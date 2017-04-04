@@ -25352,7 +25352,7 @@
 
 	      if (enable) {
 	        _requestUtil2.default.get('/user/report').then(function (results) {
-	          if (results.entity === Array && results.entity.length) {
+	          if (results && results.entity.constructor === Array && results.entity.length) {
 	            var newState = Object.assign({}, _this2.state, {
 	              tweets: results.entity
 	            });
