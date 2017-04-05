@@ -23725,7 +23725,7 @@
 	    key: 'init',
 	    value: function init() {
 	      if (enable) {
-	        _utilGanalytics2.default.init('UA-75576478-1');
+	        _utilGanalytics2.default.init('UA-26633604-1');
 	      }
 	    }
 	  }, {
