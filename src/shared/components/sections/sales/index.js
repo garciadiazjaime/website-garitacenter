@@ -67,7 +67,7 @@ export default class VentasSection extends React.Component {
           </table>
           <h2 className={style.subtitle}>Ingresa tu correo para comenzar</h2>
           <input type="email" />
-          <button>Enviar</button>
+          <button className={style.button}>Enviar</button>
           <p className={style.notes}>* Esta es la cantidad de impresiones mínimas que nos comprometemos a mostrar, pero seguiremos mostrando tu banner aunque ese número se exeda, hasta que se cumpla la vigencia de tu contrato.<br />
           ** Se refiere a cambios de banners en caso de que tu campaña requiera de presentar diferentes banners en el transcurso de su ejecución.<br />
         *** El reporte incluye número de impresiones en el mes, número de clicks y recomendaciones para obtener más clicks.

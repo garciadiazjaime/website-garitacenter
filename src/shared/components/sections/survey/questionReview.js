@@ -98,7 +98,6 @@ export default class QuestionReview extends React.Component {
     return (<div className="container-fluid">
       <div className="row">
         <div className="col-sm-12">
-
           <h2 className={style.heading4}>Estos son tus resultados</h2>
           <h2 className={style.heading2}>¿Por dónde cruzas?</h2>
           <h3 className={style.heading3}>

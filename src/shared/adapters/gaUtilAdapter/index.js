@@ -6,7 +6,7 @@ export default class GaUtilAdapter {
 
   static init() {
     if (enable) {
-      GaUtil.init('UA-75576478-1');
+      GaUtil.init('UA-26633604-1');
     }
   }
 
