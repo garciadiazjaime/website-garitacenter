@@ -1,0 +1,63 @@
+@import '../../../theme/constants.scss';
+@import '../../../theme/buttons/buttons.scss';
+
+.title {
+  color: $cyan;
+  text-align: center;
+  margin: 50px 0 25px;
+  font-size: 30px;
+  @media #{$isPhone}{
+    margin: 40px 20px;
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  color: $darkGray;
+  text-align: left;
+  margin: 0 0 30px;
+  font-size: 22px;
+  @media #{$isPhone}{
+    margin: 0 20px;
+    font-size: 18px;
+  }
+}
+
+.list, .table {
+  margin-bottom: 50px;
+  font-size: 18px;
+  @media #{$isPhone}{
+    font-size: 14px;
+  }
+}
+
+.table {
+  width: 100%;
+  background: lighten($cyan, 50%);
+
+  th {
+    color: white;
+    background: $darkBlue;
+    padding: 10px 15px;
+    font-weight: 200;
+    text-align: center;
+  }
+
+  td {
+    padding: 10px 15px;
+    text-align: center;
+  }
+
+  .currency {
+    font-size: 10px;
+  }
+  .cost {
+    text-align: right;
+  }
+}
+
+.notes {
+  margin: 30px 0;
+  color: lighten($darkGray, 50%);
+  font-size: 12px;
+}

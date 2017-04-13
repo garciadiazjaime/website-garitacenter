@@ -12,6 +12,15 @@ export default class Client extends React.Component {
       showClient: false,
     };
     this.clients = [{
+      id: 'gCenter',
+      title: 'Garita Center. Anúnciate aquí',
+      image: 'garitacenter.jpg',
+      link: 'https://www.garitacenter.com/ventas',
+      ends: '3000-06-30',
+
+      status: true,
+    },
+    {
       id: 'nutrirte',
       title: 'Nutrirte: cambia tu vida HOY',
       image: 'nutrirte.jpg',

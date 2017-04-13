@@ -2,6 +2,7 @@ import AppHandler from '../../components/AppHandler';
 import HomeSection from '../../components/sections/home';
 import ReporteUsuarioSection from '../../components/sections/reporteUsuario';
 import SurveySection from '../../components/sections/survey';
+import SalesSection from '../../components/sections/sales';
 
 export default {
   items: {
@@ -19,6 +20,10 @@ export default {
       title: 'Forma Reporte de Usuario',
       url: '/encuesta',
       component: SurveySection,
+    }, {
+      title: 'Anúnciate aquí',
+      url: '/ventas',
+      component: SalesSection,
     }],
   },
   icons: [{
