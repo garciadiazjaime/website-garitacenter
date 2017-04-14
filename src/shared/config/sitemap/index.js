@@ -22,7 +22,7 @@ export default {
       component: SurveySection,
     }, {
       title: 'Anúnciate aquí',
-      url: '/ventas',
+      url: '/publicidad',
       component: SalesSection,
     }],
   },
