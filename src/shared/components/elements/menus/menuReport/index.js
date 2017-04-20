@@ -17,12 +17,6 @@ const menuItems = [{
   tag: 'reporte-usuario',
   title: 'Reporte Usuarios',
   isNew: true,
-}, {
-  id: 3,
-  href: '/publicidad',
-  tag: 'publicidad',
-  title: 'Publicidad',
-  isNew: false,
 }];
 
 

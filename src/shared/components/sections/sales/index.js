@@ -7,7 +7,7 @@ export default function SalesSection() {
   return (<div className="container">
     <div className="row">
       <div className="col-xs-12">
-        <h1 className={style.title}>¿Por qué anunciarte en garita center?</h1>
+        <h1 className={style.title}>¿Por qué anunciarte en GaritaCenter.com?</h1>
         <h2 className={style.subtitle}>Porque tu producto satisface necesidades fronterizas como:</h2>
         <ul className={style.list}>
           <li>Restaurantes, bares y entretenimiento.</li>
@@ -27,50 +27,56 @@ export default function SalesSection() {
             <tr>
               <th>Paquete</th>
               <th>Min de Impresiones*</th>
-              <th>Cambios**</th>
-              <th>Reporte***</th>
+              <th className="hidden-xs">Cambios**</th>
+              <th className="hidden-xs">Reporte***</th>
               <th>Costo</th>
             </tr>
             <tr>
               <td>1 mes</td>
               <td>10&apos;000</td>
-              <td>/</td>
-              <td>Sí</td>
-              <td className={style.cost}>$2000.00<span className={style.currency}>MXN</span></td>
+              <td className="hidden-xs">/</td>
+              <td className="hidden-xs">Sí</td>
+              <td className={style.cost}>$2000.00<span className={style.currency}>MX</span></td>
             </tr>
             <tr>
               <td>3 meses</td>
               <td>30&apos;000</td>
-              <td>2</td>
-              <td>Mensual</td>
-              <td className={style.cost}>$5000.00<span className={style.currency}>MXN</span></td>
+              <td className="hidden-xs">2</td>
+              <td className="hidden-xs">Mensual</td>
+              <td className={style.cost}>$5000.00<span className={style.currency}>MX</span></td>
             </tr>
             <tr>
               <td>6 meses</td>
               <td>60&apos;000</td>
-              <td>5</td>
-              <td>Mensual</td>
-              <td className={style.cost}>$9000.00<span className={style.currency}>MXN</span></td>
+              <td className="hidden-xs">5</td>
+              <td className="hidden-xs">Mensual</td>
+              <td className={style.cost}>$9000.00<span className={style.currency}>MX</span></td>
             </tr>
             <tr>
               <td>12 meses</td>
               <td>120&apos;000</td>
-              <td>ilimitados</td>
-              <td>Mensual</td>
-              <td className={style.cost}>$15&apos;000.00<span className={style.currency}>MXN</span></td>
+              <td className="hidden-xs">ilimitados</td>
+              <td className="hidden-xs">Mensual</td>
+              <td className={style.cost}>$15&apos;000.00<span className={style.currency}>MX</span></td>
             </tr>
           </tbody>
         </table>
         <h2 className={style.subtitle}>Ingresa tu Correo o Teléfono para comenzar</h2>
+      </div>
+      <div className="col-xs-12 col-sm-8">
         <div className="form-group">
           <input type="email" className="form-control" placeholder="Correo o Teléfono" />
         </div>
-        <button className="btn btn-default">Enviar</button>
+      </div>
+      <div className="col-xs-12 col-sm-4">
+        <button className={style.button + ' btn btn-default'}>Enviar</button>
+      </div>
+      <div className="col-xs-12">
         <p className={style.notes}>* Esta es la cantidad de impresiones mínimas que nos comprometemos a mostrar, pero seguiremos mostrando tu banner aunque ese número se exeda, hasta que se cumpla la vigencia de tu contrato.<br />
-        ** Se refiere a cambios de banners en caso de que tu campaña requiera de presentar diferentes banners en el transcurso de su ejecución.<br />
-      *** El reporte incluye número de impresiones en el mes, número de clicks y recomendaciones para obtener más clicks.
+        <span className="visible-xs">* Todos los servicios incluyen también cierto número de cambio del contenido del banner, dependiendo del paquete; así como un reporte mensual<br /></span>
+        <span className="hidden-xs">** Se refiere a cambios de banners en caso de que tu campaña requiera de presentar diferentes banners en el transcurso de su ejecución.<br />
+      *** El reporte incluye número de impresiones en el mes, número de clicks y recomendaciones para obtener más clicks.</span>
         </p>
-
       </div>
     </div>
   </div>);

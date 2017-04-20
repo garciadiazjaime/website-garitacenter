@@ -2,23 +2,31 @@
 @import '../../../theme/buttons/buttons.scss';
 
 .title {
-  color: $cyan;
+  background: url('/images/publicidad-bkg.jpg') no-repeat center center;
+  background-size: cover;
+  color: $yellow;
   text-align: center;
-  margin: 50px 0 25px;
+  text-shadow: 2px 2px 5px $darkGray;
+  font-weight: bold;
+  padding: 50px 0;
+  margin: 15px 0 30px;
   font-size: 30px;
+  line-height: 32px;
   @media #{$isPhone}{
-    margin: 40px 20px;
+    padding: 40px 0;
+    margin: 0 -15px 30px;
     font-size: 24px;
   }
 }
 
 .subtitle {
-  color: $darkGray;
+  color: $cyan;
   text-align: left;
   margin: 0 0 30px;
   font-size: 22px;
   @media #{$isPhone}{
-    margin: 0 20px;
+    text-align: center;
+    margin: 0 20px 20px;
     font-size: 18px;
   }
 }
@@ -27,7 +35,7 @@
   margin-bottom: 50px;
   font-size: 18px;
   @media #{$isPhone}{
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -61,6 +69,11 @@
   padding-top: 5px;
   padding-bottom: 5px;
   margin-left: 20px;
+  display: inline-block;
+  @media #{$isPhone}{
+    margin: 0 auto;
+    display: block;
+  }
 }
 .notes {
   margin: 30px 0;
