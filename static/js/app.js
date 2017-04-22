@@ -23556,6 +23556,10 @@
 
 	var _survey2 = _interopRequireDefault(_survey);
 
+	var _sales = __webpack_require__(286);
+
+	var _sales2 = _interopRequireDefault(_sales);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
@@ -23574,6 +23578,10 @@
 	      title: 'Forma Reporte de Usuario',
 	      url: '/encuesta',
 	      component: _survey2.default
+	    }, {
+	      title: 'Anúnciate aquí',
+	      url: '/publicidad',
+	      component: _sales2.default
 	    }]
 	  },
 	  icons: [{
@@ -23964,15 +23972,49 @@
 	var style = __webpack_require__(210); /* eslint max-len: [2, 500, 4] */
 
 
+	var menuItems = [{
+	  id: 1,
+	  href: '/',
+	  tag: 'homepage',
+	  title: 'Reporte Oficial',
+	  isNew: false
+	}, {
+	  id: 2,
+	  href: '/reporte-usuario',
+	  tag: 'reporte-usuario',
+	  title: 'Reporte Usuarios',
+	  isNew: true
+	}];
+
 	function clickHandler(e) {
 	  var item = e.target.getAttribute('data-item');
 	  _gaUtilAdapter2.default.sendEvent('mainmenu', 'click', item);
 	}
 
+	function renderMenu(data, location) {
+	  return data.map(function (item) {
+	    var className = location === item.href ? 'active' : null;
+	    return _react2.default.createElement(
+	      'li',
+	      { role: 'presentation', className: className, key: item.id },
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: item.href, onClick: clickHandler, 'data-item': item.tag },
+	        item.title
+	      ),
+	      item.isNew ? _react2.default.createElement(
+	        'span',
+	        { className: style.notification },
+	        'nuevo'
+	      ) : null
+	    );
+	  });
+	}
+
 	exports.default = function (_ref) {
 	  var location = _ref.location;
 
-	  var defaultLocation = '/';
+	  var menuEl = renderMenu(menuItems, location);
 	  return _react2.default.createElement(
 	    'div',
 	    { className: style.mainWrapper },
@@ -23982,29 +24024,7 @@
 	      _react2.default.createElement(
 	        'ul',
 	        { className: 'nav nav-tabs' },
-	        _react2.default.createElement(
-	          'li',
-	          { role: 'presentation', className: location === defaultLocation ? 'active' : '' },
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/', onClick: clickHandler, 'data-item': 'homepage' },
-	            'Reporte Oficial'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          { role: 'presentation', className: location !== defaultLocation ? 'active' : '' },
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/reporte-usuario', onClick: clickHandler, 'data-item': 'reporte-usuario' },
-	            'Reporte Usuarios',
-	            _react2.default.createElement(
-	              'span',
-	              { className: style.notification },
-	              'nuevo'
-	            )
-	          )
-	        )
+	        menuEl
 	      )
 	    )
 	  );
@@ -25031,11 +25051,28 @@
 	      showClient: false
 	    };
 	    _this.clients = [{
+	      id: 'gCenter',
+	      title: 'Garita Center. Anúnciate aquí',
+	      image: 'garitacenter.jpg',
+	      link: 'https://www.garitacenter.com/ventas',
+	      ends: '3000-06-30',
+
+	      status: true
+	    }, {
 	      id: 'nutrirte',
 	      title: 'Nutrirte: cambia tu vida HOY',
 	      image: 'nutrirte.gif',
 	      link: 'https://www.facebook.com/Nutrirte-281465582043299/',
 	      ends: '2017-06-30',
+
+	      status: true
+	    }, {
+	      id: 'nutrirte',
+	      title: 'Nutrirte: cambia tu vida HOY',
+	      image: 'nutrirte.jpg',
+	      link: 'https://www.facebook.com/Nutrirte-281465582043299/',
+	      ends: '2017-06-30',
+
 	      status: true
 	    }, {
 	      id: 'sano',
@@ -25050,6 +25087,15 @@
 	      image: 'smile-dent.gif',
 	      link: 'https://www.facebook.com/smiledenttijuana',
 	      ends: '2017-06-30',
+
+	      status: true
+	    }, {
+	      id: 'smile',
+	      title: 'Smile Dent',
+	      image: 'smile-dent.jpg',
+	      link: 'https://www.facebook.com/smiledenttijuana',
+	      ends: '2017-06-30',
+
 	      status: true
 	    }, {
 	      id: 'garden',
@@ -25057,6 +25103,15 @@
 	      image: 'garden-spa.gif',
 	      link: 'https://www.facebook.com/thegardenspa',
 	      ends: '2017-06-30',
+
+	      status: true
+	    }, {
+	      id: 'garden',
+	      title: 'Garden Spa',
+	      image: 'garden-spa.jpg',
+	      link: 'https://www.facebook.com/thegardenspa',
+	      ends: '2017-06-30',
+
 	      status: true
 	    }, {
 	      id: 'Mayco',
@@ -25064,6 +25119,15 @@
 	      image: 'mayco.gif',
 	      link: 'https://www.facebook.com/maycolimpiaduria/',
 	      ends: '2017-06-30',
+
+	      status: true
+	    }, {
+	      id: 'Mayco',
+	      title: 'Mayco Limpiadur&iacute;a',
+	      image: 'mayco.jpg',
+	      link: 'https://www.facebook.com/maycolimpiaduria/',
+	      ends: '2017-06-30',
+
 	      status: true
 	    }, {
 	      id: 'ri',
@@ -25071,6 +25135,15 @@
 	      image: 'ri.gif',
 	      link: 'https://www.facebook.com/RelacionesInesperadas/',
 	      ends: '2017-06-30',
+
+	      status: true
+	    }, {
+	      id: 'ri',
+	      title: 'Relaciones Inesperadas',
+	      image: 'ri.jpg',
+	      link: 'https://www.facebook.com/RelacionesInesperadas/',
+	      ends: '2017-06-30',
+
 	      status: true
 	    }, {
 	      id: 'torrente',
@@ -25078,6 +25151,15 @@
 	      image: 'torrente.gif',
 	      link: 'https://www.facebook.com/TorrenteTJ/',
 	      ends: '2017-06-30',
+
+	      status: true
+	    }, {
+	      id: 'torrente',
+	      title: 'Torrente',
+	      image: 'torrente.jpg',
+	      link: 'https://www.facebook.com/TorrenteTJ/',
+	      ends: '2017-06-30',
+
 	      status: true
 	    }, {
 	      id: 'club54',
@@ -25092,6 +25174,15 @@
 	      image: 'kids-dent.gif',
 	      link: 'https://www.facebook.com/kidsdent.tijuana/',
 	      ends: '2017-05-31',
+
+	      status: true
+	    }, {
+	      id: 'kids',
+	      title: 'Kids Dent',
+	      image: 'kids-dent.jpg',
+	      link: 'https://www.facebook.com/kidsdent.tijuana/',
+	      ends: '2017-05-31',
+
 	      status: true
 	    }, {
 	      id: 'electric',
@@ -32027,6 +32118,348 @@
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___1z8sB","vCenter":"style__vCenter___3iEWL","vCenterRel":"style__vCenterRel___IMEMa","hCenter":"style__hCenter___3Z_kY","inheritHeight":"style__inheritHeight___1lX1a","hideOverflow":"style__hideOverflow___2lxKJ","icon-general-sprite":"style__icon-general-sprite___yikUy","wrapper":"style__wrapper___2dK3R","loader":"style__loader___2-Uv7"};
+
+/***/ },
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = SalesSection;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _gaUtilAdapter = __webpack_require__(205);
+
+	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* eslint max-len: [2, 500, 4] */
+	var style = __webpack_require__(287);
+
+	function clickHandler() {
+	  var contactEl = document.getElementById('contact');
+	  var msgEl = document.getElementById('msg');
+	  if (!contactEl || contactEl.value.length < 5) {
+	    msgEl.innerHTML = 'Olvidaste meter tu correo o teléfono, durk :p';
+	  } else {
+	    msgEl.className = 'text-success';
+	    msgEl.innerHTML = 'Te contactaremos a la brevedad, gracias :)';
+	    _gaUtilAdapter2.default.sendEvent('sales', 'info', contactEl.value);
+	    document.getElementsByTagName('button')[0].remove();
+	  }
+	}
+
+	function SalesSection() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'container' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'row' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-xs-12' },
+	        _react2.default.createElement(
+	          'h1',
+	          { className: style.title },
+	          '\xBFPor qu\xE9 anunciarte en GaritaCenter.com?'
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          { className: style.subtitle },
+	          'Porque tu producto satisface necesidades fronterizas como:'
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: style.list },
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Restaurantes, bares y entretenimiento.'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Venta de ropa y electr\xF3nicos.'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Seguros automovil\xEDsticos.'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Turismo m\xE9dicos.'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          { className: style.subtitle },
+	          'Y porque nuestra audiencia es muy atractiva:'
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: style.list },
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Nos visitan m\xE1s de 200\'000 personas cada mes.'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Que sabemos en que \xE1reas se mueven.'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Y que ganan y/o gastan en d\xF3lares'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          { className: style.subtitle },
+	          'Aprovecha esta oportunidad adquiriendo uno de nuestros paquetes:'
+	        ),
+	        _react2.default.createElement(
+	          'table',
+	          { className: style.table },
+	          _react2.default.createElement(
+	            'tbody',
+	            null,
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Paquete'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Min de Impresiones*'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                { className: 'hidden-xs' },
+	                'Cambios**'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                { className: 'hidden-xs' },
+	                'Reporte***'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Costo'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '1 mes'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '10\'000'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                '/'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                'S\xED'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: style.cost },
+	                '$2000.00',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: style.currency },
+	                  'MX'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '3 meses'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '30\'000'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                '2'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                'Mensual'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: style.cost },
+	                '$5000.00',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: style.currency },
+	                  'MX'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '6 meses'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '60\'000'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                '5'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                'Mensual'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: style.cost },
+	                '$9000.00',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: style.currency },
+	                  'MX'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '12 meses'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                '120\'000'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                'ilimitados'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: 'hidden-xs' },
+	                'Mensual'
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                { className: style.cost },
+	                '$15\'000.00',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: style.currency },
+	                  'MX'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          { className: style.subtitle },
+	          'Ingresa tu Correo o Tel\xE9fono para comenzar'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-xs-12 col-sm-8' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form-group' },
+	          _react2.default.createElement('input', { type: 'email', id: 'contact', className: 'form-control', placeholder: 'Correo o Tel\xE9fono' })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-xs-12 col-sm-4' },
+	        _react2.default.createElement('p', { id: 'msg', className: 'text-danger' }),
+	        _react2.default.createElement(
+	          'button',
+	          { className: style.button + ' btn btn-default', onClick: clickHandler },
+	          'Enviar'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-xs-12' },
+	        _react2.default.createElement(
+	          'p',
+	          { className: style.notes },
+	          '* Esta es la cantidad de impresiones m\xEDnimas que nos comprometemos a mostrar, pero seguiremos mostrando tu banner aunque ese n\xFAmero se exeda, hasta que se cumpla la vigencia de tu contrato.',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'visible-xs' },
+	            '* Todos los servicios incluyen tambi\xE9n cierto n\xFAmero de cambio del contenido del banner, dependiendo del paquete; as\xED como un reporte mensual',
+	            _react2.default.createElement('br', null)
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'hidden-xs' },
+	            '** Se refiere a cambios de banners en caso de que tu campa\xF1a requiera de presentar diferentes banners en el transcurso de su ejecuci\xF3n.',
+	            _react2.default.createElement('br', null),
+	            '*** El reporte incluye n\xFAmero de impresiones en el mes, n\xFAmero de clicks y recomendaciones para obtener m\xE1s clicks.'
+	          )
+	        )
+	      )
+	    )
+	  );
+	}
+
+/***/ },
+/* 287 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"fCenter":"style__fCenter___3Fp_s","vCenter":"style__vCenter___2OKxG","vCenterRel":"style__vCenterRel___3JEmX","hCenter":"style__hCenter___hGqlr","inheritHeight":"style__inheritHeight___3HlO6","hideOverflow":"style__hideOverflow___3okm-","icon-general-sprite":"style__icon-general-sprite___NBSiw","btn1":"style__btn1___1XsxS","button":"style__button___2g4Qh","title":"style__title___3k7k7","subtitle":"style__subtitle___3WBQg","list":"style__list___3nT2e","table":"style__table___xAJgt","currency":"style__currency___QySRy","cost":"style__cost___2-tLK","notes":"style__notes___xy-c5"};
 
 /***/ }
 /******/ ]);
