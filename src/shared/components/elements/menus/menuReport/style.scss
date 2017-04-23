@@ -6,6 +6,12 @@
 
   ul {
     border-bottom: none!important;
+    text-align: center;
+    li {
+      margin-bottom: 0;
+      display: inline-block;
+      float: none;
+    }
   }
 
   a {
@@ -13,6 +19,7 @@
     border-radius: inherit;
     font-size: $size1;
     color: $gray;
+    background: lighten($color1, 10%);
 
     &:hover {
       color: $cyan;
