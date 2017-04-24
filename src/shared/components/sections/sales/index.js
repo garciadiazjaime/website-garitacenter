@@ -1,5 +1,6 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
+
 import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
 const style = require('./style.scss');
 
