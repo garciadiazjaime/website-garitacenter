@@ -1,8 +1,20 @@
 /* eslint max-len: [2, 500, 4] */
 import React from 'react';
-
+import GaUtilAdapter from '../../../adapters/gaUtilAdapter';
 const style = require('./style.scss');
 
+function clickHandler() {
+  const contactEl = document.getElementById('contact');
+  const msgEl = document.getElementById('msg');
+  if (!contactEl || contactEl.value.length < 5) {
+    msgEl.innerHTML = 'Olvidaste ingresar tu correo o teléfono';
+  } else {
+    msgEl.className = 'text-success';
+    msgEl.innerHTML = 'Te contactaremos a la brevedad, gracias :)';
+    GaUtilAdapter.sendEvent('sales', 'info', contactEl.value);
+    document.getElementsByTagName('button')[0].remove();
+  }
+}
 export default function SalesSection() {
   return (<div className="container">
     <div className="row">
@@ -65,11 +77,12 @@ export default function SalesSection() {
       </div>
       <div className="col-xs-12 col-sm-8">
         <div className="form-group">
-          <input type="email" className="form-control" placeholder="Correo o Teléfono" />
+          <input type="email" id="contact" className="form-control" placeholder="Correo o Teléfono" />
         </div>
       </div>
       <div className="col-xs-12 col-sm-4">
-        <button className={style.button + ' btn btn-default'}>Enviar</button>
+        <p id="msg" className="text-danger"></p>
+        <button className={style.button + ' btn btn-default'} onClick={clickHandler}>Enviar</button>
       </div>
       <div className="col-xs-12">
         <p className={style.notes}>* Esta es la cantidad de impresiones mínimas que nos comprometemos a mostrar, pero seguiremos mostrando tu banner aunque ese número se exeda, hasta que se cumpla la vigencia de tu contrato.<br />

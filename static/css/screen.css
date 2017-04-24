@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___JsY47 {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);.style__fCenter___JsY47 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -124,12 +124,18 @@
   padding-top: 10px;
   background: #343740; }
   .style__mainWrapper___2Vi4a ul {
-    border-bottom: none !important; }
+    border-bottom: none !important;
+    text-align: center; }
+    .style__mainWrapper___2Vi4a ul li {
+      margin-bottom: 0;
+      display: inline-block;
+      float: none; }
   .style__mainWrapper___2Vi4a a {
     border: none !important;
     border-radius: inherit;
     font-size: 15px;
-    color: #f2f2f2; }
+    color: #f2f2f2;
+    background: #4b4f5c; }
     .style__mainWrapper___2Vi4a a:hover {
       color: #1b8ece;
       cursor: pointer; }
@@ -665,7 +671,9 @@
   display: block;
   font-size: 18px;
   padding: 5px 15px 20px;
-  cursor: pointer; }
+  cursor: pointer;
+  margin: 0 auto;
+  width: 50px; }
   .style__prevStep___10k1H::before {
     content: "";
     width: 0;
@@ -988,3 +996,151 @@
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+.style__fCenter___3Fp_s {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); }
+
+.style__vCenter___2OKxG {
+  position: absolute;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.style__vCenterRel___3JEmX {
+  position: relative;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.style__hCenter___hGqlr {
+  position: absolute;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.style__inheritHeight___3HlO6 {
+  height: inherit; }
+
+.style__hideOverflow___3okm- {
+  overflow: hidden; }
+
+.style__icon-general-sprite___NBSiw {
+  background-image: url("/images/sprites/sprite-general-sprite.png"); }
+
+.style__btn1___1XsxS, .style__button___2g4Qh {
+  background: #000;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); }
+  .style__btn1___1XsxS:hover, .style__button___2g4Qh:hover {
+    color: #fff;
+    -webkit-box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+    -moz-transform: translate(0, -2px);
+    -o-transform: translate(0, -2px);
+    -ms-transform: translate(0, -2px);
+    -webkit-transform: translate(0, -2px);
+    transform: translate(0, -2px); }
+  .style__btn1___1XsxS:active, .style__button___2g4Qh:active, .style__btn1___1XsxS:focus, .style__button___2g4Qh:focus {
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+    -moz-transform: translate(0, 2px);
+    -o-transform: translate(0, 2px);
+    -ms-transform: translate(0, 2px);
+    -webkit-transform: translate(0, 2px);
+    transform: translate(0, 2px); }
+
+.style__title___3k7k7 {
+  background: url("/images/publicidad-bkg.jpg") no-repeat center center;
+  background-size: cover;
+  color: #fff471;
+  text-align: center;
+  text-shadow: 2px 2px 5px #222222;
+  font-weight: bold;
+  padding: 50px 0;
+  margin: 15px 0 30px;
+  font-size: 30px;
+  line-height: 32px; }
+  @media only screen and (max-width: 767px) {
+    .style__title___3k7k7 {
+      padding: 40px 0;
+      margin: 0 -15px 30px;
+      font-size: 24px; } }
+
+.style__subtitle___3WBQg {
+  color: #1b8ece;
+  text-align: left;
+  margin: 0 0 30px;
+  font-size: 22px; }
+  @media only screen and (max-width: 767px) {
+    .style__subtitle___3WBQg {
+      text-align: center;
+      margin: 0 20px 20px;
+      font-size: 18px; } }
+
+.style__list___3nT2e, .style__table___xAJgt {
+  margin-bottom: 50px;
+  font-size: 18px; }
+  @media only screen and (max-width: 767px) {
+    .style__list___3nT2e, .style__table___xAJgt {
+      font-size: 12px; } }
+
+.style__table___xAJgt {
+  width: 100%;
+  background: #ecf6fc; }
+  .style__table___xAJgt th {
+    color: white;
+    background: #292e47;
+    padding: 10px 15px;
+    font-weight: 200;
+    text-align: center; }
+  .style__table___xAJgt td {
+    padding: 10px 15px;
+    text-align: center; }
+  .style__table___xAJgt .style__currency___QySRy {
+    font-size: 10px; }
+  .style__table___xAJgt .style__cost___2-tLK {
+    text-align: right; }
+
+.style__button___2g4Qh {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 20px;
+  display: inline-block; }
+  @media only screen and (max-width: 767px) {
+    .style__button___2g4Qh {
+      margin: 0 auto;
+      display: block; } }
+
+.style__notes___xy-c5 {
+  margin: 30px 0;
+  color: #a2a2a2;
+  font-size: 12px; }
