@@ -32147,7 +32147,7 @@
 	  var contactEl = document.getElementById('contact');
 	  var msgEl = document.getElementById('msg');
 	  if (!contactEl || contactEl.value.length < 5) {
-	    msgEl.innerHTML = 'Olvidaste meter tu correo o teléfono, durk :p';
+	    msgEl.innerHTML = 'Olvidaste ingresar tu correo o teléfono';
 	  } else {
 	    msgEl.className = 'text-success';
 	    msgEl.innerHTML = 'Te contactaremos a la brevedad, gracias :)';
@@ -32155,7 +32155,6 @@
 	    document.getElementsByTagName('button')[0].remove();
 	  }
 	}
-
 	function SalesSection() {
 	  return _react2.default.createElement(
 	    'div',
