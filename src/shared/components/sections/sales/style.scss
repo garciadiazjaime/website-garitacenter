@@ -74,6 +74,10 @@
     margin: 0 auto;
     display: block;
   }
+  &:hover, &:active, &:focus {
+    background-color: lighten($darkBlue, 10%);
+    color: white;
+  }
 }
 .notes {
   margin: 30px 0;

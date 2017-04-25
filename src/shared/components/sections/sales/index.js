@@ -8,7 +8,7 @@ function clickHandler() {
   const contactEl = document.getElementById('contact');
   const msgEl = document.getElementById('msg');
   if (!contactEl || contactEl.value.length < 5) {
-    msgEl.innerHTML = 'Olvidaste meter tu correo o teléfono, durk :p';
+    msgEl.innerHTML = 'Olvidaste ingresar tu correo o teléfono';
   } else {
     msgEl.className = 'text-success';
     msgEl.innerHTML = 'Te contactaremos a la brevedad, gracias :)';
@@ -16,7 +16,6 @@ function clickHandler() {
     document.getElementsByTagName('button')[0].remove();
   }
 }
-
 export default function SalesSection() {
   return (<div className="container">
     <div className="row">
