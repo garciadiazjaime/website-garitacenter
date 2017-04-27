@@ -1139,6 +1139,9 @@
     .style__button___2g4Qh {
       margin: 0 auto;
       display: block; } }
+  .style__button___2g4Qh:hover, .style__button___2g4Qh:active, .style__button___2g4Qh:focus {
+    background-color: #3c4367;
+    color: white; }
 
 .style__notes___xy-c5 {
   margin: 30px 0;
