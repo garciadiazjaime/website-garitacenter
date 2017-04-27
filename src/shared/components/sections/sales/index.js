@@ -79,10 +79,10 @@ export default function SalesSection() {
       <div className="col-xs-12 col-sm-8">
         <div className="form-group">
           <input type="email" id="contact" className="form-control" placeholder="Correo o Teléfono" />
+          <p id="msg" className="text-danger"></p>
         </div>
       </div>
       <div className="col-xs-12 col-sm-4">
-        <p id="msg" className="text-danger"></p>
         <button className={style.button + ' btn btn-default'} onClick={clickHandler}>Enviar</button>
       </div>
       <div className="col-xs-12">
