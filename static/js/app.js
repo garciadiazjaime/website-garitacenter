@@ -32413,13 +32413,13 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'form-group' },
-	          _react2.default.createElement('input', { type: 'email', id: 'contact', className: 'form-control', placeholder: 'Correo o Tel\xE9fono' })
+	          _react2.default.createElement('input', { type: 'email', id: 'contact', className: 'form-control', placeholder: 'Correo o Tel\xE9fono' }),
+	          _react2.default.createElement('p', { id: 'msg', className: 'text-danger' })
 	        )
 	      ),
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'col-xs-12 col-sm-4' },
-	        _react2.default.createElement('p', { id: 'msg', className: 'text-danger' }),
 	        _react2.default.createElement(
 	          'button',
 	          { className: style.button + ' btn btn-default', onClick: clickHandler },
