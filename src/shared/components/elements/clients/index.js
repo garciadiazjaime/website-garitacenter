@@ -15,7 +15,7 @@ export default class Client extends React.Component {
       id: 'gCenter',
       title: 'Garita Center. Anúnciate aquí',
       image: 'garitacenter.jpg',
-      link: 'https://www.garitacenter.com/ventas',
+      link: 'https://www.garitacenter.com/publicidad',
       ends: '3000-06-30',
 
       status: true,
