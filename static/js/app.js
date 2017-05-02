@@ -25054,7 +25054,7 @@
 	      id: 'gCenter',
 	      title: 'Garita Center. Anúnciate aquí',
 	      image: 'garitacenter.jpg',
-	      link: 'https://www.garitacenter.com/ventas',
+	      link: 'http://www.garitacenter.com/publicidad',
 	      ends: '3000-06-30',
 
 	      status: true
