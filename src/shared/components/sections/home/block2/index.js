@@ -1,13 +1,33 @@
 /* eslint max-len: [2, 500, 4] */
-import React from 'react';
+import React, { Component } from 'react';
 
-import Gads from '../../../elements/gads';
 const style = require('./style.scss');
 
-export default function Block2() {
-  return (<div className="container-fluid">
-    <div className={'row ' + style.donuts}>
-      <Gads client="ca-pub-2643588035417760" slot="9117540736" />
-    </div>
-  </div>);
+export default class Block2 extends Component {
+
+  constructor(args) {
+    super(args);
+    this.state = {
+      show: false,
+    };
+  }
+
+  componentDidMount() {
+    /*eslint-disable */
+    this.setState({
+      show: true,
+    });
+    /*eslint-enable */
+  }
+
+  render() {
+    const { show } = this.state;
+    return show ? (<div className="container-fluid text-center">
+      <div className={'row ' + style.donuts}>
+        <a href="http://www.anrdoezrs.net/click-8412859-13031561" target="_blank">
+          <img src="http://www.tqlkg.com/image-8412859-13031561" width="300" height="250" alt="" border="0"/>
+        </a>
+      </div>
+    </div>) : null;
+  }
 }

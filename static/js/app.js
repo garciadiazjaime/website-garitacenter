@@ -24590,7 +24590,11 @@
 
 	var _block2 = _interopRequireDefault(_block);
 
-	var _string = __webpack_require__(222);
+	var _block3 = __webpack_require__(222);
+
+	var _block4 = _interopRequireDefault(_block3);
+
+	var _string = __webpack_require__(220);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24623,6 +24627,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_block2.default, { data: data }),
+	        _react2.default.createElement(_block4.default, null),
 	        _react2.default.createElement(
 	          'div',
 	          { className: style.lastUpdate },
@@ -24731,11 +24736,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _clients = __webpack_require__(220);
-
-	var _clients2 = _interopRequireDefault(_clients);
-
-	var _string = __webpack_require__(222);
+	var _string = __webpack_require__(220);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24745,7 +24746,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = __webpack_require__(223);
+	// import Client from '../../../../../elements/clients';
+	// <Client />
+
+
+	var style = __webpack_require__(221);
 
 	var Template1 = function (_React$Component) {
 	  _inherits(Template1, _React$Component);
@@ -24990,8 +24995,7 @@
 	                this.renderTime(port3.content.people.normal.time, false)
 	              )
 	            )
-	          ),
-	          _react2.default.createElement(_clients2.default, null)
+	          )
 	        );
 	      }
 	      return null;
@@ -25010,281 +25014,6 @@
 
 /***/ },
 /* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _gaUtilAdapter = __webpack_require__(205);
-
-	var _gaUtilAdapter2 = _interopRequireDefault(_gaUtilAdapter);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
-
-
-	var style = __webpack_require__(221);
-
-	var Client = function (_React$Component) {
-	  _inherits(Client, _React$Component);
-
-	  function Client() {
-	    _classCallCheck(this, Client);
-
-	    var _this = _possibleConstructorReturn(this, (Client.__proto__ || Object.getPrototypeOf(Client)).call(this));
-
-	    _this.state = {
-	      showClient: false
-	    };
-	    _this.clients = [{
-	      id: 'gCenter',
-	      title: 'Garita Center. Anúnciate aquí',
-	      image: 'garitacenter.jpg',
-	      link: 'http://www.garitacenter.com/publicidad',
-	      ends: '3000-06-30',
-
-	      status: true
-	    }, {
-	      id: 'nutrirte',
-	      title: 'Nutrirte: cambia tu vida HOY',
-	      image: 'nutrirte.gif',
-	      link: 'https://www.facebook.com/Nutrirte-281465582043299/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'nutrirte',
-	      title: 'Nutrirte: cambia tu vida HOY',
-	      image: 'nutrirte.jpg',
-	      link: 'https://www.facebook.com/Nutrirte-281465582043299/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'sano',
-	      title: 'Sano y Punto',
-	      image: 'sano-y-punto.gif',
-	      link: 'https://www.facebook.com/sanoypunto/',
-	      ends: '2017-06-30',
-	      status: true
-	    }, {
-	      id: 'smile',
-	      title: 'Smile Dent',
-	      image: 'smile-dent.gif',
-	      link: 'https://www.facebook.com/smiledenttijuana',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'smile',
-	      title: 'Smile Dent',
-	      image: 'smile-dent.jpg',
-	      link: 'https://www.facebook.com/smiledenttijuana',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'garden',
-	      title: 'Garden Spa',
-	      image: 'garden-spa.gif',
-	      link: 'https://www.facebook.com/thegardenspa',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'garden',
-	      title: 'Garden Spa',
-	      image: 'garden-spa.jpg',
-	      link: 'https://www.facebook.com/thegardenspa',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'Mayco',
-	      title: 'Mayco Limpiaduría',
-	      image: 'mayco.gif',
-	      link: 'https://www.facebook.com/maycolimpiaduria/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'Mayco',
-	      title: 'Mayco Limpiadur&iacute;a',
-	      image: 'mayco.jpg',
-	      link: 'https://www.facebook.com/maycolimpiaduria/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'ri',
-	      title: 'Relaciones Inesperadas',
-	      image: 'ri.gif',
-	      link: 'https://www.facebook.com/RelacionesInesperadas/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'ri',
-	      title: 'Relaciones Inesperadas',
-	      image: 'ri.jpg',
-	      link: 'https://www.facebook.com/RelacionesInesperadas/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'torrente',
-	      title: 'Torrente',
-	      image: 'torrente.gif',
-	      link: 'https://www.facebook.com/TorrenteTJ/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'torrente',
-	      title: 'Torrente',
-	      image: 'torrente.jpg',
-	      link: 'https://www.facebook.com/TorrenteTJ/',
-	      ends: '2017-06-30',
-
-	      status: true
-	    }, {
-	      id: 'club54',
-	      title: 'Club 54',
-	      image: 'club54.jpg',
-	      link: 'https://www.facebook.com/club54grados/',
-	      ends: '2017-06-30',
-	      status: true
-	    }, {
-	      id: 'kids',
-	      title: 'Kids Dent',
-	      image: 'kids-dent.gif',
-	      link: 'https://www.facebook.com/kidsdent.tijuana/',
-	      ends: '2017-05-31',
-
-	      status: true
-	    }, {
-	      id: 'kids',
-	      title: 'Kids Dent',
-	      image: 'kids-dent.jpg',
-	      link: 'https://www.facebook.com/kidsdent.tijuana/',
-	      ends: '2017-05-31',
-
-	      status: true
-	    }, {
-	      id: 'electric',
-	      title: 'Electric Coffee Roasters',
-	      image: 'electric.jpg',
-	      link: 'https://www.facebook.com/ElectricCoffeeRoasters/',
-	      ends: '2017-04-30',
-	      status: true
-	    }, {
-	      id: 'hola',
-	      title: 'Hola Bonita',
-	      image: 'hola-bonita.jpg',
-	      link: 'http://holabonita.com.mx/',
-	      ends: '2017-04-30',
-	      status: true
-	    }];
-	    return _this;
-	  }
-
-	  _createClass(Client, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      /*eslint-disable */
-	      this.setState({
-	        showClient: true
-	      });
-	      /*eslint-enable */
-	    }
-	  }, {
-	    key: 'getActiveClients',
-	    value: function getActiveClients(data) {
-	      var _this2 = this;
-
-	      if (data.constructor === Array && data.length) {
-	        return data.filter(function (item) {
-	          return item.status && _this2.isClientActive(item);
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'clickHandler',
-	    value: function clickHandler(e) {
-	      var item = e.currentTarget.getAttribute('data-item');
-	      var url = e.currentTarget.getAttribute('data-url');
-	      _gaUtilAdapter2.default.sendEvent('client', 'click', item);
-	      e.preventDefault();
-	      window.open(url, '_blank');
-	    }
-	  }, {
-	    key: 'isClientActive',
-	    value: function isClientActive(data) {
-	      var expiresOn = new Date(data.ends);
-	      var today = new Date();
-	      return today < expiresOn;
-	    }
-	  }, {
-	    key: 'renderClient',
-	    value: function renderClient() {
-	      var activeClients = this.getActiveClients(this.clients);
-	      if (activeClients.constructor === Array && activeClients.length) {
-	        var index = Math.floor(Math.random() * activeClients.length);
-	        var client = activeClients[index];
-	        if (client) {
-	          _gaUtilAdapter2.default.sendEvent('client', 'show', client.id);
-	          return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	              'a',
-	              { href: client.link, title: client.title, onClick: this.clickHandler, 'data-item': client.id, 'data-url': client.link },
-	              _react2.default.createElement('img', { src: '/images/clients/' + client.image })
-	            )
-	          );
-	        }
-	      }
-	      return null;
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return this.state.showClient ? _react2.default.createElement(
-	        'div',
-	        { className: style.client },
-	        this.renderClient()
-	      ) : null;
-	    }
-	  }]);
-
-	  return Client;
-	}(_react2.default.Component);
-
-	exports.default = Client;
-
-/***/ },
-/* 221 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-	module.exports = {"client":"style__client___3i79I"};
-
-/***/ },
-/* 222 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25365,11 +25094,94 @@
 	}
 
 /***/ },
-/* 223 */
+/* 221 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"fCenter":"style__fCenter___3J7rq","vCenter":"style__vCenter___px7FK","vCenterRel":"style__vCenterRel___3-4Pc","hCenter":"style__hCenter___1FoV0","inheritHeight":"style__inheritHeight___2AId2","hideOverflow":"style__hideOverflow___33eUg","icon-general-sprite":"style__icon-general-sprite___2hbMj","report":"style__report___3oyH6","clook":"style__clook___2Z6j_","car":"style__car___I6XtV","carSentri":"style__carSentri___3O52I","carReadyLane":"style__carReadyLane___feZQo","pedestrian":"style__pedestrian___1pzB_","pedestrianReadyLane":"style__pedestrianReadyLane___1Bf3P","br":"style__br___LILTJ","hr":"style__hr___1P1Ee","icon":"style__icon___1LpsF","port1":"style__port1___33WuG","port2":"style__port2___1wOeD","times":"style__times___22Gjy","clookWrapper":"style__clookWrapper___1hPg4","pedestrianSection":"style__pedestrianSection___1a-SK","client":"style__client___2EPFN"};
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: [2, 500, 4] */
+
+
+	var style = __webpack_require__(223);
+
+	var Block2 = function (_Component) {
+	  _inherits(Block2, _Component);
+
+	  function Block2(args) {
+	    _classCallCheck(this, Block2);
+
+	    var _this = _possibleConstructorReturn(this, (Block2.__proto__ || Object.getPrototypeOf(Block2)).call(this, args));
+
+	    _this.state = {
+	      show: false
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Block2, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      /*eslint-disable */
+	      this.setState({
+	        show: true
+	      });
+	      /*eslint-enable */
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var show = this.state.show;
+
+	      return show ? _react2.default.createElement(
+	        'div',
+	        { className: 'container-fluid text-center' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row ' + style.donuts },
+	          _react2.default.createElement(
+	            'a',
+	            { href: 'http://www.anrdoezrs.net/click-8412859-13031561', target: '_blank' },
+	            _react2.default.createElement('img', { src: 'http://www.tqlkg.com/image-8412859-13031561', width: '300', height: '250', alt: '', border: '0' })
+	          )
+	        )
+	      ) : null;
+	    }
+	  }]);
+
+	  return Block2;
+	}(_react.Component);
+
+	exports.default = Block2;
+
+/***/ },
+/* 223 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"donuts":"style__donuts___xQ3Tf"};
 
 /***/ },
 /* 224 */
@@ -25404,7 +25216,7 @@
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
 
-	var _string = __webpack_require__(222);
+	var _string = __webpack_require__(220);
 
 	var _tweetsData = __webpack_require__(272);
 
@@ -30729,7 +30541,7 @@
 
 	var _questionReview2 = _interopRequireDefault(_questionReview);
 
-	var _string = __webpack_require__(222);
+	var _string = __webpack_require__(220);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31837,7 +31649,7 @@
 
 	var _requestUtil2 = _interopRequireDefault(_requestUtil);
 
-	var _string = __webpack_require__(222);
+	var _string = __webpack_require__(220);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Client from '../../../../../elements/clients';
 import { minsToHrs, toTitleCase } from '../../../../../../utils/string';
 const style = require('./style.scss');
 
@@ -148,8 +147,6 @@ export default class Template1 extends React.Component {
             </div>
           </div>
         </div>
-
-        <Client />
       </div>);
     }
     return null;

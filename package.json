@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint",
     "dev": "./node_modules/.bin/webpack-dev-server",
-    "build": "npm run build-be && npm run build-fe && npm run assets && npm run minify",
+    "build": "npm run build-be && npm run build-fe && npm run minify",
     "build-fe": "./node_modules/.bin/webpack",
     "build-be": "./node_modules/.bin/webpack",
     "start": "node --use_strict start.js",
@@ -15,10 +15,10 @@
     "lint": "./node_modules/.bin/eslint --ignore-pattern **/app-*.js, **/**/sprite.js --ext .js,.jsx src",
     "update": "git checkout master && git pull origin develop",
     "deploy": "git add . && git commit -m 'deploy' && git push upstream HEAD:master",
-    "assets": "cp -rf ./build/. ./static/ && rm ./static/index.html && rm ./static/state.js && rm -rf ./static/libs",
     "minify-css": "./node_modules/.bin/gulp minify-css",
     "minify-js": "./node_modules/.bin/gulp minify-js",
-    "minify": "npm run minify-css && npm run minify-js"
+    "minify": "npm run minify-css && npm run minify-js",
+    "postinstall": "postinstall-build build"
   },
   "author": "Mint IT Media",
   "license": "ISC",
@@ -75,6 +75,7 @@
     "lodash": "^3.10.1",
     "memory-cache": "^0.1.6",
     "newrelic": "^1.28.2",
+    "postinstall-build": "^5.0.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-fastclick": "^2.1.2",
