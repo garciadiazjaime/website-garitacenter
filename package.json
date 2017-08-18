@@ -18,7 +18,8 @@
     "assets": "cp -rf ./build/. ./static/ && rm ./static/index.html && rm ./static/state.js && rm -rf ./static/libs",
     "minify-css": "./node_modules/.bin/gulp minify-css",
     "minify-js": "./node_modules/.bin/gulp minify-js",
-    "minify": "npm run minify-css && npm run minify-js"
+    "minify": "npm run minify-css && npm run minify-js",
+    "postinstall": "postinstall-build build"
   },
   "author": "Mint IT Media",
   "license": "ISC",
@@ -75,6 +76,7 @@
     "lodash": "^3.10.1",
     "memory-cache": "^0.1.6",
     "newrelic": "^1.28.2",
+    "postinstall-build": "^5.0.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-fastclick": "^2.1.2",
