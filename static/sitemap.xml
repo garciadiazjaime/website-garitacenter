@@ -6,16 +6,16 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
   <loc>http://www.garitacenter.com/</loc>
-  <lastmod>2017-03-26</lastmod>
+  <lastmod>2017-08-18</lastmod>
   <changefreq>hourly</changefreq>
 </url>
 <url>
   <loc>http://www.garitacenter.com/reporte-usuario</loc>
-  <lastmod>2017-03-26</lastmod>
+  <lastmod>2017-08-18</lastmod>
   <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.garitacenter.com/encuesta</loc>
-  <lastmod>2017-03-26</lastmod>
+  <lastmod>2017-08-18</lastmod>
 </url>
 </urlset>
