@@ -17,8 +17,7 @@
     "deploy": "git add . && git commit -m 'deploy' && git push upstream HEAD:master",
     "minify-css": "./node_modules/.bin/gulp minify-css",
     "minify-js": "./node_modules/.bin/gulp minify-js",
-    "minify": "npm run minify-css && npm run minify-js",
-    "postinstall": "postinstall-build build"
+    "minify": "npm run minify-css && npm run minify-js"
   },
   "author": "Mint IT Media",
   "license": "ISC",
