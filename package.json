@@ -1,6 +1,6 @@
 {
   "name": "website-garitacenter",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "GaritaCenter website",
   "main": "start.js",
   "scripts": {
