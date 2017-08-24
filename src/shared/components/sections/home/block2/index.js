@@ -24,8 +24,8 @@ export default class Block2 extends Component {
     const { show } = this.state;
     return show ? (<div className="container-fluid text-center">
       <div className={'row ' + style.donuts}>
-        <a href="http://www.anrdoezrs.net/click-8412859-13031561" target="_blank">
-          <img src="http://www.tqlkg.com/image-8412859-13031561" width="300" height="250" alt="" border="0"/>
+        <a href="http://www.tkqlhce.com/click-8412859-12855029" target="_blank">
+          <img src="http://www.tqlkg.com/image-8412859-12855029" width="320" height="50" alt="" border="0"/>
         </a>
       </div>
     </div>) : null;
