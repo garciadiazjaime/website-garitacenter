@@ -25159,8 +25159,8 @@
 	          { className: 'row ' + style.donuts },
 	          _react2.default.createElement(
 	            'a',
-	            { href: 'http://www.tkqlhce.com/click-8412859-12855029', target: '_blank' },
-	            _react2.default.createElement('img', { src: 'http://www.tqlkg.com/image-8412859-12855029', width: '320', height: '50', alt: '', border: '0' })
+	            { href: 'http://www.dpbolvw.net/click-8412859-13031556', target: '_top' },
+	            _react2.default.createElement('img', { src: 'http://www.awltovhc.com/image-8412859-13031556', width: '320', height: '50', alt: '', border: '0' })
 	          )
 	        )
 	      ) : null;
