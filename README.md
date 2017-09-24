@@ -52,3 +52,8 @@ script(src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async)
 -- home/index.js
 import Block2 from './block2';
 <Block2 />
+
+docker build -t garciadiazjaime/website-gcenter .
+docker run -d -p 49174:3074 garciadiazjaime/website-gcenter
+docker push garciadiazjaime/website-gcenter
+docker pull garciadiazjaime/website-gcenter

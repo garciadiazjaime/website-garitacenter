@@ -1,37 +1,35 @@
-var convict = require('convict');
+const convict = require('convict');
 
-var config = convict({
+const config = convict({
     email: {
-      doc: 'default contact email',
-      format: String,
-      default: 'info@mintitmedia.com'
+        doc: 'default contact email',
+        format: String,
+        default: 'info@mintitmedia.com',
     },
     ipaddress: {
         doc: 'IP the application runs on',
         format: 'ipaddress',
-        default: '127.0.0.1',
-        env: 'OPENSHIFT_NODEJS_IP'
+        default: '0.0.0.0',
     },
     port: {
         doc: 'Port the application listens on',
         format: 'port',
-        default: '3030',
-        env: 'OPENSHIFT_NODEJS_PORT'
+        default: '3074',
     },
     sendgrid: {
         doc: 'Sendrid API KEY',
         format: String,
         default: '',
-        env: 'SENDGRID_API_KEY'
+        env: 'SENDGRID_API_KEY',
     },
     api: {
-      url: {
-          doc: 'API URL',
-          format: String,
-          default: 'http://127.0.0.1:3000/',
-          env: 'GC_API_URL',
-      },
-    }
+        url: {
+            doc: 'API URL',
+            format: String,
+            default: 'http://127.0.0.1:3000/',
+            env: 'API_URL',
+        },
+    },
 });
 
 config.validate();
