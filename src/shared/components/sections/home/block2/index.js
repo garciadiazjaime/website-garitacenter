@@ -1,6 +1,8 @@
 /* eslint max-len: [2, 500, 4] */
 import React, { Component } from 'react';
 
+import Gads from '../../../elements/gads';
+
 const style = require('./style.scss');
 
 export default class Block2 extends Component {
@@ -24,9 +26,7 @@ export default class Block2 extends Component {
     const { show } = this.state;
     return show ? (<div className="container-fluid text-center">
       <div className={'row ' + style.donuts}>
-        <a href="http://www.anrdoezrs.net/click-8412859-13074197" target="_top">
-          <img src="http://www.awltovhc.com/image-8412859-13074197" width="320" height="100" alt="Free Blade Runner Funko POP!" border="0"/>
-        </a>
+        <Gads client="ca-pub-2643588035417760" slot="8391964998" />
       </div>
     </div>) : null;
   }

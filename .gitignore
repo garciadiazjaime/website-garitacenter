@@ -5,3 +5,6 @@ npm-debug.log
 newrelic_agent.log
 .ruby-version
 build
+dist
+static/css
+static/js
